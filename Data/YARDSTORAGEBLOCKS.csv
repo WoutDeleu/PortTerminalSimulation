@@ -1,4 +1,4 @@
-Name;ContainerType;FlowType;Capacity;X_Cord;Y_Cord
+Name;ContainerType;FlowType;Capacity;X_Cord;Y_Cord;
 YB0;REEFER;MIX;142;-747.0;461.0;
 YB1;REEFER;MIX;133;-748.0;476.0;
 YB2;REEFER;MIX;135;-746.0;507.0;
