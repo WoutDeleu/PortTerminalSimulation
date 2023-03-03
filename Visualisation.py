@@ -37,7 +37,7 @@ def Visualization_Transshipments(tranN, tranR, schedule):
     loadedSumPerVessel = tranN.sum()
 
     # Linking vessels with schedule:
-    # This dataframe shows how many containers are loaded/unloaded per Vessel and when
+    # This dataframe shows when and how many containers are loaded/unloaded per Vessel
     unloadedLink = schedule.merge(unloadedSumPerVessel.to_frame(), left_index=True, right_index=True)
     unloadedLink = unloadedLink.rename(columns={0: 'unloadedContainers'})
     link = unloadedLink.merge(loadedSumPerVessel.to_frame(), left_index=True, right_index=True)
