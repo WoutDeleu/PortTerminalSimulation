@@ -14,7 +14,7 @@ def Visualisation_Import(localImport, localImportReefer, schedule):
     arrivalNormals = sumSchedule.groupby(['Arrival'])['Containers_x'].sum()
     arrivalReefer = sumSchedule.groupby(['Arrival'])['Containers_y'].sum()
 
-    plt.title('Local Export')
+    plt.title('Local Import')
     plt.plot(arrivalNormals, label='#Normal containers arriving')
     plt.plot(arrivalReefer, label='#Reefer containers arriving')
     plt.legend()
