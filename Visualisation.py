@@ -3,23 +3,43 @@ import matplotlib.pyplot as plt
 
 
 def Visualisation_Import(localImport, localImportReefer, schedule):
-    print()
+    localImport = cleanData(localImport)
+    localImportReefer = cleanData(localImportReefer)
+
+    schedule = schedule.set_index('VESSEL')
+
+    sumSchedule = schedule.merge(localImport, left_index=True, right_index=True)
+    sumSchedule = sumSchedule.merge(localImportReefer, left_index=True, right_index=True)
+
+    arrivalNormals = sumSchedule.groupby(['Arrival'])['Containers_x'].sum()
+    arrivalReefer = sumSchedule.groupby(['Arrival'])['Containers_y'].sum()
+
+    plt.title('Local Export')
+    plt.plot(arrivalNormals, label='#Normal containers arriving')
+    plt.plot(arrivalReefer, label='#Reefer containers arriving')
+    plt.legend()
+    plt.show()
+
 
 
 def Visualisation_Export(localExport, localExportReefer, schedule):
-    arivals = schedule['Arrival']
-    departure = schedule['Departure']
     localExport = cleanData(localExport)
+    localExportReefer = cleanData(localExportReefer)
 
     schedule = schedule.set_index('VESSEL')
 
     sumSchedule = schedule.merge(localExport, left_index=True, right_index=True)
-    arrivalNormals = sumSchedule.groupby(['Arrival'])['Containers'].sum()
-    print(arrivalNormals)
+    sumSchedule = sumSchedule.merge(localExportReefer, left_index=True, right_index=True)
+
+    arrivalNormals = sumSchedule.groupby(['Arrival'])['Containers_x'].sum()
+    arrivalReefer = sumSchedule.groupby(['Arrival'])['Containers_y'].sum()
 
 
-
-
+    plt.title('Local Export')
+    plt.plot(arrivalNormals, label='#Normal containers arriving')
+    plt.plot(arrivalReefer, label='#Reefer containers arriving')
+    plt.legend()
+    plt.show()
 
 
 def Visualization_Transshipments(tranNormal, tranReefer, schedule):
