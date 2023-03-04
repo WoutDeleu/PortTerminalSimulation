@@ -1,11 +1,8 @@
 import os
 
-import Visualisation
+from Visualisation import Visualisation_Export, Visualisation_Import, Visualization_Transshipments
 from Data.DataParser import parse_data
 
-
-# todo: end ; verwijderen in columns
-# todo: in forloop inlezen
 
 def load_data(folder):
     # find all plugins available and initialize them
@@ -19,6 +16,6 @@ def load_data(folder):
 
 
 data = load_data('./Data/')
-Visualisation.Visualisation_Export(data['LocalExportNormal'], data['LocalExportReefer'], data['VESSELSCHEDULE'])
-#Visualisation.Visualisation_Import(data['LocalImportNormal'], data['LocalImportReefer'], data['VESSELSCHEDULE'])
-Visualisation.Visualization_Transshipments(data['TransshipmentsNormal'], data['TransshipmentsReefer'], data['VESSELSCHEDULE'])
+Visualisation_Export(data['LocalExportNormal'], data['LocalExportReefer'], data['VESSELSCHEDULE'])
+Visualisation_Import(data['LocalImportNormal'], data['LocalImportReefer'], data['VESSELSCHEDULE'])
+Visualization_Transshipments(data['TransshipmentsNormal'], data['TransshipmentsReefer'], data['VESSELSCHEDULE'])
