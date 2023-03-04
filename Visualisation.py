@@ -9,42 +9,37 @@ def Visualisation_Import(localImport, localImportReefer, schedule):
 def Visualisation_Export(localExport, localExportReefer, schedule):
     arivals = schedule['Arrival']
     departure = schedule['Departure']
-    print(schedule)
-    for v in schedule:
-        print(v)
+    localExport = cleanData(localExport)
+
+    schedule = schedule.set_index('VESSEL')
+
+    sumSchedule = schedule.merge(localExport, left_index=True, right_index=True)
+    arrivalNormals = sumSchedule.groupby(['Arrival'])['Containers'].sum()
+    print(arrivalNormals)
 
 
-def Visualization_Transshipments(tranN, tranR, schedule):
+
+
+
+
+def Visualization_Transshipments(tranNormal, tranReefer, schedule):
     # Visualize the amount of containers transferring between ships per hour
 
     # Cleaning data
-    tranN = tranN.rename(columns={'VESSELfrom_VESSELto': 'VESSEL'})  # Rename column for later merge
-    tranN = tranN.set_index('VESSEL')  # Replaces the 0 index with the actual indexes
-    tranN = tranN.replace('', 0)  # Replaces empty fields with 0
-    tranN = tranN.astype(int)  # Changes the type of the parameters to 'int' instead of 'object'
-    tranNRows, tranNColumns = tranN.shape
-    sorted = []
-    for x in range(tranNColumns):
-        sorted.append('V' + str(x))
-    tranN = tranN.reindex(columns=sorted)  # Sort columns
-    tranN = tranN.reindex(sorted)  # Sort rows
-
-    tranR = tranR.rename(columns={'VESSELfrom_VESSELto': 'VESSEL'})  # Rename column for later merge
-    tranR = tranR.set_index('VESSEL')  # Replaces the 0 index with the actual indexes
-    tranR = tranR.replace('', 0)  # Replaces empty fields with 0
-    tranR = tranR.astype(int)  # Changes the type of the parameters to 'int' instead of 'object'
-    tranR = tranR.reindex(columns=sorted)  # Sort columns
-    tranR = tranR.reindex(sorted)  # Sort rows
+    tranNormal = cleanData(tranNormal)
+    tranNormal = reorderCols(tranNormal)
+    tranReefer = cleanData(tranReefer)
+    tranReefer = reorderCols(tranReefer)
 
     schedule = schedule.set_index('VESSEL')  # Replaces the 0 index with the actual indexes
 
     # Calculating sum of unloaded containers (incoming)
-    unloadedSumN = tranN.sum(axis=1)
-    unloadedSumR = tranR.sum(axis=1)
+    unloadedSumN = tranNormal.sum(axis=1)
+    unloadedSumR = tranReefer.sum(axis=1)
 
     # Calculating sum of loaded containers per vessel (outgoing)
-    loadedSumN = tranN.sum()
-    loadedSumR = tranR.sum()
+    loadedSumN = tranNormal.sum()
+    loadedSumR = tranReefer.sum()
 
     # Linking vessels with schedule:
     # This dataframe shows when and how many containers are loaded/unloaded per Vessel
@@ -74,4 +69,24 @@ def Visualization_Transshipments(tranN, tranR, schedule):
     plt.show()
 
 
+def cleanData(dataframe):
+    # Cleaning data
 
+    dataframe = dataframe.rename(columns={'VESSELfrom_VESSELto': 'VESSEL'})  # Rename column for later merge
+    dataframe = dataframe.set_index('VESSEL')  # Replaces the 0 index with the actual indexes
+    dataframe = dataframe.replace('', 0)  # Replaces empty fields with 0
+    dataframe = dataframe.astype(int)  # Changes the type of the parameters to 'int' instead of 'object'
+
+    return dataframe
+
+
+def reorderCols(dataframe):
+    rows, cols = dataframe.shape
+
+
+    vesselKeys = []
+    for x in range(cols):
+        vesselKeys.append('V' + str(x))
+
+    dataframe = dataframe.reindex(columns=vesselKeys)  # Sort columns
+    return dataframe.reindex(vesselKeys)

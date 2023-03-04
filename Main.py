@@ -19,6 +19,6 @@ def load_data(folder):
 
 
 data = load_data('./Data/')
-#Visualisation.Visualisation_Export(data['LocalExportNormal'], data['LocalExportReefer'], data['VESSELSCHEDULE'])
+Visualisation.Visualisation_Export(data['LocalExportNormal'], data['LocalExportReefer'], data['VESSELSCHEDULE'])
 #Visualisation.Visualisation_Import(data['LocalImportNormal'], data['LocalImportReefer'], data['VESSELSCHEDULE'])
 Visualisation.Visualization_Transshipments(data['TransshipmentsNormal'], data['TransshipmentsReefer'], data['VESSELSCHEDULE'])
