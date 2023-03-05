@@ -1,11 +1,70 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 from Data.DataParser import cleanData, WEEKDAYS, filterDayOfWeek, WEEKDAYS_NUMERIC, reorderCols
 
 # TODO fixen histogrammen
 HIST = False
 DAY_BASED = True
+
+
+def sort_weekdays(data):
+    data = data.loc[pd.Categorical(data.index, categories=WEEKDAYS, ordered=True)]
+    data = data.reset_index(drop=False)
+    return data.set_index('Arrival').reindex(WEEKDAYS)
+
+
+def calculate_normalOccupancy_byDay(export, arrival):
+    total_containers = {}
+
+    # loop door alle tijdseenheden en bereken de totale hoeveelheid containers
+    for index in range(0, 7):
+        current_index = WEEKDAYS[index]
+        previous_index = WEEKDAYS[index - 1]
+        if index == 0:
+            previous_total = 0
+        else:
+            previous_total = total_containers.get(previous_index, 0)
+        total = previous_total + arrival.loc[current_index].at['Containers_x'] - export.loc[current_index].at[
+            'Containers_x']
+        total_containers[current_index] = total
+
+    # maak een Pandas Series aan met de berekende waarden
+    return pd.Series(total_containers)
+
+
+def calculate_reeferOccupancy_byDay(export, arrival):
+    total_containers = {}
+
+    # loop door alle tijdseenheden en bereken de totale hoeveelheid containers
+    for index in range(0, 7):
+        current_index = WEEKDAYS[index]
+        previous_index = WEEKDAYS[index - 1]
+        if index == 0:
+            previous_total = 0
+        else:
+            previous_total = total_containers.get(previous_index, 0)
+        total = previous_total + arrival.loc[current_index].at['Containers_y'] - export.loc[current_index].at[
+            'Containers_y']
+        total_containers[current_index] = total
+
+    # maak een Pandas Series aan met de berekende waarden
+    return pd.Series(total_containers)
+
+
+def calculate_full_capacity(yardStorageBlocks):
+    return yardStorageBlocks['Capacity'].sum()
+
+
+def calculate_reefer_capacity(yardStorageBlocks):
+    yardStorageBlocks = yardStorageBlocks[yardStorageBlocks['ContainerType'] == 'FULL']
+    return yardStorageBlocks['Capacity'].sum()
+
+
+def calculate_normal_capacity(yardStorageBlocks):
+    yardStorageBlocks = yardStorageBlocks[yardStorageBlocks['ContainerType'] == 'REEFER']
+    return yardStorageBlocks['Capacity'].sum()
 
 
 def Visualisation_Import(localImport, localImportReefer, schedule):
@@ -25,6 +84,7 @@ def Visualisation_Import(localImport, localImportReefer, schedule):
 
     if HIST:
         pass
+
     else:
         if DAY_BASED:
             indices = WEEKDAYS_NUMERIC.argsort()
@@ -157,3 +217,70 @@ def Visualization_Transshipments(tranNormal, tranReefer, schedule):
         plt.plot(departureReefers, label='#Reefer containers departing')
     plt.legend()
     plt.show()
+
+
+def Visualization_TotalOccupancy(yardStorageBlocks, localImport, localImportReefer, localExport, localExportReefer,
+                                 schedule):
+    yardStorageBlocks = yardStorageBlocks.astype({'Capacity': 'int'})
+    total_capacity = calculate_full_capacity(yardStorageBlocks)
+    reefer_capacity = calculate_reefer_capacity(yardStorageBlocks)
+    normal_capacity = calculate_normal_capacity(yardStorageBlocks)
+
+    localExport = cleanData(localExport)
+    localExportReefer = cleanData(localExportReefer)
+
+    localImport = cleanData(localImport)
+    localImportReefer = cleanData(localImportReefer)
+
+    schedule = schedule.set_index('VESSEL')
+
+    sumSchedule_export = schedule.merge(localExport, left_index=True, right_index=True)
+    sumSchedule_export = sumSchedule_export.merge(localExportReefer, left_index=True, right_index=True)
+
+    sumSchedule_import = schedule.merge(localImport, left_index=True, right_index=True)
+    sumSchedule_import = sumSchedule_import.merge(localImportReefer, left_index=True, right_index=True)
+
+    if DAY_BASED:
+        sumSchedule_import['Arrival'] = sumSchedule_import.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
+        sumSchedule_export['Arrival'] = sumSchedule_export.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
+
+        exportNormals = sumSchedule_export.groupby(['Arrival'])['Containers_x'].sum()
+        exportNormals = sort_weekdays(exportNormals)
+
+        exportReefer = sumSchedule_export.groupby(['Arrival'])['Containers_y'].sum()
+        exportReefer = sort_weekdays(exportReefer)
+
+        totalExport = exportNormals.add(exportReefer)
+        totalExport = sort_weekdays(totalExport)
+
+        arrivalNormals = sumSchedule_import.groupby(['Arrival'])['Containers_x'].sum()
+        arrivalNormals = sort_weekdays(arrivalNormals)
+
+        arrivalReefer = sumSchedule_import.groupby(['Arrival'])['Containers_y'].sum()
+        arrivalReefer = sort_weekdays(arrivalReefer)
+
+        totalImport = arrivalNormals.add(arrivalReefer)
+        totalImport = sort_weekdays(totalImport)
+
+        totalNormals = calculate_normalOccupancy_byDay(exportNormals, arrivalNormals)
+        totalNormals_percentage = totalNormals.div(normal_capacity) * 100
+        totalReefer = calculate_reeferOccupancy_byDay(exportReefer, arrivalReefer)
+        totalReefer_percentage = totalReefer.div(reefer_capacity) * 100
+
+        total = totalNormals + totalReefer
+        total_percentage = total.div(total_capacity) * 100
+
+        # Maak de grafiek
+        plt.plot(WEEKDAYS, totalNormals_percentage, label='Normal Occupancy')
+        plt.plot(WEEKDAYS, totalReefer_percentage, label='Reefer Occupancy')
+        plt.plot(WEEKDAYS, total_percentage, label='Total Occupancy')
+
+        # Voeg labels en titel toe aan de grafiek
+        plt.xlabel('Day of the Week')
+        plt.ylabel('Occupancy')
+
+        # Voeg een legenda toe
+        plt.legend()
+
+        # Toon de grafiek
+        plt.show()
