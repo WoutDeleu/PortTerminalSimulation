@@ -5,6 +5,7 @@ WEEKDAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 WEEKDAYS_LIB = {"Mo": 0, "Tu": 1, "We": 2, "Th": 3, "Fr": 4, "Sa": 5, "Su": 6}
 # Converteer de dagen van de week naar numerieke waarden
 WEEKDAYS_NUMERIC = np.array([WEEKDAYS_LIB[d] for d in WEEKDAYS])
+SORTED_WEEKDAYS = np.array(WEEKDAYS)[WEEKDAYS_NUMERIC.argsort()]
 
 
 def parse_data(fileName):
@@ -51,3 +52,13 @@ def reorderCols(dataframe):
 
     dataframe = dataframe.reindex(columns=vesselKeys)  # Sort columns
     return dataframe.reindex(vesselKeys)
+
+
+def format_import_export(local, localReefer, schedule, DAY_BASED=True):
+    scheduled = schedule.merge(local, left_index=True, right_index=True)
+    scheduled = scheduled.merge(localReefer, left_index=True, right_index=True)
+    if DAY_BASED:
+        scheduled['Arrival'] = scheduled.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
+    normals = scheduled.groupby(['Arrival'])['Containers_x'].sum()
+    reefers = scheduled.groupby(['Arrival'])['Containers_y'].sum()
+    return normals, reefers

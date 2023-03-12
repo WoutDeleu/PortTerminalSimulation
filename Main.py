@@ -1,8 +1,7 @@
 import os
 
 from Data.DataParser import parse_data
-from Visualisation import Visualisation_Export, Visualisation_Import, Visualization_Transshipments, \
-    Visualization_TotalOccupancy
+from Visualisation import visualise_data
 
 
 def load_data(folder):
@@ -17,8 +16,5 @@ def load_data(folder):
 
 
 data = load_data('./Data/')
-Visualisation_Export(data['LocalExportNormal'], data['LocalExportReefer'], data['VESSELSCHEDULE'])
-Visualisation_Import(data['LocalImportNormal'], data['LocalImportReefer'], data['VESSELSCHEDULE'])
-Visualization_Transshipments(data['TransshipmentsNormal'], data['TransshipmentsReefer'], data['VESSELSCHEDULE'])
-Visualization_TotalOccupancy(data['YARDSTORAGEBLOCKS'], data['LocalImportNormal'], data['LocalImportReefer'],
-                             data['LocalExportNormal'], data['LocalExportReefer'], data['VESSELSCHEDULE'])
+
+visualise_data(data)
