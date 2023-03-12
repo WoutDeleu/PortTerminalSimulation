@@ -1,23 +1,44 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from Data.DataParser import cleanData, WEEKDAYS, filterDayOfWeek, WEEKDAYS_NUMERIC, SORTED_WEEKDAYS, reorderCols, \
-    format_import_export
-
-# TODO fixen histogrammen
-HIST = False
-DAY_BASED = True
+from Data.CONST import WEEKDAYS, WEEKDAYS_NUMERIC, SORTED_WEEKDAYS, DAY_BASED, HIST
+from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time
 
 
-def sort_weekdays(normals, reefers):
+# TODO fixen histogrammen => JEF
+
+
+def sort(normals, reefers):
     if DAY_BASED:
         indices = WEEKDAYS_NUMERIC.argsort()
         normals = np.array(normals)[indices]
         reefers = np.array(reefers)[indices]
+    else:
+        # todo : times sort
+        # normals_sorted = reformat_index(normals)
+        # reefers_sorted = reformat_index(reefers)
+        # index = pd.to_datetime(normals_sorted.index, format='%a %H:%M', errors='coerce').strftime('%a %H:%M')
+        # index = pd.notnull(index)
+        # normals_sorted = normals_sorted.loc[index.argsort()]
+        # index = pd.to_datetime(reefers_sorted.index, format='%a %H:%M').strftime('%w %H:%M')
+        # reefers_sorted = reefers_sorted.loc[index.argsort()]
+        pass
     return normals, reefers
 
 
+def calculate_reefer_capacity(yardStorageBlocks):
+    yardStorageBlocks = yardStorageBlocks[yardStorageBlocks['ContainerType'] == 'FULL']
+    return yardStorageBlocks['Capacity'].sum()
+
+
+def calculate_normal_capacity(yardStorageBlocks):
+    yardStorageBlocks = yardStorageBlocks[yardStorageBlocks['ContainerType'] == 'REEFER']
+    return yardStorageBlocks['Capacity'].sum()
+
+
 def visualise_data(data):
+    yardStorageBlocks = data['YARDSTORAGEBLOCKS'].astype({'Capacity': 'int'})
+
     # Replaces the 0 index with the actual indexes
     schedule = data['VESSELSCHEDULE'].set_index('VESSEL')
 
@@ -25,13 +46,10 @@ def visualise_data(data):
     localImport = cleanData(data['LocalImportNormal'])
     localImportReefer = cleanData(data['LocalImportReefer'])
     importNormals, importReefer = format_import_export(localImport, localImportReefer, schedule)
-    totalImport = importNormals.add(importReefer)
-
     # Cleanup and format export-data
     localExport = cleanData(data['LocalExportNormal'])
     localExportReefer = cleanData(data['LocalExportReefer'])
     exportNormals, exportReefer = format_import_export(localExport, localExportReefer, schedule)
-    totalExport = exportNormals.add(exportReefer)
 
     # Cleanup and format transhipments-data
     tranNormal = reorderCols(cleanData(data['TransshipmentsNormal']))
@@ -41,15 +59,34 @@ def visualise_data(data):
     visualise_normals_reefers(exportNormals, exportReefer, 'Export')
     visualise_transhipments(tranNormal, tranReefer, schedule)
 
+    calculate_flow(importNormals, importReefer, exportNormals, exportReefer)
+    # visualise_occupancy(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer)
+    if HIST and DAY_BASED:
+        visualise_normals_reefers_hist('Import', importNormals, importReefer)
+
 
 def visualise_normals_reefers(normals, reefer, title):
-    normals, reefer = sort_weekdays(normals, reefer)
+    normals, reefer = sort(normals, reefer)
     if DAY_BASED:
         plt.xticks(np.arange(len(SORTED_WEEKDAYS)), SORTED_WEEKDAYS)
     plt.plot(normals, label='#Normal containers')
     plt.plot(reefer, label='#Reefer containers')
     plt.title('Local {}'.format(title))
     plt.legend()
+    plt.show()
+
+
+def visualise_normals_reefers_hist(title, normals, reefer):
+    normals, reefer = sort(normals, reefer)
+    fig, ax = plt.subplots()
+
+    ax.bar(SORTED_WEEKDAYS, normals, align='center', alpha=0.5, label="#Normal containers")
+    ax.bar(SORTED_WEEKDAYS, reefer, align='center', alpha=0.5, label="#Reefer containers")
+
+    ax.set_xlabel('Days of the week')
+    ax.set_ylabel('# of containers')
+    ax.set_title(title)
+
     plt.show()
 
 
@@ -107,60 +144,67 @@ def visualise_transhipments(tranNormal, tranReefer, schedule):
     plt.legend()
     plt.show()
 
-# def Visualization_TotalOccupancy(yardStorageBlocks, localImport, localImportReefer, localExport, localExportReefer,
-#                                  schedule):
-#     yardStorageBlocks = yardStorageBlocks.astype({'Capacity': 'int'})
-#     total_capacity = calculate_full_capacity(yardStorageBlocks)
-#     reefer_capacity = calculate_reefer_capacity(yardStorageBlocks)
-#     normal_capacity = calculate_normal_capacity(yardStorageBlocks)
-#
-#     sumSchedule_export = schedule.merge(localExport, left_index=True, right_index=True)
-#     sumSchedule_export = sumSchedule_export.merge(localExportReefer, left_index=True, right_index=True)
-#
-#     sumSchedule_import = schedule.merge(localImport, left_index=True, right_index=True)
-#     sumSchedule_import = sumSchedule_import.merge(localImportReefer, left_index=True, right_index=True)
-#
-#     if DAY_BASED:
-#         sumSchedule_import['Arrival'] = sumSchedule_import.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
-#         sumSchedule_export['Arrival'] = sumSchedule_export.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
-#
-#         exportNormals = sumSchedule_export.groupby(['Arrival'])['Containers_x'].sum()
-#         exportNormals = sort_weekdays(exportNormals)
-#
-#         exportReefer = sumSchedule_export.groupby(['Arrival'])['Containers_y'].sum()
-#         exportReefer = sort_weekdays(exportReefer)
-#
-#         totalExport = exportNormals.add(exportReefer)
-#         totalExport = sort_weekdays(totalExport)
-#
-#         arrivalNormals = sumSchedule_import.groupby(['Arrival'])['Containers_x'].sum()
-#         arrivalNormals = sort_weekdays(arrivalNormals)
-#
-#         arrivalReefer = sumSchedule_import.groupby(['Arrival'])['Containers_y'].sum()
-#         arrivalReefer = sort_weekdays(arrivalReefer)
-#
-#         totalImport = arrivalNormals.add(arrivalReefer)
-#         totalImport = sort_weekdays(totalImport)
-#
-#         totalNormals = calculate_normalOccupancy_byDay(exportNormals, arrivalNormals)
-#         totalNormals_percentage = totalNormals.div(normal_capacity) * 100
-#         totalReefer = calculate_reeferOccupancy_byDay(exportReefer, arrivalReefer)
-#         totalReefer_percentage = totalReefer.div(reefer_capacity) * 100
-#
-#         total = totalNormals + totalReefer
-#         total_percentage = total.div(total_capacity) * 100
-#
-#         # Maak de grafiek
-#         plt.plot(WEEKDAYS, totalNormals_percentage, label='Normal Occupancy')
-#         plt.plot(WEEKDAYS, totalReefer_percentage, label='Reefer Occupancy')
-#         plt.plot(WEEKDAYS, total_percentage, label='Total Occupancy')
-#
-#         # Voeg labels en titel toe aan de grafiek
-#         plt.xlabel('Day of the Week')
-#         plt.ylabel('Occupancy (%)')
-#         plt.title('Occupancy')
-#         # Voeg een legenda toe
-#         plt.legend()
-#
-#         # Toon de grafiek
-#         plt.show()
+
+def shift_time_series(flow, offset_hours):
+    flow = flow.reset_index()
+    flow['Arrival'] = flow.apply(lambda x: shift_time(x.Arrival, offset_hours), axis=1)
+    return flow.set_index('Arrival')[list(flow.columns)[1]]
+
+
+def visualise_flow(title, inFlow, outFlow):
+    normals, reefer = sort(inFlow, outFlow)
+    if DAY_BASED:
+        plt.xticks(np.arange(len(SORTED_WEEKDAYS)), SORTED_WEEKDAYS)
+    plt.plot(normals, label='#inFlow')
+    plt.plot(reefer, label='#outFlow')
+    plt.title('{} Flow'.format(title))
+    plt.legend()
+    plt.show()
+
+
+def calculate_flow(importNormals_inFlow, importReefer_inFlow, exportNormals_inFlow,
+                   exportReefer_inFlow):
+    # incoming = import + incoming transhipments + (local export - 48u)
+    totalExport_inFlow = exportNormals_inFlow.add(exportReefer_inFlow)
+    totalImport_inFlow = importNormals_inFlow.add(importReefer_inFlow)
+    totalExport_outFlow = shift_time_series(totalExport_inFlow, -48)
+    totalImport_outFlow = shift_time_series(totalImport_inFlow, 48)
+    visualise_flow('import', totalImport_inFlow, totalImport_outFlow)
+    visualise_flow('export', totalExport_inFlow, totalImport_outFlow)
+
+    totalNormal_inFlow = exportNormals_inFlow.add(importNormals_inFlow)
+    totalReefer_inFlow = exportReefer_inFlow.add(importReefer_inFlow)
+    totalNormal_outFlow = shift_time_series(totalNormal_inFlow, -48)
+    totalReefer_outFlow = shift_time_series(totalReefer_inFlow, 48)
+
+    importNormals_outFlow = shift_time_series(importNormals_inFlow, -48)
+    importReefer_outFlow = shift_time_series(importReefer_inFlow, -48)
+    exportNormals_outFlow = shift_time_series(exportNormals_inFlow, -48)
+    exportReefer_outFlow = shift_time_series(exportReefer_inFlow, -48)
+
+    # Todo: transhipment flow
+    transhipments_inFlow = 0
+    transhipments_outFlow = 0
+
+    total_inFlow = totalExport_inFlow.add(totalImport_inFlow)
+    total_inFlow = total_inFlow.add(transhipments_inFlow)
+    total_outFlow = totalExport_outFlow.add(totalImport_outFlow)
+    total_outFlow = total_outFlow.add(transhipments_outFlow)
+
+    return total_inFlow, total_outFlow
+
+
+def visualise_occupancy(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer):
+    yardStorageBlocks = yardStorageBlocks
+
+    total_capacity = yardStorageBlocks['Capacity'].sum()
+    reefer_capacity = calculate_reefer_capacity(yardStorageBlocks)
+    normal_capacity = calculate_normal_capacity(yardStorageBlocks)
+
+    total_inFlow, total_outFlow = calculate_flow(importNormals, importReefer, exportNormals, exportReefer)
+    if DAY_BASED:
+        pass
+
+    else:
+        # Formateer index string
+        pass

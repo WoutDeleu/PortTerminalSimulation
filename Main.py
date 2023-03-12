@@ -11,7 +11,6 @@ def load_data(folder):
         if '.py' in f or '__pycache__' in f:
             continue
         data[f.replace('.csv', '')] = parse_data(f)
-
     return data
 
 
