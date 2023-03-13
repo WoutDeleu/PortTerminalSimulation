@@ -47,9 +47,8 @@ def visualise_data(data):
 
     visualise_normals_reefers(importNormals, importReefer, 'Import')
     visualise_normals_reefers(exportNormals, exportReefer, 'Export')
-    visualise_transhipments(tranNormal, tranReefer, schedule)
 
-    calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer)
+    calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer, schedule)
     # visualise_occupancy(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer)
     if HIST and DAY_BASED:
         visualise_normals_reefers_hist('Import', importNormals, importReefer)
@@ -79,65 +78,31 @@ def visualise_normals_reefers_hist(title, normals, reefer):
     ax.set_title(title)
 
     plt.show()
-
-
-def visualise_transhipments(tranNormal, tranReefer, schedule):
-    # Visualize the amount of containers transferring between ships per hour
-
-    # Calculating sum of unloaded containers (incoming)
-    unloadedSumN = tranNormal.sum(axis=1)
-    unloadedSumR = tranReefer.sum(axis=1)
-
-    # Calculating sum of loaded containers per vessel (outgoing)
-    loadedSumN = tranNormal.sum()
-    loadedSumR = tranReefer.sum()
+def calculate_transshipment_flow(flow_type, tranData, schedule):
+    #Calculate sum of containers
+    match flow_type:
+        case 'inflow':
+            tranSum = tranData.sum(axis=1)
+        case 'outflow':
+            tranSum = tranData.sum()
 
     # Linking vessels with schedule:
     # This dataframe shows when and how many containers are loaded/unloaded per Vessel
-    sumSchedule = schedule.merge(unloadedSumN.to_frame(), left_index=True, right_index=True)
-    sumSchedule = sumSchedule.rename(columns={0: 'unloadedContainersN'})
-    sumSchedule = sumSchedule.merge(loadedSumN.to_frame(), left_index=True, right_index=True)
-    sumSchedule = sumSchedule.rename(columns={0: 'loadedContainersN'})
-    sumSchedule = sumSchedule.merge(unloadedSumR.to_frame(), left_index=True, right_index=True)
-    sumSchedule = sumSchedule.rename(columns={0: 'unloadedContainersR'})
-    sumSchedule = sumSchedule.merge(loadedSumR.to_frame(), left_index=True, right_index=True)
-    sumSchedule = sumSchedule.rename(columns={0: 'loadedContainersR'})
+    tranSchedule = schedule.merge(tranSum.to_frame(), left_index=True, right_index=True)
+    tranSchedule = tranSchedule.rename(columns={0: 'Containers'})
 
     if DAY_BASED:
-        sumSchedule['Arrival'] = sumSchedule.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
+        tranSchedule['Arrival'] = tranSchedule.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
 
-    # Showing different graphs
-    arrivalNormals = sumSchedule.groupby(['Arrival'])['unloadedContainersN'].sum()
-    departureNormals = sumSchedule.groupby(['Arrival'])['loadedContainersN'].sum()
-    arrivalReefers = sumSchedule.groupby(['Arrival'])['unloadedContainersR'].sum()
-    departureReefers = sumSchedule.groupby(['Arrival'])['loadedContainersR'].sum()
+    #Summing containers per arrival/departure time
+    tranSum = tranSchedule.groupby(['Arrival'])['Containers']
 
     indices = WEEKDAYS_NUMERIC.argsort()
-    sorted_weekdays = np.array(WEEKDAYS)[indices]
 
-    sorted_arrivalNormals, sorted_arrivalReefers = sort(arrivalNormals, arrivalReefers)
-    sorted_departureNormals, sorted_departureReefers = sort(departureNormals, departureReefers)
-
-    # Plotting
-    plt.title('Transshipments')
-    if DAY_BASED:
-        plt.plot(sorted_arrivalNormals, label='#Normal containers arriving')
-        plt.plot(sorted_departureNormals, label='#Normal containers departing')
-        plt.plot(sorted_arrivalReefers, label='#Reefer containers arriving')
-        plt.plot(sorted_departureReefers, label='#Reefer containers departing')
-        plt.xticks(np.arange(len(sorted_weekdays)), sorted_weekdays)
-    else:
-        plt.plot(arrivalNormals, label='#Normal containers arriving')
-        plt.plot(departureNormals, label='#Normal containers departing')
-        plt.plot(arrivalReefers, label='#Reefer containers arriving')
-        plt.plot(departureReefers, label='#Reefer containers departing')
-    plt.legend()
-    plt.show()
-
-
+    return np.array(tranSum)[indices]
 def shift_time_series(flow, offset_hours):
     flow = flow.reset_index()
-    flow['Arrival'] = flow.apply(lambda x: shift_time(x['index'], offset_hours), axis=1)
+    flow['Arrival'] = flow.apply(lambda x: shift_time(x.Arrival, offset_hours), axis=1)
     return flow.set_index('Arrival')[list(flow.columns)[1]]
 
 
@@ -152,8 +117,8 @@ def visualise_flow(title, inFlow, outFlow):
     plt.show()
 
 
-def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow, exportNormals_outFlow,
-                   exportReefer_outFlow):
+def calculate_flow(yardStorageBlocks,importNormals_inFlow, importReefer_inFlow, exportNormals_outFlow,
+                   exportReefer_outFlow, tranNormal, tranReefer,schedule):
     exportNormals_inFlow = shift_time_series(exportNormals_outFlow, -48)
     exportReefer_inFlow = shift_time_series(exportReefer_outFlow, -48)
     importNormals_outFlow = shift_time_series(importNormals_inFlow, -48)
@@ -175,8 +140,8 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     # Visualise
 
     # Todo: transhipment flow
-    transhipments_inFlow = 0
-    transhipments_outFlow = 0
+    transhipments_inFlow = calculate_transshipment_flow('inflow',tranNormal,schedule) + calculate_transshipment_flow('inflow',tranReefer,schedule)
+    transhipments_outFlow = calculate_transshipment_flow('outflow',tranNormal,schedule) + calculate_transshipment_flow('outflow',tranReefer,schedule)
 
     total_inFlow = totalExport_inFlow.add(totalImport_inFlow)
     total_inFlow = total_inFlow.add(transhipments_inFlow)
