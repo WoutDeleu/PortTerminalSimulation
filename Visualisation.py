@@ -157,13 +157,19 @@ def visualise_flow(title, inFlow, outFlow):
     plt.show()
 
 
-def calculate_flow(importNormals_inFlow, importReefer_inFlow, exportNormals_inFlow,
-                   exportReefer_inFlow):
+def calculate_flow(importNormals_inFlow, importReefer_inFlow, exportNormals_outFlow,
+                   exportReefer_outFlow):
+    exportNormals_inFlow = shift_time_series(exportNormals_outFlow, -48)
+    exportReefer_inFlow = shift_time_series(exportReefer_outFlow, -48)
+    importNormals_outFlow = shift_time_series(importNormals_inFlow, -48)
+    importReefer_outFlow = shift_time_series(importReefer_inFlow, -48)
+
     # incoming = import + incoming transhipments + (local export - 48u)
-    totalExport_inFlow = exportNormals_inFlow.add(exportReefer_inFlow)
+    totalExport_outFlow = exportNormals_outFlow.add(exportReefer_outFlow)
     totalImport_inFlow = importNormals_inFlow.add(importReefer_inFlow)
-    totalExport_outFlow = shift_time_series(totalExport_inFlow, -48)
+    totalExport_inFlow = shift_time_series(totalExport_outFlow, -48)
     totalImport_outFlow = shift_time_series(totalImport_inFlow, 48)
+    # Visualise
     visualise_flow('import', totalImport_inFlow, totalImport_outFlow)
     visualise_flow('export', totalExport_inFlow, totalImport_outFlow)
 
@@ -171,11 +177,7 @@ def calculate_flow(importNormals_inFlow, importReefer_inFlow, exportNormals_inFl
     totalReefer_inFlow = exportReefer_inFlow.add(importReefer_inFlow)
     totalNormal_outFlow = shift_time_series(totalNormal_inFlow, -48)
     totalReefer_outFlow = shift_time_series(totalReefer_inFlow, 48)
-
-    importNormals_outFlow = shift_time_series(importNormals_inFlow, -48)
-    importReefer_outFlow = shift_time_series(importReefer_inFlow, -48)
-    exportNormals_outFlow = shift_time_series(exportNormals_inFlow, -48)
-    exportReefer_outFlow = shift_time_series(exportReefer_inFlow, -48)
+    # Visualise
 
     # Todo: transhipment flow
     transhipments_inFlow = 0
