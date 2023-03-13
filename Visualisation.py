@@ -47,7 +47,6 @@ def visualise_data(data):
 
     visualise_normals_reefers(importNormals, importReefer, 'Import')
     visualise_normals_reefers(exportNormals, exportReefer, 'Export')
-    visualise_transhipments(tranNormal, tranReefer, schedule)
 
     calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer, schedule)
     # visualise_occupancy(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer)
