@@ -85,6 +85,9 @@ def reformat_index(series):
     return series.sort_index()
 
 def parse_to_datetime(time_index):
+    if type(time_index) is pd._libs.tslibs.timestamps.Timestamp:
+        return time_index
+
     default_date = '13/03/2023'
     split_day_time = re.split(' ', time_index)
     week_day = split_day_time[0]
