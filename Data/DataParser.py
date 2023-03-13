@@ -14,15 +14,6 @@ def parse_data(fileName):
     return data
 
 
-def formatDataframe(columns, df):
-    data = pd.DataFrame(columns=columns.split(';'))
-    for index, row in df.iterrows():
-        unit = pd.DataFrame([row[columns].split(';')])
-        unit.columns = columns.split(';')
-        data = pd.concat([data, unit])
-    return data
-
-
 def cleanData(dataframe):
     # Cleaning data
     dataframe = dataframe.rename(columns={'VESSELfrom_VESSELto': 'VESSEL'})  # Rename column for later merge
@@ -33,11 +24,52 @@ def cleanData(dataframe):
     return dataframe
 
 
+def formatDataframe(columns, df):
+    data = pd.DataFrame(columns=columns.split(';'))
+    for index, row in df.iterrows():
+        unit = pd.DataFrame([row[columns].split(';')])
+        unit.columns = columns.split(';')
+        data = pd.concat([data, unit])
+    return data
+
+
 def filterDayOfWeek(arrival):
     for day in WEEKDAYS:
         if day in arrival:
             return day
     raise Exception("No matching day was found, fault in format arrival")
+
+
+def sort_by_day(serie):
+    sorted_serie = pd.Series(dtype='S')
+    for i in range(0, 7):
+        if WEEKDAYS[i] in serie.index:
+            sorted_serie = pd.concat([sorted_serie, serie[pd.Series(WEEKDAYS[i])]], ignore_index=True)
+        else:
+            sorted_serie = pd.concat([sorted_serie, pd.Series(0)], ignore_index=True)
+    return sorted_serie.set_axis(WEEKDAYS)
+
+
+def sum_by_index(serie):
+    result_dict = generate_dict(WEEKDAYS)
+    for day, value in serie.items():
+        result_dict[day] = result_dict[day] + value
+    result_df = pd.DataFrame(list(result_dict.items()), columns=['Arrival', 'Total'])
+    return result_df.set_index('Arrival')[list(result_df.columns)[1]]
+
+
+def generate_dict(index_array):
+    result_dict = {}
+    for index in index_array:
+        result_dict[index] = 0
+    return result_dict
+
+
+def sort(serie):
+    if DAY_BASED:
+        return sort_by_day(serie)
+    else:
+        return reformat_index(serie)
 
 
 def reorderCols(dataframe):
@@ -51,11 +83,9 @@ def reorderCols(dataframe):
     return dataframe.reindex(vesselKeys)
 
 
-
 def shift_time(day_time, offset_hours):
     if not DAY_BASED:
         return day_time + timedelta(hours=offset_hours)
-
 
     day = day_time
     day_offset = int(offset_hours / 24)
@@ -83,6 +113,29 @@ def format_import_export(local, localReefer, schedule):
 def reformat_index(series):
     series.index = [parse_to_datetime(x) for x in series.index]
     return series.sort_index()
+
+
+def add_series(s1, s2):
+    # Voeg de 2 series samen met een outer join om alle indexen te behouden
+    combined = pd.concat([s1, s2], axis=1, join='outer')
+
+    # Vul eventuele ontbrekende waarden in met 0
+    combined = combined.fillna(0)
+
+    # Tel beide series op en geef het resultaat terug
+    return combined.iloc[:, 0] + combined.iloc[:, 1]
+
+
+def subtract_series(s1, s2):
+    # Combineer de 2 series met een outer join om alle indexen te behouden
+    combined = pd.concat([s1, s2], axis=1, join='outer')
+
+    # Vul eventuele ontbrekende waarden in met 0
+    combined = combined.fillna(0)
+
+    # Trek de tweede serie af van de eerste en geef het resultaat terug
+    return combined.iloc[:, 0] - combined.iloc[:, 1]
+
 
 def parse_to_datetime(time_index):
     if type(time_index) is pd._libs.tslibs.timestamps.Timestamp:
@@ -153,4 +206,3 @@ def parse_to_datetime(time_index):
 #
 #         # Toon de grafiek
 #         plt.show()
-
