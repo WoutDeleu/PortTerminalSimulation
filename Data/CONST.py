@@ -1,7 +1,7 @@
 import numpy as np
 
 HIST = False
-DAY_BASED = True
+DAY_BASED = False
 
 WEEKDAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 WEEKDAYS_DIC = {"Mo": 0, "Tu": 1, "We": 2, "Th": 3, "Fr": 4, "Sa": 5, "Su": 6}
