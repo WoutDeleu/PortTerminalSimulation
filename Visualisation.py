@@ -1,12 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 
 from Data.CONST import WEEKDAYS, WEEKDAYS_NUMERIC, SORTED_WEEKDAYS, DAY_BASED, HIST
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, reformat_index
-
-
-# TODO fixen histogrammen => JEF
 
 
 def sort(normals, reefers):
@@ -51,8 +47,9 @@ def visualise_data(data):
 
     visualise_normals_reefers(importNormals, importReefer, 'Import')
     visualise_normals_reefers(exportNormals, exportReefer, 'Export')
+    visualise_transhipments(tranNormal, tranReefer, schedule)
 
-    calculate_flow(importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer, schedule)
+    calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer, schedule)
     # visualise_occupancy(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer)
     if HIST and DAY_BASED:
         visualise_normals_reefers_hist('Import', importNormals, importReefer)
@@ -121,7 +118,7 @@ def visualise_flow(title, inFlow, outFlow):
     plt.show()
 
 
-def calculate_flow(importNormals_inFlow, importReefer_inFlow, exportNormals_outFlow,
+def calculate_flow(yardStorageBlocks,importNormals_inFlow, importReefer_inFlow, exportNormals_outFlow,
                    exportReefer_outFlow, tranNormal, tranReefer,schedule):
     exportNormals_inFlow = shift_time_series(exportNormals_outFlow, -48)
     exportReefer_inFlow = shift_time_series(exportReefer_outFlow, -48)
@@ -152,17 +149,22 @@ def calculate_flow(importNormals_inFlow, importReefer_inFlow, exportNormals_outF
     total_outFlow = totalExport_outFlow.add(totalImport_outFlow)
     total_outFlow = total_outFlow.add(transhipments_outFlow)
 
-    return total_inFlow, total_outFlow
+    visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
+                        totalNormal_outFlow, totalReefer_outFlow)
 
 
-def visualise_occupancy(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer):
-    yardStorageBlocks = yardStorageBlocks
-
+def visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow):
     total_capacity = yardStorageBlocks['Capacity'].sum()
     reefer_capacity = calculate_reefer_capacity(yardStorageBlocks)
     normal_capacity = calculate_normal_capacity(yardStorageBlocks)
 
-    total_inFlow, total_outFlow = calculate_flow(importNormals, importReefer, exportNormals, exportReefer)
+    # Subtract flow -> Calculate absolute flow
+    total_inFlow, total_outFlow = sort(total_inFlow, total_outFlow)
+    absolute_flow = total_inFlow.sub(total_outFlow)
+
+    # cummulative = occupancy
+    absolute_occupancy = absolute_flow.cumsum()
+
     if DAY_BASED:
         pass
 

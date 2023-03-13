@@ -51,37 +51,23 @@ def reorderCols(dataframe):
     return dataframe.reindex(vesselKeys)
 
 
-def shift_time(day_time, offset_hours):
-    if DAY_BASED:
-        day = day_time
-        day_offset = int(offset_hours / 24)
-    else:
-        day, time = day_time.split(" ")
-        hour, minutes = time.split(":")
-        day_offset = 0
-        new_hour = int(hour) + offset_hours
-        while new_hour < 0 or 24 <= new_hour:
-            if new_hour < 0:
-                new_hour += 24
-                day_offset -= 1
-            else:
-                new_hour -= 24
-                day_offset += 1
-        new_time = "{}:{}".format(new_hour, minutes)
 
+def shift_time(day_time, offset_hours):
+    if not DAY_BASED:
+        return day_time + timedelta(hours=offset_hours)
+
+
+    day = day_time
+    day_offset = int(offset_hours / 24)
     for d in WEEKDAYS:
         if d in day:
             new_day_id = WEEKDAYS_DIC[d] + day_offset
     if new_day_id < 0:
-        new_time = "00:00"
         new_day_id = 0
     elif new_day_id >= 6:
-        new_time = "23:59"
         new_day_id = 6
     day = WEEKDAYS_DIC_REV[new_day_id]
-    if DAY_BASED:
-        return day
-    return "{} {}".format(day, new_time)
+    return day
 
 
 def format_import_export(local, localReefer, schedule):
