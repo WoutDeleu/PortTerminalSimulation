@@ -174,6 +174,7 @@ def calculate_flow(importNormals_inFlow, importReefer_inFlow, exportNormals_outF
     totalImport_inFlow = importNormals_inFlow.add(importReefer_inFlow)
     totalExport_inFlow = shift_time_series(totalExport_outFlow, -48)
     totalImport_outFlow = shift_time_series(totalImport_inFlow, 48)
+    # Visualise
     visualise_flow('import', totalImport_inFlow, totalImport_outFlow)
     visualise_flow('export', totalExport_inFlow, totalImport_outFlow)
 
@@ -181,6 +182,7 @@ def calculate_flow(importNormals_inFlow, importReefer_inFlow, exportNormals_outF
     totalReefer_inFlow = exportReefer_inFlow.add(importReefer_inFlow)
     totalNormal_outFlow = shift_time_series(totalNormal_inFlow, -48)
     totalReefer_outFlow = shift_time_series(totalReefer_inFlow, 48)
+    # Visualise
 
     # Todo: transhipment flow
     transhipments_inFlow = 0
