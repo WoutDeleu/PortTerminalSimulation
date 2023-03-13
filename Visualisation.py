@@ -183,8 +183,7 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     total_outFlow = totalExport_outFlow.add(totalImport_outFlow)
     total_outFlow = total_outFlow.add(transhipments_outFlow)
 
-    visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
-                        totalNormal_outFlow, totalReefer_outFlow)
+    visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow)
 
 
 def visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow):
