@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 from Data.CONST import WEEKDAYS, WEEKDAYS_NUMERIC, SORTED_WEEKDAYS, DAY_BASED, HIST
-from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time
+from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, reformat_index
 
 
 # TODO fixen histogrammen => JEF
@@ -14,15 +15,8 @@ def sort(normals, reefers):
         normals = np.array(normals)[indices]
         reefers = np.array(reefers)[indices]
     else:
-        # todo : times sort
-        # normals_sorted = reformat_index(normals)
-        # reefers_sorted = reformat_index(reefers)
-        # index = pd.to_datetime(normals_sorted.index, format='%a %H:%M', errors='coerce').strftime('%a %H:%M')
-        # index = pd.notnull(index)
-        # normals_sorted = normals_sorted.loc[index.argsort()]
-        # index = pd.to_datetime(reefers_sorted.index, format='%a %H:%M').strftime('%w %H:%M')
-        # reefers_sorted = reefers_sorted.loc[index.argsort()]
-        pass
+        normals = reformat_index(normals)
+        reefers = reformat_index(reefers)
     return normals, reefers
 
 
@@ -76,6 +70,7 @@ def visualise_normals_reefers(normals, reefer, title):
     plt.show()
 
 
+# TODO make it work for hours
 def visualise_normals_reefers_hist(title, normals, reefer):
     normals, reefer = sort(normals, reefer)
     fig, ax = plt.subplots()

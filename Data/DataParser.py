@@ -1,3 +1,6 @@
+import re
+from datetime import datetime, timedelta
+
 import pandas as pd
 
 from Data.CONST import WEEKDAYS, WEEKDAYS_DIC, WEEKDAYS_DIC_REV, DAY_BASED
@@ -92,10 +95,17 @@ def format_import_export(local, localReefer, schedule):
 
 
 def reformat_index(series):
-    days = {'Mo': 'Mon', 'Tu': 'Tue', 'We': 'Wed', 'Th': 'Thu', 'Fr': 'Fri', 'Sa': 'Sat', 'Su': 'Sun'}
-    new_index = [days[x[:2]] + x[2:] for x in series.index]
-    series.index = new_index
-    return series
+    series.index = [parse_to_datetime(x) for x in series.index]
+    return series.sort_index()
+
+def parse_to_datetime(time_index):
+    default_date = '13/03/2023'
+    split_day_time = re.split(' ', time_index)
+    week_day = split_day_time[0]
+    time = split_day_time[1]
+    day_delta = WEEKDAYS_DIC[week_day]
+    time = datetime.strptime(default_date + ' ' + time, '%d/%m/%Y %H:%M')
+    return time + timedelta(days=day_delta)
 
 # def Visualization_TotalOccupancy(yardStorageBlocks, localImport, localImportReefer, localExport, localExportReefer,
 #                                  schedule):
