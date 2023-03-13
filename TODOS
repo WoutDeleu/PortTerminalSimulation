@@ -1,13 +1,13 @@
-sort based on times
-fixen histogrammen => JEF
+OK      sort based on times
+        fixen histogrammen => JEF
 
-transhipment flow
-occupancy
+OK????  transhipment flow
+OK      occupancy
 
-CDF - interarrivaltime
-Amount of containers in each group
-Verhouding tussen reefer containers en normal containers
-Transhipment duration
+        CDF - interarrivaltime
+        Amount of containers in each group
+        Verhouding tussen reefer containers en normal containers
+        Duration => of time in yard
 
 Voor elk plot
     - Distributie

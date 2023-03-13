@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
-from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST
+from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, WEEKDAYS_DIC
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, sort, \
     sum_by_index, add_series, subtract_series
 
@@ -30,7 +31,7 @@ def visualise_data(data):
 
     calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,
                    schedule)
-    # visualise_occupancy(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer)
+
     if HIST and DAY_BASED:
         visualise_normals_reefers_hist('Import', importNormals, importReefer)
 
@@ -157,6 +158,8 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                         totalNormal_outFlow, totalReefer_outFlow)
 
+    calculate_innerInterval(total_inFlow)
+
 
 def visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                         totalNormal_outFlow, totalReefer_outFlow):
@@ -174,6 +177,7 @@ def calculate_occupancy(title, capacity, inflow, outflow):
     total_inFlow = sort(inflow).fillna(0)
     total_outFlow = sort(outflow).fillna(0)
     absolute_flow = subtract_series(total_inFlow, total_outFlow)
+
     # cummulative = occupancy
     absolute_occupancy = absolute_flow.cumsum()
     occupancy = (absolute_occupancy / capacity) * 100
@@ -186,3 +190,37 @@ def calculate_occupancy(title, capacity, inflow, outflow):
     plt.xlabel('Date')
     plt.legend()
     plt.show()
+
+
+def calculate_innerInterval(total_inFlow):
+    resulting = pd.Series()
+    previous_index = 0
+    for index, value in total_inFlow.items():
+        if previous_index != 0:
+            if DAY_BASED:
+                value = abs(WEEKDAYS_DIC[index] - WEEKDAYS_DIC[previous_index])
+            else:
+                value = index - previous_index
+            resulting = pd.concat([resulting, pd.Series(value)])
+        previous_index = index
+    if DAY_BASED:
+        # Note: not very informative with days...
+        pass
+    else:
+        timedelta = [td.total_seconds() / 60 for td in resulting]
+        timedelta = [round(td, 1) for td in timedelta]
+
+        # Sorteer de waarden
+        timedelta_minutes_sorted = np.sort(timedelta)
+
+        # Bereken de cumulatieve frequenties en normeer ze tot een CDF
+        cdf = np.cumsum(np.ones_like(timedelta_minutes_sorted)) / len(timedelta_minutes_sorted)
+
+        # Maak een plot van de CDF
+        fig, ax = plt.subplots()
+        ax.plot(timedelta_minutes_sorted, cdf)
+        ax.set_xlabel('Minuten')
+        ax.set_ylabel('Cumulatieve frequentie')
+        ax.set_title('Cumulatieve distributiefunctie')
+
+        plt.show()
