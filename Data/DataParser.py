@@ -70,10 +70,10 @@ def shift_time(day_time, offset_hours):
         if d in day:
             new_day_id = WEEKDAYS_DIC[d] + day_offset
     if new_day_id < 0:
-        # todo: initial => THANOS
+        new_time = "00:00"
         new_day_id = 0
     elif new_day_id >= 6:
-        # todo: after? => THANOS
+        new_time = "23:59"
         new_day_id = 6
     day = WEEKDAYS_DIC_REV[new_day_id]
     if DAY_BASED:
