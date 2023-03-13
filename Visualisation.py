@@ -118,10 +118,9 @@ def visualise_transhipments(tranNormal, tranReefer, schedule):
 
     indices = WEEKDAYS_NUMERIC.argsort()
     sorted_weekdays = np.array(WEEKDAYS)[indices]
-    sorted_arrivalNormals = np.array(arrivalNormals)[indices]
-    sorted_departureNormals = np.array(departureNormals)[indices]
-    sorted_arrivalReefers = np.array(arrivalReefers)[indices]
-    sorted_departureReefers = np.array(departureReefers)[indices]
+
+    sorted_arrivalNormals, sorted_arrivalReefers = sort(arrivalNormals, arrivalReefers)
+    sorted_departureNormals, sorted_departureReefers = sort(departureNormals, departureReefers)
 
     # Plotting
     plt.title('Transshipments')
@@ -142,7 +141,7 @@ def visualise_transhipments(tranNormal, tranReefer, schedule):
 
 def shift_time_series(flow, offset_hours):
     flow = flow.reset_index()
-    flow['Arrival'] = flow.apply(lambda x: shift_time(x.Arrival, offset_hours), axis=1)
+    flow['Arrival'] = flow.apply(lambda x: shift_time(x['index'], offset_hours), axis=1)
     return flow.set_index('Arrival')[list(flow.columns)[1]]
 
 
