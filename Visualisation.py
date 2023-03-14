@@ -158,8 +158,6 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                              totalNormal_outFlow, totalReefer_outFlow)
 
-    visualise_occupancy(total_inFlow)
-
 
 def calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                              totalNormal_outFlow, totalReefer_outFlow):
