@@ -1,13 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
-from fitter import Fitter, get_common_distributions, get_distributions
+from fitter import Fitter
 from collections import Counter
 
 from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, WEEKDAYS_DIC
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, sort, \
-    sum_by_index, add_series, subtract_series
+    sum_by_index, add_series, subtract_series, convert_number_to_minutes
 
 
 def visualise_data(data):
@@ -29,13 +28,18 @@ def visualise_data(data):
     tranNormal = reorderCols(cleanData(data['TransshipmentsNormal']))
     tranReefer = reorderCols(cleanData(data['TransshipmentsReefer']))
 
+    visualise_service_time(tranNormal, tranReefer, schedule)
+
     visualise_normals_reefers(importNormals, importReefer, 'Import')
     visualise_normals_reefers(exportNormals, exportReefer, 'Export')
 
     calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,
                    schedule)
 
-    visualise_average_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
+    visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
+
+
+
     if HIST:
         visualise_normals_reefers_hist('Import', importNormals, importReefer)
 
@@ -60,26 +64,26 @@ def visualise_normals_reefers(normals, reefer, title):
 def visualise_normals_reefers_hist(title, normals, reefer):
     normals = sort(normals)
     reefer = sort(reefer)
-    # fig, ax = plt.subplots(figsize=(18, 8))
-    # if DAY_BASED:
-    #     ax.bar(SORTED_WEEKDAYS, normals, align='center', alpha=0.5, label="#Normal containers")
-    #     ax.bar(SORTED_WEEKDAYS, reefer, align='center', alpha=0.5, label="#Reefer containers")
-    # else:
-    #     x = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in normals.keys()]
-    #     x2 = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in reefer.keys()]
-    #     ax.bar(x, normals.values, align='center', alpha=0.5, label="#Normal containers")
-    #     ax.bar(x2, reefer.values, align='center', alpha=0.5, label="#Normal containers")
-    # ax.set_xlabel('Days of the week')
-    # ax.set_ylabel('# of containers')
-    # ax.set_title(title)
-    #plt.show()
+    fig, ax = plt.subplots(figsize=(18, 8))
+    if DAY_BASED:
+        ax.bar(SORTED_WEEKDAYS, normals, align='center', alpha=0.5, label="#Normal containers")
+        ax.bar(SORTED_WEEKDAYS, reefer, align='center', alpha=0.5, label="#Reefer containers")
+    else:
+        x = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in normals.keys()]
+        x2 = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in reefer.keys()]
+        ax.bar(x, normals.values, align='center', alpha=0.5, label="#Normal containers")
+        ax.bar(x2, reefer.values, align='center', alpha=0.5, label="#Normal containers")
+    ax.set_xlabel('Days of the week')
+    ax.set_ylabel('# of containers')
+    ax.set_title(title)
+    plt.show()
 
     # Distribution
-    normals_nparray = normals.to_numpy()
-    f = Fitter(normals_nparray, distributions=['pareto'])
-    f.fit()
-    print(f.summary())
-    print(f.get_best(method='sumsquare_error'))
+    # normals_nparray = normals.to_numpy()
+    # f = Fitter(normals_nparray, distributions=['pareto'])
+    # f.fit()
+    # print(f.summary())
+    # print(f.get_best(method='sumsquare_error'))
 
 
 def calculate_transshipment_flow(flow_type, tranData, schedule):
@@ -231,7 +235,7 @@ def visualise_innerInterval(total_inFlow):
         plt.show()
 
 
-def visualise_average_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer):
+def visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer):
     # Calculating occurrences of each cg_size for import and export
     cg_sizes_normal = [Counter(d['Containers']) for d in [localExport, localImport]]
     res_normal = sum(cg_sizes_normal, Counter())
@@ -272,10 +276,39 @@ def visualise_average_cg_size(localExport, localExportReefer, localImport, local
     plt.show()
 
     # Distribution
-    res = np.array(list(res.items()))
-    f = Fitter(res, distributions=['skewcauchy']) # distributions parameter weglaten om alle mogelijke te proberen
-    f.fit()
-    print(f.summary())
-    print(f.get_best(method='sumsquare_error'))
+    # res = np.array(list(res.items()))
+    # f = Fitter(res, distributions=['skewcauchy']) # distributions parameter weglaten om alle mogelijke te proberen
+    # f.fit()
+    # print(f.summary())
+    # print(f.get_best(method='sumsquare_error'))
+
+def visualise_service_time(tranNormal, tranReefer, schedule):
+    # Convert the schedule dataframe to minutes starting with MO 00:00 as 0
+    schedule = schedule.replace(['Mo ', 'Tu ', 'We ', 'Th ', 'Fr ', 'Sa ', 'Su ', ':'], ['0', '24', '48', '72', '96', '120', '144', ''], regex=True)
+    schedule = schedule.astype(int)
+    schedule['Arrival'] = schedule['Arrival'].apply(convert_number_to_minutes)
+    schedule['Departure'] = schedule['Departure'].apply(convert_number_to_minutes)
+
+    # Change the value for the departure time of the non-empty cg
+    for x in tranNormal.columns:
+        tranNormal[x] = np.where(tranNormal[x] != 0, schedule.loc[x]['Departure'], 0)
+
+    # Subtract the arrival time from the departure time for every non-empty cg
+    tranNormal = tranNormal.T
+    for y in tranNormal.columns:
+        tranNormal[y] = np.where(tranNormal[y] != 0, tranNormal[y] - schedule.loc[y]['Arrival'], 0)
+    tranNormal = tranNormal.T
+
+    # Calculate occurrences of every service time
+    service_times_normal = [Counter(tranNormal.stack())]
+    res_normal = sum(service_times_normal, Counter())
+    del res_normal[0]  # cg's of size 0 are no cg's and can be thrown away
+
+    # Visualise
+    plt.xlabel('Service time')
+    plt.ylabel('Occurrences')
+    plt.title("Container group service times - Normal")
+    plt.bar(res_normal.keys(), res_normal.values(), label='Normal')
+    plt.show()
 
 

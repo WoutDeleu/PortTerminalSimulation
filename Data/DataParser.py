@@ -1,6 +1,6 @@
 import re
 from datetime import datetime, timedelta
-
+import math
 import pandas as pd
 
 from Data.CONST import WEEKDAYS, WEEKDAYS_DIC, WEEKDAYS_DIC_REV, DAY_BASED
@@ -148,3 +148,9 @@ def parse_to_datetime(time_index):
     day_delta = WEEKDAYS_DIC[week_day]
     time = datetime.strptime(default_date + ' ' + time, '%d/%m/%Y %H:%M')
     return time + timedelta(days=day_delta)
+
+def convert_number_to_minutes(number):
+    day_hours = math.floor(number/10000)
+    hours = math.floor(number - day_hours*10000)/100
+    minutes = (number-day_hours*10000-hours*100)
+    return int((day_hours+hours)*60+minutes)
