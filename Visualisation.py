@@ -32,7 +32,7 @@ def visualise_data(data):
     calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,
                    schedule)
 
-    if HIST and DAY_BASED:
+    if HIST:
         visualise_normals_reefers_hist('Import', importNormals, importReefer)
 
 def calculate_capacity(yardStorageBlocks, type):
@@ -52,14 +52,18 @@ def visualise_normals_reefers(normals, reefer, title):
     plt.show()
 
 
-# TODO make it work for hours
 def visualise_normals_reefers_hist(title, normals, reefer):
-    normals, reefer = sort(normals, reefer)
-    fig, ax = plt.subplots()
-
-    ax.bar(SORTED_WEEKDAYS, normals, align='center', alpha=0.5, label="#Normal containers")
-    ax.bar(SORTED_WEEKDAYS, reefer, align='center', alpha=0.5, label="#Reefer containers")
-
+    normals = sort(normals)
+    reefer = sort(reefer)
+    fig, ax = plt.subplots(figsize=(18,8))
+    if DAY_BASED:
+        ax.bar(SORTED_WEEKDAYS, normals, align='center', alpha=0.5, label="#Normal containers")
+        ax.bar(SORTED_WEEKDAYS, reefer, align='center', alpha=0.5, label="#Reefer containers")
+    else:
+        x = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in normals.keys()]
+        x2 = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in reefer.keys()]
+        ax.bar(x, normals.values, align='center', alpha=0.5, label="#Normal containers")
+        ax.bar(x2, reefer.values, align='center', alpha=0.5, label="#Normal containers")
     ax.set_xlabel('Days of the week')
     ax.set_ylabel('# of containers')
     ax.set_title(title)
