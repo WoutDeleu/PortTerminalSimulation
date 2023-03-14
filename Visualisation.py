@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
+from fitter import Fitter, get_common_distributions, get_distributions
 from collections import Counter
 
 from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, WEEKDAYS_DIC
@@ -37,6 +39,7 @@ def visualise_data(data):
     if HIST:
         visualise_normals_reefers_hist('Import', importNormals, importReefer)
 
+
 def calculate_capacity(yardStorageBlocks, type):
     yardStorageBlocks = yardStorageBlocks[yardStorageBlocks['ContainerType'] == type]
     return yardStorageBlocks['Capacity'].sum()
@@ -57,7 +60,7 @@ def visualise_normals_reefers(normals, reefer, title):
 def visualise_normals_reefers_hist(title, normals, reefer):
     normals = sort(normals)
     reefer = sort(reefer)
-    fig, ax = plt.subplots(figsize=(18,8))
+    fig, ax = plt.subplots(figsize=(18, 8))
     if DAY_BASED:
         ax.bar(SORTED_WEEKDAYS, normals, align='center', alpha=0.5, label="#Normal containers")
         ax.bar(SORTED_WEEKDAYS, reefer, align='center', alpha=0.5, label="#Reefer containers")
@@ -222,18 +225,53 @@ def visualise_innerInterval(total_inFlow):
         ax.set_title('Cumulatieve distributiefunctie')
 
         plt.show()
+
+
 def visualise_average_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer):
-    # Calculating occurences of eacht cg_size
-    cg_sizes = [Counter(d['Containers']) for d in [localExport, localExportReefer, localImport, localImportReefer]]
-    res = sum(cg_sizes, Counter())
-    cg_sizes = [Counter(d.stack()) for d in [tranNormal, tranReefer]]
-    res = res + sum(cg_sizes, Counter())
-    del res[0] # cg's of size 0 are no cg's and can be thrown away
+    # Calculating occurrences of each cg_size for import and export
+    cg_sizes_normal = [Counter(d['Containers']) for d in [localExport, localImport]]
+    res_normal = sum(cg_sizes_normal, Counter())
+    cg_sizes_reefer = [Counter(d['Containers']) for d in [localExportReefer, localImportReefer]]
+    res_reefer = sum(cg_sizes_reefer, Counter())
+
+    # Calculating occurrences of each cg_size for transshipment's
+    cg_sizes_normal = [Counter(tranNormal.stack())]
+    res_normal = res_normal + sum(cg_sizes_normal, Counter())
+    del res_normal[0]  # cg's of size 0 are no cg's and can be thrown away
+    cg_sizes_reefer = [Counter(tranReefer.stack())]
+    res_reefer = res_reefer + sum(cg_sizes_reefer, Counter())
+    del res_reefer[0]  # cg's of size 0 are no cg's and can be thrown away
+
+    # Calculating total occurrences
+    res = res_normal + res_reefer
 
     # Visualise
-    plt.xlim(0,100)
+    # plt.xlim(0, 100)
+    # plt.xlabel('Amount of containers')
+    # plt.ylabel('Occurrences')
+    # plt.title("Container group sizes - Reefer")
+    # plt.bar(res_reefer.keys(), res_reefer.values(), label='Reefer')
+    # plt.show()
+
+    # plt.xlim(0, 100)
+    # plt.xlabel('Amount of containers')
+    # plt.ylabel('Occurrences')
+    # plt.title("Container group sizes - Normal")
+    # plt.bar(res_normal.keys(), res_normal.values(), label='Normal')
+    # plt.show()
+
+    plt.xlim(0, 100)
     plt.xlabel('Amount of containers')
     plt.ylabel('Occurrences')
-    plt.title("Container group sizes")
-    plt.bar(res.keys(), res.values())
+    plt.title("Container group sizes - Total")
+    plt.bar(res.keys(), res.values(), label='Total')
+    plt.show()
+
+    # Distribution
+    res = np.array(list(res.items()))
+    f = Fitter(res, distributions=['skewcauchy']) # distributions parameter weglaten om alle mogelijke te proberen
+    f.fit()
+    print(f.summary())
+    print(f.get_best(method='sumsquare_error'))
+
 
