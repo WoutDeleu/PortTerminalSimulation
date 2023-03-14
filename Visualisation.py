@@ -161,18 +161,18 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     calculate_innerInterval(total_inFlow)
 
 
-def visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
-                        totalNormal_outFlow, totalReefer_outFlow):
+def calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
+                             totalNormal_outFlow, totalReefer_outFlow):
     total_capacity = yardStorageBlocks['Capacity'].sum()
     reefer_capacity = calculate_reefer_capacity(yardStorageBlocks)
     normal_capacity = calculate_normal_capacity(yardStorageBlocks)
 
-    calculate_occupancy('Total', total_capacity, total_inFlow, total_outFlow)
-    calculate_occupancy('Normal', normal_capacity, totalNormal_inFlow, totalNormal_outFlow)
-    calculate_occupancy('Reefer', reefer_capacity, totalReefer_inFlow, totalReefer_outFlow)
+    visualise_occupancy('Total', total_capacity, total_inFlow, total_outFlow)
+    visualise_occupancy('Normal', normal_capacity, totalNormal_inFlow, totalNormal_outFlow)
+    visualise_occupancy('Reefer', reefer_capacity, totalReefer_inFlow, totalReefer_outFlow)
 
 
-def calculate_occupancy(title, capacity, inflow, outflow):
+def visualise_occupancy(title, capacity, inflow, outflow):
     # Subtract flow -> Calculate absolute flow
     total_inFlow = sort(inflow).fillna(0)
     total_outFlow = sort(outflow).fillna(0)
@@ -192,7 +192,7 @@ def calculate_occupancy(title, capacity, inflow, outflow):
     plt.show()
 
 
-def calculate_innerInterval(total_inFlow):
+def visualise_innerInterval(total_inFlow):
     resulting = pd.Series()
     previous_index = 0
     for index, value in total_inFlow.items():
