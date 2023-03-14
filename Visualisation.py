@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from collections import Counter
 
 from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, WEEKDAYS_DIC
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, sort, \
@@ -32,6 +33,7 @@ def visualise_data(data):
     calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,
                    schedule)
 
+    visualise_average_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
     if HIST and DAY_BASED:
         visualise_normals_reefers_hist('Import', importNormals, importReefer)
 
@@ -216,3 +218,14 @@ def visualise_innerInterval(total_inFlow):
         ax.set_title('Cumulatieve distributiefunctie')
 
         plt.show()
+def visualise_average_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer):
+    # Calculating occurences of eacht cg_size
+    cg_sizes = [Counter(d['Containers']) for d in [localExport, localExportReefer, localImport, localImportReefer]]
+    res = sum(cg_sizes, Counter())
+    cg_sizes = [Counter(d.stack()) for d in [tranNormal, tranReefer]]
+    res = res + sum(cg_sizes, Counter())
+    del res[0] # cg's of size 0 are no cg's and can be thrown away
+
+    # Visualise
+
+    print(res)
