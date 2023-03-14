@@ -35,14 +35,8 @@ def visualise_data(data):
     if HIST and DAY_BASED:
         visualise_normals_reefers_hist('Import', importNormals, importReefer)
 
-
-def calculate_reefer_capacity(yardStorageBlocks):
-    yardStorageBlocks = yardStorageBlocks[yardStorageBlocks['ContainerType'] == 'FULL']
-    return yardStorageBlocks['Capacity'].sum()
-
-
-def calculate_normal_capacity(yardStorageBlocks):
-    yardStorageBlocks = yardStorageBlocks[yardStorageBlocks['ContainerType'] == 'REEFER']
+def calculate_capacity(yardStorageBlocks, type):
+    yardStorageBlocks = yardStorageBlocks[yardStorageBlocks['ContainerType'] == type]
     return yardStorageBlocks['Capacity'].sum()
 
 
@@ -162,8 +156,8 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
 def calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                              totalNormal_outFlow, totalReefer_outFlow):
     total_capacity = yardStorageBlocks['Capacity'].sum()
-    reefer_capacity = calculate_reefer_capacity(yardStorageBlocks)
-    normal_capacity = calculate_normal_capacity(yardStorageBlocks)
+    reefer_capacity = calculate_capacity(yardStorageBlocks, 'REEFER')
+    normal_capacity = calculate_capacity(yardStorageBlocks, 'FULL')
 
     visualise_occupancy('Total', total_capacity, total_inFlow, total_outFlow)
     visualise_occupancy('Normal', normal_capacity, totalNormal_inFlow, totalNormal_outFlow)
