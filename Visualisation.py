@@ -231,5 +231,9 @@ def visualise_average_cg_size(localExport, localExportReefer, localImport, local
     del res[0] # cg's of size 0 are no cg's and can be thrown away
 
     # Visualise
+    plt.xlim(0,100)
+    plt.xlabel('Amount of containers')
+    plt.ylabel('Occurrences')
+    plt.title("Container group sizes")
+    plt.bar(res.keys(), res.values())
 
-    print(res)
