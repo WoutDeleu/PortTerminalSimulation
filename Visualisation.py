@@ -158,7 +158,7 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     visualise_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                         totalNormal_outFlow, totalReefer_outFlow)
 
-    calculate_innerInterval(total_inFlow)
+    visualise_occupancy(total_inFlow)
 
 
 def calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
