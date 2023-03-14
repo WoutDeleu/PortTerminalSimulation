@@ -60,20 +60,26 @@ def visualise_normals_reefers(normals, reefer, title):
 def visualise_normals_reefers_hist(title, normals, reefer):
     normals = sort(normals)
     reefer = sort(reefer)
-    fig, ax = plt.subplots(figsize=(18, 8))
-    if DAY_BASED:
-        ax.bar(SORTED_WEEKDAYS, normals, align='center', alpha=0.5, label="#Normal containers")
-        ax.bar(SORTED_WEEKDAYS, reefer, align='center', alpha=0.5, label="#Reefer containers")
-    else:
-        x = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in normals.keys()]
-        x2 = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in reefer.keys()]
-        ax.bar(x, normals.values, align='center', alpha=0.5, label="#Normal containers")
-        ax.bar(x2, reefer.values, align='center', alpha=0.5, label="#Normal containers")
-    ax.set_xlabel('Days of the week')
-    ax.set_ylabel('# of containers')
-    ax.set_title(title)
+    # fig, ax = plt.subplots(figsize=(18, 8))
+    # if DAY_BASED:
+    #     ax.bar(SORTED_WEEKDAYS, normals, align='center', alpha=0.5, label="#Normal containers")
+    #     ax.bar(SORTED_WEEKDAYS, reefer, align='center', alpha=0.5, label="#Reefer containers")
+    # else:
+    #     x = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in normals.keys()]
+    #     x2 = [dt.strftime('%a')[0:2] + dt.strftime(' %Hh') for dt in reefer.keys()]
+    #     ax.bar(x, normals.values, align='center', alpha=0.5, label="#Normal containers")
+    #     ax.bar(x2, reefer.values, align='center', alpha=0.5, label="#Normal containers")
+    # ax.set_xlabel('Days of the week')
+    # ax.set_ylabel('# of containers')
+    # ax.set_title(title)
+    #plt.show()
 
-    plt.show()
+    # Distribution
+    normals_nparray = normals.to_numpy()
+    f = Fitter(normals_nparray, distributions=['pareto'])
+    f.fit()
+    print(f.summary())
+    print(f.get_best(method='sumsquare_error'))
 
 
 def calculate_transshipment_flow(flow_type, tranData, schedule):
@@ -191,8 +197,6 @@ def visualise_occupancy(title, capacity, inflow, outflow):
     plt.xlabel('Date')
     plt.legend()
     plt.show()
-
-
 def visualise_innerInterval(total_inFlow):
     resulting = pd.Series()
     previous_index = 0
