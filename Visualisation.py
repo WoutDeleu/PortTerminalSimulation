@@ -34,8 +34,7 @@ def visualise_data(data):
     #visualise_normals_reefers(importNormals, importReefer, 'Import')
     #visualise_normals_reefers(exportNormals, exportReefer, 'Export')
 
-    #calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,
-    #               schedule)
+    #calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,schedule)
 
     #visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
 
@@ -172,6 +171,8 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                              totalNormal_outFlow, totalReefer_outFlow)
 
+    visualise_innerInterval(total_inFlow)
+
 
 def calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                              totalNormal_outFlow, totalReefer_outFlow):
@@ -305,21 +306,17 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     service_times_normal = [Counter(tranNormal.stack())]
     res_normal = sum(service_times_normal, Counter())
     del res_normal[0]  # cg's of size 0 are no cg's and can be thrown away
+    res_normal = pd.DataFrame.from_dict(res_normal, orient='index').reset_index()
+    res_normal = res_normal.rename(columns={'index':'Service time (hours)', 0: 'Occurrences'})
 
     # Visualise
-
-    plt.xlabel('Service time (hours)')
-    plt.ylabel('Occurrences')
-    plt.title("Container group service times - Normal")
-    plt.bar(res_normal.keys(), res_normal.values(), label='Normal')
-
-
-    sns.displot(res_normal.values(), x=res_normal.keys(), bins= 50)
+    sns.histplot(data=res_normal, x="Service time (hours)", bins=50).set(title='Service times of container groups')
     plt.show()
-    # f = Fitter(res_normal)  # distributions parameter weglaten om alle mogelijke te proberen
-    # f.fit()
-    # f.summary()
-    # #print(f.get_best(method='sumsquare_error'))
-    # plt.show()
+    service_time = res_normal["Service time (hours)"].values
+    f = Fitter(service_time, distributions='johnsonsb')  # distributions parameter weglaten om alle mogelijke te proberen
+    f.fit()
+    print(f.summary())
+    print(f.get_best(method='sumsquare_error'))
+    plt.show()
 
 
