@@ -1,9 +1,10 @@
+from collections import Counter
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from fitter import Fitter
-from collections import Counter
 import seaborn as sns
+from fitter import Fitter
 
 from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, WEEKDAYS_DIC
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, sort, \
@@ -28,22 +29,19 @@ def visualise_data(data):
     # Cleanup and format transhipments-data
     tranNormal = reorderCols(cleanData(data['TransshipmentsNormal']))
     tranReefer = reorderCols(cleanData(data['TransshipmentsReefer']))
-
-    #if HIST:
-    #    visualise_normals_reefers_hist('Import', importNormals, importReefer)
+    #
+    # if HIST:
+    #     visualise_normals_reefers_hist('Import', importNormals, importReefer)
 
     visualise_service_time(tranNormal, tranReefer, schedule)
     #
-    # visualise_normals_reefers(importNormals, importReefer, 'Import')
-    # visualise_normals_reefers(exportNormals, exportReefer, 'Export')
+    visualise_normals_reefers(importNormals, importReefer, 'Import')
+    visualise_normals_reefers(exportNormals, exportReefer, 'Export')
     #
-    # calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,schedule)
+    calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,
+                   schedule)
     #
     # visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
-
-
-
-
 
 
 def calculate_capacity(yardStorageBlocks, type):
@@ -205,6 +203,8 @@ def visualise_occupancy(title, capacity, inflow, outflow):
     plt.xlabel('Date')
     plt.legend()
     plt.show()
+
+
 def visualise_innerInterval(total_inFlow):
     resulting = pd.Series()
     previous_index = 0
@@ -224,19 +224,30 @@ def visualise_innerInterval(total_inFlow):
         timedelta = [round(td, 1) for td in timedelta]
 
         # Sorteer de waarden
-        timedelta_minutes_sorted = np.sort(timedelta)
+        timedelta_minutes_sorted = pd.Series(np.sort(timedelta))
 
         # Bereken de cumulatieve frequenties en normeer ze tot een CDF
-        cdf = np.cumsum(np.ones_like(timedelta_minutes_sorted)) / len(timedelta_minutes_sorted)
+        cdf = pd.Series(np.cumsum(np.ones_like(timedelta_minutes_sorted)) / len(timedelta_minutes_sorted))
+        df = pd.concat({'Time': timedelta_minutes_sorted, 'CDF': cdf}, axis=1)
+        df
+        if HIST:
+            # Visualise
 
-        # Maak een plot van de CDF
-        fig, ax = plt.subplots()
-        ax.plot(timedelta_minutes_sorted, cdf)
-        ax.set_xlabel('Minuten')
-        ax.set_ylabel('Cumulatieve frequentie')
-        ax.set_title('Cumulatieve distributiefunctie')
+            sns.histplot(data=df, x="Time").set(
+                title='CDF - GC InnerInterval')
 
-        plt.show()
+            plt.show()
+
+        else:
+            # Maak een plot van de CDF
+            fig, ax = plt.subplots()
+            ax.plot(timedelta_minutes_sorted, cdf)
+            ax.set_xlabel('Minuten')
+            ax.set_ylabel('Cumulatieve frequentie')
+            ax.set_title('Cumulatieve distributiefunctie')
+
+            plt.show()
+            print()
 
 
 def visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer):
@@ -286,9 +297,11 @@ def visualise_cg_size(localExport, localExportReefer, localImport, localImportRe
     # print(f.summary())
     # print(f.get_best(method='sumsquare_error'))
 
+
 def visualise_service_time(tranNormal, tranReefer, schedule):
     # Convert the schedule dataframe to minutes starting with MO 00:00 as 0
-    schedule = schedule.replace(['Mo ', 'Tu ', 'We ', 'Th ', 'Fr ', 'Sa ', 'Su ', ':'], ['0', '24', '48', '72', '96', '120', '144', ''], regex=True)
+    schedule = schedule.replace(['Mo ', 'Tu ', 'We ', 'Th ', 'Fr ', 'Sa ', 'Su ', ':'],
+                                ['0', '24', '48', '72', '96', '120', '144', ''], regex=True)
     schedule = schedule.astype(int)
     schedule['Arrival'] = schedule['Arrival'].apply(convert_number_to_minutes)
     schedule['Departure'] = schedule['Departure'].apply(convert_number_to_minutes)
@@ -303,22 +316,21 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
         tranNormal[y] = np.where(tranNormal[y] != 0, tranNormal[y] - schedule.loc[y]['Arrival'], 0)
         tranNormal[y] = np.where(tranNormal[y] < 0, tranNormal[y] * (-1) + 10080, tranNormal[y])
     tranNormal = tranNormal.T
-    tranNormal = tranNormal/60
+    tranNormal = tranNormal / 60
     # Calculate occurrences of every service time
     service_times_normal = [Counter(tranNormal.stack())]
     res_normal = sum(service_times_normal, Counter())
     del res_normal[0]  # cg's of size 0 are no cg's and can be thrown away
     res_normal = pd.DataFrame.from_dict(res_normal, orient='index').reset_index()
-    res_normal = res_normal.rename(columns={'index':'Service time (hours)', 0: 'Occurrences'})
+    res_normal = res_normal.rename(columns={'index': 'Service time (hours)', 0: 'Occurrences'})
 
     # Visualise
     sns.histplot(data=res_normal, x="Service time (hours)", bins=50).set(title='Service times of container groups')
     plt.show()
     service_time = res_normal["Service time (hours)"].values
-    f = Fitter(service_time, distributions='johnsonsb')  # distributions parameter weglaten om alle mogelijke te proberen
+    f = Fitter(service_time,
+               distributions='johnsonsb')  # distributions parameter weglaten om alle mogelijke te proberen
     f.fit()
     print(f.summary())
     print(f.get_best(method='sumsquare_error'))
     plt.show()
-
-
