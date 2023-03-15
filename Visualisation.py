@@ -235,7 +235,7 @@ def visualise_innerInterval(total_Flow, type):
             previous_index = index
         else:
             previous_index = index
-    timedelta = [td.total_seconds() / 60 for td in resulting]
+    timedelta = [td.total_seconds() / 3600 for td in resulting]
     timedelta = [round(td, 1) for td in timedelta]
 
     # Sorteer de waarden
