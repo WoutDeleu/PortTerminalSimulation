@@ -32,6 +32,7 @@ def visualise_data(data):
     tranReefer = reorderCols(cleanData(data['TransshipmentsReefer']))
     if HIST:
         visualise_normals_reefers_hist('Import', importNormals.copy(), importReefer.copy())
+        visualise_normals_reefers_hist('Export', exportNormals.copy(), exportReefer.copy())
 
     visualise_service_time(tranNormal.copy(), tranReefer.copy(), schedule.copy())
 
