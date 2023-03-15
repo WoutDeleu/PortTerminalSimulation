@@ -250,10 +250,8 @@ def visualise_innerInterval(total_inFlow):
         df
         if HIST:
             # Visualise
-
-            sns.histplot(data=df, x="Time").set(
-                title='CDF - GC InnerInterval')
-
+            sns.histplot(data=timedelta_minutes_sorted).set(
+                title='Arrival Interval')
             plt.show()
 
         else:
