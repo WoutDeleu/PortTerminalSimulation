@@ -30,7 +30,6 @@ def visualise_data(data):
     # Cleanup and format transhipments-data
     tranNormal = reorderCols(cleanData(data['TransshipmentsNormal']))
     tranReefer = reorderCols(cleanData(data['TransshipmentsReefer']))
-
     if HIST:
         visualise_normals_reefers_hist('Import', importNormals.copy(), importReefer.copy())
 
@@ -42,10 +41,6 @@ def visualise_data(data):
     calculate_flow(yardStorageBlocks.copy(), importNormals.copy(), importReefer.copy(), exportNormals.copy(), exportReefer.copy(), tranNormal.copy(), tranReefer.copy(), schedule.copy())
 
     visualise_cg_size(localExport.copy(), localExportReefer.copy(), localImport.copy(), localImportReefer.copy(), tranNormal.copy(), tranReefer.copy())
-
-
-
-
 
 
 def calculate_capacity(yardStorageBlocks, type):
@@ -247,19 +242,30 @@ def visualise_innerInterval(total_inFlow):
         timedelta = [round(td, 1) for td in timedelta]
 
         # Sorteer de waarden
-        timedelta_minutes_sorted = np.sort(timedelta)
+        timedelta_minutes_sorted = pd.Series(np.sort(timedelta))
 
         # Bereken de cumulatieve frequenties en normeer ze tot een CDF
-        cdf = np.cumsum(np.ones_like(timedelta_minutes_sorted)) / len(timedelta_minutes_sorted)
+        cdf = pd.Series(np.cumsum(np.ones_like(timedelta_minutes_sorted)) / len(timedelta_minutes_sorted))
+        df = pd.concat({'Time': timedelta_minutes_sorted, 'CDF': cdf}, axis=1)
+        df
+        if HIST:
+            # Visualise
 
-        # Maak een plot van de CDF
-        fig, ax = plt.subplots()
-        ax.plot(timedelta_minutes_sorted, cdf)
-        ax.set_xlabel('Minuten')
-        ax.set_ylabel('Cumulatieve frequentie')
-        ax.set_title('Cumulatieve distributiefunctie')
+            sns.histplot(data=df, x="Time").set(
+                title='CDF - GC InnerInterval')
 
-        plt.show()
+            plt.show()
+
+        else:
+            # Maak een plot van de CDF
+            fig, ax = plt.subplots()
+            ax.plot(timedelta_minutes_sorted, cdf)
+            ax.set_xlabel('Minuten')
+            ax.set_ylabel('Cumulatieve frequentie')
+            ax.set_title('Cumulatieve distributiefunctie')
+
+            plt.show()
+            print()
 
 
 def visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer):
@@ -311,7 +317,8 @@ def visualise_cg_size(localExport, localExportReefer, localImport, localImportRe
 
 def visualise_service_time(tranNormal, tranReefer, schedule):
     # Convert the schedule dataframe to minutes starting with MO 00:00 as 0
-    schedule = schedule.replace(['Mo ', 'Tu ', 'We ', 'Th ', 'Fr ', 'Sa ', 'Su ', ':'], ['0', '24', '48', '72', '96', '120', '144', ''], regex=True)
+    schedule = schedule.replace(['Mo ', 'Tu ', 'We ', 'Th ', 'Fr ', 'Sa ', 'Su ', ':'],
+                                ['0', '24', '48', '72', '96', '120', '144', ''], regex=True)
     schedule = schedule.astype(int)
     schedule['Arrival'] = schedule['Arrival'].apply(convert_number_to_minutes)
     schedule['Departure'] = schedule['Departure'].apply(convert_number_to_minutes)
@@ -333,7 +340,7 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     res_normal = sum(service_times_normal, Counter())
     del res_normal[0]  # cg's of size 0 are no cg's and can be thrown away
     res_normal = pd.DataFrame.from_dict(res_normal, orient='index').reset_index()
-    res_normal = res_normal.rename(columns={'index':'Service time (hours)', 0: 'Occurrences'})
+    res_normal = res_normal.rename(columns={'index': 'Service time (hours)', 0: 'Occurrences'})
 
     # Visualise
     plt.xlabel('Service time')
@@ -344,10 +351,9 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
 
     # Find distribution
     service_time = res_normal["Service time (hours)"].values
-    f = Fitter(service_time, distributions='johnsonsb')  # distributions parameter weglaten om alle mogelijke te proberen
+    f = Fitter(service_time,
+               distributions='johnsonsb')  # distributions parameter weglaten om alle mogelijke te proberen
     f.fit()
     print(f.summary())
     print(f.get_best(method='sumsquare_error'))
     plt.show()
-
-
