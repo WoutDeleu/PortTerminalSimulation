@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from fitter import Fitter
 from collections import Counter
+import seaborn as sns
 
 from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, WEEKDAYS_DIC
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, sort, \
@@ -30,18 +31,18 @@ def visualise_data(data):
 
     visualise_service_time(tranNormal, tranReefer, schedule)
 
-    visualise_normals_reefers(importNormals, importReefer, 'Import')
-    visualise_normals_reefers(exportNormals, exportReefer, 'Export')
+    #visualise_normals_reefers(importNormals, importReefer, 'Import')
+    #visualise_normals_reefers(exportNormals, exportReefer, 'Export')
 
-    calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,
-                   schedule)
+    #calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,
+    #               schedule)
 
-    visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
+    #visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
 
 
 
-    if HIST:
-        visualise_normals_reefers_hist('Import', importNormals, importReefer)
+    #if HIST:
+        #visualise_normals_reefers_hist('Import', importNormals, importReefer)
 
 
 def calculate_capacity(yardStorageBlocks, type):
@@ -297,18 +298,28 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     tranNormal = tranNormal.T
     for y in tranNormal.columns:
         tranNormal[y] = np.where(tranNormal[y] != 0, tranNormal[y] - schedule.loc[y]['Arrival'], 0)
+        tranNormal[y] = np.where(tranNormal[y] < 0, tranNormal[y] * (-1) + 10080, tranNormal[y])
     tranNormal = tranNormal.T
-
+    tranNormal = tranNormal/60
     # Calculate occurrences of every service time
     service_times_normal = [Counter(tranNormal.stack())]
     res_normal = sum(service_times_normal, Counter())
     del res_normal[0]  # cg's of size 0 are no cg's and can be thrown away
 
     # Visualise
-    plt.xlabel('Service time')
+
+    plt.xlabel('Service time (hours)')
     plt.ylabel('Occurrences')
     plt.title("Container group service times - Normal")
     plt.bar(res_normal.keys(), res_normal.values(), label='Normal')
+
+
+    sns.displot(res_normal.values(), x=res_normal.keys(), bins= 50)
     plt.show()
+    # f = Fitter(res_normal)  # distributions parameter weglaten om alle mogelijke te proberen
+    # f.fit()
+    # f.summary()
+    # #print(f.get_best(method='sumsquare_error'))
+    # plt.show()
 
 
