@@ -1,5 +1,5 @@
 import datetime
-
+import math
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -169,7 +169,8 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
                              totalNormal_outFlow, totalReefer_outFlow)
 
-    visualise_innerInterval(total_inFlow)
+    visualise_innerInterval(total_inFlow.copy(), type='in_flow')
+    visualise_innerInterval(total_outFlow.copy(), type='out_flow')
 
 
 def calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
@@ -223,47 +224,47 @@ def visualise_occupancy(title, capacity, inflow, outflow):
     # plt.xlabel('Date')
     # plt.legend()
     # plt.show()
-def visualise_innerInterval(total_inFlow):
+def visualise_innerInterval(total_Flow, type):
     resulting = pd.Series()
     previous_index = 0
-    for index, value in total_inFlow.items():
+    for index, value in total_Flow.items():
         if previous_index != 0:
-            if DAY_BASED:
-                value = abs(WEEKDAYS_DIC[index] - WEEKDAYS_DIC[previous_index])
-            else:
+            if math.isnan(value) != True:
                 value = index - previous_index
-            resulting = pd.concat([resulting, pd.Series(value)])
-        previous_index = index
-    if DAY_BASED:
-        # Note: not very informative with days...
-        pass
-    else:
-        timedelta = [td.total_seconds() / 60 for td in resulting]
-        timedelta = [round(td, 1) for td in timedelta]
-
-        # Sorteer de waarden
-        timedelta_minutes_sorted = pd.Series(np.sort(timedelta))
-
-        # Bereken de cumulatieve frequenties en normeer ze tot een CDF
-        cdf = pd.Series(np.cumsum(np.ones_like(timedelta_minutes_sorted)) / len(timedelta_minutes_sorted))
-        df = pd.concat({'Time': timedelta_minutes_sorted, 'CDF': cdf}, axis=1)
-        df
-        if HIST:
-            # Visualise
-            sns.histplot(data=timedelta_minutes_sorted).set(
-                title='Arrival Interval')
-            plt.show()
-
+                resulting = pd.concat([resulting, pd.Series(value)])
+            previous_index = index
         else:
-            # Maak een plot van de CDF
-            fig, ax = plt.subplots()
-            ax.plot(timedelta_minutes_sorted, cdf)
-            ax.set_xlabel('Minuten')
-            ax.set_ylabel('Cumulatieve frequentie')
-            ax.set_title('Cumulatieve distributiefunctie')
+            previous_index = index
+    timedelta = [td.total_seconds() / 60 for td in resulting]
+    timedelta = [round(td, 1) for td in timedelta]
 
-            plt.show()
-            print()
+    # Sorteer de waarden
+    timedelta_minutes_sorted = pd.Series(np.sort(timedelta))
+
+    # Bereken de cumulatieve frequenties en normeer ze tot een CDF
+    cdf = pd.Series(np.cumsum(np.ones_like(timedelta_minutes_sorted)) / len(timedelta_minutes_sorted))
+    df = pd.concat({'Time': timedelta_minutes_sorted, 'CDF': cdf}, axis=1)
+    df
+    if HIST:
+        # Visualise
+        if type == 'in_flow':
+            sns.histplot(data=timedelta_minutes_sorted).set(
+                title='Arrival time interval')
+        else :
+            sns.histplot(data=timedelta_minutes_sorted).set(
+                title='Departure time interval')
+        plt.show()
+
+    else:
+        # Maak een plot van de CDF
+        fig, ax = plt.subplots()
+        ax.plot(timedelta_minutes_sorted, cdf)
+        ax.set_xlabel('Minuten')
+        ax.set_ylabel('Cumulatieve frequentie')
+        ax.set_title('Cumulatieve distributiefunctie')
+
+        plt.show()
+        print()
 
 
 def visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer):
