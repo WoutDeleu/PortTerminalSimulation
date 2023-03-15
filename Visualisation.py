@@ -1,3 +1,5 @@
+import datetime
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -29,17 +31,17 @@ def visualise_data(data):
     tranNormal = reorderCols(cleanData(data['TransshipmentsNormal']))
     tranReefer = reorderCols(cleanData(data['TransshipmentsReefer']))
 
-    #if HIST:
-    #    visualise_normals_reefers_hist('Import', importNormals, importReefer)
+    if HIST:
+        visualise_normals_reefers_hist('Import', importNormals.copy(), importReefer.copy())
 
-    visualise_service_time(tranNormal, tranReefer, schedule)
-    #
-    # visualise_normals_reefers(importNormals, importReefer, 'Import')
-    # visualise_normals_reefers(exportNormals, exportReefer, 'Export')
-    #
-    # calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,schedule)
-    #
-    # visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
+    visualise_service_time(tranNormal.copy(), tranReefer.copy(), schedule.copy())
+
+    visualise_normals_reefers(importNormals, importReefer, 'Import')
+    visualise_normals_reefers(exportNormals, exportReefer, 'Export')
+
+    calculate_flow(yardStorageBlocks.copy(), importNormals.copy(), importReefer.copy(), exportNormals.copy(), exportReefer.copy(), tranNormal.copy(), tranReefer.copy(), schedule.copy())
+
+    visualise_cg_size(localExport.copy(), localExportReefer.copy(), localImport.copy(), localImportReefer.copy(), tranNormal.copy(), tranReefer.copy())
 
 
 
@@ -81,12 +83,11 @@ def visualise_normals_reefers_hist(title, normals, reefer):
     plt.show()
 
     # Distribution
-    # Todo date time objecten omzetten naar uren om distributie te kunnen vinden
-    normal_flow = normals.index
-    f = Fitter(normal_flow)
-    f.fit()
-    print(f.summary())
-    print(f.get_best(method='sumsquare_error'))
+    # normal_flow = normals.index
+    # f = Fitter(normal_flow)
+    # f.fit()
+    # print(f.summary())
+    # print(f.get_best(method='sumsquare_error'))
 
 
 def calculate_transshipment_flow(flow_type, tranData, schedule):
@@ -147,16 +148,16 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     totalExport_inFlow = shift_time_series(totalExport_outFlow, -48)
     totalImport_outFlow = shift_time_series(totalImport_inFlow, 48)
     # Visualise
-    visualise_flow('Import', totalImport_inFlow, totalImport_outFlow)
-    visualise_flow('Export', totalExport_inFlow, totalImport_outFlow)
+    # visualise_flow('Import', totalImport_inFlow, totalImport_outFlow)
+    # visualise_flow('Export', totalExport_inFlow, totalImport_outFlow)
 
     totalNormal_inFlow = add_series(exportNormals_inFlow, importNormals_inFlow)
     totalReefer_inFlow = add_series(importReefer_inFlow, exportReefer_inFlow)
     totalNormal_outFlow = add_series(exportNormals_outFlow, importNormals_outFlow)
     totalReefer_outFlow = add_series(exportReefer_outFlow, importReefer_outFlow)
     # Visualise
-    visualise_flow('Normal', totalImport_inFlow, totalImport_outFlow)
-    visualise_flow('Reefer', totalNormal_outFlow, totalReefer_outFlow)
+    # visualise_flow('Normal', totalImport_inFlow, totalImport_outFlow)
+    # visualise_flow('Reefer', totalNormal_outFlow, totalReefer_outFlow)
 
     # Transhipments
     transhipments_inFlow = calculate_transshipment_flow('inflow', tranNormal, schedule) + calculate_transshipment_flow(
@@ -183,8 +184,8 @@ def calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, tot
     normal_capacity = calculate_capacity(yardStorageBlocks, 'FULL')
 
     visualise_occupancy('Total', total_capacity, total_inFlow, total_outFlow)
-    visualise_occupancy('Normal', normal_capacity, totalNormal_inFlow, totalNormal_outFlow)
-    visualise_occupancy('Reefer', reefer_capacity, totalReefer_inFlow, totalReefer_outFlow)
+    # visualise_occupancy('Normal', normal_capacity, totalNormal_inFlow, totalNormal_outFlow)
+    # visualise_occupancy('Reefer', reefer_capacity, totalReefer_inFlow, totalReefer_outFlow)
 
 
 def visualise_occupancy(title, capacity, inflow, outflow):
@@ -197,14 +198,36 @@ def visualise_occupancy(title, capacity, inflow, outflow):
     absolute_occupancy = absolute_flow.cumsum()
     occupancy = (absolute_occupancy / capacity) * 100
 
-    if DAY_BASED:
-        plt.xticks(np.arange(len(SORTED_WEEKDAYS)), SORTED_WEEKDAYS)
-    plt.plot(occupancy, label='#occupancy')
-    plt.title('{} Occupancy'.format(title))
-    plt.ylabel('%')
-    plt.xlabel('Date')
-    plt.legend()
+    # Create a dataframe
+    occupancy = occupancy.to_frame()
+    occupancy['Date'] = occupancy.index
+    occupancy['Date'] = pd.to_datetime(occupancy['Date']).astype(np.int64)
+    occupancy['Date'] = (occupancy['Date']-1678492800000000000)/3600000000000
+    occupancy = occupancy.rename(columns={0: 'Occurrences'})
+
+    # Visualise
+    plt.xlabel('Time (hours)')
+    plt.ylabel('Occupancy %')
+    plt.title("Occupancy of the yard")
+    plt.bar(occupancy['Date'], occupancy['Occurrences'], width=3)
     plt.show()
+
+    # Find distribution
+    # date = occupancy["Date"].values
+    # f = Fitter(date)  # distributions parameter weglaten om alle mogelijke te proberen
+    # f.fit()
+    # print(f.summary())
+    # print(f.get_best(method='sumsquare_error'))
+    # plt.show()
+
+    # if DAY_BASED:
+    #     plt.xticks(np.arange(len(SORTED_WEEKDAYS)), SORTED_WEEKDAYS)
+    # plt.plot(occupancy, label='#occupancy')
+    # plt.title('{} Occupancy'.format(title))
+    # plt.ylabel('%')
+    # plt.xlabel('Date')
+    # plt.legend()
+    # plt.show()
 def visualise_innerInterval(total_inFlow):
     resulting = pd.Series()
     previous_index = 0
@@ -304,6 +327,7 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
         tranNormal[y] = np.where(tranNormal[y] < 0, tranNormal[y] * (-1) + 10080, tranNormal[y])
     tranNormal = tranNormal.T
     tranNormal = tranNormal/60
+
     # Calculate occurrences of every service time
     service_times_normal = [Counter(tranNormal.stack())]
     res_normal = sum(service_times_normal, Counter())
@@ -312,8 +336,13 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     res_normal = res_normal.rename(columns={'index':'Service time (hours)', 0: 'Occurrences'})
 
     # Visualise
-    sns.histplot(data=res_normal, x="Service time (hours)", bins=50).set(title='Service times of container groups')
+    plt.xlabel('Service time')
+    plt.ylabel('Occurrences')
+    plt.title("Service time of container groups")
+    plt.bar(res_normal['Service time (hours)'], res_normal['Occurrences'], width=3)
     plt.show()
+
+    # Find distribution
     service_time = res_normal["Service time (hours)"].values
     f = Fitter(service_time, distributions='johnsonsb')  # distributions parameter weglaten om alle mogelijke te proberen
     f.fit()
