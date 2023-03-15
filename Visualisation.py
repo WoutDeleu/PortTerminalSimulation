@@ -29,19 +29,21 @@ def visualise_data(data):
     tranNormal = reorderCols(cleanData(data['TransshipmentsNormal']))
     tranReefer = reorderCols(cleanData(data['TransshipmentsReefer']))
 
-    visualise_service_time(tranNormal, tranReefer, schedule)
-
-    #visualise_normals_reefers(importNormals, importReefer, 'Import')
-    #visualise_normals_reefers(exportNormals, exportReefer, 'Export')
-
-    #calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,schedule)
-
-    #visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
-
-
-
     #if HIST:
-        #visualise_normals_reefers_hist('Import', importNormals, importReefer)
+    #    visualise_normals_reefers_hist('Import', importNormals, importReefer)
+
+    visualise_service_time(tranNormal, tranReefer, schedule)
+    #
+    # visualise_normals_reefers(importNormals, importReefer, 'Import')
+    # visualise_normals_reefers(exportNormals, exportReefer, 'Export')
+    #
+    # calculate_flow(yardStorageBlocks, importNormals, importReefer, exportNormals, exportReefer, tranNormal, tranReefer,schedule)
+    #
+    # visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer)
+
+
+
+
 
 
 def calculate_capacity(yardStorageBlocks, type):
@@ -79,11 +81,12 @@ def visualise_normals_reefers_hist(title, normals, reefer):
     plt.show()
 
     # Distribution
-    # normals_nparray = normals.to_numpy()
-    # f = Fitter(normals_nparray, distributions=['pareto'])
-    # f.fit()
-    # print(f.summary())
-    # print(f.get_best(method='sumsquare_error'))
+    # Todo date time objecten omzetten naar uren om distributie te kunnen vinden
+    normal_flow = normals.index
+    f = Fitter(normal_flow)
+    f.fit()
+    print(f.summary())
+    print(f.get_best(method='sumsquare_error'))
 
 
 def calculate_transshipment_flow(flow_type, tranData, schedule):
@@ -111,13 +114,12 @@ def calculate_transshipment_flow(flow_type, tranData, schedule):
 
 def shift_time_series(flow, offset_hours):
     flow = flow.reset_index()
+    flow = flow.rename(columns={'index': 'Arrival'})
+    flow['Arrival'] = flow.apply(lambda x: shift_time(x.Arrival, offset_hours), axis=1)
+    result = flow.set_index('Arrival')[list(flow.columns)[1]]
     if DAY_BASED:
-        flow['Arrival'] = flow.apply(lambda x: shift_time(x.Arrival, offset_hours), axis=1)
-        result = flow.set_index('Arrival')[list(flow.columns)[1]]
         return sum_by_index(result)
-    else:
-        flow['Arrival'] = flow.apply(lambda x: shift_time(x['index'], offset_hours), axis=1)
-        return flow.set_index('Arrival')[list(flow.columns)[1]]
+    return result
 
 
 def visualise_flow(title, inFlow, outFlow):
