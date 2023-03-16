@@ -218,7 +218,7 @@ def visualise_occupancy(title, capacity, inflow, outflow):
 
     # Find distribution
     date = occupancy.index
-    f = Fitter(date, distributions=get_common_distributions(), bins=200)  # distributions parameter weglaten om alle mogelijke te proberen
+    f = Fitter(date,distributions='tukeylambda', bins=50)  # distributions parameter weglaten om alle mogelijke te proberen
     f.fit()
     print(f.summary())
     print(f.get_best(method='sumsquare_error'))
