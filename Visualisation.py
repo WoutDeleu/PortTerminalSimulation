@@ -1,11 +1,12 @@
-import datetime
 import math
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from fitter import Fitter
+import fitter
+from fitter import Fitter, get_common_distributions
 from collections import Counter
 import seaborn as sns
+import scipy.stats as st
 
 from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, WEEKDAYS_DIC
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, sort, \
@@ -202,20 +203,26 @@ def visualise_occupancy(title, capacity, inflow, outflow):
     occupancy['Date'] = (occupancy['Date']-1678492800000000000)/3600000000000
     occupancy = occupancy.rename(columns={0: 'Occurrences'})
 
+    # Fill up missing hours
+    occupancy = occupancy.set_index(occupancy['Date'])
+    occupancy = occupancy.drop(['Date'], axis=1)
+    occupancy = occupancy.reindex(np.arange(occupancy.index[-1]+1), fill_value=0)
+    occupancy = occupancy.replace(0.00000).ffill()
+
     # Visualise
     plt.xlabel('Time (hours)')
     plt.ylabel('Occupancy %')
     plt.title("Occupancy of the yard")
-    plt.bar(occupancy['Date'], occupancy['Occurrences'], width=3)
+    plt.bar(occupancy.index, occupancy['Occurrences'], width=1)
     plt.show()
 
     # Find distribution
-    # date = occupancy["Date"].values
-    # f = Fitter(date)  # distributions parameter weglaten om alle mogelijke te proberen
-    # f.fit()
-    # print(f.summary())
-    # print(f.get_best(method='sumsquare_error'))
-    # plt.show()
+    date = occupancy.index
+    f = Fitter(date, distributions=get_common_distributions(), bins=200)  # distributions parameter weglaten om alle mogelijke te proberen
+    f.fit()
+    print(f.summary())
+    print(f.get_best(method='sumsquare_error'))
+    plt.show()
 
     # if DAY_BASED:
     #     plt.xticks(np.arange(len(SORTED_WEEKDAYS)), SORTED_WEEKDAYS)
@@ -240,32 +247,43 @@ def visualise_innerInterval(total_Flow, type):
     timedelta = [round(td, 1) for td in timedelta]
 
     # Sorteer de waarden
-    timedelta_minutes_sorted = pd.Series(np.sort(timedelta))
+    timedelta_hours_sorted = pd.Series(np.sort(timedelta))
 
     # Bereken de cumulatieve frequenties en normeer ze tot een CDF
-    cdf = pd.Series(np.cumsum(np.ones_like(timedelta_minutes_sorted)) / len(timedelta_minutes_sorted))
-    df = pd.concat({'Time': timedelta_minutes_sorted, 'CDF': cdf}, axis=1)
+    cdf = pd.Series(np.cumsum(np.ones_like(timedelta_hours_sorted)) )
+    df = pd.concat({'Time': timedelta_hours_sorted, 'CDF': cdf}, axis=1)
     df
     if HIST:
         # Visualise
         if type == 'in_flow':
-            sns.histplot(data=timedelta_minutes_sorted).set(
+            sns.histplot(data=timedelta_hours_sorted).set(
                 title='Arrival time interval')
         else :
-            sns.histplot(data=timedelta_minutes_sorted).set(
+            sns.histplot(data=timedelta_hours_sorted).set(
                 title='Departure time interval')
         plt.show()
 
     else:
         # Maak een plot van de CDF
         fig, ax = plt.subplots()
-        ax.plot(timedelta_minutes_sorted, cdf)
+        ax.plot(timedelta_hours_sorted, cdf)
         ax.set_xlabel('Minuten')
         ax.set_ylabel('Cumulatieve frequentie')
         ax.set_title('Cumulatieve distributiefunctie')
 
         plt.show()
         print()
+
+    # Find distribution
+    # inter_time = [Counter(timedelta_hours_sorted.stack())]
+    # inter_time = sum(inter_time, Counter())
+    #
+    # inter_time = timedelta_hours_sorted["Service time (hours)"].values
+    # f = Fitter(timedelta_hours_sorted)  # distributions parameter weglaten om alle mogelijke te proberen
+    # f.fit()
+    # print(f.summary())
+    # # print(f.get_best(method='sumsquare_error'))
+    # plt.show()
 
 
 def visualise_cg_size(localExport, localExportReefer, localImport, localImportReefer, tranNormal, tranReefer):
@@ -309,11 +327,13 @@ def visualise_cg_size(localExport, localExportReefer, localImport, localImportRe
     plt.show()
 
     # Distribution
-    # res = np.array(list(res.items()))
-    # f = Fitter(res, distributions=['skewcauchy']) # distributions parameter weglaten om alle mogelijke te proberen
-    # f.fit()
-    # print(f.summary())
-    # print(f.get_best(method='sumsquare_error'))
+    res = np.array(list(res.items()))
+    f = Fitter(res,xmax=100, distributions=['skewcauchy'],bins=100) # distributions parameter weglaten om alle mogelijke te proberen
+    f.fit()
+    print(f.summary())
+    print(f.get_best(method='sumsquare_error'))
+    print(f.fitted_param['skewcauchy'])
+    plt.show()
 
 def visualise_service_time(tranNormal, tranReefer, schedule):
     # Convert the schedule dataframe to minutes starting with MO 00:00 as 0
@@ -350,10 +370,13 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     plt.show()
 
     # Find distribution
-    service_time = res_normal["Service time (hours)"].values
-    f = Fitter(service_time,
-               distributions='johnsonsb')  # distributions parameter weglaten om alle mogelijke te proberen
-    f.fit()
-    print(f.summary())
-    print(f.get_best(method='sumsquare_error'))
-    plt.show()
+    # service_time = res_normal["Service time (hours)"].values
+    # f = Fitter(service_time,
+    #            distributions=get_common_distributions())  # distributions parameter weglaten om alle mogelijke te proberen
+    # f.fit()
+    # print(f.summary())
+    # print(f.get_best(method='sumsquare_error'))
+    # plt.show()
+
+
+
