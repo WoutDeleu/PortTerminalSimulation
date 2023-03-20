@@ -1,9 +1,10 @@
+import math
 import re
 from datetime import datetime, timedelta
-import math
+
 import pandas as pd
 
-from Data.CONST import WEEKDAYS, WEEKDAYS_DIC, WEEKDAYS_DIC_REV, DAY_BASED
+from Data.CONST import WEEKDAYS, WEEKDAYS_DIC, WEEKDAYS_DIC_REV, DAY_BASED, CG
 
 
 def parse_data(fileName):
@@ -105,6 +106,9 @@ def format_import_export(local, localReefer, schedule):
     scheduled = scheduled.merge(localReefer, left_index=True, right_index=True)
     if DAY_BASED:
         scheduled['Arrival'] = scheduled.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
+    if CG:
+        scheduled['Containers_x'] = 1
+        scheduled['Containers_y'] = 1
     normals = scheduled.groupby(['Arrival'])['Containers_x'].sum()
     reefers = scheduled.groupby(['Arrival'])['Containers_y'].sum()
     return normals, reefers
@@ -149,8 +153,9 @@ def parse_to_datetime(time_index):
     time = datetime.strptime(default_date + ' ' + time, '%d/%m/%Y %H:%M')
     return time + timedelta(days=day_delta)
 
+
 def convert_number_to_minutes(number):
-    day_hours = math.floor(number/10000)
-    hours = math.floor(number - day_hours*10000)/100
-    minutes = (number-day_hours*10000-hours*100)
-    return int((day_hours+hours)*60+minutes)
+    day_hours = math.floor(number / 10000)
+    hours = math.floor(number - day_hours * 10000) / 100
+    minutes = (number - day_hours * 10000 - hours * 100)
+    return int((day_hours + hours) * 60 + minutes)
