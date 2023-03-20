@@ -262,10 +262,10 @@ def visualise_innerInterval(total_Flow, type):
     if HIST:
         # Visualise
         if type == 'in_flow':
-            sns.histplot(data=timedelta_hours_sorted).set(
+            sns.histplot(data=timedelta_hours_sorted, bins=10).set(
                 title='Arrival time interval')
-        else:
-            sns.histplot(data=timedelta_hours_sorted).set(
+        else :
+            sns.histplot(data=timedelta_hours_sorted,bins=20).set(
                 title='Departure time interval')
         plt.show()
 
@@ -359,7 +359,7 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     tranNormal = tranNormal.T
     for y in tranNormal.columns:
         tranNormal[y] = np.where(tranNormal[y] != 0, tranNormal[y] - schedule.loc[y]['Arrival'], 0)
-        tranNormal[y] = np.where(tranNormal[y] < 0, tranNormal[y] * (-1) + 10080, tranNormal[y])
+        tranNormal[y] = np.where(tranNormal[y] < 0, tranNormal[y] + 10080, tranNormal[y])
     tranNormal = tranNormal.T
     tranNormal = tranNormal / 60
 
@@ -370,11 +370,14 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     res_normal = pd.DataFrame.from_dict(res_normal, orient='index').reset_index()
     res_normal = res_normal.rename(columns={'index': 'Service time (hours)', 0: 'Occurrences'})
 
+    # Remove periodic data
+
+
     # Visualise
     plt.xlabel('Service time')
     plt.ylabel('Occurrences')
     plt.title("Service time of container groups")
-    plt.bar(res_normal['Service time (hours)'], res_normal['Occurrences'], width=3)
+    plt.bar(res_normal['Service time (hours)'], res_normal['Occurrences'], width=2)
     plt.show()
 
     # Find distribution
@@ -385,3 +388,10 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     # print(f.summary())
     # print(f.get_best(method='sumsquare_error'))
     # plt.show()
+    service_time = res_normal["Service time (hours)"].values
+    f = Fitter(service_time,
+               )  # distributions parameter weglaten om alle mogelijke te proberen
+    f.fit()
+    print(f.summary())
+    print(f.get_best(method='sumsquare_error'))
+    plt.show()
