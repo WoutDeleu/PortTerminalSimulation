@@ -1,9 +1,7 @@
 import os
 
 from Data.DataParser import parse_data
-from Data.Simulation import simulate
-from Visualisation import visualise_data
-from YardBlock import YardBlock
+from Simulation import simulate
 
 
 def load_data(folder):
