@@ -2,6 +2,9 @@ from YardBlock import YardBlock
 
 
 def simulate(data):
+    # Simulation period (months)
+    period = 1
+
     # converting the yard storage blocks dataframe into a list of objects
     yardBlockList = data['YARDSTORAGEBLOCKS'].astype({'Capacity': 'int'}).values.tolist()
     yardBlocks = []
