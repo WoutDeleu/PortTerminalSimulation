@@ -4,5 +4,5 @@ class Position:
         self.y_cord = y_cord
 
     def __str__(self):
-        return f"{self.x_cord}, {self.y_cord}"
+        return f"X: {self.x_cord} | Y: {self.y_cord}"
 
