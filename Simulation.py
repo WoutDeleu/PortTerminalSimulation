@@ -32,6 +32,7 @@ def simulate(data):
         d = get_arrival_or_departure_point_sample(data['BerthingPositions'])
         e = get_arrival_or_departure_point_sample(data['BerthingPositions'])
         container_groups.append(ContainerGroup(a, b, time, c, d, e))  # New container arrived
+    print(container_groups[0])
 
 
 def get_inter_arrival_time_sample():
@@ -43,7 +44,7 @@ def get_container_type_sample():
 
 
 def get_number_of_containers_sample():
-    return round(scipyst.expon.rvs(scale=5, loc=0))
+    return round(scipyst.expon.rvs(scale=5, loc=0.5))
 
 
 def get_service_time_sample():

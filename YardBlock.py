@@ -8,5 +8,6 @@ class YardBlock:
         self.position = position
 
     def __str__(self):
-        return f"{self.name}: {self.container_type}, {self.flow_type}, {self.capacity}, {self.occupation}, {self.position}"
+        return f"Name: {self.name} | Container_type: {self.container_type} | Flow_type: {self.flow_type} | " \
+               f"Capacity: {self.capacity} | Occupation: {self.occupation} | Position: {self.position}"
 
