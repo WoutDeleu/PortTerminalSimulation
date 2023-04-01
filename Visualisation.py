@@ -1,14 +1,13 @@
 import math
+from collections import Counter
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import fitter
-from fitter import Fitter, get_common_distributions
-from collections import Counter
 import seaborn as sns
-import scipy.stats as st
+from fitter import Fitter
 
-from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, WEEKDAYS_DIC
+from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, CG
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, sort, \
     sum_by_index, add_series, subtract_series, convert_number_to_minutes
 
@@ -40,9 +39,11 @@ def visualise_data(data):
     visualise_normals_reefers(importNormals, importReefer, 'Import')
     visualise_normals_reefers(exportNormals, exportReefer, 'Export')
 
-    calculate_flow(yardStorageBlocks.copy(), importNormals.copy(), importReefer.copy(), exportNormals.copy(), exportReefer.copy(), tranNormal.copy(), tranReefer.copy(), schedule.copy())
+    calculate_flow(yardStorageBlocks.copy(), importNormals.copy(), importReefer.copy(), exportNormals.copy(),
+                   exportReefer.copy(), tranNormal.copy(), tranReefer.copy(), schedule.copy())
 
-    visualise_cg_size(localExport.copy(), localExportReefer.copy(), localImport.copy(), localImportReefer.copy(), tranNormal.copy(), tranReefer.copy())
+    visualise_cg_size(localExport.copy(), localExportReefer.copy(), localImport.copy(), localImportReefer.copy(),
+                      tranNormal.copy(), tranReefer.copy())
 
 
 def calculate_capacity(yardStorageBlocks, type):
@@ -105,6 +106,8 @@ def calculate_transshipment_flow(flow_type, tranData, schedule):
         tranSchedule['Arrival'] = tranSchedule.apply(lambda x: filterDayOfWeek(x.Arrival), axis=1)
 
     # Summing containers per arrival/departure time
+    if CG:
+        tranSchedule['Containers'] = 1
     tranSum = tranSchedule.groupby(['Arrival'])['Containers'].sum()
 
     return sort(tranSum)
@@ -145,16 +148,16 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     totalExport_inFlow = shift_time_series(totalExport_outFlow, -48)
     totalImport_outFlow = shift_time_series(totalImport_inFlow, 48)
     # Visualise
-    # visualise_flow('Import', totalImport_inFlow, totalImport_outFlow)
-    # visualise_flow('Export', totalExport_inFlow, totalImport_outFlow)
+    visualise_flow('Import', totalImport_inFlow, totalImport_outFlow)
+    visualise_flow('Export', totalExport_inFlow, totalImport_outFlow)
 
     totalNormal_inFlow = add_series(exportNormals_inFlow, importNormals_inFlow)
     totalReefer_inFlow = add_series(importReefer_inFlow, exportReefer_inFlow)
     totalNormal_outFlow = add_series(exportNormals_outFlow, importNormals_outFlow)
     totalReefer_outFlow = add_series(exportReefer_outFlow, importReefer_outFlow)
     # Visualise
-    # visualise_flow('Normal', totalImport_inFlow, totalImport_outFlow)
-    # visualise_flow('Reefer', totalNormal_outFlow, totalReefer_outFlow)
+    visualise_flow('Normal', totalImport_inFlow, totalImport_outFlow)
+    visualise_flow('Reefer', totalNormal_outFlow, totalReefer_outFlow)
 
     # Transhipments
     transhipments_inFlow = calculate_transshipment_flow('inflow', tranNormal, schedule) + calculate_transshipment_flow(
@@ -200,13 +203,13 @@ def visualise_occupancy(title, capacity, inflow, outflow):
     occupancy = occupancy.to_frame()
     occupancy['Date'] = occupancy.index
     occupancy['Date'] = pd.to_datetime(occupancy['Date']).astype(np.int64)
-    occupancy['Date'] = (occupancy['Date']-1678492800000000000)/3600000000000
+    occupancy['Date'] = (occupancy['Date'] - 1678492800000000000) / 3600000000000
     occupancy = occupancy.rename(columns={0: 'Occurrences'})
 
     # Fill up missing hours
     occupancy = occupancy.set_index(occupancy['Date'])
     occupancy = occupancy.drop(['Date'], axis=1)
-    occupancy = occupancy.reindex(np.arange(occupancy.index[-1]+1), fill_value=0)
+    occupancy = occupancy.reindex(np.arange(occupancy.index[-1] + 1), fill_value=0)
     occupancy = occupancy.replace(0.00000).ffill()
 
     # Visualise
@@ -217,12 +220,13 @@ def visualise_occupancy(title, capacity, inflow, outflow):
     plt.show()
 
     # Find distribution
-    # date = occupancy.index
-    # f = Fitter(date,distributions='tukeylambda', bins=50)  # distributions parameter weglaten om alle mogelijke te proberen
-    # f.fit()
-    # print(f.summary())
-    # print(f.get_best(method='sumsquare_error'))
-    # plt.show()
+    date = occupancy.index
+    f = Fitter(date, distributions='tukeylambda',
+               bins=50)  # distributions parameter weglaten om alle mogelijke te proberen
+    f.fit()
+    print(f.summary())
+    print(f.get_best(method='sumsquare_error'))
+    plt.show()
 
     # if DAY_BASED:
     #     plt.xticks(np.arange(len(SORTED_WEEKDAYS)), SORTED_WEEKDAYS)
@@ -232,6 +236,8 @@ def visualise_occupancy(title, capacity, inflow, outflow):
     # plt.xlabel('Date')
     # plt.legend()
     # plt.show()
+
+
 def visualise_innerInterval(total_Flow, type):
     resulting = pd.Series()
     previous_index = 0
@@ -250,7 +256,7 @@ def visualise_innerInterval(total_Flow, type):
     timedelta_hours_sorted = pd.Series(np.sort(timedelta))
 
     # Bereken de cumulatieve frequenties en normeer ze tot een CDF
-    cdf = pd.Series(np.cumsum(np.ones_like(timedelta_hours_sorted)) )
+    cdf = pd.Series(np.cumsum(np.ones_like(timedelta_hours_sorted)))
     df = pd.concat({'Time': timedelta_hours_sorted, 'CDF': cdf}, axis=1)
     df
     if HIST:
@@ -328,12 +334,14 @@ def visualise_cg_size(localExport, localExportReefer, localImport, localImportRe
 
     # Distribution
     res = np.array(list(res.items()))
-    f = Fitter(res,xmax=100, distributions=['skewcauchy'],bins=100) # distributions parameter weglaten om alle mogelijke te proberen
+    f = Fitter(res, xmax=100, distributions=['skewcauchy'],
+               bins=100)  # distributions parameter weglaten om alle mogelijke te proberen
     f.fit()
     print(f.summary())
     print(f.get_best(method='sumsquare_error'))
     print(f.fitted_param['skewcauchy'])
     plt.show()
+
 
 def visualise_service_time(tranNormal, tranReefer, schedule):
     # Convert the schedule dataframe to minutes starting with MO 00:00 as 0
@@ -353,7 +361,7 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
         tranNormal[y] = np.where(tranNormal[y] != 0, tranNormal[y] - schedule.loc[y]['Arrival'], 0)
         tranNormal[y] = np.where(tranNormal[y] < 0, tranNormal[y] + 10080, tranNormal[y])
     tranNormal = tranNormal.T
-    tranNormal = tranNormal/60
+    tranNormal = tranNormal / 60
 
     # Calculate occurrences of every service time
     service_times_normal = [Counter(tranNormal.stack())]
@@ -373,6 +381,13 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     plt.show()
 
     # Find distribution
+    # service_time = res_normal["Service time (hours)"].values
+    # f = Fitter(service_time,
+    #            distributions=get_common_distributions())  # distributions parameter weglaten om alle mogelijke te proberen
+    # f.fit()
+    # print(f.summary())
+    # print(f.get_best(method='sumsquare_error'))
+    # plt.show()
     service_time = res_normal["Service time (hours)"].values
     f = Fitter(service_time,
                )  # distributions parameter weglaten om alle mogelijke te proberen
@@ -380,6 +395,3 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     print(f.summary())
     print(f.get_best(method='sumsquare_error'))
     plt.show()
-
-
-
