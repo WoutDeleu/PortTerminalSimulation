@@ -241,6 +241,8 @@ def visualise_occupancy(title, capacity, inflow, outflow):
 def visualise_innerInterval(total_Flow, type):
     resulting = pd.Series()
     previous_index = 0
+
+
     for index, value in total_Flow.items():
         if previous_index != 0:
             if math.isnan(value) != True:
@@ -333,14 +335,14 @@ def visualise_cg_size(localExport, localExportReefer, localImport, localImportRe
     plt.show()
 
     # Distribution
-    res = np.array(list(res.items()))
-    f = Fitter(res, xmax=100, distributions=['skewcauchy'],
-               bins=100)  # distributions parameter weglaten om alle mogelijke te proberen
-    f.fit()
-    print(f.summary())
-    print(f.get_best(method='sumsquare_error'))
-    print(f.fitted_param['skewcauchy'])
-    plt.show()
+    # res = np.array(list(res.items()))
+    # f = Fitter(res, xmax=100, distributions=['skewcauchy'],
+    #            bins=100)  # distributions parameter weglaten om alle mogelijke te proberen
+    # f.fit()
+    # print(f.summary())
+    # print(f.get_best(method='sumsquare_error'))
+    # print(f.fitted_param['skewcauchy'])
+    # plt.show()
 
 
 def visualise_service_time(tranNormal, tranReefer, schedule):
@@ -388,10 +390,10 @@ def visualise_service_time(tranNormal, tranReefer, schedule):
     # print(f.summary())
     # print(f.get_best(method='sumsquare_error'))
     # plt.show()
-    service_time = res_normal["Service time (hours)"].values
-    f = Fitter(service_time,
-               )  # distributions parameter weglaten om alle mogelijke te proberen
-    f.fit()
-    print(f.summary())
-    print(f.get_best(method='sumsquare_error'))
-    plt.show()
+    # service_time = res_normal["Service time (hours)"].values
+    # f = Fitter(service_time,
+    #            )  # distributions parameter weglaten om alle mogelijke te proberen
+    # f.fit()
+    # print(f.summary())
+    # print(f.get_best(method='sumsquare_error'))
+    # plt.show()

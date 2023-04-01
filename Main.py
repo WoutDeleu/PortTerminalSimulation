@@ -2,6 +2,7 @@ import os
 
 from Data.DataParser import parse_data
 from Simulation import simulate
+from Visualisation import visualise_data
 
 
 def load_data(folder):
