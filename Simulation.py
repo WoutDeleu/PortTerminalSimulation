@@ -32,7 +32,6 @@ def simulate(data):
         d = get_arrival_or_departure_point_sample(data['BerthingPositions'])
         e = get_arrival_or_departure_point_sample(data['BerthingPositions'])
         container_groups.append(ContainerGroup(a, b, time, c, d, e))  # New container arrived
-    print(container_groups[0])
 
 
 def get_inter_arrival_time_sample():
