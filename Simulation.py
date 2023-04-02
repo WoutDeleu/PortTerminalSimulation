@@ -12,13 +12,20 @@ import seaborn as sns
 class Simulation:
     def __int__(self, data):
         self.data = data
+
+        self.rejected_groups = 0
+        self.rejected_per_type = {'reefer':0, 'normal':0}
+
+        self.total_travel_distance = 0
+        self.served_containers = 0
+
         yard_block_list = data['YARDSTORAGEBLOCKS'].astype({'Capacity': 'int'}).values.tolist()
         self.yard_blocks = []
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], 0, Position(x[4], x[5])))
 
     def simulate(self):
-        period = 1
+        period = 12
         period_in_hours = period * 24 * 30
         self.fifo(period_in_hours, self.data)
 
@@ -34,6 +41,8 @@ class Simulation:
             # Add to closest yarblock
             closest_block = self.get_closest_feasible_yardblock(new_containergroup)
             if closest_block is None:
+                self.rejected_groups += 1
+                self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
                 print(f'Rejected containergroup ({new_containergroup.__str__()})')
             else:
                 self.add_container_to_block(new_containergroup, closest_block)
@@ -82,13 +91,17 @@ class Simulation:
             return True
         if group_type == 'normal' and block_type == 'FULL':
             return True
+        if block_type == 'MIX':
+            return True
         else:
             return False
     def add_container_to_block(self, container_group: ContainerGroup, block: YardBlock):
+        self.total_travel_distance += block.position.calculate_distance(container_group.arrival_point)
         block.occupation += container_group.number_of_containers
         container_group.yard_block = block
 
     def remove_container_from_block(self, container_group: ContainerGroup, block: YardBlock):
+        self.total_travel_distance += block.position.calculate_distance(container_group.departure_point)
         block.occupation -= container_group.number_of_containers
         container_group.yard_block = None
 
