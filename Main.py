@@ -1,7 +1,8 @@
 import os
 
 from Data.DataParser import parse_data
-from Simulation import simulate
+from Simulation import Simulation
+
 from Visualisation import visualise_data
 
 
@@ -17,6 +18,8 @@ def load_data(folder):
 
 data = load_data('./Data/')
 # visualise_data(data)
-simulate(data)
+sim = Simulation()
+sim.__int__(data)
+sim.simulate()
 
 
