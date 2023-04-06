@@ -1,5 +1,6 @@
 class ContainerGroup:
-    def __init__(self, container_type, number_of_containers, arrival_time, service_time, arrival_point, departure_point):
+    def __init__(self, container_type, number_of_containers, arrival_time, service_time, arrival_point,
+                 departure_point):
         self.yard_block = None
         self.container_type = container_type
         self.number_of_containers = number_of_containers
@@ -15,3 +16,6 @@ class ContainerGroup:
         return f"Type: {self.container_type} | Number_of_containers: {self.number_of_containers} |" \
                f" Arrival_time: {self.arrival_time} | Service_time: {self.service_time} |" \
                f" Arrival_point: {self.arrival_point} | Departure_point: {self.departure_point}"
+
+    def getFinishTime(self):
+        return self.arrival_time + self.service_time
