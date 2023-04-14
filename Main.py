@@ -3,19 +3,36 @@ import os
 import pandas as pd
 from progress.bar import Bar
 
-from Data.DataParser import parse_data
+from Data.DataParser import parse_data, array_to_string
 from Simulation import Simulation
 
-AMOUNT_SIMULATIONS = 1
+AMOUNT_SIMULATIONS = 200
+
+# LATEX formats table to copy paste in Latex-doc
+LATEX = False
+OVERVIEW = True
 
 
-def show_result(title, stats_fifo, LATEX=False, OVERVIEW=True):
+def format_stats(stats):
     names = []
     avg = []
-    for col in stats_fifo.columns:
+    for col in stats.columns:
         names.append(col)
-        avg.append(stats_fifo[col].mean())
+        if col == 'Max_Occupancy' or col == 'AVG_Daily_Individual_Occupancy':
+            tmp_serie = []
+            for i in range(len(stats[col].iloc[0])):
+                tmp_avg = 0
+                for row in stats[col]:
+                    tmp_avg += row[i]
+                tmp_serie.append(tmp_avg / len(stats[col]))
+            avg.append(array_to_string(tmp_serie))
+        else:
+            avg.append(str(stats[col].mean()))
+    return names, avg
 
+
+def show_result(title, stats):
+    names, avg = format_stats(stats)
     print("*********************** " + title + " ***********************")
     print()
     if LATEX:
@@ -26,19 +43,21 @@ def show_result(title, stats_fifo, LATEX=False, OVERVIEW=True):
     print("****************************************************")
 
 
+# prints stats of the simulation in overview
 def print_stats(colnames, values):
     mean_series = pd.Series(values)
     for name, value in zip(colnames, mean_series):
-        print(f"{name}: average = {value:.2f}")
+        print(f"{name}: average = {value}")
 
 
+# formats table to copy paste in Latex-doc
 def print_stats_latex(colnames, values):
     mean_series = pd.Series(values)
     # Creëer de Latex-tabel
     latex_table = "\\begin{tabular}{|c|c|}\n\\hline\n"
     for name, value in zip(colnames, mean_series):
         # Voeg de kolomnaam en gemiddelde waarde toe als een rij in de tabel
-        latex_table += f"{name} & {value:.2f} \\\\ \\hline\n"
+        latex_table += f"{name} & {value} \\\\ \\hline\n"
     latex_table += "\\end{tabular}"
 
     # Print de Latex-tabel
@@ -65,10 +84,10 @@ stats_fifo = pd.DataFrame(
 
 i = 1
 # Progressbar - Only when using emulate in prompt
-with Bar('Processing', fill='#', max=AMOUNT_SIMULATIONS) as bar:
+with Bar('Simulating...', fill='#', max=AMOUNT_SIMULATIONS) as bar:
     while i <= AMOUNT_SIMULATIONS:
         sim = Simulation(data)
-        sim.simulate_fifo()
+        sim.fifo()
         stats_fifo = pd.concat(
             [stats_fifo,
              pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
@@ -83,5 +102,5 @@ with Bar('Processing', fill='#', max=AMOUNT_SIMULATIONS) as bar:
         bar.next()
         i += 1
 print('\n')
-show_result('FIFO', stats_fifo, LATEX=False, OVERVIEW=True)
+show_result('FIFO', stats_fifo)
 # print('\n\n\n\n')

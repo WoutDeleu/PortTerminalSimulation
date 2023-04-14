@@ -6,6 +6,7 @@ class YardBlock:
         self.capacity = capacity
         self.amount_containers = 0
         self.position = position
+        self.max_daily_occupancy = [0]
 
     def __str__(self):
         return f"Name: {self.name} | Container_type: {self.container_type} | Flow_type: {self.flow_type} | " \
@@ -22,5 +23,22 @@ class YardBlock:
             return 1
         return self.amount_containers / self.capacity
 
+    def update_daily_occupancy(self, day_counter):
+        # Check if there is already an entry for the current day
+        if day_counter < len(self.max_daily_occupancy):
+            # If there is an entry for the current day, check if the current occupancy is higher than the current entry
+            if self.getOccupancy() > self.max_daily_occupancy[day_counter]:
+                # If it is greater, update the value
+                self.max_daily_occupancy[day_counter] = self.getOccupancy()
+        else:
+            # If there is no entry for that day, the occupancy needs to be updated
+            self.max_daily_occupancy.append(self.getOccupancy())
+
     def hasSpace(self, number_of_containers):
         return number_of_containers + self.amount_containers <= self.capacity
+
+    def get_max_occupation(self):
+        return max(self.max_daily_occupancy)
+
+    def get_avg_occupation(self):
+        return sum(self.max_daily_occupancy) / len(self.max_daily_occupancy)

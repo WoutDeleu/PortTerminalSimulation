@@ -66,6 +66,16 @@ def generate_dict(index_array):
     return result_dict
 
 
+def array_to_string(arr):
+    s = '['
+    for e in arr:
+        s += str(e)
+        s += ', '
+    s = s[:-2]
+    s += ']'
+    return s
+
+
 def sort(serie):
     if DAY_BASED:
         return sort_by_day(serie)

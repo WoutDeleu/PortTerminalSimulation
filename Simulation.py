@@ -7,6 +7,9 @@ from ContainerGroup import ContainerGroup
 from Position import Position
 from YardBlock import YardBlock
 
+SIMULATION_MONTHS = 12
+SIMULATION_HOURS = SIMULATION_MONTHS * 24 * 30
+
 
 def get_inter_arrival_time_sample():
     return round(scipyst.expon.rvs(scale=3, loc=0))
@@ -40,18 +43,13 @@ def check_type(group_type, block_type):
         return False
 
 
-def generate_new_containergroup(arrival_time, berthingPositions):
-    container_type = get_container_type_sample()
-    group_size = get_number_of_containers_sample()
-    service_time = get_service_time_sample()
-    arrival_point = get_arrival_or_departure_point_sample(berthingPositions)
-    departure_point = get_arrival_or_departure_point_sample(berthingPositions)
-
-    return ContainerGroup(container_type, group_size, arrival_time, service_time, arrival_point, departure_point)
-
-
 class Simulation:
     def __init__(self, data):
+        # Simulation variables - time
+        self.time = 0
+        self.day_counter = 0
+        self.day_clock = 0
+
         self.data = data
 
         self.total_containers = 0
@@ -72,24 +70,17 @@ class Simulation:
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], Position(x[4], x[5])))
 
-    def simulate_fifo(self):
-        period_months = 12
-        period_in_hours = period_months * 24 * 30
-        self.fifo(period_in_hours, self.data)
-
-    def fifo(self, period_in_hours, data):
+    def fifo(self):
         # Variables to get daily statistics
-        day_clock = 0
-
-        time = 0  # Simulation clock
+        self.day_clock = 0
+        self.day_counter = 0
+        self.time = 0  # Simulation clock
         # List of all container groups in the yard block
         container_groups = []
-        while time < period_in_hours:  # Stop the simulation after the given period
-            # Todo: find better sampling distributions (current ones are representative but probably not the best)
-            time += get_inter_arrival_time_sample()
-            day_clock += get_inter_arrival_time_sample()
+        while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
+            self.update_time()
             # new container group
-            new_containergroup = generate_new_containergroup(time, data['BerthingPositions'])
+            new_containergroup = self.generate_new_containergroup()
             # Update statistics
             self.total_containers += new_containergroup.number_of_containers
             self.total_GC += 1
@@ -107,16 +98,21 @@ class Simulation:
 
             # check if the current container groups need to leave (fifo)
             for container_group in container_groups:
-                if time > container_group.getFinishTime():
-                    self.remove_container_from_block(container_group, container_group.yard_block)
+                if self.time > container_group.getFinishTime():
+                    block = container_group.yard_block
+                    self.remove_container_from_block(container_group, block)
                     container_groups.remove(container_group)
                 else:
                     break
 
-        if day_clock >= 24:
-            day_clock -= 24
-            self.average_daily_occupancy_per_YB = self.average_daily_occupancy_per_YB / day_clock
-            self.average_daily_occupancy_total = self.average_daily_occupancy_total / day_clock
+    def generate_new_containergroup(self):
+        container_type = get_container_type_sample()
+        group_size = get_number_of_containers_sample()
+        service_time = get_service_time_sample()
+        arrival_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
+        departure_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
+
+        return ContainerGroup(container_type, group_size, self.time, service_time, arrival_point, departure_point)
 
     def get_closest_feasible_yardblock(self, container_group: ContainerGroup):
         feasible_yardblocks = self.find_feasible_yarblocks(container_group)
@@ -143,27 +139,42 @@ class Simulation:
     def add_container_to_block(self, container_group: ContainerGroup, block: YardBlock):
         self.total_travel_distance_containers += block.position.calculate_distance(container_group.arrival_point)
         block.addContainers(container_group.number_of_containers)
+        block.update_daily_occupancy(self.day_counter)
         container_group.yard_block = block
 
     def remove_container_from_block(self, container_group: ContainerGroup, block: YardBlock):
         self.total_travel_distance_containers += block.position.calculate_distance(container_group.departure_point)
         block.removeContainers(container_group.number_of_containers)
+        block.update_daily_occupancy(self.day_counter)
         container_group.yard_block = None
 
     def getAvgTravel_Containers(self):
         return self.total_travel_distance_containers / self.total_containers
 
     def getMaxOccupancy(self):
-        max_occupation = 0
+        max_occupation = []
         for block in self.yard_blocks:
-            if block.getOccupancy() > max_occupation:
-                max_occupation = block.getOccupancy()
+            max_occupation.append(block.get_max_occupation())
         return max_occupation
 
     def getAvgOccupancy_individual(self):
-        # todo - methode hiervoor
-        return 0
+        avg_occupancy_individual = []
+        for block in self.yard_blocks:
+            avg_occupancy_individual.append(block.get_avg_occupation())
+        return avg_occupancy_individual
 
     def getDailyTotalOccupancy(self):
-        # todo
-        return 0
+        avg_occupancy_individual = self.getAvgOccupancy_individual()
+        return sum(avg_occupancy_individual) / len(avg_occupancy_individual)
+
+    def update_time(self):
+        # Todo: find better sampling distributions (current ones are representative but probably not the best)
+        old_time = self.time
+        self.time += get_inter_arrival_time_sample()
+        self.day_clock += self.time - old_time
+
+        if self.day_clock >= 24:
+            self.day_clock -= 24
+            self.day_counter += 1
+            for b in self.yard_blocks:
+                b.update_daily_occupancy(self.day_counter)
