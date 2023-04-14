@@ -60,7 +60,8 @@ def format_yb_table(data):
     for i in range(num_tables):
         start_index = i * 9
         end_index = min(start_index + 9, num_columns)
-        latex_table = '\\begin{tabular}{|' + '|'.join(['c'] * (end_index - start_index)) + '|}\n'
+        latex_table = '\\begin{table}[h]\n\\centering\n\\begin{tabular}{|' + '|'.join(
+            ['c'] * (end_index - start_index)) + '|}\n'
         latex_table += '\\hline\n'
         for j in range(start_index + 1, end_index + 1):
             latex_table += 'YB' + str(j) + ' & '
@@ -70,7 +71,7 @@ def format_yb_table(data):
             latex_table += values[k].strip() + ' & '
         latex_table = latex_table.rstrip('& ') + '\\\\\n'
         latex_table += '\\hline\n'
-        latex_table += '\\end{tabular}'
+        latex_table += '\\end{tabular}\n\\caption{...}\n\\end{table}'
         latex_tables.append(latex_table)
     return latex_tables
 
@@ -78,7 +79,7 @@ def format_yb_table(data):
 def print_stats_latex(colnames, values):
     mean_series = pd.Series(values)
     # Creëer de Latex-tabel
-    latex_table = "\\begin{tabular}{|c|c|}\n\\hline\n"
+    latex_table = "\\begin{table}[h]\n\\centering\n\\begin{tabular}{|c|c|}\n\\hline\n"
     for name, value in zip(colnames, mean_series):
         # Voeg de kolomnaam en gemiddelde waarde toe als een rij in de tabel
         if name == 'Max_Occupancy':
@@ -87,7 +88,7 @@ def print_stats_latex(colnames, values):
             avg_daily_occ_latex = format_yb_table(value)
         else:
             latex_table += f"{name} & {value} \\\\ \\hline\n"
-    latex_table += "\\end{tabular}"
+    latex_table += "\\end{tabular}\n\\caption{...}\n\\end{table}"
 
     # Print de Latex-tabel
     print(latex_table)
