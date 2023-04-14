@@ -84,7 +84,8 @@ stats_fifo = pd.DataFrame(
 
 i = 1
 # Progressbar - Only when using emulate in prompt
-with Bar('Simulating...', fill='#', max=AMOUNT_SIMULATIONS) as bar:
+with Bar('Simulating', fill='#', empty_fill='.', bar_prefix=' [',
+         bar_suffix='] ', max=AMOUNT_SIMULATIONS) as bar:
     while i <= AMOUNT_SIMULATIONS:
         sim = Simulation(data)
         sim.fifo()
