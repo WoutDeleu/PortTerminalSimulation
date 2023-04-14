@@ -14,7 +14,7 @@ class ContainerGroup:
         self.yard_block = yard_block
 
     def __str__(self):
-        return f"Flowtype: {self.container_flowtype} |Type: {self.container_type} | Number_of_containers: "\
+        return f"Flowtype: {self.container_flowtype} | Type: {self.container_type} | Number_of_containers: "\
                f"{self.number_of_containers} | Arrival_time: {self.arrival_time} | Service_time: {self.service_time} |"\
                f" Arrival_point: {self.arrival_point} | Departure_point: {self.departure_point}"
 

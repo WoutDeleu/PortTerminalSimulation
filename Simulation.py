@@ -86,6 +86,7 @@ class Simulation:
             self.update_time()
             # new container group
             new_containergroup = self.generate_new_containergroup()
+            print(new_containergroup)
             # Update statistics
             self.total_containers += new_containergroup.number_of_containers
             self.total_GC += 1
@@ -164,8 +165,10 @@ class Simulation:
         block.update_daily_occupancy(self.day_counter)
         container_group.yard_block = None
 
+
     def getAvgTravel_Containers(self):
         return self.total_travel_distance_containers / self.total_containers
+
 
     def getMaxOccupancy(self):
         max_occupation = []
