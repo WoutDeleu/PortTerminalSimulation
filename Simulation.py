@@ -75,30 +75,34 @@ class Simulation:
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], Position(x[4], x[5])))
 
-    def fifo(self):
+    def fifo(self, arrival_based=False, departue_based=False):
         # Variables to get daily statistics
         self.day_clock = 0
         self.day_counter = 0
-        self.time = 0  # Simulation clock
-        # List of all container groups in the yard block
+        # Simulation clock
+        self.time = 0
+
+        # List of all container groups in the yard blocks
         container_groups = []
         while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
             self.update_time()
             # new container group
             new_containergroup = self.generate_new_containergroup()
-            print(new_containergroup)
             # Update statistics
             self.total_containers += new_containergroup.number_of_containers
             self.total_GC += 1
 
             # Add to closest yarblock
-            closest_block = self.get_closest_feasible_yardblock(new_containergroup)
+            closest_block = self.get_closest_yb(new_containergroup, arrival_based=arrival_based,
+                                                departure_based=departue_based)
             if closest_block is None:
+                # No space for the container group
                 self.rejected_groups += 1
                 self.rejected_contianers += new_containergroup.number_of_containers
                 self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
                 print(f'Rejected containergroup ({str(new_containergroup)})')
             else:
+                # Add the container group to the closest block
                 self.add_container_to_block(new_containergroup, closest_block)
                 container_groups.append(new_containergroup)  # container group served
 
@@ -108,37 +112,45 @@ class Simulation:
                     block = container_group.yard_block
                     self.remove_container_from_block(container_group, block)
                     container_groups.remove(container_group)
-                else:
-                    break
 
     def generate_new_containergroup(self):
         container_flowtype = get_container_flow_type()
         container_type = get_container_type_sample()
         group_size = get_number_of_containers_sample()
-        service_time = get_service_time_sample()
 
         if container_flowtype == "import":
             arrival_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
             departure_point = get_arrival_or_departure_point_sample(self.data['TruckParkingLocations'])
+            service_time = 48
         else:
             export_type = random.choices(["export", "transshipment"], weights=[25, 50], k=1)[0]
             if export_type == "export":
                 arrival_point = get_arrival_or_departure_point_sample(self.data['TruckParkingLocations'])
                 departure_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
+                service_time = 48
             else:
                 arrival_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
                 departure_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
+                service_time = get_service_time_sample()
 
-        return ContainerGroup(container_flowtype, container_type, group_size, self.time, service_time, arrival_point, departure_point)
+        return ContainerGroup(container_flowtype, container_type, group_size, self.time, service_time, arrival_point,
+                              departure_point)
 
-    def get_closest_feasible_yardblock(self, container_group: ContainerGroup):
+    def get_closest_yb(self, container_group: ContainerGroup, arrival_based=False, departure_based=True):
         feasible_yardblocks = self.find_feasible_yarblocks(container_group)
         if len(feasible_yardblocks) == 0:
             return None
 
         closest_block = feasible_yardblocks[0]
         for block in feasible_yardblocks:
-            distance = block.position.calculate_distance(container_group.arrival_point)
+            assert not (
+                    not arrival_based and not departure_based), "arrival_based and departure_based cannot be false at the same time"
+            if arrival_based:
+                assert not departure_based, "arrival_based and departure_based cannot be true at the same time"
+                distance = block.position.calculate_distance(container_group.arrival_point)
+            if departure_based:
+                assert not departure_based, "arrival_based and departure_based cannot be true at the same time"
+                distance = block.position.calculate_distance(container_group.departure_point)
             if distance < closest_block.position.calculate_distance(container_group.arrival_point):
                 closest_block = block
 
@@ -165,10 +177,8 @@ class Simulation:
         block.update_daily_occupancy(self.day_counter)
         container_group.yard_block = None
 
-
     def getAvgTravel_Containers(self):
         return self.total_travel_distance_containers / self.total_containers
-
 
     def getMaxOccupancy(self):
         max_occupation = []
