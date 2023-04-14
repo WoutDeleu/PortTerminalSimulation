@@ -32,6 +32,11 @@ def get_arrival_or_departure_point_sample(df):
     return Position(row['X_coord'].values[0], row['Y_coord'].values[0])
 
 
+def get_container_flow_type():
+    return random.choices(["import", "export"], weights=[25, 75], k=1)[0]
+    # Transshipment's fall under export (say 50% of cargo groups are transshipment's)
+
+
 def check_type(group_type, block_type):
     if group_type.lower() == block_type.lower():
         return True
@@ -106,13 +111,24 @@ class Simulation:
                     break
 
     def generate_new_containergroup(self):
+        container_flowtype = get_container_flow_type()
         container_type = get_container_type_sample()
         group_size = get_number_of_containers_sample()
         service_time = get_service_time_sample()
-        arrival_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
-        departure_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
 
-        return ContainerGroup(container_type, group_size, self.time, service_time, arrival_point, departure_point)
+        if container_flowtype == "import":
+            arrival_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
+            departure_point = get_arrival_or_departure_point_sample(self.data['TruckParkingLocations'])
+        else:
+            export_type = random.choices(["export", "transshipment"], weights=[25, 50], k=1)[0]
+            if export_type == "export":
+                arrival_point = get_arrival_or_departure_point_sample(self.data['TruckParkingLocations'])
+                departure_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
+            else:
+                arrival_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
+                departure_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
+
+        return ContainerGroup(container_flowtype, container_type, group_size, self.time, service_time, arrival_point, departure_point)
 
     def get_closest_feasible_yardblock(self, container_group: ContainerGroup):
         feasible_yardblocks = self.find_feasible_yarblocks(container_group)
