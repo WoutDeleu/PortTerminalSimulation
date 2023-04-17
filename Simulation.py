@@ -98,9 +98,8 @@ class Simulation:
             if closest_block is None:
                 # No space for the container group
                 self.rejected_groups += 1
-                self.rejected_contianers += new_containergroup.number_of_containers
+                self.rejected_containers += new_containergroup.number_of_containers
                 self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
-                print(f'Rejected containergroup ({str(new_containergroup)})')
             else:
                 # Add the container group to the closest block
                 self.add_container_to_block(new_containergroup, closest_block)

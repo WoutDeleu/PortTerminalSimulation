@@ -4,12 +4,13 @@ import pandas as pd
 from progress.bar import Bar
 
 from Data.DataParser import parse_data, array_to_string
+from GUI import startGUI
 from Simulation import Simulation
 
 AMOUNT_SIMULATIONS = 10
 
 # LATEX formats table to copy paste in Latex-doc
-LATEX = True
+LATEX = False
 OVERVIEW = True
 
 
@@ -124,6 +125,7 @@ def simulate_fifo_closest_departure(stats_fifo, data):
 
 
 def main():
+    startGUI()
     data = load_data('./Data/')
     # visualise_data(data)
     stats_fifo = pd.DataFrame(
@@ -141,7 +143,7 @@ def main():
             i += 1
     print('\n')
     show_result('FIFO', stats_fifo)
-    # print('\n\n\n\n')
+
 
 
 if __name__ == '__main__':
