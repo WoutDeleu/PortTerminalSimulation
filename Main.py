@@ -40,7 +40,6 @@ def show_result(title, stats):
     if OVERVIEW:
         print_stats(names, avg)
     print()
-    print("****************************************************")
 
 
 # prints stats of the simulation in overview
@@ -68,7 +67,7 @@ def format_yb_table(data):
         latex_table = latex_table.rstrip("& ") + "\\\\\n"
         latex_table += "\\hline\n"
         for k in range(start_index, end_index):
-            latex_table += values[k].strip() + " & "
+            latex_table += str(round(float(values[k].strip()), 2)) + " & "
         latex_table = latex_table.rstrip("& ") + "\\\\\n"
         latex_table += "\\hline\n"
         latex_table += "\\end{tabular}\n\\caption{...}\n\\end{table}"
@@ -92,8 +91,10 @@ def print_stats_latex(colnames, values):
     latex_table += "\\end{tabular}\n\\caption{...}\n\\end{table}"
 
     # Print de Latex-tabel
+    print("*********************** AVG occ ***********************")
     for s in avg_occ_latex:
         print(s)
+    print("*********************** AVG daily occ ***********************")
     for s in avg_daily_occ_latex:
         print(s)
     print(latex_table)

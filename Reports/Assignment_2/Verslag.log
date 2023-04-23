@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  23 APR 2023 20:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  23 APR 2023 21:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -298,22 +298,32 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 38.
  [2] [3{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Overfull \hbox (288.4184pt too wide) in paragraph at lines 121--128
- [][] 
- []
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (320.22404pt too wide) in paragraph at lines 132--139
- [][] 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (588.00266pt too wide) in paragraph at lines 143--150
- [][] 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (456.61336pt too wide) in paragraph at lines 154--161
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 243--250
  [][] 
  []
 
@@ -321,7 +331,7 @@ Overfull \hbox (456.61336pt too wide) in paragraph at lines 154--161
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (481.61343pt too wide) in paragraph at lines 165--172
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 254--261
  [][] 
  []
 
@@ -329,7 +339,7 @@ Overfull \hbox (481.61343pt too wide) in paragraph at lines 165--172
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (623.00276pt too wide) in paragraph at lines 176--183
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 265--272
  [][] 
  []
 
@@ -337,7 +347,7 @@ Overfull \hbox (623.00276pt too wide) in paragraph at lines 176--183
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (544.80807pt too wide) in paragraph at lines 187--194
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 276--283
  [][] 
  []
 
@@ -345,7 +355,7 @@ Overfull \hbox (544.80807pt too wide) in paragraph at lines 187--194
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (593.00267pt too wide) in paragraph at lines 198--205
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 287--294
  [][] 
  []
 
@@ -353,223 +363,7 @@ Overfull \hbox (593.00267pt too wide) in paragraph at lines 198--205
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (335.22409pt too wide) in paragraph at lines 209--216
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (335.22409pt too wide) in paragraph at lines 220--227
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (501.6135pt too wide) in paragraph at lines 231--238
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (569.80815pt too wide) in paragraph at lines 242--249
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (511.61353pt too wide) in paragraph at lines 253--260
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (423.41881pt too wide) in paragraph at lines 264--271
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (564.80814pt too wide) in paragraph at lines 275--282
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (618.00275pt too wide) in paragraph at lines 286--293
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (368.41864pt too wide) in paragraph at lines 297--304
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (233.2516pt too wide) in paragraph at lines 308--315
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (428.41882pt too wide) in paragraph at lines 319--326
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (340.2241pt too wide) in paragraph at lines 330--337
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (658.00287pt too wide) in paragraph at lines 341--348
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (501.6135pt too wide) in paragraph at lines 352--359
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (541.61362pt too wide) in paragraph at lines 363--370
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (713.00304pt too wide) in paragraph at lines 374--381
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (599.80824pt too wide) in paragraph at lines 385--392
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (690.78072pt too wide) in paragraph at lines 396--403
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (370.2242pt too wide) in paragraph at lines 407--414
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (375.22421pt too wide) in paragraph at lines 418--425
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (539.94685pt too wide) in paragraph at lines 429--436
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (600.36374pt too wide) in paragraph at lines 440--447
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (552.16914pt too wide) in paragraph at lines 451--458
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (458.41891pt too wide) in paragraph at lines 462--469
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (629.80833pt too wide) in paragraph at lines 473--480
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (658.00287pt too wide) in paragraph at lines 484--491
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (501.6135pt too wide) in paragraph at lines 495--502
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (238.25162pt too wide) in paragraph at lines 506--513
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 298--305
  [][] 
  []
 
@@ -583,7 +377,37 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (118.83453pt too wide) in paragraph at lines 548--555
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 442--449
  [][] 
  []
 
@@ -591,7 +415,7 @@ Overfull \hbox (118.83453pt too wide) in paragraph at lines 548--555
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (183.83473pt too wide) in paragraph at lines 559--566
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 453--460
  [][] 
  []
 
@@ -599,7 +423,7 @@ Overfull \hbox (183.83473pt too wide) in paragraph at lines 559--566
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (183.83473pt too wide) in paragraph at lines 570--577
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 464--471
  [][] 
  []
 
@@ -607,7 +431,7 @@ Overfull \hbox (183.83473pt too wide) in paragraph at lines 570--577
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (193.83476pt too wide) in paragraph at lines 581--588
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 475--482
  [][] 
  []
 
@@ -615,7 +439,7 @@ Overfull \hbox (193.83476pt too wide) in paragraph at lines 581--588
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (257.0294pt too wide) in paragraph at lines 592--599
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 486--493
  [][] 
  []
 
@@ -623,31 +447,7 @@ Overfull \hbox (257.0294pt too wide) in paragraph at lines 592--599
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (393.41872pt too wide) in paragraph at lines 603--610
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (461.61337pt too wide) in paragraph at lines 614--621
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (368.41864pt too wide) in paragraph at lines 625--632
- [][] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (188.83475pt too wide) in paragraph at lines 636--643
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 497--504
  [][] 
  []
 
@@ -661,7 +461,40 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (29.25092pt too wide) in paragraph at lines 669--676
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 656--663
  [][] 
  []
 
@@ -669,24 +502,32 @@ Overfull \hbox (29.25092pt too wide) in paragraph at lines 669--676
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (29.25092pt too wide) in paragraph at lines 680--687
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 667--674
  [][] 
  []
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Output loop---100 consecutive dead cycles.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 678--685
+ [][] 
+ []
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Output loop---100 consecutive dead cycles.
 \end@float ...loatpenalty <-\@Mii \penalty -\@Miv 
                                                   \@tempdima \prevdepth \vbo...
-l.688 \end{table}
+l.686 \end{table}
                  
 I've concluded that your \output is awry; it never does a
 \shipout, so I'm shipping \box255 out myself. Next time
 increase \maxdeadcycles if you want me to be more patient!
 
 [4
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \reserved@a ->\@nil 
                     
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -694,20 +535,20 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Use of \@BOOKMARK doesn't match its definition.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Use of \@BOOKMARK doesn't match its definition.
 \@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
                                                   \def \reserved@b {#3}\futu...
-l.688 \end{table}
+l.686 \end{table}
                  
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
 made up of letters only. The macro here has not been
 followed by the required stuff, so I'm ignoring it.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 <argument> \@@BOOKMARK 
                        [1][-]
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -715,10 +556,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Argument of \@float@Hx has an extra }.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Argument of \@float@Hx has an extra }.
 <inserted text> 
                 \par 
-l.688 \end{table}
+l.686 \end{table}
                  
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -729,19 +570,19 @@ your `}' was spurious, just type `2' and it will go away.
 
 Runaway argument?
 [1
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Paragraph ended before \@float@Hx was complete.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Paragraph ended before \@float@Hx was complete.
 <to be read again> 
                    \par 
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \reserved@a ->\@nil 
                     
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -749,28 +590,28 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
 the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
 the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
@@ -778,10 +619,10 @@ the matching `\fi'. I've inserted a `\fi'; this might work.
 
 Runaway text?
 \protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -790,20 +631,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...up \Hy@safe@activestrue \edef \x 
                                                   {\endgroup \def \noexpand ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -811,10 +652,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...noexpand \Hy@tocdestname {#4}}\x 
                                                   \ifx \Hy@tocdestname \ltx@...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -822,10 +663,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                     #4  \errhelp \@err@     ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -833,10 +674,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                   \let \@err@               ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -844,10 +685,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                   \@empty \def \MessageBreak...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -855,17 +696,17 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Extra \or.
 \contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
                                                   \def \Hy@temp {#3}\ifx \Hy...
-l.688 \end{table}
+l.686 \end{table}
                  
 I'm ignoring this; it doesn't match any \if.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                     #4  \errhelp \@err@     ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -873,10 +714,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                   \let \@err@               ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -884,10 +725,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                   \@empty \def \MessageBreak...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -895,10 +736,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                     #4  \errhelp \@err@     ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -906,10 +747,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                   \let \@err@               ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -917,10 +758,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \GenericError  ...                                
                                                   \@empty \def \MessageBreak...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -930,10 +771,10 @@ and I'll forget about whatever was undefined.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -942,10 +783,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -954,10 +795,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -966,10 +807,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -978,10 +819,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -990,10 +831,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1002,10 +843,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1014,10 +855,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1026,20 +867,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \reserved@a ->\@nil 
                     
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1047,20 +888,20 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Use of \@BOOKMARK doesn't match its definition.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Use of \@BOOKMARK doesn't match its definition.
 \@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
                                                   \def \reserved@b {#3}\futu...
-l.688 \end{table}
+l.686 \end{table}
                  
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
 made up of letters only. The macro here has not been
 followed by the required stuff, so I'm ignoring it.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 <argument> \@@BOOKMARK 
                        [1][-]
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1068,10 +909,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Argument of \@float@Hx has an extra }.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Argument of \@float@Hx has an extra }.
 <inserted text> 
                 \par 
-l.688 \end{table}
+l.686 \end{table}
                  
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -1082,19 +923,19 @@ your `}' was spurious, just type `2' and it will go away.
 
 Runaway argument?
 [2
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Paragraph ended before \@float@Hx was complete.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Paragraph ended before \@float@Hx was complete.
 <to be read again> 
                    \par 
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \reserved@a ->\@nil 
                     
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1102,28 +943,28 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
 the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
 the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
@@ -1131,10 +972,10 @@ the matching `\fi'. I've inserted a `\fi'; this might work.
 
 Runaway text?
 \protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1143,20 +984,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...up \Hy@safe@activestrue \edef \x 
                                                   {\endgroup \def \noexpand ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1164,10 +1005,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...noexpand \Hy@tocdestname {#4}}\x 
                                                   \ifx \Hy@tocdestname \ltx@...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1175,19 +1016,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Extra \or.
 \contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
                                                   \def \Hy@temp {#3}\ifx \Hy...
-l.688 \end{table}
+l.686 \end{table}
                  
 I'm ignoring this; it doesn't match any \if.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1196,10 +1037,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1208,20 +1049,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \reserved@a ->\@nil 
                     
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1229,20 +1070,20 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Use of \@BOOKMARK doesn't match its definition.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Use of \@BOOKMARK doesn't match its definition.
 \@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
                                                   \def \reserved@b {#3}\futu...
-l.688 \end{table}
+l.686 \end{table}
                  
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
 made up of letters only. The macro here has not been
 followed by the required stuff, so I'm ignoring it.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 <argument> \@@BOOKMARK 
                        [1][-]
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1250,10 +1091,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Argument of \@float@Hx has an extra }.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Argument of \@float@Hx has an extra }.
 <inserted text> 
                 \par 
-l.688 \end{table}
+l.686 \end{table}
                  
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -1264,19 +1105,19 @@ your `}' was spurious, just type `2' and it will go away.
 
 Runaway argument?
 [2
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Paragraph ended before \@float@Hx was complete.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Paragraph ended before \@float@Hx was complete.
 <to be read again> 
                    \par 
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \reserved@a ->\@nil 
                     
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1284,28 +1125,28 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
 the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
 the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
@@ -1313,10 +1154,10 @@ the matching `\fi'. I've inserted a `\fi'; this might work.
 
 Runaway text?
 \protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1325,20 +1166,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...up \Hy@safe@activestrue \edef \x 
                                                   {\endgroup \def \noexpand ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1346,10 +1187,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...noexpand \Hy@tocdestname {#4}}\x 
                                                   \ifx \Hy@tocdestname \ltx@...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1357,31 +1198,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Extra \or.
 \contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
                                                   \def \Hy@temp {#3}\ifx \Hy...
-l.688 \end{table}
+l.686 \end{table}
                  
 I'm ignoring this; it doesn't match any \if.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
-                 
-I suspect you have forgotten a `}', causing me
-to read past where you wanted me to stop.
-I'll try to recover; but if the error is serious,
-you'd better type `E' or `X' now and fix your file.
-
-Runaway text?
-\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
-<inserted text> 
-                }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1390,20 +1219,32 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.686 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...up \Hy@safe@activestrue \edef \x 
                                                   {\endgroup \def \noexpand ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1411,10 +1252,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...noexpand \Hy@tocdestname {#4}}\x 
                                                   \ifx \Hy@tocdestname \ltx@...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1422,19 +1263,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Extra \or.
 \contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
                                                   \def \Hy@temp {#3}\ifx \Hy...
-l.688 \end{table}
+l.686 \end{table}
                  
 I'm ignoring this; it doesn't match any \if.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1443,10 +1284,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1455,20 +1296,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...up \Hy@safe@activestrue \edef \x 
                                                   {\endgroup \def \noexpand ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1476,10 +1317,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...noexpand \Hy@tocdestname {#4}}\x 
                                                   \ifx \Hy@tocdestname \ltx@...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1487,19 +1328,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Extra \or.
 \contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
                                                   \def \Hy@temp {#3}\ifx \Hy...
-l.688 \end{table}
+l.686 \end{table}
                  
 I'm ignoring this; it doesn't match any \if.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1508,10 +1349,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1520,20 +1361,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...up \Hy@safe@activestrue \edef \x 
                                                   {\endgroup \def \noexpand ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1541,10 +1382,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...noexpand \Hy@tocdestname {#4}}\x 
                                                   \ifx \Hy@tocdestname \ltx@...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1552,19 +1393,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Extra \or.
 \contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
                                                   \def \Hy@temp {#3}\ifx \Hy...
-l.688 \end{table}
+l.686 \end{table}
                  
 I'm ignoring this; it doesn't match any \if.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1573,10 +1414,10 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1585,20 +1426,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \reserved@a ->\@nil 
                     
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1606,20 +1447,20 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Use of \@BOOKMARK doesn't match its definition.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Use of \@BOOKMARK doesn't match its definition.
 \@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
                                                   \def \reserved@b {#3}\futu...
-l.688 \end{table}
+l.686 \end{table}
                  
 If you say, e.g., `\def\a1{...}', then you must always
 put `1' after `\a', since control sequence names are
 made up of letters only. The macro here has not been
 followed by the required stuff, so I'm ignoring it.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 <argument> \@@BOOKMARK 
                        [1][-]
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1627,10 +1468,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Argument of \@float@Hx has an extra }.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Argument of \@float@Hx has an extra }.
 <inserted text> 
                 \par 
-l.688 \end{table}
+l.686 \end{table}
                  
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -1641,19 +1482,19 @@ your `}' was spurious, just type `2' and it will go away.
 
 Runaway argument?
 [3
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Paragraph ended before \@float@Hx was complete.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Paragraph ended before \@float@Hx was complete.
 <to be read again> 
                    \par 
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \reserved@a ->\@nil 
                     
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1661,28 +1502,28 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
 the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
 the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Incomplete \iffalse; all text was ignored after line 686.
 <inserted text> 
                 \fi 
-l.688 \end{table}
+l.686 \end{table}
                  
 A forbidden control sequence occurred in skipped text.
 This kind of error happens when you say `\if...' and forget
@@ -1690,10 +1531,10 @@ the matching `\fi'. I've inserted a `\fi'; this might work.
 
 Runaway text?
 \protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
@@ -1702,20 +1543,20 @@ you'd better type `E' or `X' now and fix your file.
 
 Runaway text?
 \protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...up \Hy@safe@activestrue \edef \x 
                                                   {\endgroup \def \noexpand ...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1723,10 +1564,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Undefined control sequence.
 \contentsline ...noexpand \Hy@tocdestname {#4}}\x 
                                                   \ifx \Hy@tocdestname \ltx@...
-l.688 \end{table}
+l.686 \end{table}
                  
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1734,19 +1575,19 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Extra \or.
 \contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
                                                   \def \Hy@temp {#3}\ifx \Hy...
-l.688 \end{table}
+l.686 \end{table}
                  
 I'm ignoring this; it doesn't match any \if.
 
 Runaway text?
 \@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.688 \end{table}
+l.686 \end{table}
                  
 (That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
@@ -1758,4 +1599,4 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  75i,8n,76p,394b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688:  ==> Fatal error occurred, no output PDF file produced!
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:686:  ==> Fatal error occurred, no output PDF file produced!
