@@ -100,6 +100,8 @@ are: \begin{itemize}
 \end{itemize}
 
 \section{Results}
+
+\subsection{Basic scenario}
 The basic scenario that is discussed in this report describes a decision rule
 which stores every containergroup that arrives, if there is space in the yard.
 If there is no space, the container is rejected. This will be referred to as
@@ -110,763 +112,847 @@ there is no space for an arriving containergroup, it will be rejected. While
 the next containergroup arrives, the check for space will happen again, and so
 on. 
 
-The result 
-
+Two different approaches to block assignment are implemented. The block
+assignment rule has affect on which block is chosen to store a containergroup.
+The two different situations studied here are 
+\subsection{Departure based}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB1                & YB2                 & YB3 & YB4          & YB5                 & YB6        & YB7                & YB8 & YB9 \\
+            \hline
+            0.3136619718309859 & 0.01812781954887221 & 0.0 & 0.0420078125 & 0.07355000000000018 & 0.16590625 & 0.1809240506329118 & 0.0 & 0.0 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB10 & YB11 & YB12 & YB13 & YB14                & YB15               & YB16                & YB17                & YB18                \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.27238636363636354 & 0.6461249999999995 & 0.04976923076923105 & 0.12626136363636373 & 0.09909890109890182 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB19                & YB20               & YB21                & YB22                & YB23               & YB24                & YB25                & YB26                & YB27                \\
+            \hline
+            0.11162921348314538 & 0.1209000000000003 & 0.16085294117647067 & 0.11898924731182847 & 0.2142941176470592 & 0.12024175824175913 & 0.16276136363636381 & 0.11513186813186901 & 0.22510112359550397 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB28               & YB29                & YB30                & YB31                & YB32 & YB33                 & YB34 & YB35               & YB36                \\
+            \hline
+            0.5518636363636359 & 0.38146590909090905 & 0.06511111111111145 & 0.03891860465116267 & 0.0  & 0.041595505617977445 & 0.0  & 0.0884772727272727 & 0.48997752808988565 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB37 & YB38                 & YB39                & YB40                 & YB41                & YB42                & YB43                 & YB44 & YB45                 \\
+            \hline
+            0.0  & 0.013952173913043417 & 0.03926666666666686 & 0.019758461538461534 & 0.01639417989417988 & 0.01579255319148921 & 0.023938461538461506 & 0.0  & 0.016632754342431767 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB46                 & YB47                 & YB48                 & YB49               & YB50                 & YB51                 & YB52                 & YB53                & YB54                \\
+            \hline
+            0.011411910669975177 & 0.017394648829431505 & 0.014610367892976608 & 0.0202496050552923 & 0.020145339652448736 & 0.008102941176470566 & 0.012929738562091616 & 0.01677351916376308 & 0.01371999999999997 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB55 & YB56                & YB57                 & YB58                & YB59                & YB60                & YB61                & YB62                 & YB63                 \\
+            \hline
+            0.0  & 0.03324230769230791 & 0.014446096654275126 & 0.02437745098039224 & 0.01579854809437385 & 0.02346642468239561 & 0.02984634146341447 & 0.027411538461538536 & 0.054835714285714335 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB64         & YB65                & YB66                 & YB67                & YB68                 & YB69                 & YB70                  & YB71                 & YB72                \\
+            \hline
+            0.0512265625 & 0.02497286821705411 & 0.043590673575129205 & 0.01844135188866795 & 0.017359840954274328 & 0.028780327868852595 & 0.0063216216216216235 & 0.011141666666666668 & 0.03148846153846176 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB73                 & YB74               & YB75 & YB76                & YB77                 & YB78                 & YB79 & YB80 & YB81 \\
+            \hline
+            0.017454138702460813 & 0.0394205128205132 & 0.0  & 0.02278461538461531 & 0.014661538461538455 & 0.014212307692307677 & 0.0  & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB82 & YB83 & YB84 & YB85 & YB86                 & YB87                 & YB88               & YB89                 & YB90                \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.016854205607476625 & 0.049037135278514506 & 0.0200306666666666 & 0.021255965292841416 & 0.02018155197657379 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB91                 & YB92 & YB93                 & YB94                 & YB95                 & YB96                 & YB97                  & YB98 & YB99                 \\
+            \hline
+            0.016947674418604505 & 0.0  & 0.003930496453900694 & 0.018079432624113437 & 0.020316576086956514 & 0.012184782608695575 & 0.0037748976807639896 & 0.0  & 0.004046757164404213 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB100 & YB101                 & YB102                 & YB103               & YB104                & YB105               & YB106               & YB107                & YB108                \\
+            \hline
+            0.0   & 0.0041734539969833975 & 0.0036265560165975007 & 0.00882157676348545 & 0.012961019490254905 & 0.02314542728635688 & 0.02388734353268423 & 0.030563282336578585 & 0.023230994152047078 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB109               & YB110                & YB111                 & YB112                & YB113 & YB114                & YB115                & YB116                 & YB117 \\
+            \hline
+            0.00943421052631586 & 0.012427210884353721 & 0.0035632653061224437 & 0.003243172951885568 & 0.0   & 0.010508196721311432 & 0.008846994535519107 & 0.0064999999999999745 & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB118 & YB119                & YB120 & YB121               & YB122 & YB123                & YB124                & YB125               & YB126               \\
+            \hline
+            0.0   & 0.012148760330578523 & 0.0   & 0.06870208728652759 & 0.0   & 0.020543981481481528 & 0.011522666666666608 & 0.05810138248847855 & 0.04190727532097013 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB127               & YB128                & YB129 & YB130                & YB131               & YB132                & YB133                & YB134                & YB135                \\
+            \hline
+            0.08055604075691415 & 0.037647495361781066 & 0.0   & 0.006958737864077679 & 0.03082524271844669 & 0.021976744186046435 & 0.007531976744186023 & 0.015903885480572574 & 0.009572597137014298 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB136               & YB137               & YB138              & YB139                & YB140               & YB141                & YB142                & YB143                & YB144                \\
+            \hline
+            0.02469120654396721 & 0.03738862559241711 & 0.0227898894154819 & 0.025705128205128432 & 0.04994139194139237 & 0.040412017167382006 & 0.033715307582260386 & 0.025604336043360085 & 0.027398373983739465 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB145        & YB146 & YB147 & YB148 & YB149              & YB150               & YB151               & YB152               & YB153               \\
+            \hline
+            0.0257828125 & 0.0   & 0.0   & 1.0   & 0.2075967741935485 & 0.11540860215053797 & 0.04948798076923076 & 0.09043990384615387 & 0.12705882352941222 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            YB154               & YB155               & YB156                & YB157 & YB158                  & YB159              \\
+            \hline
+            0.05881699346405264 & 0.22109150326797414 & 0.028630382775120023 & 0.0   & 3.1168831168831166e-05 & 0.5787426470588235 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB1                  & YB2                    & YB3 & YB4                   & YB5                   & YB6                  & YB7                  & YB8 & YB9 \\
+            \hline
+            0.054987097871934544 & 0.00026459535264754643 & 0.0 & 0.0005053670360110797 & 0.0013571452754693825 & 0.009671482030528608 & 0.017312448328794465 & 0.0 & 0.0 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB10 & YB11 & YB12 & YB13 & YB14                & YB15               & YB16                  & YB17                 & YB18                 \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.01922947253000924 & 0.1479002721991379 & 0.0008047243615110643 & 0.003084656642603315 & 0.001923385132872669 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB19                  & YB20                 & YB21                 & YB22                  & YB23                 & YB24                 & YB25                 & YB26                  & YB27                 \\
+            \hline
+            0.0028310276973727414 & 0.002698600509558498 & 0.003927092725363463 & 0.0027422361553761866 & 0.007740557049227816 & 0.003068981241903685 & 0.005476654355186211 & 0.0025765781694452043 & 0.012923685075096569 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB28                & YB29                & YB30                  & YB31                  & YB32 & YB33                  & YB34 & YB35                  & YB36                \\
+            \hline
+            0.10651956616021689 & 0.04533678763045969 & 0.0008743023494408513 & 0.0005672550409070407 & 0.0  & 0.0006170654929260863 & 0.0  & 0.0014737162133803407 & 0.08347516098298181 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB37 & YB38                  & YB39                  & YB40                  & YB41                   & YB42                  & YB43                  & YB44 & YB45                   \\
+            \hline
+            0.0  & 0.0002551368146720729 & 0.0011609485702560487 & 0.0006627426663825552 & 0.00030469682572252597 & 0.0003596147969151446 & 0.0009701117266851344 & 0.0  & 0.00031915158853993596 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB46                  & YB47                   & YB48                   & YB49                  & YB50                   & YB51                  & YB52                  & YB53                   & YB54                   \\
+            \hline
+            0.0001908758335261775 & 0.00045232052362908706 & 0.00033251352873176274 & 0.0006479687151278037 & 0.00046121672144108485 & 0.0001362324656958299 & 0.0002694735006447432 & 0.00040403796182797647 & 0.00030448812652413747 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB55 & YB56                 & YB57                  & YB58                 & YB59                   & YB60                 & YB61                  & YB62                  & YB63                  \\
+            \hline
+            0.0  & 0.000752291385515069 & 0.0003042200002059539 & 0.000606404666745122 & 0.00036281079645335474 & 0.000781171855754584 & 0.0008877927354758307 & 0.0009993788325401902 & 0.0021280113111726657 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB64                  & YB65                  & YB66                  & YB67                   & YB68                  & YB69                  & YB70                  & YB71                  & YB72                  \\
+            \hline
+            0.0016854788853301037 & 0.0007911882845288113 & 0.0021027770601396685 & 0.00045300529846467494 & 0.0003969942273108037 & 0.0006484304123841374 & 9.251328891218091e-05 & 0.0001602493074792241 & 0.0007054023723275795 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB73                   & YB74                  & YB75 & YB76                  & YB77               & YB78                   & YB79 & YB80 & YB81 \\
+            \hline
+            0.00036041686893162106 & 0.0016372086677557572 & 0.0  & 0.0006054918165859989 & 0.0002408954234439 & 0.00024339313871723822 & 0.0  & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB82 & YB83 & YB84 & YB85 & YB86                   & YB87                 & YB88                  & YB89                  & YB90                  \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.00027410904289745466 & 0.002073295108962317 & 0.0006395168975069256 & 0.0005086510516501319 & 0.0005959704348719524 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB91                  & YB92 & YB93                  & YB94                  & YB95                  & YB96                   & YB97                   & YB98 & YB99                   \\
+            \hline
+            0.0003752819889721588 & 0.0  & 5.734268481955155e-05 & 0.0004180135841033465 & 0.0005912212955156772 & 0.00019249876843376571 & 5.5070024694343975e-05 & 0.0  & 6.0541391782226075e-05 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB100 & YB101                 & YB102                 & YB103                  & YB104                & YB105                & YB106                & YB107                 & YB108                 \\
+            \hline
+            0.0   & 6.242505525542849e-05 & 5.210668076612148e-05 & 0.00016056602371960837 & 0.000294019587620778 & 0.000832687718929085 & 0.001011398393257624 & 0.0017867539215018977 & 0.0007969704915952553 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB109                  & YB110                  & YB111                 & YB112                & YB113 & YB114                 & YB115                  & YB116                  & YB117 \\
+            \hline
+            0.00017325175627588504 & 0.00027940213943379675 & 5.311442767319303e-05 & 4.51210155290355e-05 & 0.0   & 0.0002174708548405813 & 0.00016668180373280051 & 0.00010944583949532927 & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB118 & YB119                 & YB120 & YB121                & YB122 & YB123                  & YB124                 & YB125                & YB126                \\
+            \hline
+            0.0   & 0.0001948449067184901 & 0.0   & 0.008878304782729825 & 0.0   & 0.00033097475505283774 & 0.0001834389658356418 & 0.001845308269258324 & 0.003956797076594172 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB127                & YB128                & YB129 & YB130                  & YB131                 & YB132                  & YB133                  & YB134                  & YB135                  \\
+            \hline
+            0.017361166799503423 & 0.002102790954373855 & 0.0   & 0.00010527660490008868 & 0.0007087880662309838 & 0.00045568039271475354 & 0.00011632738517039232 & 0.00032813437641029687 & 0.00016107910503845442 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB136                 & YB137                & YB138                 & YB139                & YB140                & YB141               & YB142                & YB143                 & YB144                 \\
+            \hline
+            0.0006185679595609408 & 0.002616437370205538 & 0.0007429617182003267 & 0.000834639131003396 & 0.004797943689633429 & 0.00393100018449607 & 0.002310918083741842 & 0.0012078539175280948 & 0.0014812666770096454 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB145                 & YB146 & YB147 & YB148              & YB149                & YB150                & YB151                & YB152                & YB153                \\
+            \hline
+            0.0009048670384156664 & 0.0   & 0.0   & 0.9972299092028134 & 0.030421773283425605 & 0.006755294350288087 & 0.002792154150241496 & 0.012473236772557236 & 0.018988520449731122 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            YB154               & YB155               & YB156                 & YB157 & YB158                 & YB159               \\
+            \hline
+            0.00297977336415227 & 0.05802199040126985 & 0.0020920650501957882 & 0.0   & 2.590207576357161e-07 & 0.17248537157360613 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
 \begin{table}[h]
       \centering
       \begin{tabular}{|c|c|}
             \hline
-            Containers_Rejected            & 0.0                  \\ \hline
-            CG_Rejected                    & 0.0                  \\ \hline
-            Normal_Rejected                & 0.0                  \\ \hline
-            Reefer_Rejected                & 0.0                  \\ \hline
-            Total_Travel_Distance          & 6062359.227760092    \\ \hline
-            AVG_Travel_Distance_Containers & 379.9635742621337    \\ \hline
-            AVG_daily_total_Occupancy      & 0.011194455823271148 \\ \hline
+            Containers Rejected            & 0.0                  \\ \hline
+            CG Rejected                    & 0.0                  \\ \hline
+            Normal Rejected                & 0.0                  \\ \hline
+            Reefer Rejected                & 0.0                  \\ \hline
+            Total Travel Distance          & 7469351.803970073    \\ \hline
+            AVG Travel Distance Containers & 468.10459471148016   \\ \hline
+            AVG daily total Occupancy      & 0.012178400090730061 \\ \hline
       \end{tabular}
-      \caption{...}
+      \caption{Basic scenario results \- Departure based}\label{Departure based}
 \end{table}
 
-\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB1                & YB2 & YB3 & YB4 & YB5 & YB6          & YB7                 & YB8 & YB9 \\\\
-            \\hline
-            0.3333309859154926 & 0.0 & 0.0 & 0.0 & 0.0 & 0.2290234375 & 0.26913291139240486 & 0.0 & 0.0 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB10 & YB11 & YB12 & YB13 & YB14               & YB15               & YB16                & YB17 & YB18 \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.3309772727272726 & 0.3753750000000006 & 0.20669230769230879 & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB19 & YB20               & YB21 & YB22 & YB23                & YB24 & YB25 & YB26 & YB27                \\\\
-            \\hline
-            0.0  & 0.2138999999999998 & 0.0  & 0.0  & 0.27830882352941166 & 0.0  & 0.0  & 0.0  & 0.21614606741572898 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB28               & YB29 & YB30 & YB31 & YB32 & YB33 & YB34 & YB35                  & YB36                \\\\
-            \\hline
-            0.7001022727272731 & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 4.545454545454546e-05 & 0.49896629213483057 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB37 & YB38                 & YB39                & YB40                & YB41 & YB42 & YB43                & YB44 & YB45 \\\\
-            \\hline
-            0.0  & 0.056330434782608324 & 0.11090476190476277 & 0.05289846153846157 & 0.0  & 0.0  & 0.07288307692307698 & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB46                & YB47                 & YB48                 & YB49                 & YB50 & YB51 & YB52                & YB53               & YB54 \\\\
-            \\hline
-            0.06431513647642693 & 0.043372909698996695 & 0.044112040133779215 & 0.054527646129541994 & 0.0  & 0.0  & 0.05620424836601323 & 0.0444651567944251 & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB55 & YB56                & YB57 & YB58                & YB59                & YB60                 & YB61                & YB62                & YB63                \\\\
-            \\hline
-            0.0  & 0.13209999999999977 & 0.0  & 0.06406617647058827 & 0.04794192377495455 & 0.047186932849364746 & 0.08390975609756084 & 0.04916346153846167 & 0.12288571428571421 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB64          & YB65                & YB66                & YB67                & YB68 & YB69                & YB70 & YB71 & YB72                \\\\
-            \\hline
-            0.10208984375 & 0.05041279069767438 & 0.08990155440414474 & 0.06841153081510949 & 0.0  & 0.11249508196721289 & 0.0  & 0.0  & 0.10054230769230786 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB73 & YB74               & YB75 & YB76 & YB77                & YB78               & YB79 & YB80 & YB81 \\\\
-            \\hline
-            0.0  & 0.1206051282051286 & 0.0  & 0.0  & 0.08064923076923076 & 0.0804153846153846 & 0.0  & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB82 & YB83 & YB84 & YB85 & YB86 & YB87 & YB88 & YB89 & YB90 \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB91 & YB92 & YB93 & YB94 & YB95 & YB96 & YB97 & YB98 & YB99 \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB100 & YB101 & YB102 & YB103 & YB104 & YB105 & YB106 & YB107 & YB108 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB109 & YB110 & YB111 & YB112 & YB113 & YB114 & YB115 & YB116 & YB117 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB118 & YB119 & YB120 & YB121 & YB122 & YB123 & YB124                & YB125 & YB126 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.054449333333333474 & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB127 & YB128 & YB129 & YB130 & YB131               & YB132 & YB133 & YB134 & YB135 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.09750485436893196 & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB136 & YB137 & YB138               & YB139 & YB140 & YB141 & YB142 & YB143 & YB144 \\\\
-            \\hline
-            0.0   & 0.0   & 0.06357503949447071 & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB145 & YB146 & YB147 & YB148 & YB149 & YB150 & YB151 & YB152 & YB153 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 1.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|}
-            \\hline
-            YB154 & YB155 & YB156 & YB157 & YB158               & YB159 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.10439740259740307 & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}
-\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB1                 & YB2 & YB3 & YB4 & YB5 & YB6                 & YB7                  & YB8 & YB9 \\\\
-            \\hline
-            0.06232384612383447 & 0.0 & 0.0 & 0.0 & 0.0 & 0.02108892399584489 & 0.043886654511027724 & 0.0 & 0.0 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB10 & YB11 & YB12 & YB13 & YB14                 & YB15                & YB16                 & YB17 & YB18 \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.030807227398640148 & 0.04557425711407704 & 0.010964262883930473 & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB19 & YB20                 & YB21 & YB22 & YB23                 & YB24 & YB25 & YB26 & YB27                 \\\\
-            \\hline
-            0.0  & 0.011008833487226838 & 0.0  & 0.0  & 0.014749144533159517 & 0.0  & 0.0  & 0.0  & 0.011406268480189236 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB28               & YB29 & YB30 & YB31 & YB32 & YB33 & YB34 & YB35                  & YB36                \\\\
-            \\hline
-            0.1734045265676153 & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 3.777386048854193e-07 & 0.08573170655793835 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB37 & YB38                 & YB39                 & YB40                  & YB41 & YB42 & YB43                 & YB44 & YB45 \\\\
-            \\hline
-            0.0  & 0.004836233891364568 & 0.014083779624499825 & 0.0068070189644150675 & 0.0  & 0.0  & 0.013544849776262507 & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB46                 & YB47                  & YB48                  & YB49                 & YB50 & YB51 & YB52                  & YB53                 & YB54 \\\\
-            \\hline
-            0.005527614910333171 & 0.0037560335004030135 & 0.0037254467801258137 & 0.007038597366451806 & 0.0  & 0.0  & 0.0072658238734090025 & 0.003863677164670342 & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB55 & YB56                & YB57 & YB58                 & YB59                 & YB60                 & YB61                 & YB62                 & YB63                 \\\\
-            \\hline
-            0.0  & 0.01713446622629444 & 0.0  & 0.005474335994785721 & 0.004086123944879873 & 0.004057638843502874 & 0.010726957637997431 & 0.004270226933731085 & 0.015826642263553622 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB64                 & YB65                 & YB66                 & YB67                 & YB68 & YB69                 & YB70 & YB71 & YB72                 \\\\
-            \\hline
-            0.008804308777700826 & 0.004313422018939643 & 0.011522849597405047 & 0.008802773387376577 & 0.0  & 0.014568312065755394 & 0.0  & 0.0  & 0.008657042403579791 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB73 & YB74                 & YB75 & YB76 & YB77                 & YB78                 & YB79 & YB80 & YB81 \\\\
-            \\hline
-            0.0  & 0.022535556502592483 & 0.0  & 0.0  & 0.006905791604517371 & 0.006865203494566365 & 0.0  & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB82 & YB83 & YB84 & YB85 & YB86 & YB87 & YB88 & YB89 & YB90 \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB91 & YB92 & YB93 & YB94 & YB95 & YB96 & YB97 & YB98 & YB99 \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB100 & YB101 & YB102 & YB103 & YB104 & YB105 & YB106 & YB107 & YB108 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB109 & YB110 & YB111 & YB112 & YB113 & YB114 & YB115 & YB116 & YB117 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB118 & YB119 & YB120 & YB121 & YB122 & YB123 & YB124                & YB125 & YB126 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.007865126500461683 & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB127 & YB128 & YB129 & YB130 & YB131                & YB132 & YB133 & YB134 & YB135 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.014240224027109167 & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB136 & YB137 & YB138                & YB139 & YB140 & YB141 & YB142 & YB143 & YB144 \\\\
-            \\hline
-            0.0   & 0.0   & 0.009371199887971372 & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB145 & YB146 & YB147 & YB148              & YB149 & YB150 & YB151 & YB152 & YB153 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.9972299168974886 & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|}
-            \\hline
-            YB154 & YB155 & YB156 & YB157 & YB158                & YB159 \\\\
-            \\hline
-            0.0   & 0.0   & 0.0   & 0.0   & 0.015265251645861034 & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}
-
+\subsubsection{Arrival based}
 \begin{table}[h]
       \centering
       \begin{tabular}{|c|c|}
             \hline
-            Containers_Rejected            & 0.0                  \\ \hline
-            CG_Rejected                    & 0.0                  \\ \hline
-            Normal_Rejected                & 0.0                  \\ \hline
-            Reefer_Rejected                & 0.0                  \\ \hline
-            Total_Travel_Distance          & 7468352.636270075    \\ \hline
-            AVG_Travel_Distance_Containers & 467.88410669882086   \\ \hline
-            AVG_daily_total_Occupancy      & 0.012185611892970119 \\ \hline
+            Containers Rejected            & 0.0        \\ \hline
+            Groups Rejected                & 0.0        \\ \hline
+            Normal Rejected                & 0.0        \\ \hline
+            Reefer Containers Rejected     & 0.0        \\ \hline
+            Total Travel Distance          & 6062359.22 \\ \hline
+            AVG Travel Distance Containers & 379.96     \\ \hline
+            AVG daily total Occupancy      & 0.01       \\ \hline
+      \end{tabular}
+      \caption{Basic scenario results \- Arrival based}\label{Arrival based}
+\end{table}
+
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB1                & YB2 & YB3 & YB4 & YB5 & YB6          & YB7                 & YB8 & YB9 \\
+            \hline
+            0.3288380281690135 & 0.0 & 0.0 & 0.0 & 0.0 & 0.2301171875 & 0.26637974683544297 & 0.0 & 0.0 \\
+            \hline
       \end{tabular}
       \caption{...}
 \end{table}
-\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB1                & YB2                  & YB3 & YB4         & YB5                 & YB6          & YB7                 & YB8 & YB9 \\\\
-            \\hline
-            0.3120845070422537 & 0.019308270676691774 & 0.0 & 0.041671875 & 0.07650714285714304 & 0.1613984375 & 0.18468354430379755 & 0.0 & 0.0 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB10 & YB11 & YB12 & YB13 & YB14               & YB15             & YB16                & YB17                & YB18                \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.2713863636363639 & 0.65340909090909 & 0.05198901098901133 & 0.12779545454545452 & 0.09601098901098976 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB19                & YB20                & YB21               & YB22                & YB23                & YB24                & YB25                & YB26                & YB27                \\\\
-            \\hline
-            0.11255056179775226 & 0.11767777777777821 & 0.1569705882352942 & 0.12075268817204331 & 0.21420588235294136 & 0.12069230769230864 & 0.16489772727272753 & 0.10768131868131953 & 0.22395505617977413 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB28               & YB29               & YB30                & YB31                & YB32 & YB33               & YB34 & YB35                & YB36                \\\\
-            \\hline
-            0.5497840909090911 & 0.3747386363636363 & 0.06806666666666707 & 0.03883720930232547 & 0.0  & 0.0401011235955056 & 0.0  & 0.08636363636363623 & 0.49203370786516665 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB37 & YB38                 & YB39                 & YB40                 & YB41                & YB42                 & YB43                 & YB44 & YB45                 \\\\
-            \\hline
-            0.0  & 0.014269565217391268 & 0.038047619047619205 & 0.019636923076923062 & 0.01732010582010582 & 0.015973404255319006 & 0.023396923076923083 & 0.0  & 0.015573200992555842 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB46                 & YB47                 & YB48                 & YB49                 & YB50                 & YB51                 & YB52                 & YB53                 & YB54                 \\\\
-            \\hline
-            0.011245657568238226 & 0.017339464882943186 & 0.014192307692307712 & 0.019387045813586166 & 0.020221169036334967 & 0.007732026143790827 & 0.012486928104575277 & 0.016977351916376344 & 0.013878461538461503 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB55 & YB56                & YB57                 & YB58                & YB59                 & YB60                & YB61                 & YB62                & YB63                 \\\\
-            \\hline
-            0.0  & 0.03351538461538483 & 0.014894052044609678 & 0.02436274509803934 & 0.015865698729582555 & 0.02338838475499087 & 0.028943902439024206 & 0.02734615384615392 & 0.052160714285714296 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB64          & YB65                 & YB66                 & YB67                 & YB68                & YB69                & YB70                 & YB71                 & YB72              \\\\
-            \\hline
-            0.05046484375 & 0.024730620155038633 & 0.043619170984455544 & 0.019419483101391636 & 0.01717892644135184 & 0.02849508196721326 & 0.006648648648648649 & 0.010308333333333329 & 0.034769230769231 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB73                & YB74                & YB75 & YB76                 & YB77                 & YB78                & YB79 & YB80 & YB81 \\\\
-            \\hline
-            0.01680313199105142 & 0.04003076923076955 & 0.0  & 0.021973626373626303 & 0.014852307692307679 & 0.01481846153846154 & 0.0  & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB82 & YB83 & YB84 & YB85 & YB86                 & YB87                 & YB88                & YB89                 & YB90                 \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.017377570093457927 & 0.050087533156498686 & 0.01959999999999996 & 0.021162689804772015 & 0.020619326500731918 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB91                 & YB92 & YB93                 & YB94                 & YB95                 & YB96                 & YB97                 & YB98 & YB99                 \\\\
-            \\hline
-            0.016546511627906855 & 0.0  & 0.003663829787234027 & 0.017527659574468033 & 0.020472826086956535 & 0.011788043478260811 & 0.004091405184174629 & 0.0  & 0.004144796380090487 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB100 & YB101                & YB102               & YB103                & YB104                & YB105               & YB106               & YB107                & YB108               \\\\
-            \\hline
-            0.0   & 0.004294117647058812 & 0.00378146611341631 & 0.008850622406638977 & 0.013166416791604218 & 0.02319040479760126 & 0.02414464534075101 & 0.030055632823365735 & 0.02392251461988336 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB109                & YB110                & YB111                & YB112                 & YB113 & YB114                & YB115                & YB116                 & YB117 \\\\
-            \\hline
-            0.008915204678362638 & 0.011748299319727862 & 0.003673469387755099 & 0.0031885565669700936 & 0.0   & 0.010596994535519086 & 0.008860655737704901 & 0.0065420054200541625 & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB118 & YB119                & YB120 & YB121               & YB122 & YB123                & YB124                & YB125               & YB126                \\\\
-            \\hline
-            0.0   & 0.012387052341597806 & 0.0   & 0.06916129032258068 & 0.0   & 0.020775462962963006 & 0.012109333333333265 & 0.05845622119815593 & 0.041573466476462304 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB127               & YB128               & YB129 & YB130                 & YB131               & YB132                & YB133                & YB134                & YB135                \\\\
-            \\hline
-            0.07922707423580773 & 0.03864749536178103 & 0.0   & 0.0063131067961165145 & 0.03024029126213598 & 0.022781976744185986 & 0.008232558139534862 & 0.016282208588957056 & 0.009494887525562365 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB136               & YB137              & YB138               & YB139                & YB140                & YB141               & YB142                & YB143                & YB144               \\\\
-            \\hline
-            0.02406543967280156 & 0.0370758293838863 & 0.02191785150078991 & 0.026723443223443496 & 0.050728937728938134 & 0.04086981402002866 & 0.033041487839771115 & 0.025876693766937315 & 0.02740243902438989 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB145               & YB146 & YB147 & YB148 & YB149               & YB150               & YB151               & YB152              & YB153               \\\\
-            \\hline
-            0.02632187499999999 & 0.0   & 0.0   & 1.0   & 0.20575268817204348 & 0.11346774193548434 & 0.04973798076923076 & 0.0907692307692308 & 0.12901633986928157 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|}
-            \\hline
-            YB154               & YB155              & YB156                & YB157 & YB158                  & YB159              \\\\
-            \\hline
-            0.05887254901960834 & 0.2174934640522877 & 0.029470095693780323 & 0.0   & 2.3376623376623376e-05 & 0.5841985294117656 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}
-\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB1                 & YB2                   & YB3 & YB4                   & YB5                   & YB6                  & YB7                  & YB8 & YB9 \\\\
-            \\hline
-            0.05468142093558575 & 0.0002979401412117545 & 0.0 & 0.0005131146121883654 & 0.0014301345468935565 & 0.009560032894736848 & 0.017679126196570714 & 0.0 & 0.0 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB10 & YB11 & YB12 & YB13 & YB14                 & YB15                & YB16                  & YB17                  & YB18                 \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.019027700831024945 & 0.14918738982624016 & 0.0008660010349761046 & 0.0031937484260891515 & 0.001895741377735838 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB19                 & YB20                  & YB21                 & YB22                  & YB23                 & YB24                  & YB25                 & YB26                  & YB27                 \\\\
-            \\hline
-            0.002736686482616952 & 0.0026347799322868556 & 0.003840109173863457 & 0.0027386292556518667 & 0.007744133941665303 & 0.0030905299686463093 & 0.005601202467892227 & 0.0024058628352257205 & 0.012712658346042518 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB28                & YB29                & YB30                 & YB31                  & YB32 & YB33                  & YB34 & YB35                  & YB36                \\\\
-            \\hline
-            0.10685466507177034 & 0.04477480483505414 & 0.000927085257002153 & 0.0005776267474070737 & 0.0  & 0.0006114725014784155 & 0.0  & 0.0015180684966003548 & 0.08374415636963489 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB37 & YB38                  & YB39                  & YB40                  & YB41                  & YB42                   & YB43                  & YB44 & YB45                   \\\\
-            \\hline
-            0.0  & 0.0002656931229676021 & 0.0011110407597942232 & 0.0006637545280204559 & 0.0003183836784944815 & 0.00035308736567061605 & 0.0009896569358619218 & 0.0  & 0.00028551789556168085 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB46                   & YB47                   & YB48                   & YB49                  & YB50                 & YB51                   & YB52                  & YB53                  & YB54                  \\\\
-            \\hline
-            0.00018995346535334017 & 0.00046956151159451145 & 0.00031730421812319905 & 0.0006172996722287131 & 0.000465461483591743 & 0.00012963717342892844 & 0.0002556171129578332 & 0.0004118495854527204 & 0.0003136756871936931 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB55 & YB56                  & YB57                   & YB58                  & YB59                  & YB60                  & YB61                  & YB62                  & YB63                 \\\\
-            \\hline
-            0.0  & 0.0007660132111655658 & 0.00029954999021717846 & 0.0005883982401824992 & 0.0003525999064908428 & 0.0007802936991920999 & 0.0008709343963245732 & 0.0010008470061794162 & 0.002123189552829445 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB64                 & YB65                  & YB66                  & YB67                  & YB68                   & YB69                  & YB70                  & YB71                   & YB72                  \\\\
-            \\hline
-            0.001702735457063712 & 0.0007761171594837767 & 0.0021497926025863677 & 0.0004736126179212812 & 0.00039000346948778235 & 0.0006451478134507961 & 9.630156472261741e-05 & 0.00015218144044321308 & 0.0007669188152567651 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB73                   & YB74                & YB75 & YB76                  & YB77                   & YB78                  & YB79 & YB80 & YB81 \\\\
-            \\hline
-            0.00034310608736606645 & 0.00163900845230485 & 0.0  & 0.0005934431219749772 & 0.00024434689963775827 & 0.0002476539526955036 & 0.0  & 0.0  & 0.0  \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB82 & YB83 & YB84 & YB85 & YB86                   & YB87                 & YB88                  & YB89                  & YB90                  \\\\
-            \\hline
-            0.0  & 0.0  & 0.0  & 0.0  & 0.00027870660418877994 & 0.002108143456505285 & 0.0006333924284395194 & 0.0005402803732701998 & 0.0006017610103705748 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB91                   & YB92 & YB93                  & YB94                  & YB95                  & YB96                  & YB97                 & YB98 & YB99                  \\\\
-            \\hline
-            0.00037330090832957575 & 0.0  & 5.602640419638115e-05 & 0.0004027740122983837 & 0.0006004380946645794 & 0.0001924078646272432 & 6.08208969325015e-05 & 0.0  & 6.152676284662602e-05 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB100 & YB101                 & YB102                 & YB103                & YB104                 & YB105                 & YB106                 & YB107                 & YB108                 \\\\
-            \\hline
-            0.0   & 6.292224965843999e-05 & 5.540932479703303e-05 & 0.000162067102676981 & 0.0002955018335707489 & 0.0008276651148110155 & 0.0010276545987617457 & 0.0017737470093504735 & 0.0008011614909850805 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB109                  & YB110                  & YB111                 & YB112                 & YB113 & YB114                  & YB115                 & YB116                  & YB117 \\\\
-            \\hline
-            0.00017032771217054637 & 0.00027195432189496314 & 5.503608645674334e-05 & 4.754528851730312e-05 & 0.0   & 0.00021789049846358786 & 0.0001628899686662727 & 0.00011037542508389055 & 0.0   \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB118 & YB119                  & YB120 & YB121               & YB122 & YB123                  & YB124                  & YB125                 & YB126                \\\\
-            \\hline
-            0.0   & 0.00019677510435505915 & 0.0   & 0.00880390755176167 & 0.0   & 0.00032770339591669357 & 0.00019509141274238196 & 0.0019099148550493377 & 0.003926784451179751 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB127                & YB128                & YB129 & YB130                 & YB131                 & YB132                 & YB133                  & YB134                  & YB135                  \\\\
-            \\hline
-            0.017339208167511406 & 0.002149389194106251 & 0.0   & 9.284484845224972e-05 & 0.0006952101766936506 & 0.0004693841396637246 & 0.00012126360883849766 & 0.00033933234765959173 & 0.00014981107919945154 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB136                 & YB137                 & YB138                 & YB139                 & YB140                & YB141                & YB142                 & YB143                 & YB144                 \\\\
-            \\hline
-            0.0006074695942309767 & 0.0026032829642077286 & 0.0007166681983081924 & 0.0008747526711515627 & 0.004811659716091844 & 0.003977367747355738 & 0.0022912193517450716 & 0.0012335465321412224 & 0.0014695478533732701 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-            \\hline
-            YB145                 & YB146 & YB147 & YB148              & YB149               & YB150                & YB151                 & YB152                & YB153                \\\\
-            \\hline
-            0.0009059859764542942 & 0.0   & 0.0   & 0.9972299168974886 & 0.03030533464391035 & 0.006596655050189137 & 0.0028235536969955237 & 0.012490677604943544 & 0.019096464070392654 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}\\begin{table}[h]
-      \\centering
-      \\begin{tabular}{|c|c|c|c|c|c|}
-            \\hline
-            YB154                & YB155               & YB156                 & YB157 & YB158                 & YB159              \\\\
-            \\hline
-            0.002953922473883363 & 0.05807821411112924 & 0.0021089543930337094 & 0.0   & 5.180415152714323e-07 & 0.1726637200586605 \\\\
-            \\hline
-            \\end{tabular}
-      \\caption{...}
-      \\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB10 & YB11 & YB12 & YB13 & YB14                & YB15               & YB16                & YB17 & YB18 \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.33739772727272643 & 0.3743636363636359 & 0.20545054945055014 & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB19 & YB20                & YB21 & YB22 & YB23               & YB24 & YB25 & YB26 & YB27                \\
+            \hline
+            0.0  & 0.21331111111111128 & 0.0  & 0.0  & 0.2828529411764709 & 0.0  & 0.0  & 0.0  & 0.21351685393258263 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB28               & YB29 & YB30 & YB31 & YB32 & YB33 & YB34 & YB35                  & YB36                \\
+            \hline
+            0.6998977272727268 & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0005454545454545454 & 0.49475280898876317 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB37 & YB38                 & YB39                & YB40                & YB41 & YB42 & YB43               & YB44 & YB45 \\
+            \hline
+            0.0  & 0.056328260869564814 & 0.10926031746031829 & 0.05261692307692311 & 0.0  & 0.0  & 0.0723984615384615 & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB46                & YB47                & YB48                & YB49                & YB50 & YB51 & YB52                & YB53                & YB54 \\
+            \hline
+            0.06442183622828801 & 0.04378428093645491 & 0.04424247491638795 & 0.05492575039494478 & 0.0  & 0.0  & 0.05583986928104581 & 0.04486062717770042 & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB55 & YB56               & YB57 & YB58                & YB59                & YB60                & YB61                & YB62                 & YB63                \\
+            \hline
+            0.0  & 0.1322730769230767 & 0.0  & 0.06226470588235293 & 0.04699999999999997 & 0.04816878402903805 & 0.08505853658536577 & 0.049328846153846195 & 0.12361785714285706 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB64          & YB65                 & YB66                & YB67                & YB68 & YB69                & YB70 & YB71 & YB72                \\
+            \hline
+            0.10171484375 & 0.049470930232557844 & 0.09007772020725358 & 0.06866600397614318 & 0.0  & 0.11303934426229473 & 0.0  & 0.0  & 0.09979230769230789 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB73 & YB74                & YB75 & YB76 & YB77                & YB78                & YB79 & YB80 & YB81 \\
+            \hline
+            0.0  & 0.11955641025641063 & 0.0  & 0.0  & 0.07905538461538464 & 0.08119692307692299 & 0.0  & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB82 & YB83 & YB84 & YB85 & YB86 & YB87 & YB88 & YB89 & YB90 \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB91 & YB92 & YB93 & YB94 & YB95 & YB96 & YB97 & YB98 & YB99 \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB100 & YB101 & YB102 & YB103 & YB104 & YB105 & YB106 & YB107 & YB108 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB109 & YB110 & YB111 & YB112 & YB113 & YB114 & YB115 & YB116 & YB117 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB118 & YB119 & YB120 & YB121 & YB122 & YB123 & YB124                & YB125 & YB126 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.053337333333333466 & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB127 & YB128 & YB129 & YB130 & YB131               & YB132 & YB133 & YB134 & YB135 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.09693446601941752 & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB136 & YB137 & YB138               & YB139 & YB140 & YB141 & YB142 & YB143 & YB144 \\
+            \hline
+            0.0   & 0.0   & 0.06348341232227492 & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB145 & YB146 & YB147 & YB148 & YB149 & YB150 & YB151 & YB152 & YB153 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 1.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            YB154 & YB155 & YB156 & YB157 & YB158               & YB159 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.10481038961038991 & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB1                 & YB2 & YB3 & YB4 & YB5 & YB6               & YB7                  & YB8 & YB9 \\
+            \hline
+            0.06246414498068733 & 0.0 & 0.0 & 0.0 & 0.0 & 0.020977471433518 & 0.043808408429468135 & 0.0 & 0.0 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB10 & YB11 & YB12 & YB13 & YB14                 & YB15                & YB16                 & YB17 & YB18 \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.030569252077562375 & 0.04515100100730301 & 0.011086116099966504 & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB19 & YB20                 & YB21 & YB22 & YB23               & YB24 & YB25 & YB26 & YB27                 \\
+            \hline
+            0.0  & 0.011070360110803314 & 0.0  & 0.0  & 0.0146665716147955 & 0.0  & 0.0  & 0.0  & 0.011432693205515251 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB28               & YB29 & YB30 & YB31 & YB32 & YB33 & YB34 & YB35                  & YB36                \\
+            \hline
+            0.1729695605640896 & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 4.532863258625031e-06 & 0.08529649226555444 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB37 & YB38                 & YB39                 & YB40                  & YB41 & YB42 & YB43                 & YB44 & YB45 \\
+            \hline
+            0.0  & 0.004899072624352655 & 0.014132234094006928 & 0.0068323247389729235 & 0.0  & 0.0  & 0.013512448327295978 & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB46                  & YB47                  & YB48                  & YB49                & YB50 & YB51 & YB52                 & YB53                  & YB54 \\
+            \hline
+            0.0055182048761710885 & 0.0037330807215186397 & 0.0037821269420691365 & 0.00699856900920298 & 0.0  & 0.0  & 0.007241517752068498 & 0.0038133234240929677 & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB55 & YB56                & YB57 & YB58                 & YB59                  & YB60                  & YB61                 & YB62                & YB63                \\
+            \hline
+            0.0  & 0.01705628595780947 & 0.0  & 0.005487276628102761 & 0.0040355686714158645 & 0.0040720975712755965 & 0.010842416052969397 & 0.00426179416151715 & 0.01580149386624457 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB64                 & YB65                  & YB66                 & YB67                 & YB68 & YB69                & YB70 & YB71 & YB72                 \\
+            \hline
+            0.008707139456371195 & 0.0043277716936159375 & 0.011607717480229094 & 0.008833326908355966 & 0.0  & 0.01451875028381998 & 0.0  & 0.0  & 0.008568058810995092 \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB73 & YB74                 & YB75 & YB76 & YB77                 & YB78                 & YB79 & YB80 & YB81 \\
+            \hline
+            0.0  & 0.022548171034874595 & 0.0  & 0.0  & 0.006802539953121672 & 0.006966418069465154 & 0.0  & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB82 & YB83 & YB84 & YB85 & YB86 & YB87 & YB88 & YB89 & YB90 \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB91 & YB92 & YB93 & YB94 & YB95 & YB96 & YB97 & YB98 & YB99 \\
+            \hline
+            0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB100 & YB101 & YB102 & YB103 & YB104 & YB105 & YB106 & YB107 & YB108 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB109 & YB110 & YB111 & YB112 & YB113 & YB114 & YB115 & YB116 & YB117 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB118 & YB119 & YB120 & YB121 & YB122 & YB123 & YB124                & YB125 & YB126 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.007804310249307483 & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB127 & YB128 & YB129 & YB130 & YB131                & YB132 & YB133 & YB134 & YB135 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.014304332625124382 & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB136 & YB137 & YB138                & YB139 & YB140 & YB141 & YB142 & YB143 & YB144 \\
+            \hline
+            0.0   & 0.0   & 0.009322996941093084 & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            YB145 & YB146 & YB147 & YB148              & YB149 & YB150 & YB151 & YB152 & YB153 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.9972299168974886 & 0.0   & 0.0   & 0.0   & 0.0   & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            YB154 & YB155 & YB156 & YB157 & YB158                & YB159 \\
+            \hline
+            0.0   & 0.0   & 0.0   & 0.0   & 0.015379407849767936 & 0.0   \\
+            \hline
+      \end{tabular}
+      \caption{...}
+\end{table}
+\begin{table}[h]
+      \centering
+      \begin{tabular}{|c|c|}
+            \hline
+            Containers Rejected            & 0.0                  \\ \hline
+            CG Rejected                    & 0.0                  \\ \hline
+            Normal Rejected                & 0.0                  \\ \hline
+            Reefer Rejected                & 0.0                  \\ \hline
+            Total Travel Distance          & 6068583.577110092    \\ \hline
+            AVG Travel Distance Containers & 380.34174230771754   \\ \hline
+            AVG daily total Occupancy      & 0.011185140241039353 \\ \hline
+      \end{tabular}
+      \caption{Basic scenario results}
+\end{table}
 
-\subsection{Basic simulation}
 \subsection{Stressing the system}
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  23 APR 2023 13:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  23 APR 2023 20:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -298,1286 +298,1464 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 38.
  [2] [3{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:119: Missing $ inserted.
+Overfull \hbox (288.4184pt too wide) in paragraph at lines 121--128
+ [][] 
+ []
+
+
+Overfull \hbox (320.22404pt too wide) in paragraph at lines 132--139
+ [][] 
+ []
+
+
+Overfull \hbox (588.00266pt too wide) in paragraph at lines 143--150
+ [][] 
+ []
+
+
+Overfull \hbox (456.61336pt too wide) in paragraph at lines 154--161
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (481.61343pt too wide) in paragraph at lines 165--172
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (623.00276pt too wide) in paragraph at lines 176--183
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (544.80807pt too wide) in paragraph at lines 187--194
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (593.00267pt too wide) in paragraph at lines 198--205
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (335.22409pt too wide) in paragraph at lines 209--216
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (335.22409pt too wide) in paragraph at lines 220--227
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (501.6135pt too wide) in paragraph at lines 231--238
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (569.80815pt too wide) in paragraph at lines 242--249
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (511.61353pt too wide) in paragraph at lines 253--260
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (423.41881pt too wide) in paragraph at lines 264--271
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (564.80814pt too wide) in paragraph at lines 275--282
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (618.00275pt too wide) in paragraph at lines 286--293
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (368.41864pt too wide) in paragraph at lines 297--304
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (233.2516pt too wide) in paragraph at lines 308--315
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (428.41882pt too wide) in paragraph at lines 319--326
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (340.2241pt too wide) in paragraph at lines 330--337
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (658.00287pt too wide) in paragraph at lines 341--348
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (501.6135pt too wide) in paragraph at lines 352--359
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (541.61362pt too wide) in paragraph at lines 363--370
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (713.00304pt too wide) in paragraph at lines 374--381
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (599.80824pt too wide) in paragraph at lines 385--392
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (690.78072pt too wide) in paragraph at lines 396--403
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (370.2242pt too wide) in paragraph at lines 407--414
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (375.22421pt too wide) in paragraph at lines 418--425
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (539.94685pt too wide) in paragraph at lines 429--436
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (600.36374pt too wide) in paragraph at lines 440--447
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (552.16914pt too wide) in paragraph at lines 451--458
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (458.41891pt too wide) in paragraph at lines 462--469
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (629.80833pt too wide) in paragraph at lines 473--480
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (658.00287pt too wide) in paragraph at lines 484--491
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (501.6135pt too wide) in paragraph at lines 495--502
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (238.25162pt too wide) in paragraph at lines 506--513
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (118.83453pt too wide) in paragraph at lines 548--555
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (183.83473pt too wide) in paragraph at lines 559--566
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (183.83473pt too wide) in paragraph at lines 570--577
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (193.83476pt too wide) in paragraph at lines 581--588
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (257.0294pt too wide) in paragraph at lines 592--599
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (393.41872pt too wide) in paragraph at lines 603--610
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (461.61337pt too wide) in paragraph at lines 614--621
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (368.41864pt too wide) in paragraph at lines 625--632
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (188.83475pt too wide) in paragraph at lines 636--643
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 669--676
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (29.25092pt too wide) in paragraph at lines 680--687
+ [][] 
+ []
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Output loop---100 consecutive dead cycles.
+\end@float ...loatpenalty <-\@Mii \penalty -\@Miv 
+                                                  \@tempdima \prevdepth \vbo...
+l.688 \end{table}
+                 
+I've concluded that your \output is awry; it never does a
+\shipout, so I'm shipping \box255 out myself. Next time
+increase \maxdeadcycles if you want me to be more patient!
+
+[4
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\reserved@a ->\@nil 
+                    
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Use of \@BOOKMARK doesn't match its definition.
+\@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
+                                                  \def \reserved@b {#3}\futu...
+l.688 \end{table}
+                 
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+<argument> \@@BOOKMARK 
+                       [1][-]
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Argument of \@float@Hx has an extra }.
 <inserted text> 
-                $
-l.119             Containers_
-                             Rejected            & 0.0                  \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+                \par 
+l.688 \end{table}
+                 
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:119: Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.119             Containers_Rejected            &
-                                                   0.0                  \\ \...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+Runaway argument?
+[1
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Paragraph ended before \@float@Hx was complete.
+<to be read again> 
+                   \par 
+l.688 \end{table}
+                 
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:119: Missing $ inserted.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\reserved@a ->\@nil 
+                    
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
 <inserted text> 
-                $
-l.119             Containers_Rejected            &
-                                                   0.0                  \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:119: Missing } inserted.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+Runaway text?
+\protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.119             Containers_Rejected            &
-                                                   0.0                  \\ \...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:120: Missing $ inserted.
-<inserted text> 
-                $
-l.120             CG_
-                     Rejected                    & 0.0                  \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:120: Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.120             CG_Rejected                    &
-                                                   0.0                  \\ \...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:120: Missing $ inserted.
-<inserted text> 
-                $
-l.120             CG_Rejected                    &
-                                                   0.0                  \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:120: Missing } inserted.
+Runaway text?
+\protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.120             CG_Rejected                    &
-                                                   0.0                  \\ \...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:121: Missing $ inserted.
-<inserted text> 
-                $
-l.121             Normal_
-                         Rejected                & 0.0                  \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...up \Hy@safe@activestrue \edef \x 
+                                                  {\endgroup \def \noexpand ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:121: Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.121             Normal_Rejected                &
-                                                   0.0                  \\ \...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...noexpand \Hy@tocdestname {#4}}\x 
+                                                  \ifx \Hy@tocdestname \ltx@...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:121: Missing $ inserted.
-<inserted text> 
-                $
-l.121             Normal_Rejected                &
-                                                   0.0                  \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                    #4  \errhelp \@err@     ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:121: Missing } inserted.
-<inserted text> 
-                }
-l.121             Normal_Rejected                &
-                                                   0.0                  \\ \...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                  \let \@err@               ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:122: Missing $ inserted.
-<inserted text> 
-                $
-l.122             Reefer_
-                         Rejected                & 0.0                  \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                  \@empty \def \MessageBreak...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:122: Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.122             Reefer_Rejected                &
-                                                   0.0                  \\ \...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+\contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
+                                                  \def \Hy@temp {#3}\ifx \Hy...
+l.688 \end{table}
+                 
+I'm ignoring this; it doesn't match any \if.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:122: Missing $ inserted.
-<inserted text> 
-                $
-l.122             Reefer_Rejected                &
-                                                   0.0                  \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                    #4  \errhelp \@err@     ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:122: Missing } inserted.
-<inserted text> 
-                }
-l.122             Reefer_Rejected                &
-                                                   0.0                  \\ \...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                  \let \@err@               ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:123: Missing $ inserted.
-<inserted text> 
-                $
-l.123             Total_
-                        Travel_Distance          & 6062359.227760092    \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                  \@empty \def \MessageBreak...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:123: Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.123             Total_Travel_Distance          &
-                                                   6062359.227760092    \\ \...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                    #4  \errhelp \@err@     ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:123: Missing $ inserted.
-<inserted text> 
-                $
-l.123             Total_Travel_Distance          &
-                                                   6062359.227760092    \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                  \let \@err@               ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:123: Missing } inserted.
-<inserted text> 
-                }
-l.123             Total_Travel_Distance          &
-                                                   6062359.227760092    \\ \...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\GenericError  ...                                
+                                                  \@empty \def \MessageBreak...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:124: Missing $ inserted.
-<inserted text> 
-                $
-l.124             AVG_
-                      Travel_Distance_Containers & 379.9635742621337    \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:124: Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.124             AVG_Travel_Distance_Containers &
-                                                   379.9635742621337    \\ \...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:124: Missing $ inserted.
-<inserted text> 
-                $
-l.124             AVG_Travel_Distance_Containers &
-                                                   379.9635742621337    \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:124: Missing } inserted.
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.124             AVG_Travel_Distance_Containers &
-                                                   379.9635742621337    \\ \...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:125: Missing $ inserted.
-<inserted text> 
-                $
-l.125             AVG_
-                      daily_total_Occupancy      & 0.011194455823271148 \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:125: Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.125             AVG_daily_total_Occupancy      &
-                                                   0.011194455823271148 \\ \...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:125: Missing $ inserted.
-<inserted text> 
-                $
-l.125             AVG_daily_total_Occupancy      &
-                                                   0.011194455823271148 \\ \...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:125: Missing } inserted.
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
 <inserted text> 
                 }
-l.125             AVG_daily_total_Occupancy      &
-                                                   0.011194455823271148 \\ \...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:130: LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.130 \\b
-         egin{table}[h]
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
-l.134             YB1                &
-                                       YB2 & YB3 & YB4 & YB5 & YB6          ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
-l.134             YB1                & YB2 &
-                                             YB3 & YB4 & YB5 & YB6          ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
-l.134             YB1                & YB2 & YB3 &
-                                                   YB4 & YB5 & YB6          ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
-l.134 ...   YB1                & YB2 & YB3 & YB4 &
-                                                   YB5 & YB6          & YB7 ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
-l.134 ...                & YB2 & YB3 & YB4 & YB5 &
-                                                   YB6          & YB7       ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
-l.134 ... & YB2 & YB3 & YB4 & YB5 & YB6          &
-                                                   YB7                 & YB8...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
-l.134 ...B5 & YB6          & YB7                 &
-                                                   YB8 & YB9 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
-l.134 ...B6          & YB7                 & YB8 &
-                                                   YB9 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
-l.136             0.3333309859154926 &
-                                       0.0 & 0.0 & 0.0 & 0.0 & 0.2290234375 ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
-l.136             0.3333309859154926 & 0.0 &
-                                             0.0 & 0.0 & 0.0 & 0.2290234375 ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
-l.136             0.3333309859154926 & 0.0 & 0.0 &
-                                                   0.0 & 0.0 & 0.2290234375 ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
-l.136 ...   0.3333309859154926 & 0.0 & 0.0 & 0.0 &
-                                                   0.0 & 0.2290234375 & 0.26...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
-l.136 ...333309859154926 & 0.0 & 0.0 & 0.0 & 0.0 &
-                                                   0.2290234375 & 0.26913291...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
-l.136 ... & 0.0 & 0.0 & 0.0 & 0.0 & 0.2290234375 &
-                                                   0.26913291139240486 & 0.0...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
-l.136 ....0 & 0.2290234375 & 0.26913291139240486 &
-                                                   0.0 & 0.0 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
-l.136 ....2290234375 & 0.26913291139240486 & 0.0 &
-                                                   0.0 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
-l.144             YB10 &
-                         YB11 & YB12 & YB13 & YB14               & YB15     ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
-l.144             YB10 & YB11 &
-                                YB12 & YB13 & YB14               & YB15     ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
-l.144             YB10 & YB11 & YB12 &
-                                       YB13 & YB14               & YB15     ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
-l.144             YB10 & YB11 & YB12 & YB13 &
-                                              YB14               & YB15     ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
-l.144 ...YB11 & YB12 & YB13 & YB14               &
-                                                   YB15               & YB16...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
-l.144 ...YB14               & YB15               &
-                                                   YB16                & YB1...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
-l.144 ...B15               & YB16                &
-                                                   YB17 & YB18 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
-l.144 ...           & YB16                & YB17 &
-                                                   YB18 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
-l.146             0.0  &
-                         0.0  & 0.0  & 0.0  & 0.3309772727272726 & 0.3753750...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
-l.146             0.0  & 0.0  &
-                                0.0  & 0.0  & 0.3309772727272726 & 0.3753750...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
-l.146             0.0  & 0.0  & 0.0  &
-                                       0.0  & 0.3309772727272726 & 0.3753750...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
-l.146             0.0  & 0.0  & 0.0  & 0.0  &
-                                              0.3309772727272726 & 0.3753750...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
-l.146 ...0.0  & 0.0  & 0.0  & 0.3309772727272726 &
-                                                   0.3753750000000006 & 0.20...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
-l.146 ...0.3309772727272726 & 0.3753750000000006 &
-                                                   0.20669230769230879 & 0.0...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
-l.146 ....3753750000000006 & 0.20669230769230879 &
-                                                   0.0  & 0.0  \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
-l.146 ...0000000006 & 0.20669230769230879 & 0.0  &
-                                                   0.0  \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
-l.154             YB19 &
-                         YB20               & YB21 & YB22 & YB23            ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
-l.154             YB19 & YB20               &
-                                              YB21 & YB22 & YB23            ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
-l.154 ...       YB19 & YB20               & YB21 &
-                                                   YB22 & YB23              ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
-l.154 ...YB19 & YB20               & YB21 & YB22 &
-                                                   YB23                & YB2...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
-l.154 ...    & YB21 & YB22 & YB23                &
-                                                   YB24 & YB25 & YB26 & YB27...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
-l.154 ...B21 & YB22 & YB23                & YB24 &
-                                                   YB25 & YB26 & YB27       ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
-l.154 ...B22 & YB23                & YB24 & YB25 &
-                                                   YB26 & YB27              ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
-l.154 ...B23                & YB24 & YB25 & YB26 &
-                                                   YB27                \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
-l.156             0.0  &
-                         0.2138999999999998 & 0.0  & 0.0  & 0.27830882352941...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
-l.156             0.0  & 0.2138999999999998 &
-                                              0.0  & 0.0  & 0.27830882352941...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
-l.156 ...       0.0  & 0.2138999999999998 & 0.0  &
-                                                   0.0  & 0.2783088235294116...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
-l.156 ...0.0  & 0.2138999999999998 & 0.0  & 0.0  &
-                                                   0.27830882352941166 & 0.0...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
-l.156 ...998 & 0.0  & 0.0  & 0.27830882352941166 &
-                                                   0.0  & 0.0  & 0.0  & 0.21...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
-l.156 ....0  & 0.0  & 0.27830882352941166 & 0.0  &
-                                                   0.0  & 0.0  & 0.216146067...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
-l.156 ....0  & 0.27830882352941166 & 0.0  & 0.0  &
-                                                   0.0  & 0.2161460674157289...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
-l.156 ....27830882352941166 & 0.0  & 0.0  & 0.0  &
-                                                   0.21614606741572898 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
-l.164             YB28               &
-                                       YB29 & YB30 & YB31 & YB32 & YB33 & YB...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
-l.164             YB28               & YB29 &
-                                              YB30 & YB31 & YB32 & YB33 & YB...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
-l.164 ...       YB28               & YB29 & YB30 &
-                                                   YB31 & YB32 & YB33 & YB34...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
-l.164 ...YB28               & YB29 & YB30 & YB31 &
-                                                   YB32 & YB33 & YB34 & YB35...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
-l.164 ...            & YB29 & YB30 & YB31 & YB32 &
-                                                   YB33 & YB34 & YB35       ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
-l.164 ...     & YB29 & YB30 & YB31 & YB32 & YB33 &
-                                                   YB34 & YB35              ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
-l.164 ...YB29 & YB30 & YB31 & YB32 & YB33 & YB34 &
-                                                   YB35                  & Y...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
-l.164 ...2 & YB33 & YB34 & YB35                  &
-                                                   YB36                \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
-l.166             0.7001022727272731 &
-                                       0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0....
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
-l.166             0.7001022727272731 & 0.0  &
-                                              0.0  & 0.0  & 0.0  & 0.0  & 0....
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
-l.166 ...       0.7001022727272731 & 0.0  & 0.0  &
-                                                   0.0  & 0.0  & 0.0  & 0.0 ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
-l.166 ...0.7001022727272731 & 0.0  & 0.0  & 0.0  &
-                                                   0.0  & 0.0  & 0.0  & 4.54...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
-l.166 ...22727272731 & 0.0  & 0.0  & 0.0  & 0.0  &
-                                                   0.0  & 0.0  & 4.545454545...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
-l.166 ...2731 & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  &
-                                                   0.0  & 4.545454545454546e...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
-l.166 ...0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  &
-                                                   4.545454545454546e-05 & 0...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
-l.166 ...  & 0.0  & 0.0  & 4.545454545454546e-05 &
-                                                   0.49896629213483057 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
-l.174             YB37 &
-                         YB38                 & YB39                & YB40  ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
-l.174             YB37 & YB38                 &
-                                                YB39                & YB40  ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
-l.174 ...8                 & YB39                &
-                                                   YB40                & YB4...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
-l.174 ...39                & YB40                &
-                                                   YB41 & YB42 & YB43       ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
-l.174 ...           & YB40                & YB41 &
-                                                   YB42 & YB43              ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
-l.174 ...    & YB40                & YB41 & YB42 &
-                                                   YB43                & YB4...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
-l.174 ...    & YB41 & YB42 & YB43                &
-                                                   YB44 & YB45 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
-l.174 ...B41 & YB42 & YB43                & YB44 &
-                                                   YB45 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
-l.176             0.0  &
-                         0.056330434782608324 & 0.11090476190476277 & 0.0528...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
-l.176             0.0  & 0.056330434782608324 &
-                                                0.11090476190476277 & 0.0528...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
-l.176 ...56330434782608324 & 0.11090476190476277 &
-                                                   0.05289846153846157 & 0.0...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
-l.176 ...11090476190476277 & 0.05289846153846157 &
-                                                   0.0  & 0.0  & 0.072883076...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
-l.176 ...6190476277 & 0.05289846153846157 & 0.0  &
-                                                   0.0  & 0.0728830769230769...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
-l.176 ...277 & 0.05289846153846157 & 0.0  & 0.0  &
-                                                   0.07288307692307698 & 0.0...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
-l.176 ...157 & 0.0  & 0.0  & 0.07288307692307698 &
-                                                   0.0  & 0.0  \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
-l.176 ....0  & 0.0  & 0.07288307692307698 & 0.0  &
-                                                   0.0  \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
-l.184             YB46                &
-                                        YB47                 & YB48         ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
-l.184 ...6                & YB47                 &
-                                                   YB48                 & YB...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
-l.184 ...                 & YB48                 &
-                                                   YB49                 & YB...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
-l.184 ...                 & YB49                 &
-                                                   YB50 & YB51 & YB52       ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
-l.184 ...          & YB49                 & YB50 &
-                                                   YB51 & YB52              ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
-l.184 ...   & YB49                 & YB50 & YB51 &
-                                                   YB52                & YB5...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
-l.184 ...    & YB50 & YB51 & YB52                &
-                                                   YB53               & YB54...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
-l.184 ...B52                & YB53               &
-                                                   YB54 \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
-l.186             0.06431513647642693 &
-                                        0.043372909698996695 & 0.04411204013...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
-l.186 ...6431513647642693 & 0.043372909698996695 &
-                                                   0.044112040133779215 & 0....
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
-l.186 ...3372909698996695 & 0.044112040133779215 &
-                                                   0.054527646129541994 & 0....
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
-l.186 ...4112040133779215 & 0.054527646129541994 &
-                                                   0.0  & 0.0  & 0.056204248...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
-l.186 ...133779215 & 0.054527646129541994 & 0.0  &
-                                                   0.0  & 0.0562042483660132...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
-l.186 ...15 & 0.054527646129541994 & 0.0  & 0.0  &
-                                                   0.05620424836601323 & 0.0...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
-l.186 ...994 & 0.0  & 0.0  & 0.05620424836601323 &
-                                                   0.0444651567944251 & 0.0 ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
-l.186 ....05620424836601323 & 0.0444651567944251 &
-                                                   0.0  \\\\
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194: Misplaced alignment tab character &.
-l.194             YB55 &
-                         YB56                & YB57 & YB58                & ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194: Misplaced alignment tab character &.
-l.194             YB55 & YB56                &
-                                               YB57 & YB58                & ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194: Misplaced alignment tab character &.
-l.194 ...      YB55 & YB56                & YB57 &
-                                                   YB58                & YB5...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194: Misplaced alignment tab character &.
-l.194 ...           & YB57 & YB58                &
-                                                   YB59                & YB6...
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\reserved@a ->\@nil 
+                    
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Use of \@BOOKMARK doesn't match its definition.
+\@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
+                                                  \def \reserved@b {#3}\futu...
+l.688 \end{table}
+                 
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+<argument> \@@BOOKMARK 
+                       [1][-]
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Argument of \@float@Hx has an extra }.
+<inserted text> 
+                \par 
+l.688 \end{table}
+                 
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+[2
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Paragraph ended before \@float@Hx was complete.
+<to be read again> 
+                   \par 
+l.688 \end{table}
+                 
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\reserved@a ->\@nil 
+                    
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+Runaway text?
+\protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...up \Hy@safe@activestrue \edef \x 
+                                                  {\endgroup \def \noexpand ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...noexpand \Hy@tocdestname {#4}}\x 
+                                                  \ifx \Hy@tocdestname \ltx@...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+\contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
+                                                  \def \Hy@temp {#3}\ifx \Hy...
+l.688 \end{table}
+                 
+I'm ignoring this; it doesn't match any \if.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\reserved@a ->\@nil 
+                    
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Use of \@BOOKMARK doesn't match its definition.
+\@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
+                                                  \def \reserved@b {#3}\futu...
+l.688 \end{table}
+                 
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+<argument> \@@BOOKMARK 
+                       [1][-]
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Argument of \@float@Hx has an extra }.
+<inserted text> 
+                \par 
+l.688 \end{table}
+                 
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+[2
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Paragraph ended before \@float@Hx was complete.
+<to be read again> 
+                   \par 
+l.688 \end{table}
+                 
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\reserved@a ->\@nil 
+                    
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+Runaway text?
+\protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...up \Hy@safe@activestrue \edef \x 
+                                                  {\endgroup \def \noexpand ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...noexpand \Hy@tocdestname {#4}}\x 
+                                                  \ifx \Hy@tocdestname \ltx@...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+\contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
+                                                  \def \Hy@temp {#3}\ifx \Hy...
+l.688 \end{table}
+                 
+I'm ignoring this; it doesn't match any \if.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...up \Hy@safe@activestrue \edef \x 
+                                                  {\endgroup \def \noexpand ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...noexpand \Hy@tocdestname {#4}}\x 
+                                                  \ifx \Hy@tocdestname \ltx@...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+\contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
+                                                  \def \Hy@temp {#3}\ifx \Hy...
+l.688 \end{table}
+                 
+I'm ignoring this; it doesn't match any \if.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...up \Hy@safe@activestrue \edef \x 
+                                                  {\endgroup \def \noexpand ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...noexpand \Hy@tocdestname {#4}}\x 
+                                                  \ifx \Hy@tocdestname \ltx@...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+\contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
+                                                  \def \Hy@temp {#3}\ifx \Hy...
+l.688 \end{table}
+                 
+I'm ignoring this; it doesn't match any \if.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...up \Hy@safe@activestrue \edef \x 
+                                                  {\endgroup \def \noexpand ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...noexpand \Hy@tocdestname {#4}}\x 
+                                                  \ifx \Hy@tocdestname \ltx@...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+\contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
+                                                  \def \Hy@temp {#3}\ifx \Hy...
+l.688 \end{table}
+                 
+I'm ignoring this; it doesn't match any \if.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\@writefile{lot}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\reserved@a ->\@nil 
+                    
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Use of \@BOOKMARK doesn't match its definition.
+\@ifnextchar ...eserved@d =#1\def \reserved@a {#2}
+                                                  \def \reserved@b {#3}\futu...
+l.688 \end{table}
+                 
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+<argument> \@@BOOKMARK 
+                       [1][-]
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Argument of \@float@Hx has an extra }.
+<inserted text> 
+                \par 
+l.688 \end{table}
+                 
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+[3
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Paragraph ended before \@float@Hx was complete.
+<to be read again> 
+                   \par 
+l.688 \end{table}
+                 
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\reserved@a ->\@nil 
+                    
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Incomplete \iffalse; all text was ignored after line 688.
+<inserted text> 
+                \fi 
+l.688 \end{table}
+                 
+A forbidden control sequence occurred in skipped text.
+This kind of error happens when you say `\if...' and forget
+the matching `\fi'. I've inserted a `\fi'; this might work.
+
+Runaway text?
+\protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+Runaway text?
+\protect \let \reserved@d =[\def {\def !{[1][-]}\futurelet \@let@token \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...up \Hy@safe@activestrue \edef \x 
+                                                  {\endgroup \def \noexpand ...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Undefined control sequence.
+\contentsline ...noexpand \Hy@tocdestname {#4}}\x 
+                                                  \ifx \Hy@tocdestname \ltx@...
+l.688 \end{table}
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Extra \or.
+\contentsline ...tart {#2}\Hy@toclinkend }{#3}\or 
+                                                  \def \Hy@temp {#3}\ifx \Hy...
+l.688 \end{table}
+                 
+I'm ignoring this; it doesn't match any \if.
+
+Runaway text?
+\@writefile{toc}{\protect \begingroup \edef {\endgroup \def \Hy@tocdestname \ETC.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688: Forbidden control sequence found while scanning text of \write.
+<inserted text> 
+                }
+l.688 \end{table}
+                 
 (That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
- 10269 strings out of 476025
- 160062 string characters out of 5796533
- 1857388 words of memory out of 5000000
+ 10276 strings out of 476025
+ 160139 string characters out of 5796533
+ 1928388 words of memory out of 5000000
  30610 multiletter control sequences out of 15000+600000
  517223 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,76p,394b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,8n,76p,394b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194:  ==> Fatal error occurred, no output PDF file produced!
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:688:  ==> Fatal error occurred, no output PDF file produced!
