@@ -4,14 +4,13 @@ import pandas as pd
 from progress.bar import Bar
 
 from Data.DataParser import parse_data, array_to_string
-from GUI import startGUI
 from Simulation import Simulation
 
-AMOUNT_SIMULATIONS = 10
+AMOUNT_SIMULATIONS = 1000
 
 # LATEX formats table to copy paste in Latex-doc
-LATEX = False
-OVERVIEW = True
+LATEX = True
+OVERVIEW = False
 
 
 def format_stats(stats):
@@ -107,7 +106,7 @@ def load_data(folder):
     return data
 
 
-def simulate_fifo_closest_departure(stats_fifo, data):
+def simulate_fifo_closest_arrival(stats_fifo, data):
     sim = Simulation(data)
     sim.fifo(arrival_based=True)
     stats_fifo = pd.concat(
@@ -124,11 +123,32 @@ def simulate_fifo_closest_departure(stats_fifo, data):
     return stats_fifo
 
 
+def simulate_fifo_closest_departure(stats_fifo, data):
+    sim = Simulation(data)
+    sim.fifo(arrival_based=False, departue_based=True)
+    stats_fifo = pd.concat(
+        [stats_fifo,
+         pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
+                        'Normal_Rejected': sim.rejected_per_type["normal"],
+                        'Reefer_Rejected': sim.rejected_per_type["reefer"],
+                        'Total_Travel_Distance': sim.total_travel_distance_containers,
+                        'AVG_Travel_Distance_Containers': sim.getAvgTravel_Containers(),
+                        'Max_Occupancy': sim.getMaxOccupancy(),
+                        'AVG_Daily_Individual_Occupancy': sim.getAvgOccupancy_individual(),
+                        'AVG_daily_total_Occupancy': sim.getDailyTotalOccupancy()}])
+         ])
+    return stats_fifo
+
+
 def main():
-    startGUI()
+    # startGUI()
     data = load_data('./Data/')
     # visualise_data(data)
-    stats_fifo = pd.DataFrame(
+    stats_fifo_closest_departure = pd.DataFrame(
+        columns=['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected', 'Total_Travel_Distance',
+                 'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
+                 'AVG_daily_total_Occupancy'])
+    stats_fifo_closest_arrival = pd.DataFrame(
         columns=['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected', 'Total_Travel_Distance',
                  'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
                  'AVG_daily_total_Occupancy'])
@@ -138,12 +158,13 @@ def main():
     with Bar('Simulating', fill='#', empty_fill='.', bar_prefix=' [',
              bar_suffix='] ', max=AMOUNT_SIMULATIONS) as bar:
         while i <= AMOUNT_SIMULATIONS:
-            stats_fifo = simulate_fifo_closest_departure(stats_fifo, data)
+            stats_fifo_closest_arrival = simulate_fifo_closest_arrival(stats_fifo_closest_arrival, data)
+            stats_fifo_closest_departure = simulate_fifo_closest_departure(stats_fifo_closest_departure, data)
             bar.next()
             i += 1
     print('\n')
-    show_result('FIFO', stats_fifo)
-
+    show_result('FIFO ARRIVAL-BASED', stats_fifo_closest_arrival)
+    show_result('FIFO DEPARTURE-BASED', stats_fifo_closest_departure)
 
 
 if __name__ == '__main__':

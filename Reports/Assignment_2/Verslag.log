@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  17 APR 2023 10:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  23 APR 2023 13:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Ethiek/Portfolio/a.Reflectie/Verslag.tex"
-(/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Ethiek/Portfolio/a.Reflectie/Verslag.tex
+**"/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex"
+(/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -256,7 +256,6 @@ LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 Package hyperref Info: Link coloring OFF on input line 23.
- (./Verslag.out) (./Verslag.out)
 \@outlinefile=\write3
 \openout3 = `Verslag.out'.
 
@@ -286,38 +285,1299 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 24.
- (./Verslag.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1.
-)
+
+No file Verslag.toc.
 \tf@toc=\write4
 \openout4 = `Verslag.toc'.
 
- [1
+[1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./Verslag.bbl
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 38.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 38.
+ [2] [3{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:119: Missing $ inserted.
+<inserted text> 
+                $
+l.119             Containers_
+                             Rejected            & 0.0                  \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:119: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.119             Containers_Rejected            &
+                                                   0.0                  \\ \...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
-) [3] (./Verslag.aux)
-Package rerunfilecheck Info: File `Verslag.out' has not changed.
-(rerunfilecheck)             Checksum: 48B979EFCE19893AF7A048FF47F90A1B;487.
- ) 
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:119: Missing $ inserted.
+<inserted text> 
+                $
+l.119             Containers_Rejected            &
+                                                   0.0                  \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:119: Missing } inserted.
+<inserted text> 
+                }
+l.119             Containers_Rejected            &
+                                                   0.0                  \\ \...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:120: Missing $ inserted.
+<inserted text> 
+                $
+l.120             CG_
+                     Rejected                    & 0.0                  \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:120: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.120             CG_Rejected                    &
+                                                   0.0                  \\ \...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:120: Missing $ inserted.
+<inserted text> 
+                $
+l.120             CG_Rejected                    &
+                                                   0.0                  \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:120: Missing } inserted.
+<inserted text> 
+                }
+l.120             CG_Rejected                    &
+                                                   0.0                  \\ \...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:121: Missing $ inserted.
+<inserted text> 
+                $
+l.121             Normal_
+                         Rejected                & 0.0                  \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:121: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.121             Normal_Rejected                &
+                                                   0.0                  \\ \...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:121: Missing $ inserted.
+<inserted text> 
+                $
+l.121             Normal_Rejected                &
+                                                   0.0                  \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:121: Missing } inserted.
+<inserted text> 
+                }
+l.121             Normal_Rejected                &
+                                                   0.0                  \\ \...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:122: Missing $ inserted.
+<inserted text> 
+                $
+l.122             Reefer_
+                         Rejected                & 0.0                  \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:122: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.122             Reefer_Rejected                &
+                                                   0.0                  \\ \...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:122: Missing $ inserted.
+<inserted text> 
+                $
+l.122             Reefer_Rejected                &
+                                                   0.0                  \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:122: Missing } inserted.
+<inserted text> 
+                }
+l.122             Reefer_Rejected                &
+                                                   0.0                  \\ \...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:123: Missing $ inserted.
+<inserted text> 
+                $
+l.123             Total_
+                        Travel_Distance          & 6062359.227760092    \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:123: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.123             Total_Travel_Distance          &
+                                                   6062359.227760092    \\ \...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:123: Missing $ inserted.
+<inserted text> 
+                $
+l.123             Total_Travel_Distance          &
+                                                   6062359.227760092    \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:123: Missing } inserted.
+<inserted text> 
+                }
+l.123             Total_Travel_Distance          &
+                                                   6062359.227760092    \\ \...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:124: Missing $ inserted.
+<inserted text> 
+                $
+l.124             AVG_
+                      Travel_Distance_Containers & 379.9635742621337    \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:124: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.124             AVG_Travel_Distance_Containers &
+                                                   379.9635742621337    \\ \...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:124: Missing $ inserted.
+<inserted text> 
+                $
+l.124             AVG_Travel_Distance_Containers &
+                                                   379.9635742621337    \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:124: Missing } inserted.
+<inserted text> 
+                }
+l.124             AVG_Travel_Distance_Containers &
+                                                   379.9635742621337    \\ \...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:125: Missing $ inserted.
+<inserted text> 
+                $
+l.125             AVG_
+                      daily_total_Occupancy      & 0.011194455823271148 \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:125: Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.125             AVG_daily_total_Occupancy      &
+                                                   0.011194455823271148 \\ \...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:125: Missing $ inserted.
+<inserted text> 
+                $
+l.125             AVG_daily_total_Occupancy      &
+                                                   0.011194455823271148 \\ \...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:125: Missing } inserted.
+<inserted text> 
+                }
+l.125             AVG_daily_total_Occupancy      &
+                                                   0.011194455823271148 \\ \...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:130: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.130 \\b
+         egin{table}[h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
+l.134             YB1                &
+                                       YB2 & YB3 & YB4 & YB5 & YB6          ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
+l.134             YB1                & YB2 &
+                                             YB3 & YB4 & YB5 & YB6          ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
+l.134             YB1                & YB2 & YB3 &
+                                                   YB4 & YB5 & YB6          ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
+l.134 ...   YB1                & YB2 & YB3 & YB4 &
+                                                   YB5 & YB6          & YB7 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
+l.134 ...                & YB2 & YB3 & YB4 & YB5 &
+                                                   YB6          & YB7       ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
+l.134 ... & YB2 & YB3 & YB4 & YB5 & YB6          &
+                                                   YB7                 & YB8...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
+l.134 ...B5 & YB6          & YB7                 &
+                                                   YB8 & YB9 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:134: Misplaced alignment tab character &.
+l.134 ...B6          & YB7                 & YB8 &
+                                                   YB9 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
+l.136             0.3333309859154926 &
+                                       0.0 & 0.0 & 0.0 & 0.0 & 0.2290234375 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
+l.136             0.3333309859154926 & 0.0 &
+                                             0.0 & 0.0 & 0.0 & 0.2290234375 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
+l.136             0.3333309859154926 & 0.0 & 0.0 &
+                                                   0.0 & 0.0 & 0.2290234375 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
+l.136 ...   0.3333309859154926 & 0.0 & 0.0 & 0.0 &
+                                                   0.0 & 0.2290234375 & 0.26...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
+l.136 ...333309859154926 & 0.0 & 0.0 & 0.0 & 0.0 &
+                                                   0.2290234375 & 0.26913291...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
+l.136 ... & 0.0 & 0.0 & 0.0 & 0.0 & 0.2290234375 &
+                                                   0.26913291139240486 & 0.0...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
+l.136 ....0 & 0.2290234375 & 0.26913291139240486 &
+                                                   0.0 & 0.0 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:136: Misplaced alignment tab character &.
+l.136 ....2290234375 & 0.26913291139240486 & 0.0 &
+                                                   0.0 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
+l.144             YB10 &
+                         YB11 & YB12 & YB13 & YB14               & YB15     ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
+l.144             YB10 & YB11 &
+                                YB12 & YB13 & YB14               & YB15     ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
+l.144             YB10 & YB11 & YB12 &
+                                       YB13 & YB14               & YB15     ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
+l.144             YB10 & YB11 & YB12 & YB13 &
+                                              YB14               & YB15     ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
+l.144 ...YB11 & YB12 & YB13 & YB14               &
+                                                   YB15               & YB16...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
+l.144 ...YB14               & YB15               &
+                                                   YB16                & YB1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
+l.144 ...B15               & YB16                &
+                                                   YB17 & YB18 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:144: Misplaced alignment tab character &.
+l.144 ...           & YB16                & YB17 &
+                                                   YB18 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
+l.146             0.0  &
+                         0.0  & 0.0  & 0.0  & 0.3309772727272726 & 0.3753750...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
+l.146             0.0  & 0.0  &
+                                0.0  & 0.0  & 0.3309772727272726 & 0.3753750...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
+l.146             0.0  & 0.0  & 0.0  &
+                                       0.0  & 0.3309772727272726 & 0.3753750...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
+l.146             0.0  & 0.0  & 0.0  & 0.0  &
+                                              0.3309772727272726 & 0.3753750...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
+l.146 ...0.0  & 0.0  & 0.0  & 0.3309772727272726 &
+                                                   0.3753750000000006 & 0.20...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
+l.146 ...0.3309772727272726 & 0.3753750000000006 &
+                                                   0.20669230769230879 & 0.0...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
+l.146 ....3753750000000006 & 0.20669230769230879 &
+                                                   0.0  & 0.0  \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:146: Misplaced alignment tab character &.
+l.146 ...0000000006 & 0.20669230769230879 & 0.0  &
+                                                   0.0  \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
+l.154             YB19 &
+                         YB20               & YB21 & YB22 & YB23            ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
+l.154             YB19 & YB20               &
+                                              YB21 & YB22 & YB23            ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
+l.154 ...       YB19 & YB20               & YB21 &
+                                                   YB22 & YB23              ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
+l.154 ...YB19 & YB20               & YB21 & YB22 &
+                                                   YB23                & YB2...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
+l.154 ...    & YB21 & YB22 & YB23                &
+                                                   YB24 & YB25 & YB26 & YB27...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
+l.154 ...B21 & YB22 & YB23                & YB24 &
+                                                   YB25 & YB26 & YB27       ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
+l.154 ...B22 & YB23                & YB24 & YB25 &
+                                                   YB26 & YB27              ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:154: Misplaced alignment tab character &.
+l.154 ...B23                & YB24 & YB25 & YB26 &
+                                                   YB27                \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
+l.156             0.0  &
+                         0.2138999999999998 & 0.0  & 0.0  & 0.27830882352941...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
+l.156             0.0  & 0.2138999999999998 &
+                                              0.0  & 0.0  & 0.27830882352941...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
+l.156 ...       0.0  & 0.2138999999999998 & 0.0  &
+                                                   0.0  & 0.2783088235294116...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
+l.156 ...0.0  & 0.2138999999999998 & 0.0  & 0.0  &
+                                                   0.27830882352941166 & 0.0...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
+l.156 ...998 & 0.0  & 0.0  & 0.27830882352941166 &
+                                                   0.0  & 0.0  & 0.0  & 0.21...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
+l.156 ....0  & 0.0  & 0.27830882352941166 & 0.0  &
+                                                   0.0  & 0.0  & 0.216146067...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
+l.156 ....0  & 0.27830882352941166 & 0.0  & 0.0  &
+                                                   0.0  & 0.2161460674157289...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:156: Misplaced alignment tab character &.
+l.156 ....27830882352941166 & 0.0  & 0.0  & 0.0  &
+                                                   0.21614606741572898 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
+l.164             YB28               &
+                                       YB29 & YB30 & YB31 & YB32 & YB33 & YB...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
+l.164             YB28               & YB29 &
+                                              YB30 & YB31 & YB32 & YB33 & YB...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
+l.164 ...       YB28               & YB29 & YB30 &
+                                                   YB31 & YB32 & YB33 & YB34...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
+l.164 ...YB28               & YB29 & YB30 & YB31 &
+                                                   YB32 & YB33 & YB34 & YB35...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
+l.164 ...            & YB29 & YB30 & YB31 & YB32 &
+                                                   YB33 & YB34 & YB35       ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
+l.164 ...     & YB29 & YB30 & YB31 & YB32 & YB33 &
+                                                   YB34 & YB35              ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
+l.164 ...YB29 & YB30 & YB31 & YB32 & YB33 & YB34 &
+                                                   YB35                  & Y...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:164: Misplaced alignment tab character &.
+l.164 ...2 & YB33 & YB34 & YB35                  &
+                                                   YB36                \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
+l.166             0.7001022727272731 &
+                                       0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0....
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
+l.166             0.7001022727272731 & 0.0  &
+                                              0.0  & 0.0  & 0.0  & 0.0  & 0....
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
+l.166 ...       0.7001022727272731 & 0.0  & 0.0  &
+                                                   0.0  & 0.0  & 0.0  & 0.0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
+l.166 ...0.7001022727272731 & 0.0  & 0.0  & 0.0  &
+                                                   0.0  & 0.0  & 0.0  & 4.54...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
+l.166 ...22727272731 & 0.0  & 0.0  & 0.0  & 0.0  &
+                                                   0.0  & 0.0  & 4.545454545...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
+l.166 ...2731 & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  &
+                                                   0.0  & 4.545454545454546e...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
+l.166 ...0.0  & 0.0  & 0.0  & 0.0  & 0.0  & 0.0  &
+                                                   4.545454545454546e-05 & 0...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:166: Misplaced alignment tab character &.
+l.166 ...  & 0.0  & 0.0  & 4.545454545454546e-05 &
+                                                   0.49896629213483057 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
+l.174             YB37 &
+                         YB38                 & YB39                & YB40  ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
+l.174             YB37 & YB38                 &
+                                                YB39                & YB40  ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
+l.174 ...8                 & YB39                &
+                                                   YB40                & YB4...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
+l.174 ...39                & YB40                &
+                                                   YB41 & YB42 & YB43       ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
+l.174 ...           & YB40                & YB41 &
+                                                   YB42 & YB43              ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
+l.174 ...    & YB40                & YB41 & YB42 &
+                                                   YB43                & YB4...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
+l.174 ...    & YB41 & YB42 & YB43                &
+                                                   YB44 & YB45 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:174: Misplaced alignment tab character &.
+l.174 ...B41 & YB42 & YB43                & YB44 &
+                                                   YB45 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
+l.176             0.0  &
+                         0.056330434782608324 & 0.11090476190476277 & 0.0528...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
+l.176             0.0  & 0.056330434782608324 &
+                                                0.11090476190476277 & 0.0528...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
+l.176 ...56330434782608324 & 0.11090476190476277 &
+                                                   0.05289846153846157 & 0.0...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
+l.176 ...11090476190476277 & 0.05289846153846157 &
+                                                   0.0  & 0.0  & 0.072883076...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
+l.176 ...6190476277 & 0.05289846153846157 & 0.0  &
+                                                   0.0  & 0.0728830769230769...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
+l.176 ...277 & 0.05289846153846157 & 0.0  & 0.0  &
+                                                   0.07288307692307698 & 0.0...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
+l.176 ...157 & 0.0  & 0.0  & 0.07288307692307698 &
+                                                   0.0  & 0.0  \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:176: Misplaced alignment tab character &.
+l.176 ....0  & 0.0  & 0.07288307692307698 & 0.0  &
+                                                   0.0  \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
+l.184             YB46                &
+                                        YB47                 & YB48         ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
+l.184 ...6                & YB47                 &
+                                                   YB48                 & YB...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
+l.184 ...                 & YB48                 &
+                                                   YB49                 & YB...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
+l.184 ...                 & YB49                 &
+                                                   YB50 & YB51 & YB52       ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
+l.184 ...          & YB49                 & YB50 &
+                                                   YB51 & YB52              ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
+l.184 ...   & YB49                 & YB50 & YB51 &
+                                                   YB52                & YB5...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
+l.184 ...    & YB50 & YB51 & YB52                &
+                                                   YB53               & YB54...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:184: Misplaced alignment tab character &.
+l.184 ...B52                & YB53               &
+                                                   YB54 \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
+l.186             0.06431513647642693 &
+                                        0.043372909698996695 & 0.04411204013...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
+l.186 ...6431513647642693 & 0.043372909698996695 &
+                                                   0.044112040133779215 & 0....
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
+l.186 ...3372909698996695 & 0.044112040133779215 &
+                                                   0.054527646129541994 & 0....
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
+l.186 ...4112040133779215 & 0.054527646129541994 &
+                                                   0.0  & 0.0  & 0.056204248...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
+l.186 ...133779215 & 0.054527646129541994 & 0.0  &
+                                                   0.0  & 0.0562042483660132...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
+l.186 ...15 & 0.054527646129541994 & 0.0  & 0.0  &
+                                                   0.05620424836601323 & 0.0...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
+l.186 ...994 & 0.0  & 0.0  & 0.05620424836601323 &
+                                                   0.0444651567944251 & 0.0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:186: Misplaced alignment tab character &.
+l.186 ....05620424836601323 & 0.0444651567944251 &
+                                                   0.0  \\\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194: Misplaced alignment tab character &.
+l.194             YB55 &
+                         YB56                & YB57 & YB58                & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194: Misplaced alignment tab character &.
+l.194             YB55 & YB56                &
+                                               YB57 & YB58                & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194: Misplaced alignment tab character &.
+l.194 ...      YB55 & YB56                & YB57 &
+                                                   YB58                & YB5...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194: Misplaced alignment tab character &.
+l.194 ...           & YB57 & YB58                &
+                                                   YB59                & YB6...
+(That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
- 10275 strings out of 476025
- 160053 string characters out of 5796533
+ 10269 strings out of 476025
+ 160062 string characters out of 5796533
  1857388 words of memory out of 5000000
  30610 multiletter control sequences out of 15000+600000
- 516235 words of font info for 45 fonts, out of 8000000 for 9000
+ 517223 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,76p,536b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Verslag.pdf (3 pages, 70558 bytes).
-PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 75i,9n,76p,394b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+/home/woutd/Documents/School/Industriele Ingenieurswetenschappen/Ma1/Sem2/Software-Simulatie/Project/Reports/Assignment_2/Verslag.tex:194:  ==> Fatal error occurred, no output PDF file produced!

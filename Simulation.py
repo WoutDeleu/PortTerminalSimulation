@@ -148,7 +148,7 @@ class Simulation:
                 assert not departure_based, "arrival_based and departure_based cannot be true at the same time"
                 distance = block.position.calculate_distance(container_group.arrival_point)
             if departure_based:
-                assert not departure_based, "arrival_based and departure_based cannot be true at the same time"
+                assert not arrival_based, "arrival_based and departure_based cannot be true at the same time"
                 distance = block.position.calculate_distance(container_group.departure_point)
             if distance < closest_block.position.calculate_distance(container_group.arrival_point):
                 closest_block = block
