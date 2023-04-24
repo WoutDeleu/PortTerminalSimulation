@@ -1,9 +1,15 @@
-Alles overlopen? Klopt het?
-- Kijken of de randoms volgens de juiste distributies zijn gegenereerd
+- Vergelijken met input samples die we genereren            - TOON 
 
-Extra assignment rule
+- Bereken & reporten hoeveel runs moeten gebeuren           - JEF
+met degene in de data (komen samples overeen, ...)          
 
-Verslag
-Visualisatie
+- Yard Block statistics global maken (bv max occ, ...)      - WOUT
 
-https://towardsdatascience.com/simulating-real-life-events-in-python-with-simpy-619ffcdbf81f
+- Basic structure + conclusies report afwerken              - WOUT
+- Todos in report afwerken                                  - TOON
+- Stressing the system & reporten                           - JEF
+    - Service Time verhogen, Aantal containers verhogne, interarrivaltime verlagen,...
+    kijken hoe het reageert
+
+- Omzetten naar Salabim                                     - JEF
+- Omzetten naar Departure times                             - WOUT
