@@ -86,6 +86,12 @@ class Simulation:
         container_groups = []
         while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
             self.update_time()
+            # check if the current container groups need to leave (fifo)
+            for container_group in container_groups:
+                if self.time > container_group.getFinishTime():
+                    block = container_group.yard_block
+                    self.remove_container_from_block(container_group, block)
+                    container_groups.remove(container_group)
             # new container group
             new_containergroup = self.generate_new_containergroup()
             # Update statistics
@@ -105,12 +111,6 @@ class Simulation:
                 self.add_container_to_block(new_containergroup, closest_block)
                 container_groups.append(new_containergroup)  # container group served
 
-            # check if the current container groups need to leave (fifo)
-            for container_group in container_groups:
-                if self.time > container_group.getFinishTime():
-                    block = container_group.yard_block
-                    self.remove_container_from_block(container_group, block)
-                    container_groups.remove(container_group)
 
     def generate_new_containergroup(self):
         container_flowtype = get_container_flow_type()

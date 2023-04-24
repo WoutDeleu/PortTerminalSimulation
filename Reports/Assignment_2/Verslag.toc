@@ -5,5 +5,5 @@
 \contentsline {section}{\numberline {3}Results}{4}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Basic scenario}{4}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Departure based}{4}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Arrival based}{5}{subsubsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.3}Stressing the system}{5}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.2.1}Arrival based}{4}{subsubsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.3}Stressing the system}{4}{subsection.3.3}%
