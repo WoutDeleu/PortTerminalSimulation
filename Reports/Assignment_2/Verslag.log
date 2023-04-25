@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  24 APR 2023 11:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.4.4)  25 APR 2023 11:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -297,30 +297,55 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4] [5] (./Verslag.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<Afbeeldingen/inter_arrival_times_hist.png, id=62, 472.76625pt x 368.577pt>
+File: Afbeeldingen/inter_arrival_times_hist.png Graphic file (type png)
+<use Afbeeldingen/inter_arrival_times_hist.png>
+Package pdftex.def Info: Afbeeldingen/inter_arrival_times_hist.png  used on input line 65.
+(pdftex.def)             Requested size: 137.9979pt x 107.58759pt.
+<Afbeeldingen/inter_arrival_time_sample.png, id=64, 386.04225pt x 289.08pt>
+File: Afbeeldingen/inter_arrival_time_sample.png Graphic file (type png)
+<use Afbeeldingen/inter_arrival_time_sample.png>
+Package pdftex.def Info: Afbeeldingen/inter_arrival_time_sample.png  used on input line 71.
+(pdftex.def)             Requested size: 151.80084pt x 113.67587pt.
+ [2]
+<Afbeeldingen/container_type.png, id=75, 363.15675pt x 339.06676pt>
+File: Afbeeldingen/container_type.png Graphic file (type png)
+<use Afbeeldingen/container_type.png>
+Package pdftex.def Info: Afbeeldingen/container_type.png  used on input line 93.
+(pdftex.def)             Requested size: 172.5pt x 161.06355pt.
+<Afbeeldingen/container_group_sizes.png, id=77, 372.1905pt x 280.6485pt>
+File: Afbeeldingen/container_group_sizes.png Graphic file (type png)
+<use Afbeeldingen/container_group_sizes.png>
+Package pdftex.def Info: Afbeeldingen/container_group_sizes.png  used on input line 105.
+(pdftex.def)             Requested size: 155.24895pt x 117.0622pt.
+<Afbeeldingen/container_group_size_sample.png, id=78, 380.622pt x 284.262pt>
+File: Afbeeldingen/container_group_size_sample.png Graphic file (type png)
+<use Afbeeldingen/container_group_size_sample.png>
+Package pdftex.def Info: Afbeeldingen/container_group_size_sample.png  used on input line 110.
+(pdftex.def)             Requested size: 151.80084pt x 113.37312pt.
+<Afbeeldingen/service time analysis.png, id=80, 364.9635pt x 277.63725pt>
+File: Afbeeldingen/service time analysis.png Graphic file (type png)
+<use Afbeeldingen/service time analysis.png>
+Package pdftex.def Info: Afbeeldingen/service time analysis.png  used on input line 126.
+(pdftex.def)             Requested size: 172.5pt x 131.22665pt.
+ [3{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./Afbeeldingen/inter_arrival_times_hist.png> <./Afbeeldingen/inter_arrival_time_sample.png>] [4 <./Afbeeldingen/container_type.png> <./Afbeeldingen/container_group_sizes.png> <./Afbeeldingen/container_group_size_sample.png>] [5 <./Afbeeldingen/service time analysis.png>] [6] [7] (./Verslag.aux)
 Package rerunfilecheck Info: File `Verslag.out' has not changed.
 (rerunfilecheck)             Checksum: 1311A955C4D398A4C6167F3DEF464C6A;1383.
  ) 
 Here is how much of TeX's memory you used:
- 10296 strings out of 476025
- 160390 string characters out of 5796533
- 1860388 words of memory out of 5000000
- 30620 multiletter control sequences out of 15000+600000
+ 10353 strings out of 476025
+ 162356 string characters out of 5796533
+ 1859388 words of memory out of 5000000
+ 30661 multiletter control sequences out of 15000+600000
  517223 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,76p,476b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,9n,76p,476b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Verslag.pdf (5 pages, 187594 bytes).
+Output written on Verslag.pdf (7 pages, 343529 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 121 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 195 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 

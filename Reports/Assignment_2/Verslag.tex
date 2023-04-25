@@ -4,7 +4,7 @@
 
 %opening
 \usepackage{float}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -24,9 +24,8 @@
 \setlength{\parindent}{0pt} \maketitle \tableofcontents \newpage %geen indent bij nieuwe paragraaf
 
 \section{Introduction}
-During this assignment, a base was implemented to build a simulation for the
-`Yard storage assignment problem'. The basic structure was designed and there
-is a basic scenario implemented. During this report, the basics design choices
+For this assignment, a base scenario of the `Yard storage assignment problem'
+was implemented and simulated. During this report, the basics design choices
 will be discussed, as well as the results of the simulation.
 
 The basic technology used is Python. The code is written as dynamic as
@@ -35,12 +34,12 @@ overall flow of the simulation. The simulation is based on a discrete event
 simulation, with the possibility of online simulation.
 
 To refresh the environment in brief, the goal is to simulate a yard, in which
-codokterbriefkenntainergroups\footnote{Containers arrive only in group. Containers
-	individually are (for now) not looked at individually. This means they can't be
-	split up, they are stored in the same place, they enter and leave the yard at
-	the same time.} come and gow. They can arrive from vessels or from trucks and
-trains. The goal is to simulate the storage situations in the yard, as a result
-of the in and out flow.
+containergroups\footnote{Containers arrive only in group. Containers are (for
+	now) not looked at individually. This means they can't be split up, they are
+	stored in the same place, they enter and leave the yard at the same time.} come
+and go. They can arrive from vessels or from trucks and trains. The goal is to
+simulate the storage situations in the yard, as a result of the in and out
+flow.
 
 \section{Simulation parameters}
 The first and maybe most primary parameter to know is the amount of simulations
@@ -53,15 +52,29 @@ of containergroups, with their own properties. To perform an online simulation,
 this stream needs to be generated on the fly. In the prior assignment, a study
 was held to figure out distributions, which will be used to generate the
 necessary information regarding the containergroups. This is necessary to
-generate the input to feed the online simulation.
+generate the input to feed the simulation.
 
 The generation of the groups happens at random times, which are calculated
 using the arrival time of the previous group, and a random interval time. This
-interval time is being generated using a .... \textbf{TODO:: UITLEGGEN -
-	distributie}
+interval time is being generated using an exponential function based upon the
+input data analysis of Nick De Bruyckere, Enrique Miron and Dries Van de Velde
+(Figure \ref{fig: inter arrival time analysis}).
+\begin{figure}[!tbp]
+	\centering
+	\begin{minipage}[b]{0.40\textwidth}
+		\includegraphics[width=\textwidth]{Afbeeldingen/inter_arrival_times_hist.png}
+		\caption{Inter arrival time in prior analysis}
+		\label{fig: inter arrival time analysis}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.44\textwidth}
+		\includegraphics[width=\textwidth]{Afbeeldingen/inter_arrival_time_sample.png}
+		\caption{Inter arrival time sample distribution used in the simulation}
+	\end{minipage}
+\end{figure}
 
 When the arrival time of a batch of containers is determined, some properties
-of that container group needs to be generated. The properties are: 
+of that container group needs to be generated. The properties are:
 \begin{itemize}
 	\item The type of containers
 	\item The number of containers in the group
@@ -71,20 +84,52 @@ of that container group needs to be generated. The properties are:
 	\item The flow type (which can be import or export)
 \end{itemize}
 
-The type of containers is in this case randomly selected with a weight of 69\%
-in favor of the \textit{normal} containers. The other 31\% is designated to the
-\textit{reefer} containers. Each group has a certain amount of containers in
-them. This is chosen based on .... \textbf{TODO:: UITLEGGEN - distributie}.
+The type of containers is also based upon the input analysis of Nick De
+Bruyckere, Enrique Miron and Dries Van de Velde represented in Figure \ref{fig:
+	container type analysis}. Normal containers and reefer container occur
+respectively 69\% and 31\% of the times.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Afbeeldingen/container_type.png}
+	\caption{Container type analysis}
+	\label{fig: container type analysis}
+\end{figure}
+
+Each group has a certain amount of containers in them. This is chosen based
+upon our own analysis of the input data. The distribution is represented by a
+steep exponential distribution which is never lower than 1. (Figure: \ref{fig:
+	container group size sample})
+\begin{figure}[!tbp]
+	\centering
+	\begin{minipage}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{Afbeeldingen/container_group_sizes.png}
+		\caption{container group size analysis}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.44\textwidth}
+		\includegraphics[width=\textwidth]{Afbeeldingen/container_group_size_sample.png}
+		\caption{Cointainer group size sample distribution}
+		\label{fig: container group size sample}
+	\end{minipage}
+\end{figure}
+
 Each instance has a service time, which is the time containers needs to stay in
 the yard before further actions are taken. This factor is directly dependent on
 the flow type. If it is import or export, the service time is by default 48
 hours. But if it is stated as a transhipment (which is technically a subtype of
-export), than it can vary between .... \textbf{TODO:: UITLEGGEN \-
-	distributie}.
+export), than it can vary between 0 and 166 hours. Ths is based upon our own
+analysis of the input data whic shows a uniform distribution between 0 and 166
+hours (Figure \ref{fig: service time analysis}). For this reason, the service
+time sample always takes a random number between these two values.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{Afbeeldingen/service time analysis.png}
+	\caption{Service time analysis}
+	\label{fig: service time analysis}
+\end{figure}
 
-The arrival position or berthing location (\textbf{TODO:: Klopt dit??} )of a
-vessel is randomly selected .... \textbf{TODO:: UITLEGGEN \- distributie}. The
-same principle holds for the departure position.
+The arrival and departing position of vessels and trucks is randomly selected
+out of the available locations.
 
 \subsection{Evaluation of results \Large TODO::: EEN ANDERE TITEL}
 Each simulation run will store different characteristics which, will be used to
@@ -114,7 +159,7 @@ wether or not they are kept in the yard. FIFO says that the first container
 that arrives, has a priority over the ones which arrive after the first one. If
 there is no space for an arriving containergroup, it will be rejected. While
 the next containergroup arrives, the check for space will happen again, and so
-on. 
+on.
 
 Two different approaches to block assignment are implemented. The block
 assignment rule has affect on which block is chosen to store a containergroup.
