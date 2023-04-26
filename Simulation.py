@@ -1,4 +1,5 @@
 import random
+from queue import PriorityQueue
 
 import pandas as pd
 import scipy.stats as scipyst
@@ -9,6 +10,8 @@ from YardBlock import YardBlock
 
 SIMULATION_MONTHS = 12
 SIMULATION_HOURS = SIMULATION_MONTHS * 24 * 30
+SIMULATION_MONTHS = 1
+SIMULATION_HOURS = SIMULATION_MONTHS * 30 * 24
 
 
 def simulate_fifo(stats_fifo, data, arrival_based=False, departure_based=False):
@@ -92,7 +95,7 @@ class Simulation:
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], Position(x[4], x[5])))
 
-    def fifo(self, arrival_based=False, departure_based=False):
+    def fifo_fast(self, arrival_based=False, departure_based=False):
         # Variables to get daily statistics
         self.day_clock = 0
         self.day_counter = 0
@@ -102,7 +105,7 @@ class Simulation:
         # List of all container groups in the yard blocks
         container_groups = []
         while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
-            self.update_time()
+            self.update_time(0)
             # check if the current container groups need to leave (fifo)
             for container_group in container_groups:
                 if self.time > container_group.getFinishTime():
@@ -127,6 +130,54 @@ class Simulation:
                 # Add the container group to the closest block
                 self.add_container_to_block(new_containergroup, closest_block)
                 container_groups.append(new_containergroup)  # container group served
+
+    def fifo(self, arrival_based=False, departure_based=False):
+        # Variables to get daily statistics
+        self.day_clock = 0
+        self.day_counter = 0
+        # Simulation clock
+        self.time = 0
+
+        event_list = PriorityQueue()
+        event_list.put(0)
+        # List of all container groups in the yard blocks
+        container_groups = []
+        while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
+            # Update time todo
+            self.update_time(event_list.get())
+
+            removed_container = False
+            # check if the current container groups need to leave (fifo)
+            for container_group in container_groups:
+                if self.time >= container_group.getFinishTime():
+                    block = container_group.yard_block
+                    self.remove_container_from_block(container_group, block)
+                    container_groups.remove(container_group)
+                    removed_container = True
+
+            # If no container was removed, this means a new group needs to be generated
+            if not removed_container:
+                # new container group
+                new_containergroup = self.generate_new_containergroup()
+
+                # Update statistics
+                self.total_containers += new_containergroup.number_of_containers
+                self.total_GC += 1
+
+                # Add to closest yarblock
+                closest_block = self.get_closest_yb(new_containergroup, arrival_based=arrival_based,
+                                                    departure_based=departure_based)
+                if closest_block is None:
+                    # No space for the container group
+                    self.rejected_groups += 1
+                    self.rejected_containers += new_containergroup.number_of_containers
+                    self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
+                else:
+                    # Add the container group to the closest block
+                    self.add_container_to_block(new_containergroup, closest_block)
+                    container_groups.append(new_containergroup)  # container group served
+                    event_list.put(new_containergroup.getFinishTime())
+                event_list.put(self.time + get_inter_arrival_time_sample())
 
     def generate_new_containergroup(self):
         container_flowtype = get_container_flow_type()
@@ -211,10 +262,13 @@ class Simulation:
         avg_occupancy_individual = self.getAvgOccupancy_individual()
         return sum(avg_occupancy_individual) / len(avg_occupancy_individual)
 
-    def update_time(self):
-        # Todo: find better sampling distributions (current ones are representative but probably not the best)
+    def update_time(self, new_time):
+        if new_time == 0:
+            self.time += get_inter_arrival_time_sample()
+        else:
+            self.time = new_time
         old_time = self.time
-        self.time += get_inter_arrival_time_sample()
+        self.time = new_time
         self.day_clock += self.time - old_time
 
         if self.day_clock >= 24:
