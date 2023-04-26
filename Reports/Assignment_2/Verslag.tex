@@ -5,6 +5,7 @@
 %opening
 \usepackage{float}
 \usepackage[hidelinks]{hyperref}
+\usepackage{scrextend}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -131,7 +132,7 @@ time sample always takes a random number between these two values.
 The arrival and departing position of vessels and trucks is randomly selected
 out of the available locations.
 
-\subsection{Evaluation of results \Large TODO::: EEN ANDERE TITEL}
+\subsection{Resulting values}
 Each simulation run will store different characteristics which, will be used to
 evaluate the performance of the simulation. The most important characteristics
 are: \begin{itemize}
@@ -140,12 +141,24 @@ are: \begin{itemize}
 	\item The total and average travel distance
 	\item Per YardBlock:
 	      \begin{itemize}
-		      \item The maximal occupancy at any given tim
+		      \item The maximal occupancy at any given time
 		      \item The maximal occupancy per day (\textbf{= average occupancy per day})
 	      \end{itemize}
 	\item Average daily occupancy over all containers: The average occupancy per day over
 	      all the YardBlocks \[\forall i \in days: \frac{\sum_{(x \in YardBlocks)}
 			      \overline{Occupancy_{i,x}}}{\#YardBlocks}\]
+\end{itemize}
+
+After seeing the first tests, i t was clear that with 159 Yardblocks in total,
+it is not the most useful thing to list the individual occupancy for every
+block, and include this in this rather short report. But to give an idea of
+this data, some basic statistics are given over the data: \begin{itemize}
+	\item The amount of YardBlocks which are close to being full (90\% average
+	      occupancy\footnote{\label{margin} Because the simulation is run many times, the
+		      averages of 100\% for example are hard to reach, thats why a small margin has
+		      been taken into account.})
+	\item The amount of YardBlocks which are never used (5\% average
+	      occupancy\footref{margin})
 \end{itemize}
 
 \section{Results}
@@ -168,38 +181,67 @@ The two different situations studied here are \textit{arrival based} and
 on the minimal distance between 2 points. The yard block chosen is the closest
 block to the arrival point, in case of arrival based, or closest to the
 departure point, in case of departure based.
-\subsection{Departure based}
 
+The 2 different approaches give somewhat similar results. The main difference
+is in the travel distance. This is significantly higher with departure based
+approach. This could be explained by the fact that groups leave the yard on
+more similar positions, than they arrive, which could lead to containers being
+stored somewhat further from there optimal point. This is a rather unlikely
+scenario, because individual blocks are (almost) never close to full. It is
+consequently unlikely containergroups would be stored somewhere else than it's
+optimal position. Another and more likely explanation is that the temporary
+storage of containers on the yard could, when searching for the closest block
+to the departure point, is further from the optimal route than when searching
+for the closest block to the arrival point. This can maybe a vague description,
+but on Figure \ref{fig:closest} could clarify this. Point A could be an arrival
+point, point D a departure point. C1 is the yardblock closest to the arrival
+point, and C2 to the departure point. The shortest path from A to B is the
+straight line. We can see that C2 is further from the optimal path than C1.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{Afbeeldingen/distances.png}
+	\caption{Closest block to arrival and departure point}\label{fig:closest}
+\end{figure}
+
+The fact that there are no containers rejected, and the fact that the occupancy
+is so low, is noteworthy. This implies that the yard is too big, and the stream
+of containers is to little to stress the simulation, even in the slightest way.
+This could imply that the stream of containers is to light for this yard.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{|c|c|}
 		\hline
-		Containers Rejected            & 0.0                  \\ \hline
-		CG Rejected                    & 0.0                  \\ \hline
-		Normal Rejected                & 0.0                  \\ \hline
-		Reefer Rejected                & 0.0                  \\ \hline
-		Total Travel Distance          & 7471576.566740074    \\ \hline
-		AVG Travel Distance Containers & 467.63038278646087   \\ \hline
-		AVG daily total Occupancy      & 0.012189307994940618 \\ \hline
+		Containers Rejected                         & 0.0        \\ \hline
+		CG Rejected                                 & 0.0        \\ \hline
+		Normal Rejected                             & 0.0        \\ \hline
+		Reefer Rejected                             & 0.0        \\ \hline
+		Total Travel Distance                       & 6051683.63 \\ \hline
+		AVG Travel Distance Containers              & 380.31     \\ \hline
+		AVG daily total Occupancy                   & 0.0366     \\ \hline
+		Portion of YB never used                    & 0.7799     \\ \hline
+		Portion of YB close to full (at some point) & 0          \\ \hline
+		Portion of YB close to full (average)       & 0          \\ \hline
+	\end{tabular}
+	\caption{FIFO arrival based statistics}
+\end{table}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Containers Rejected                         & 0.0        \\ \hline
+		CG Rejected                                 & 0.0        \\ \hline
+		Normal Rejected                             & 0.0        \\ \hline
+		Reefer Rejected                             & 0.0        \\ \hline
+		Total Travel Distance                       & 7468862.53 \\ \hline
+		AVG Travel Distance Containers              & 468.10     \\ \hline
+		AVG daily total Occupancy                   & 0.05272    \\ \hline
+		Portion of YB never used                    & 0.7799     \\ \hline
+		Portion of YB close to full (at some point) & 0          \\ \hline
+		Portion of YB close to full (average)       & 0          \\ \hline
 	\end{tabular}
 	\caption{FIFO departure based statistics}
 \end{table}
 
-\subsubsection{Arrival based}
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{|c|c|}
-		\hline
-		Containers Rejected            & 0.0                  \\ \hline
-		CG Rejected                    & 0.0                  \\ \hline
-		Normal Rejected                & 0.0                  \\ \hline
-		Reefer Rejected                & 0.0                  \\ \hline
-		Total Travel Distance          & 6069403.996520092    \\ \hline
-		AVG Travel Distance Containers & 380.0611989034411    \\ \hline
-		AVG daily total Occupancy      & 0.011198756687437594 \\ \hline
-	\end{tabular}
-	\caption{...}
-\end{table}
 \subsection{Stressing the system}
+\section{Conclusion}
 \end{document}
