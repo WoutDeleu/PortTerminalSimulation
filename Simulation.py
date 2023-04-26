@@ -11,6 +11,23 @@ SIMULATION_MONTHS = 12
 SIMULATION_HOURS = SIMULATION_MONTHS * 24 * 30
 
 
+def simulate_fifo(stats_fifo, data, arrival_based=False, departure_based=False):
+    sim = Simulation(data)
+    sim.fifo(arrival_based=arrival_based, departure_based=departure_based)
+    stats_fifo = pd.concat(
+        [stats_fifo,
+         pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
+                        'Normal_Rejected': sim.rejected_per_type["normal"],
+                        'Reefer_Rejected': sim.rejected_per_type["reefer"],
+                        'Total_Travel_Distance': sim.total_travel_distance_containers,
+                        'AVG_Travel_Distance_Containers': sim.getAvgTravel_Containers(),
+                        'Max_Occupancy': sim.getMaxOccupancy(),
+                        'AVG_Daily_Individual_Occupancy': sim.getAvgOccupancy_individual(),
+                        'AVG_daily_total_Occupancy': sim.getDailyTotalOccupancy()}])
+         ])
+    return stats_fifo
+
+
 def get_inter_arrival_time_sample():
     return round(scipyst.expon.rvs(scale=3, loc=0))
 
@@ -75,7 +92,7 @@ class Simulation:
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], Position(x[4], x[5])))
 
-    def fifo(self, arrival_based=False, departue_based=False):
+    def fifo(self, arrival_based=False, departure_based=False):
         # Variables to get daily statistics
         self.day_clock = 0
         self.day_counter = 0
@@ -100,7 +117,7 @@ class Simulation:
 
             # Add to closest yarblock
             closest_block = self.get_closest_yb(new_containergroup, arrival_based=arrival_based,
-                                                departure_based=departue_based)
+                                                departure_based=departure_based)
             if closest_block is None:
                 # No space for the container group
                 self.rejected_groups += 1
@@ -110,7 +127,6 @@ class Simulation:
                 # Add the container group to the closest block
                 self.add_container_to_block(new_containergroup, closest_block)
                 container_groups.append(new_containergroup)  # container group served
-
 
     def generate_new_containergroup(self):
         container_flowtype = get_container_flow_type()
