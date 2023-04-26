@@ -7,7 +7,7 @@ from Data.DataParser import parse_data
 from Result_Parser import show_result
 from Simulation import simulate_fifo
 
-AMOUNT_SIMULATIONS = 3
+AMOUNT_SIMULATIONS = 1000
 
 # LATEX formats table to copy paste in Latex-doc
 LATEX = False
