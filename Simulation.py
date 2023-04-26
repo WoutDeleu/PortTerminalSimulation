@@ -227,11 +227,8 @@ class Simulation:
         avg_occupancy_individual = self.getAvgOccupancy_individual()
         return sum(avg_occupancy_individual) / len(avg_occupancy_individual)
 
-    def update_time(self, new_time=0):
-        if new_time == 0:
-            self.time += get_inter_arrival_time_sample()
-        else:
-            self.time = new_time
+    def update_time(self, new_time):
+        self.time = new_time
         old_time = self.time
         self.day_clock += self.time - old_time
 
@@ -245,15 +242,15 @@ class Simulation:
         # Returns True if a new container needs to be generated
 
         if not departure_list:
-            self.update_time(new_time=arrival_list.pop(0))
+            self.update_time(arrival_list.pop(0))
             return True
         elif departure_list[0] < arrival_list[0]:
-            self.update_time(new_time=departure_list.pop(0))
+            self.update_time(departure_list.pop(0))
             return False
         elif departure_list[0] == arrival_list[0]:
-            self.update_time(new_time=arrival_list.pop(0))
+            self.update_time(arrival_list.pop(0))
             departure_list.pop(0)
             return True
         else:
-            self.update_time(new_time=arrival_list.pop(0))
+            self.update_time(arrival_list.pop(0))
             return True
