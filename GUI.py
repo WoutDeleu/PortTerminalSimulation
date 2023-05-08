@@ -9,12 +9,12 @@ from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
 ROWS = 10
 COLS = 16
 
-YB_WIDTH = 80
-YB_HEIGHT = 40
+YB_WIDTH = 40
+YB_HEIGHT = 15
 
-TOLERANCE = 20
-width = COLS * (YB_WIDTH + TOLERANCE) + 200
-height = ROWS * (YB_HEIGHT + TOLERANCE) + 500
+TOLERANCE = 10
+width = COLS * (YB_WIDTH + TOLERANCE)
+height = ROWS * (YB_HEIGHT + TOLERANCE)
 refresh_sec = 0.01
 
 
@@ -26,12 +26,21 @@ def init_simulation():
 
 def draw_yb(sim, canvas):
     blocks = []
+    # [(min_x, min_y), (max_x, max_y)]
     normalisation = normalise_positions(sim.yard_blocks)
+    min_x = normalisation[0][0]
+    max_x = normalisation[1][0]
+
     for i in range(len(sim.yard_blocks)):
+        block = sim.yard_blocks[i]
         row = math.floor(i / COLS)
         col = i - row * 16
-        start_pos_y = row * (YB_HEIGHT + TOLERANCE) + TOLERANCE
-        start_pos_x = col * (YB_WIDTH + TOLERANCE) + (200 / 2)
+
+        #start_pos_y = row * (YB_HEIGHT + TOLERANCE) + TOLERANCE
+        #start_pos_x = col * (YB_WIDTH + TOLERANCE) + (200 / 2)
+
+        start_pos_x = (block.position.x_cord - min_x) / (max_x / width) + TOLERANCE
+        start_pos_y = (block.position.y_cord - normalisation[0][1]) / (normalisation[1][1]/ height) + TOLERANCE
 
         yb_ocupancy = sim.yard_blocks[i].getOccupancy()
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
@@ -50,8 +59,8 @@ def draw_yb(sim, canvas):
 
 
 def normalise_positions(yard_blocks):
-    smallest_x = 0
-    smallest_y = 0
+    smallest_x = 2147483647
+    smallest_y = 2147483647
 
     largest_x = 0
     largest_y = 0
@@ -59,7 +68,7 @@ def normalise_positions(yard_blocks):
     for block in yard_blocks:
         if block.position.x_cord < smallest_x:
             smallest_x = block.position.x_cord
-        elif block.position.x_cord  > largest_x:
+        elif block.position.x_cord > largest_x:
             largest_x = block.position.x_cord
 
         if block.position.y_cord < smallest_y:
@@ -80,7 +89,7 @@ def update_ybs(gui, canvas, gui_blocks, yard_blocks):
 
 def init_gui():
     gui = tk.Tk()
-    gui.geometry(f"{width}x{height}")
+    gui.geometry(f"{width + 400}x{height + 500}")
 
     return gui
 
@@ -111,7 +120,7 @@ def run_simulation(sim, gui, canvas):
 
 def startGUI():
     gui = init_gui()
-    canvas = tk.Canvas(gui, width=width, height=height)
+    canvas = tk.Canvas(gui, width=width + 400, height=height)
     sim = init_simulation()
     run_simulation(sim, gui, canvas)
     gui.mainloop()
