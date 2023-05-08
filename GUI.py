@@ -33,13 +33,13 @@ def draw_yb(sim, canvas):
 
         yb_ocupancy = sim.yard_blocks[i].getOccupancy()
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
-
+        border = 'orange' if sim.yard_blocks[i].container_type == "REEFER" else 'blue'
         rectangle = canvas.create_rectangle(start_pos_x,
                                 start_pos_y,
                                 start_pos_x + YB_WIDTH,
                                 start_pos_y + YB_HEIGHT,
                                 fill=fill,
-                                outline='orange')
+                                outline=border)
         blocks.append(rectangle)
 
     canvas.pack()
