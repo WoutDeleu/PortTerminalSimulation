@@ -13,8 +13,7 @@ def simulate(stats, data):
     sim = Simulation(data)
     sim.run()
     stats_fifo = pd.concat(
-        [stats,
-         pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
+        [stats, pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
                         'Normal_Rejected': sim.rejected_per_type["normal"],
                         'Reefer_Rejected': sim.rejected_per_type["reefer"],
                         'Total_Travel_Distance': sim.total_travel_distance_containers,

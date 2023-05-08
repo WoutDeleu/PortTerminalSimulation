@@ -2,33 +2,83 @@ import math
 import tkinter
 import tkinter as tk
 
-def start_simulation():
-    print("start sim")
+from Data.DataParser import load_data
+from Parameters import SIMULATION_HOURS
+from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
 
-def startGUI():
+ROWS = 10
+COLS = 16
+
+YB_WIDTH = 80
+YB_HEIGHT = 40
+
+TOLERANCE = 20
+width = COLS * (YB_WIDTH + TOLERANCE) + 200
+height = ROWS * (YB_HEIGHT + TOLERANCE) + 500
+
+
+def init_simulation():
+    data = load_data('./Data/')
+    sim = Simulation(data)
+    return sim
+
+
+def draw_yb(sim, canvas):
+    for i in range(len(sim.yard_blocks)):
+        row = math.floor(i / COLS)
+        col = i - row * 16
+        start_pos_y = row * (YB_HEIGHT + TOLERANCE) + TOLERANCE
+        start_pos_x = col * (YB_WIDTH + TOLERANCE) + (200 / 2)
+
+        yb_ocupancy = sim.yard_blocks[i].getOccupancy()
+        fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
+
+        canvas.create_rectangle(start_pos_x,
+                                start_pos_y,
+                                start_pos_x + YB_WIDTH,
+                                start_pos_y + YB_HEIGHT,
+                                fill=fill,
+                                outline='orange')
+
+    canvas.pack()
+
+
+def init_gui():
     gui = tk.Tk()
-    rows = 10
-    cols = 16
-
-    yb_width = 80
-    yb_height = 40
-    tolerance = 20
-    yb = 159
-
-    width = cols * (yb_width + tolerance) + 200
-    height = rows * (yb_height + tolerance) + 500
     gui.geometry(f"{width}x{height}")
 
-    w = tk.Canvas(gui, width=width, height=height)
+    return gui
 
-    for i in range(yb):
-        row = math.floor(i / cols)
-        col = i - row * 16
-        start_pos_y = row * (yb_height + tolerance) + tolerance
-        start_pos_x = col * (yb_width + tolerance) + (200/2)
-        w.create_rectangle(start_pos_x, start_pos_y, start_pos_x + yb_width, start_pos_y + yb_height, fill="white", outline='orange')
 
-    w.pack()
+def run_simulation(sim, canvas):
+    sim.setup_timers()
+    departure_list = []
+    arrival_list = [0]
+
+    draw_yb(sim, canvas)
+    container_groups = []
+    while sim.time < SIMULATION_HOURS:
+        has_generated = sim.generate_new_time(departure_list, arrival_list)
+
+        # check what containergroups get removed to show
+        sim.remove_expired_container_groups(container_groups)
+
+        if has_generated:
+            # show the new cg ariving
+            new_cg = sim.generate_new_containergroup()
+
+            # show yb added
+            sim.add_cg_to_closest_yb(new_cg, container_groups, departure_list)
+            add_to_Q(arrival_list, sim.time + get_inter_arrival_time_sample())
+            # update yb visualisation
+
+
+def startGUI():
+    gui = init_gui()
+    canvas = tk.Canvas(gui, width=width, height=height)
+    sim = init_simulation()
+    run_simulation(sim, canvas)
     gui.mainloop()
+
 
 startGUI()
