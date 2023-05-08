@@ -17,6 +17,7 @@ class YardBlock:
 
     def addContainers(self, number_of_containers):
         self.amount_containers += number_of_containers
+        assert self.amount_containers <= self.capacity, "YB is overfull!!!"
 
     def getOccupancy(self):
         if self.capacity == 0:

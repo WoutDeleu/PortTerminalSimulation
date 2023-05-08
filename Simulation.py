@@ -4,7 +4,7 @@ import pandas as pd
 import scipy.stats as scipyst
 
 from ContainerGroup import ContainerGroup
-from Parameters import SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, FIFO_BASIC, LOWEST_OCCUPANCY
+from Parameters import SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, FIFO_BASIC, LOWEST_OCCUPANCY, SPLIT_UP
 from Position import Position
 from YardBlock import YardBlock
 
@@ -75,6 +75,35 @@ def add_to_Q(event_list, time):
     return event_list
 
 
+def get_closest_yb(container_group: ContainerGroup, feasible_yardblocks):
+    closest_block = feasible_yardblocks[0]
+    for block in feasible_yardblocks:
+        if ARRIVAL_BASED:
+            distance = block.position.calculate_distance(container_group.arrival_point)
+
+        if DEPARTURE_BASED:
+            distance = block.position.calculate_distance(container_group.departure_point)
+
+        if distance < closest_block.position.calculate_distance(container_group.arrival_point):
+            closest_block = block
+
+    return [closest_block]
+
+
+def get_lowest_occupancy_yb(container_group, feasible_yardblocks):
+    possible_blocks = []
+    smallest_yb = feasible_yardblocks[0]
+    for block in feasible_yardblocks:
+        if block.getRemainingCapacity() < smallest_yb.getRemainingCapacity():
+            smallest_yb = block
+
+    for block in feasible_yardblocks:
+        if block.getRemainingCapacity() == smallest_yb.getRemainingCapacity():
+            possible_blocks.append(block)
+
+    return get_closest_yb(container_group, possible_blocks)
+
+
 class Simulation:
     def __init__(self, data):
         # Simulation variables - time
@@ -102,47 +131,6 @@ class Simulation:
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], Position(x[4], x[5])))
 
-    def run(self):
-        # Variables to get daily statistics
-        self.setup_timers()
-
-        # 2 event lists, one for container arrivals and one for container departures
-        departure_list = []
-        arrival_list = [0]
-        # List of all container groups in the yard blocks
-        container_groups = []
-        while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
-            # Update the time based on the next event
-            generate_container = self.generate_new_time(departure_list, arrival_list)
-            # check if the current container groups need to leave (fifo)
-            for container_group in container_groups:
-                if self.time >= container_group.getFinishTime():
-                    block = container_group.yard_block
-                    self.remove_container_from_block(container_group, block)
-                    container_groups.remove(container_group)
-
-            if generate_container:
-                # new container group
-                new_containergroup = self.generate_new_containergroup()
-
-                # Update statistics
-                self.total_containers += new_containergroup.number_of_containers
-                self.total_GC += 1
-
-                # Add to closest yarblock
-                closest_block = self.get_storage_block(new_containergroup)
-                if closest_block is None:
-                    # No space for the container group
-                    self.rejected_groups += 1
-                    self.rejected_containers += new_containergroup.number_of_containers
-                    self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
-                else:
-                    # Add the container group to the closest block
-                    self.add_container_to_block(new_containergroup, closest_block)
-                    container_groups.append(new_containergroup)  # container group served
-                    add_to_Q(departure_list, new_containergroup.getFinishTime())
-                arrival_list = add_to_Q(arrival_list, self.time + get_inter_arrival_time_sample())
-
     def generate_new_containergroup(self):
         container_flowtype = get_container_flow_type()
         container_type = get_container_type_sample()
@@ -166,60 +154,107 @@ class Simulation:
         return ContainerGroup(container_flowtype, container_type, group_size, self.time, service_time, arrival_point,
                               departure_point)
 
-    def get_storage_block(self, container_group):
-        feasible_yardblocks = self.find_feasible_yarblocks(container_group)
+    def run(self):
+        # Variables to get daily statistics
+        self.setup_timers()
+
+        # 2 event lists, one for container arrivals and one for container departures
+        departure_list = []
+        arrival_list = [0]
+        # List of all container groups in the yard blocks
+        container_groups = []
+        while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
+            # Update the time based on the next event
+            generated_container = self.generate_new_time(departure_list, arrival_list)
+
+            # check if the current container groups need to leave (fifo)
+            for container_group in container_groups:
+                if self.time >= container_group.getFinishTime():
+                    block_dictionary = container_group.yard_blocks.copy()
+                    for block in block_dictionary:
+                        self.remove_container_from_block(container_group, block)
+                    container_groups.remove(container_group)
+
+            if generated_container:
+                # new container group
+                new_containergroup = self.generate_new_containergroup()
+
+                # Update statistics
+                self.total_containers += new_containergroup.number_of_containers
+                self.total_GC += 1
+
+                # Add to closest yarblock
+                closest_blocks = self.get_storage_blocks(new_containergroup)
+                if closest_blocks is None:
+                    # No space for the container group
+                    self.rejected_groups += 1
+                    self.rejected_containers += new_containergroup.number_of_containers
+                    self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
+                else:
+                    new_containergroup.temp_nr_of_containers_remaining = new_containergroup.number_of_containers
+                    for closest_block in closest_blocks:
+                        # Add the container group to the closest block
+                        self.add_container_to_block(new_containergroup, closest_block)
+                    container_groups.append(new_containergroup)  # container group served
+                    add_to_Q(departure_list, new_containergroup.getFinishTime())
+                add_to_Q(arrival_list, self.time + get_inter_arrival_time_sample())
+
+    def get_storage_blocks(self, container_group):
+        feasible_yardblocks = self.find_feasible_ybs(container_group)
         if len(feasible_yardblocks) == 0:
             return None
+
+        if SPLIT_UP:
+            containers_to_store = container_group.number_of_containers
+            ybs_to_store = []
+            while containers_to_store > 0:
+                yb = get_closest_yb(container_group, feasible_yardblocks)[0]
+                containers_to_store -= yb.getRemainingCapacity()
+                feasible_yardblocks.remove(yb)
+                ybs_to_store.append(yb)
+            return ybs_to_store
+
         if FIFO_BASIC:
-            return self.get_closest_yb(container_group, feasible_yardblocks)
+            return get_closest_yb(container_group, feasible_yardblocks)
+
         if LOWEST_OCCUPANCY:
-            return self.get_lowest_occupancy_yb(container_group, feasible_yardblocks)
+            return get_lowest_occupancy_yb(container_group, feasible_yardblocks)
 
-    def get_lowest_occupancy_yb(self, container_group, feasible_yardblocks):
+    def find_feasible_ybs(self, container_group: ContainerGroup):
         possible_blocks = []
-        smallest_yb = feasible_yardblocks[0]
-        for block in feasible_yardblocks:
-            if block.getRemainingCapacity() < smallest_yb.getRemainingCapacity():
-                smallest_yb = block
 
-        for block in feasible_yardblocks:
-            if block.getRemainingCapacity() == smallest_yb.getRemainingCapacity():
-                possible_blocks.append(block)
-
-        return self.get_closest_yb(container_group, possible_blocks)
-
-    def get_closest_yb(self, container_group: ContainerGroup, feasible_yardblocks):
-        closest_block = feasible_yardblocks[0]
-        for block in feasible_yardblocks:
-            if ARRIVAL_BASED:
-                distance = block.position.calculate_distance(container_group.arrival_point)
-            if DEPARTURE_BASED:
-                distance = block.position.calculate_distance(container_group.departure_point)
-            if distance < closest_block.position.calculate_distance(container_group.arrival_point):
-                closest_block = block
-
-        return closest_block
-
-    def find_feasible_yarblocks(self, container_group: ContainerGroup):
-        possible_blocks = []
         for block in self.yard_blocks:
-            if check_type(container_group.container_type, block.container_type) and block.hasSpace(
-                    container_group.number_of_containers):
-                possible_blocks.append(block)
+            if SPLIT_UP:
+                if check_type(container_group.container_type, block.container_type) and block.hasSpace(1):
+                    possible_blocks.append(block)
+            else:
+                if check_type(container_group.container_type, block.container_type) and block.hasSpace(
+                        container_group.number_of_containers):
+                    possible_blocks.append(block)
 
         return possible_blocks
 
     def add_container_to_block(self, container_group: ContainerGroup, block: YardBlock):
         self.total_travel_distance_containers += block.position.calculate_distance(container_group.arrival_point)
-        block.addContainers(container_group.number_of_containers)
+        # Store as many containers as possible in block
+        if block.getRemainingCapacity() < container_group.temp_nr_of_containers_remaining:
+            nr_containers_to_store = block.getRemainingCapacity()
+            container_group.temp_nr_of_containers_remaining -= block.getRemainingCapacity()
+
+        # Store all containers in a block
+        else:
+            nr_containers_to_store = container_group.temp_nr_of_containers_remaining
+            container_group.temp_nr_of_containers_remaining = 0
+
+        block.addContainers(nr_containers_to_store)
+        container_group.setYardBlock(block, nr_containers_to_store)
         block.update_daily_occupancy(self.day_counter)
-        container_group.yard_block = block
 
     def remove_container_from_block(self, container_group: ContainerGroup, block: YardBlock):
         self.total_travel_distance_containers += block.position.calculate_distance(container_group.departure_point)
-        block.removeContainers(container_group.number_of_containers)
+        block.removeContainers(container_group.getYardBlockContainers(block))
         block.update_daily_occupancy(self.day_counter)
-        container_group.yard_block = None
+        container_group.removeYardBlock(block)
 
     def getAvgTravel_Containers(self):
         return self.total_travel_distance_containers / self.total_containers

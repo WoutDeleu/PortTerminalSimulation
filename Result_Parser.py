@@ -125,7 +125,7 @@ def format_stats(stats):
 
 
 def show_result(stats):
-    print('\n')
+    print()
     if ARRIVAL_BASED:
         title = 'ARRIVAL-BASED'
     elif DEPARTURE_BASED:
@@ -136,13 +136,10 @@ def show_result(stats):
     if LOWEST_OCCUPANCY:
         title = 'LOWEST OCCUPANCY ' + title
     names, avg = format_stats(stats)
-    print("*********************** " + title + " ***********************")
-    print()
     if LATEX:
         print_stats_latex(names, avg)
     if OVERVIEW:
         print_stats_overview(names, avg)
-    print()
 
 
 # prints stats of the simulation in overview

@@ -9,16 +9,17 @@ LATEX = False
 OVERVIEW = True
 
 # Possible scenarios
-FIFO_BASIC = False
-LOWEST_OCCUPANCY = True
+FIFO_BASIC = True
+LOWEST_OCCUPANCY = False
+SPLIT_UP = False
 
 # Distance calculation reference
-ARRIVAL_BASED = True
-DEPARTURE_BASED = False
+ARRIVAL_BASED = False
+DEPARTURE_BASED = True
 
 
 def check_parameters():
-    if not ((FIFO_BASIC ^ LOWEST_OCCUPANCY) and (FIFO_BASIC or LOWEST_OCCUPANCY)):
+    if not ((FIFO_BASIC ^ LOWEST_OCCUPANCY ^ SPLIT_UP) and (FIFO_BASIC or LOWEST_OCCUPANCY or SPLIT_UP)):
         raise Exception("Only one simulation scenario can be true")
 
     if not ((ARRIVAL_BASED ^ DEPARTURE_BASED) and (ARRIVAL_BASED or DEPARTURE_BASED)):
@@ -33,5 +34,6 @@ def check_parameters():
         print("\tARRIVAL_BASED")
     if DEPARTURE_BASED:
         print("\tDEPARTURE_BASED")
-    print("Duration: " + str(SIMULATION_MONTHS) + " months")
-    print("Number of simulations: " + str(AMOUNT_SIMULATIONS))
+    print("Duration: " + str(SIMULATION_MONTHS) + " months = " + str(SIMULATION_DAYS) + " days = " + str(
+        SIMULATION_HOURS) + " hours")
+    print()
