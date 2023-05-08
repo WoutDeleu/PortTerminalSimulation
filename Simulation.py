@@ -154,6 +154,30 @@ class Simulation:
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], Position(x[4], x[5])))
 
+    def run(self):
+        # Variables to get daily statistics
+        self.setup_timers()
+
+        # 2 event lists, one for container arrivals and one for container departures
+        departure_list = []
+        arrival_list = [0]
+        # List of all container groups in the yard blocks
+        container_groups = []
+        while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
+            # Update the time based on the next event
+            generated_container = self.generate_new_time(departure_list, arrival_list)
+
+            # check if the current container groups need to leave (fifo)
+            self.remove_expired_container_groups(container_groups)
+
+            if generated_container:
+                # new container group
+                new_containergroup = self.generate_new_containergroup()
+
+                # Add to closest yarblock
+                self.add_cg_to_closest_yb(new_containergroup, container_groups, departure_list)
+                add_to_Q(arrival_list, self.time + get_inter_arrival_time_sample())
+
     def generate_new_containergroup(self):
         container_flowtype = get_container_flow_type()
         container_type = get_container_type_sample()
@@ -202,29 +226,6 @@ class Simulation:
                 self.add_container_to_block(new_containergroup, closest_block)
             container_groups.append(new_containergroup)  # container group served
             add_to_Q(departure_list, new_containergroup.getFinishTime())
-    def run(self):
-        # Variables to get daily statistics
-        self.setup_timers()
-
-        # 2 event lists, one for container arrivals and one for container departures
-        departure_list = []
-        arrival_list = [0]
-        # List of all container groups in the yard blocks
-        container_groups = []
-        while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
-            # Update the time based on the next event
-            generated_container = self.generate_new_time(departure_list, arrival_list)
-
-            # check if the current container groups need to leave (fifo)
-            self.remove_expired_container_groups(container_groups)
-
-            if generated_container:
-                # new container group
-                new_containergroup = self.generate_new_containergroup()
-
-                # Add to closest yarblock
-                self.add_cg_to_closest_yb(new_containergroup, container_groups, departure_list)
-                add_to_Q(arrival_list, self.time + get_inter_arrival_time_sample())
 
     def get_storage_blocks(self, container_group):
         feasible_yardblocks = self.find_feasible_ybs(container_group)
