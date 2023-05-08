@@ -3,7 +3,7 @@
 import pandas as pd
 
 from Data.DataParser import array_to_string
-from Parameters import LATEX, OVERVIEW
+from Parameters import LATEX, OVERVIEW, ARRIVAL_BASED, DEPARTURE_BASED, FIFO_BASIC, LOWEST_OCCUPANCY
 
 
 def format_yb_tables(data):
@@ -124,19 +124,29 @@ def format_stats(stats):
     return names, avg
 
 
-def show_result(title, stats):
+def show_result(stats):
+    print('\n')
+    if ARRIVAL_BASED:
+        title = 'ARRIVAL-BASED'
+    elif DEPARTURE_BASED:
+        title = 'DEPARTURE-BASED'
+
+    if FIFO_BASIC:
+        title = 'FIFO ' + title
+    if LOWEST_OCCUPANCY:
+        title = 'LOWEST OCCUPANCY ' + title
     names, avg = format_stats(stats)
     print("*********************** " + title + " ***********************")
     print()
     if LATEX:
         print_stats_latex(names, avg)
     if OVERVIEW:
-        print_stats(names, avg)
+        print_stats_overview(names, avg)
     print()
 
 
 # prints stats of the simulation in overview
-def print_stats(colnames, values):
+def print_stats_overview(colnames, values):
     mean_series = pd.Series(values)
     for name, value in zip(colnames, mean_series):
         print(f"{name}: average = {value}")

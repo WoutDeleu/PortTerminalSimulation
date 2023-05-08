@@ -23,6 +23,9 @@ class YardBlock:
             return 1
         return self.amount_containers / self.capacity
 
+    def getRemainingCapacity(self):
+        return self.capacity - self.amount_containers
+
     def update_daily_occupancy(self, day_counter):
         # Check if there is already an entry for the current day
         if day_counter < len(self.max_daily_occupancy):

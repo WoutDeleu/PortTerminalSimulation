@@ -4,9 +4,9 @@ import pandas as pd
 from progress.bar import Bar
 
 from Data.DataParser import parse_data
-from Parameters import AMOUNT_SIMULATIONS, ARRIVAL_BASED, DEPARTURE_BASED
+from Parameters import AMOUNT_SIMULATIONS, check_parameters
 from Result_Parser import show_result
-from Simulation import simulate_fifo
+from Simulation import simulate
 
 
 def load_data(folder):
@@ -20,8 +20,9 @@ def load_data(folder):
 
 
 def main():
+    check_parameters()
     data = load_data('./Data/')
-    stats_fifo_closest = pd.DataFrame(
+    stats = pd.DataFrame(
         columns=['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected', 'Total_Travel_Distance',
                  'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
                  'AVG_daily_total_Occupancy'])
@@ -31,15 +32,10 @@ def main():
     with Bar('Simulating', fill='#', empty_fill='.', bar_prefix=' [',
              bar_suffix='] ', max=AMOUNT_SIMULATIONS) as bar:
         while i <= AMOUNT_SIMULATIONS:
-            stats_fifo_closest = simulate_fifo(stats_fifo_closest, data)
+            stats = simulate(stats, data)
             bar.next()
             i += 1
-    print('\n')
-    assert not (ARRIVAL_BASED and DEPARTURE_BASED), "arrival_based and departure_based cannot be true at the same time"
-    if ARRIVAL_BASED:
-        show_result('FIFO ARRIVAL-BASED', stats_fifo_closest)
-    if DEPARTURE_BASED:
-        show_result('FIFO DEPARTURE-BASED', stats_fifo_closest)
+    show_result(stats)
 
 
 if __name__ == '__main__':
