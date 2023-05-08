@@ -4,14 +4,9 @@ import pandas as pd
 from progress.bar import Bar
 
 from Data.DataParser import parse_data
+from Parameters import AMOUNT_SIMULATIONS, ARRIVAL_BASED, DEPARTURE_BASED
 from Result_Parser import show_result
 from Simulation import simulate_fifo
-
-AMOUNT_SIMULATIONS = 100
-
-# LATEX formats table to copy paste in Latex-doc
-LATEX = False
-OVERVIEW = True
 
 
 def load_data(folder):
@@ -25,14 +20,8 @@ def load_data(folder):
 
 
 def main():
-    # startGUI()
     data = load_data('./Data/')
-    # visualise_data(data)
-    stats_fifo_closest_departure = pd.DataFrame(
-        columns=['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected', 'Total_Travel_Distance',
-                 'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
-                 'AVG_daily_total_Occupancy'])
-    stats_fifo_closest_arrival = pd.DataFrame(
+    stats_fifo_closest = pd.DataFrame(
         columns=['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected', 'Total_Travel_Distance',
                  'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
                  'AVG_daily_total_Occupancy'])
@@ -42,13 +31,15 @@ def main():
     with Bar('Simulating', fill='#', empty_fill='.', bar_prefix=' [',
              bar_suffix='] ', max=AMOUNT_SIMULATIONS) as bar:
         while i <= AMOUNT_SIMULATIONS:
-            stats_fifo_closest_arrival = simulate_fifo(stats_fifo_closest_arrival, data, arrival_based=True)
-            stats_fifo_closest_departure = simulate_fifo(stats_fifo_closest_departure, data, departure_based=True)
+            stats_fifo_closest = simulate_fifo(stats_fifo_closest, data)
             bar.next()
             i += 1
     print('\n')
-    show_result('FIFO ARRIVAL-BASED', stats_fifo_closest_arrival, LATEX=LATEX, OVERVIEW=OVERVIEW)
-    show_result('FIFO DEPARTURE-BASED', stats_fifo_closest_departure, LATEX=LATEX, OVERVIEW=OVERVIEW)
+    assert not (ARRIVAL_BASED and DEPARTURE_BASED), "arrival_based and departure_based cannot be true at the same time"
+    if ARRIVAL_BASED:
+        show_result('FIFO ARRIVAL-BASED', stats_fifo_closest)
+    if DEPARTURE_BASED:
+        show_result('FIFO DEPARTURE-BASED', stats_fifo_closest)
 
 
 if __name__ == '__main__':

@@ -4,16 +4,14 @@ import pandas as pd
 import scipy.stats as scipyst
 
 from ContainerGroup import ContainerGroup
+from Parameters import SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED
 from Position import Position
 from YardBlock import YardBlock
 
-SIMULATION_MONTHS = 12
-SIMULATION_HOURS = SIMULATION_MONTHS * 24 * 30
 
-
-def simulate_fifo(stats_fifo, data, arrival_based=False, departure_based=False):
+def simulate_fifo(stats_fifo, data):
     sim = Simulation(data)
-    sim.fifo(arrival_based=arrival_based, departure_based=departure_based)
+    sim.fifo()
     stats_fifo = pd.concat(
         [stats_fifo,
          pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
@@ -99,7 +97,7 @@ class Simulation:
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], Position(x[4], x[5])))
 
-    def fifo(self, arrival_based=False, departure_based=False):
+    def fifo(self):
         # Variables to get daily statistics
         self.day_clock = 0
         self.day_counter = 0
@@ -130,8 +128,7 @@ class Simulation:
                 self.total_GC += 1
 
                 # Add to closest yarblock
-                closest_block = self.get_closest_yb(new_containergroup, arrival_based=arrival_based,
-                                                    departure_based=departure_based)
+                closest_block = self.get_closest_yb(new_containergroup)
                 if closest_block is None:
                     # No space for the container group
                     self.rejected_groups += 1
@@ -167,7 +164,7 @@ class Simulation:
         return ContainerGroup(container_flowtype, container_type, group_size, self.time, service_time, arrival_point,
                               departure_point)
 
-    def get_closest_yb(self, container_group: ContainerGroup, arrival_based=False, departure_based=True):
+    def get_closest_yb(self, container_group: ContainerGroup):
         feasible_yardblocks = self.find_feasible_yarblocks(container_group)
         if len(feasible_yardblocks) == 0:
             return None
@@ -175,12 +172,12 @@ class Simulation:
         closest_block = feasible_yardblocks[0]
         for block in feasible_yardblocks:
             assert not (
-                    not arrival_based and not departure_based), "arrival_based and departure_based cannot be false at the same time"
-            if arrival_based:
-                assert not departure_based, "arrival_based and departure_based cannot be true at the same time"
+                    not ARRIVAL_BASED and not DEPARTURE_BASED), "ARRIVAL_BASED and DEPARTURE_BASED cannot be false at the same time"
+            if ARRIVAL_BASED:
+                assert not DEPARTURE_BASED, "ARRIVAL_BASED and DEPARTURE_BASED cannot be true at the same time"
                 distance = block.position.calculate_distance(container_group.arrival_point)
-            if departure_based:
-                assert not arrival_based, "arrival_based and departure_based cannot be true at the same time"
+            if DEPARTURE_BASED:
+                assert not ARRIVAL_BASED, "ARRIVAL_BASED and DEPARTURE_BASED cannot be true at the same time"
                 distance = block.position.calculate_distance(container_group.departure_point)
             if distance < closest_block.position.calculate_distance(container_group.arrival_point):
                 closest_block = block
@@ -240,7 +237,6 @@ class Simulation:
 
     def generate_new_time(self, departure_list, arrival_list):
         # Returns True if a new container needs to be generated
-
         if not departure_list:
             self.update_time(arrival_list.pop(0))
             return True
