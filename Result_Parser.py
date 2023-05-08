@@ -3,6 +3,7 @@
 import pandas as pd
 
 from Data.DataParser import array_to_string
+from Parameters import LATEX, OVERVIEW
 
 
 def format_yb_tables(data):
@@ -123,7 +124,7 @@ def format_stats(stats):
     return names, avg
 
 
-def show_result(title, stats, LATEX=False, OVERVIEW=False):
+def show_result(title, stats):
     names, avg = format_stats(stats)
     print("*********************** " + title + " ***********************")
     print()
