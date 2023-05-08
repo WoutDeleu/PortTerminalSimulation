@@ -3,6 +3,7 @@ class YardBlock:
         self.name = name
         self.container_type = container_type
         self.flow_type = flow_type
+        self.current_flow_type = flow_type
         self.capacity = capacity
         self.amount_containers = 0
         self.position = position

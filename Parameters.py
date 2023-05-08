@@ -9,9 +9,10 @@ LATEX = False
 OVERVIEW = True
 
 # Possible scenarios
-FIFO_BASIC = True
+CLOSEST = True  # This was the base scenario
 LOWEST_OCCUPANCY = False
 SPLIT_UP = False
+MIXED_RULE = False
 
 # Distance calculation reference
 ARRIVAL_BASED = False
@@ -19,17 +20,22 @@ DEPARTURE_BASED = True
 
 
 def check_parameters():
-    if not ((FIFO_BASIC ^ LOWEST_OCCUPANCY ^ SPLIT_UP) and (FIFO_BASIC or LOWEST_OCCUPANCY or SPLIT_UP)):
+    if not ((CLOSEST ^ LOWEST_OCCUPANCY ^ SPLIT_UP ^ MIXED_RULE) and (
+            CLOSEST or LOWEST_OCCUPANCY or SPLIT_UP or MIXED_RULE)):
         raise Exception("Only one simulation scenario can be true")
 
     if not (ARRIVAL_BASED or DEPARTURE_BASED):
         raise Exception("At least one distance calculation reference can be true (arrival or departure based)")
 
     print("Parameters: ")
-    if FIFO_BASIC:
-        print("\tFIFO_BASIC")
+    if CLOSEST:
+        print("\tCLOSEST")
     if LOWEST_OCCUPANCY:
         print("\tLOWEST_OCCUPANCY")
+    if SPLIT_UP:
+        print("\tSPLIT_UP")
+    if MIXED_RULE:
+        print("\tMIXED_RULE")
     if ARRIVAL_BASED and DEPARTURE_BASED:
         print("\tARRIVAL_BASED and DEPARTURE_BASED combined")
     elif ARRIVAL_BASED:

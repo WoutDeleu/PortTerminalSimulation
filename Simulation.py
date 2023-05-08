@@ -4,7 +4,7 @@ import pandas as pd
 import scipy.stats as scipyst
 
 from ContainerGroup import ContainerGroup
-from Parameters import SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, FIFO_BASIC, LOWEST_OCCUPANCY, SPLIT_UP
+from Parameters import SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, SPLIT_UP, MIXED_RULE
 from Position import Position
 from YardBlock import YardBlock
 
@@ -57,12 +57,16 @@ def get_container_flow_type():
     # Transshipment's fall under export (say 50% of cargo groups are transshipment's)
 
 
-def check_type(group_type, block_type):
+def check_type(group, block):
+    container_type_check = check_container_type(group.container_type, block.container_type)
+    container_flow_check = check_flow_type(group, block)
+    return container_type_check and container_flow_check
+
+
+def check_container_type(group_type, block_type):
     if group_type.lower() == block_type.lower():
         return True
     if group_type == 'normal' and block_type == 'FULL':
-        return True
-    if block_type == 'MIX':
         return True
     else:
         return False
@@ -105,6 +109,22 @@ def get_lowest_occupancy_yb(container_group, feasible_yardblocks):
             possible_blocks.append(block)
 
     return get_closest_yb(container_group, possible_blocks)
+
+
+def check_flow_type(container, block):
+    if block.flow_type.lower() == "mix" and MIXED_RULE:
+        if block.current_flow_type.lower() == "mix":
+            return True
+        elif container.container_flow_type.lower() == block.current_flow_type.lower():
+            return True
+        else:
+            return False
+    if block.flow_type.lower() == "mix":
+        return True
+    if container.container_flow_type.lower() == block.flow_type.lower():
+        return True
+    else:
+        return False
 
 
 class Simulation:
@@ -217,7 +237,7 @@ class Simulation:
                 ybs_to_store.append(yb)
             return ybs_to_store
 
-        if FIFO_BASIC:
+        if CLOSEST or MIXED_RULE:
             return get_closest_yb(container_group, feasible_yardblocks)
 
         if LOWEST_OCCUPANCY:
@@ -228,10 +248,10 @@ class Simulation:
 
         for block in self.yard_blocks:
             if SPLIT_UP:
-                if check_type(container_group.container_type, block.container_type) and block.hasSpace(1):
+                if check_type(container_group, block) and block.hasSpace(1):
                     possible_blocks.append(block)
             else:
-                if check_type(container_group.container_type, block.container_type) and block.hasSpace(
+                if check_type(container_group, block) and block.hasSpace(
                         container_group.number_of_containers):
                     possible_blocks.append(block)
 
@@ -250,6 +270,11 @@ class Simulation:
             container_group.temp_nr_of_containers_remaining = 0
 
         block.addContainers(nr_containers_to_store)
+
+        # Update the flow type of the block with an empty block
+        if MIXED_RULE and block.current_flow_type.lower() == "mix":
+            block.current_flow_type = container_group.container_flow_type
+
         container_group.setYardBlock(block, nr_containers_to_store)
         block.update_daily_occupancy(self.day_counter)
 
@@ -258,6 +283,11 @@ class Simulation:
         block.removeContainers(container_group.getYardBlockContainers(block))
         block.update_daily_occupancy(self.day_counter)
         container_group.removeYardBlock(block)
+
+        # Reset to mix if no containers are left in the block
+        if MIXED_RULE:
+            if block.flow_type.lower() == "mix" and block.amount_containers == 0:
+                block.current_flow_type = "mix"
 
     def getAvgTravel_Containers(self):
         return self.total_travel_distance_containers / self.total_containers
