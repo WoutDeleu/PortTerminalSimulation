@@ -1,4 +1,5 @@
 import math
+import os
 import re
 from datetime import datetime, timedelta
 
@@ -6,6 +7,14 @@ import pandas as pd
 
 from Data.CONST import WEEKDAYS, WEEKDAYS_DIC, WEEKDAYS_DIC_REV, DAY_BASED, CG
 
+def load_data(folder):
+    # find all plugins available and initialize them
+    data = {}
+    for f in os.listdir(folder):
+        if '.py' in f or '__pycache__' in f:
+            continue
+        data[f.replace('.csv', '')] = parse_data(f)
+    return data
 
 def parse_data(fileName):
     fileName = './Data/' + fileName

@@ -174,9 +174,34 @@ class Simulation:
                 departure_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
                 service_time = get_service_time_sample()
 
+        # Update statistics
+        self.total_containers += group_size
+        self.total_GC += 1
         return ContainerGroup(container_flowtype, container_type, group_size, self.time, service_time, arrival_point,
                               departure_point)
 
+    def remove_expired_container_groups(self, container_groups):
+        for container_group in container_groups:
+            if self.time >= container_group.getFinishTime():
+                block_dictionary = container_group.yard_blocks.copy()
+                for block in block_dictionary:
+                    self.remove_container_from_block(container_group, block)
+                container_groups.remove(container_group)
+
+    def add_cg_to_closest_yb(self, new_containergroup, container_groups, departure_list):
+        closest_blocks = self.get_storage_blocks(new_containergroup)
+        if closest_blocks is None:
+            # No space for the container group
+            self.rejected_groups += 1
+            self.rejected_containers += new_containergroup.number_of_containers
+            self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
+        else:
+            new_containergroup.temp_nr_of_containers_remaining = new_containergroup.number_of_containers
+            for closest_block in closest_blocks:
+                # Add the container group to the closest block
+                self.add_container_to_block(new_containergroup, closest_block)
+            container_groups.append(new_containergroup)  # container group served
+            add_to_Q(departure_list, new_containergroup.getFinishTime())
     def run(self):
         # Variables to get daily statistics
         self.setup_timers()
@@ -191,35 +216,14 @@ class Simulation:
             generated_container = self.generate_new_time(departure_list, arrival_list)
 
             # check if the current container groups need to leave (fifo)
-            for container_group in container_groups:
-                if self.time >= container_group.getFinishTime():
-                    block_dictionary = container_group.yard_blocks.copy()
-                    for block in block_dictionary:
-                        self.remove_container_from_block(container_group, block)
-                    container_groups.remove(container_group)
+            self.remove_expired_container_groups(container_groups)
 
             if generated_container:
                 # new container group
                 new_containergroup = self.generate_new_containergroup()
 
-                # Update statistics
-                self.total_containers += new_containergroup.number_of_containers
-                self.total_GC += 1
-
                 # Add to closest yarblock
-                closest_blocks = self.get_storage_blocks(new_containergroup)
-                if closest_blocks is None:
-                    # No space for the container group
-                    self.rejected_groups += 1
-                    self.rejected_containers += new_containergroup.number_of_containers
-                    self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
-                else:
-                    new_containergroup.temp_nr_of_containers_remaining = new_containergroup.number_of_containers
-                    for closest_block in closest_blocks:
-                        # Add the container group to the closest block
-                        self.add_container_to_block(new_containergroup, closest_block)
-                    container_groups.append(new_containergroup)  # container group served
-                    add_to_Q(departure_list, new_containergroup.getFinishTime())
+                self.add_cg_to_closest_yb(new_containergroup, container_groups, departure_list)
                 add_to_Q(arrival_list, self.time + get_inter_arrival_time_sample())
 
     def get_storage_blocks(self, container_group):

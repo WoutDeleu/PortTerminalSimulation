@@ -1,3 +1,4 @@
+# 120 results in proper runs
 AMOUNT_SIMULATIONS = 10
 
 SIMULATION_MONTHS = 12
