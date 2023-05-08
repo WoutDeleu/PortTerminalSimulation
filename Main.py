@@ -5,12 +5,13 @@ from progress.bar import Bar
 
 from Data.DataParser import parse_data, array_to_string
 from Simulation import Simulation
+from Visualisation import visualise_data
 
-AMOUNT_SIMULATIONS = 1000
+AMOUNT_SIMULATIONS = 1
 
 # LATEX formats table to copy paste in Latex-doc
-LATEX = True
-OVERVIEW = False
+LATEX = False
+OVERVIEW = True
 
 
 def format_stats(stats):
@@ -148,6 +149,7 @@ def main():
     # startGUI()
     data = load_data('./Data/')
     # visualise_data(data)
+
     stats_fifo_closest_departure = pd.DataFrame(
         columns=['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected', 'Total_Travel_Distance',
                  'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',

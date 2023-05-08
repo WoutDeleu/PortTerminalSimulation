@@ -327,6 +327,8 @@ def visualise_cg_size(localExport, localExportReefer, localImport, localImportRe
     # plt.bar(res_normal.keys(), res_normal.values(), label='Normal')
     # plt.show()
 
+
+    #resSum = sum(count * index for index, count in res.items())
     plt.xlim(0, 100)
     plt.xlabel('Amount of containers')
     plt.ylabel('Occurrences')

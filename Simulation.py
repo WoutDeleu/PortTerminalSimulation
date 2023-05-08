@@ -16,7 +16,12 @@ def get_inter_arrival_time_sample():
 
 
 def get_number_of_containers_sample():
-    return round(scipyst.expon.rvs(scale=5, loc=0.5))
+    scale = 52
+    max = 2500
+    sample = scipyst.weibull_min.rvs(0.6, loc = 0.5/scale)*scale
+    while sample>max:
+        sample = scipyst.weibull_min.rvs(0.6, loc = 0.5/scale)*scale
+    return round(sample)
 
 
 def get_service_time_sample():
