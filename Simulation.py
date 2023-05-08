@@ -33,9 +33,9 @@ def get_inter_arrival_time_sample():
 def get_number_of_containers_sample():
     scale = 52
     max = 2500
-    sample = scipyst.weibull_min.rvs(0.6, loc = 0.5/scale)*scale
-    while sample>max:
-        sample = scipyst.weibull_min.rvs(0.6, loc = 0.5/scale)*scale
+    sample = scipyst.weibull_min.rvs(0.6, loc=0.5 / scale) * scale
+    while sample > max:
+        sample = scipyst.weibull_min.rvs(0.6, loc=0.5 / scale) * scale
     return round(sample)
 
 
@@ -78,10 +78,13 @@ def add_to_Q(event_list, time):
 def get_closest_yb(container_group: ContainerGroup, feasible_yardblocks):
     closest_block = feasible_yardblocks[0]
     for block in feasible_yardblocks:
-        if ARRIVAL_BASED:
+        if ARRIVAL_BASED and DEPARTURE_BASED:
+            distance = block.position.calculate_distance(
+                container_group.arrival_point) + block.position.calculate_distance(container_group.departure_point)
+        elif ARRIVAL_BASED:
             distance = block.position.calculate_distance(container_group.arrival_point)
 
-        if DEPARTURE_BASED:
+        elif DEPARTURE_BASED:
             distance = block.position.calculate_distance(container_group.departure_point)
 
         if distance < closest_block.position.calculate_distance(container_group.arrival_point):
