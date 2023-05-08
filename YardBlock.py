@@ -3,6 +3,7 @@ class YardBlock:
         self.name = name
         self.container_type = container_type
         self.flow_type = flow_type
+        self.current_flow_type = flow_type
         self.capacity = capacity
         self.amount_containers = 0
         self.position = position
@@ -17,11 +18,15 @@ class YardBlock:
 
     def addContainers(self, number_of_containers):
         self.amount_containers += number_of_containers
+        assert self.amount_containers <= self.capacity, "YB is overfull!!!"
 
     def getOccupancy(self):
         if self.capacity == 0:
             return 1
         return self.amount_containers / self.capacity
+
+    def getRemainingCapacity(self):
+        return self.capacity - self.amount_containers
 
     def update_daily_occupancy(self, day_counter):
         # Check if there is already an entry for the current day
