@@ -17,6 +17,7 @@ width = COLS * (YB_WIDTH + TOLERANCE) + 200
 height = ROWS * (YB_HEIGHT + TOLERANCE) + 500
 refresh_sec = 0.01
 
+
 def init_simulation():
     data = load_data('./Data/')
     sim = Simulation(data)
@@ -25,6 +26,7 @@ def init_simulation():
 
 def draw_yb(sim, canvas):
     blocks = []
+    normalisation = normalise_positions(sim.yard_blocks)
     for i in range(len(sim.yard_blocks)):
         row = math.floor(i / COLS)
         col = i - row * 16
@@ -35,16 +37,38 @@ def draw_yb(sim, canvas):
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
         border = 'orange' if sim.yard_blocks[i].container_type == "REEFER" else 'blue'
         rectangle = canvas.create_rectangle(start_pos_x,
-                                start_pos_y,
-                                start_pos_x + YB_WIDTH,
-                                start_pos_y + YB_HEIGHT,
-                                fill=fill,
-                                outline=border)
+                                            start_pos_y,
+                                            start_pos_x + YB_WIDTH,
+                                            start_pos_y + YB_HEIGHT,
+                                            fill=fill,
+                                            outline=border)
         blocks.append(rectangle)
 
     canvas.pack()
 
     return blocks
+
+
+def normalise_positions(yard_blocks):
+    smallest_x = 0
+    smallest_y = 0
+
+    largest_x = 0
+    largest_y = 0
+
+    for block in yard_blocks:
+        if block.position.x_cord < smallest_x:
+            smallest_x = block.position.x_cord
+        elif block.position.x_cord  > largest_x:
+            largest_x = block.position.x_cord
+
+        if block.position.y_cord < smallest_y:
+            smallest_y = block.position.y_cord
+        elif block.position.y_cord > largest_y:
+            largest_y = block.position.y_cord
+
+    return [(smallest_x, smallest_y), (largest_x, largest_y)]
+
 
 def update_ybs(gui, canvas, gui_blocks, yard_blocks):
     for i in range(len(yard_blocks)):
@@ -52,6 +76,7 @@ def update_ybs(gui, canvas, gui_blocks, yard_blocks):
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
         canvas.itemconfig(gui_blocks[i], fill=fill)
     gui.update()
+
 
 def init_gui():
     gui = tk.Tk()
