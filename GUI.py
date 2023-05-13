@@ -6,12 +6,7 @@ from Data.DataParser import load_data
 from Parameters import SIMULATION_HOURS
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
 
-YB_WIDTH = 40
-YB_HEIGHT = 15
-
-
 refresh_sec = 0.01
-
 
 def init_simulation():
     data = load_data('./Data/')
@@ -35,18 +30,45 @@ def draw(sim, canvas):
     for block in sim.yard_blocks:
         start_pos_x = (block.position.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
         # Not fully stretch to leave some room for parameters
-        start_pos_y = block.position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space
+        start_pos_y = block.position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
 
+        yb_width = block.capacity / 1000 * 30
+        yb_height = block.capacity / 1000 * 110
         yb_ocupancy = block.getOccupancy()
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
         border = 'orange' if block.container_type == "REEFER" else 'blue'
         rectangle = canvas.create_rectangle(start_pos_x,
                                             start_pos_y,
-                                            start_pos_x + YB_WIDTH,
-                                            start_pos_y + YB_HEIGHT,
+                                            start_pos_x + yb_width,
+                                            start_pos_y + yb_height,
                                             fill=fill,
                                             outline=border)
         blocks.append(rectangle)
+
+    # Todo: enkel laten zien wanneer vessel aanwezig is
+    for berth_location in sim.berthing_positions:
+        start_pos_x = (berth_location.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
+        # Not fully stretch to leave some room for parameters
+        start_pos_y = berth_location.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+
+        canvas.create_rectangle(start_pos_x,
+                                start_pos_y,
+                                start_pos_x + 50,
+                                start_pos_y + 10,
+                                fill="#0000FF",
+                                outline='black')
+
+    for truck_location in sim.truck_parking_locations:
+        start_pos_x = (truck_location.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
+        # Not fully stretch to leave some room for parameters
+        start_pos_y = truck_location.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+
+        canvas.create_rectangle(start_pos_x,
+                                start_pos_y,
+                                start_pos_x + 20,
+                                start_pos_y + 10,
+                                fill="#8B4513",
+                                outline='black')
 
     canvas.pack()
 
