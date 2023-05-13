@@ -36,9 +36,6 @@ def draw_yb(sim, canvas):
         row = math.floor(i / COLS)
         col = i - row * 16
 
-        #start_pos_y = row * (YB_HEIGHT + TOLERANCE) + TOLERANCE
-        #start_pos_x = col * (YB_WIDTH + TOLERANCE) + (200 / 2)
-
         start_pos_x = (block.position.x_cord - min_x) / (max_x / width) + TOLERANCE
         start_pos_y = (block.position.y_cord - normalisation[0][1]) / (normalisation[1][1]/ height) + TOLERANCE
 
