@@ -269,7 +269,7 @@ def run_simulation(sim, gui, canvas):
 
     blocks, vessels = draw(sim, canvas)
     container_groups = []
-    while sim.time < SIMULATION_HOURS:
+    while sim.time <= SIMULATION_HOURS:
         paths = []
         # Departure paths for animation
         for container_group in container_groups:
@@ -307,7 +307,7 @@ def startGUI():
 
     sim = init_simulation()
     run_simulation(sim, gui, canvas)
-    gui.mainloop()  # Update tinker
+    gui.mainloop()  # Let's the window open after the simulation ends
 
 
 startGUI()
