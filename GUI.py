@@ -87,7 +87,7 @@ def draw(sim, canvas):
                                             start_pos_y + 10,
                                             fill="#808080",
                                             outline='black',
-                                            state='normal')
+                                            state='hidden')
         vessels.append(rectangle)
 
     for truck_location in sim.truck_parking_locations:
@@ -180,7 +180,7 @@ def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations
     return [(smallest_x, smallest_y), (largest_x, largest_y)]
 
 
-def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, paths):
+def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
     for i in range(len(yard_blocks)):
         yb_ocupancy = yard_blocks[i].getOccupancy()
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
@@ -190,6 +190,8 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, paths):
     frames = 10000
     canvas_width = canvas.winfo_width()
     canvas_height = canvas.winfo_height()
+    # put in commentary for no animation
+    # Todo: let paths go simultaneously
 
     for p in paths:
         begin_position, end_position = p
@@ -197,7 +199,7 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, paths):
         x = (begin_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
         y = begin_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
         target_x = (end_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
-        target_y =  end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+        target_y = end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
         # Create the rectangle on the canvas
         container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
 
@@ -209,6 +211,14 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, paths):
         step_x = distance_x / frames
         step_y = distance_y / frames
 
+        vessel = None
+        for v in vessels:
+            coords = canvas.coords(v)
+            if (coords[0] == x and coords[1] == y) or coords[0] == target_x and coords[1] == target_y:
+                vessel = v
+                canvas.itemconfig(v, state='normal')
+                gui.update()
+
         while abs(x - target_x) >= abs(step_x) and abs(y - target_y) >= abs(step_y):
             # Update the rectangle's position
             x += step_x
@@ -217,6 +227,10 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, paths):
             canvas.coords(container, x, y, x + 10, y + 10)
             gui.update()
         canvas.delete(container)
+
+        if vessel is not None:
+            canvas.itemconfig(vessel, state='hidden')
+            gui.update()
 
     timer_text.set("Time: " + str(sim.time))
     containers_rejected_text.set("Rejected containers: " + str(sim.rejected_containers))
@@ -227,7 +241,6 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, paths):
     average_travel_distance_text.set("Average travel distance of container groups: " + str(round(sim.total_travel_distance_containers/sim.total_containers)))
 
     gui.update()
-
 
 def init_gui():
     gui = tk.Tk()
@@ -274,7 +287,7 @@ def run_simulation(sim, gui, canvas):
                 paths.append([new_cg.arrival_point, key.position])
 
         # update yb visualisation
-        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, paths)
+        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, paths)
 
 
 def startGUI():
