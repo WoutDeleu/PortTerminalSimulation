@@ -232,11 +232,12 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
 
                 canvas.coords(container, x, y, x + 10, y + 10)
                 gui.update()
-            canvas.delete(container)
 
             if vessel is not None:
                 canvas.itemconfig(vessel, state='hidden')
                 gui.update()
+
+            canvas.delete(container)
 
     timer_text.set("Time: " + str(sim.time))
     containers_rejected_text.set("Rejected containers: " + str(sim.rejected_containers))
@@ -271,14 +272,15 @@ def run_simulation(sim, gui, canvas):
     container_groups = []
     while sim.time <= SIMULATION_HOURS:
         paths = []
+
+        has_generated = sim.generate_new_time(departure_list, arrival_list)
+
         # Departure paths for animation
         for container_group in container_groups:
             if sim.time >= container_group.getFinishTime():
                 block_dictionary = container_group.yard_blocks.copy()
                 for block in block_dictionary:
                     paths.append([block.position, container_group.departure_point])
-
-        has_generated = sim.generate_new_time(departure_list, arrival_list)
 
         # check what container_groups get removed to show
         sim.remove_expired_container_groups(container_groups)
