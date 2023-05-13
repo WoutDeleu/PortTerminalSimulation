@@ -20,6 +20,8 @@ min_y = None
 max_y = None
 border_space = None
 
+animation_switch = True
+
 
 def init_simulation():
     data = load_data('./Data/')
@@ -102,6 +104,10 @@ def draw(sim, canvas):
                                 start_pos_y + 10,
                                 fill="#CD853F",
                                 outline='black')
+    # Animation button
+    global animation_switch
+    animation_button = tk.Button(canvas, text="Toggle animation", command=toggle_animation)
+    canvas.create_window(canvas_width - border_space, 70, anchor=tk.NE, window=animation_button)
 
     # Parameter labels
     font = 30
@@ -192,45 +198,45 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
     canvas_height = canvas.winfo_height()
     # put in commentary for no animation
     # Todo: let paths go simultaneously (when multiple things happen at the same time)
+    if animation_switch:
+        for p in paths:
+            begin_position, end_position = p
 
-    for p in paths:
-        begin_position, end_position = p
+            x = (begin_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
+            y = begin_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+            target_x = (end_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
+            target_y = end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+            # Create the rectangle on the canvas
+            container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
 
-        x = (begin_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
-        y = begin_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
-        target_x = (end_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
-        target_y = end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
-        # Create the rectangle on the canvas
-        container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
+            # Calculate the distance between the current position and the target position
+            distance_x = target_x - x
+            distance_y = target_y - y
 
-        # Calculate the distance between the current position and the target position
-        distance_x = target_x - x
-        distance_y = target_y - y
+            # Calculate the increment for each frame
+            step_x = distance_x / frames
+            step_y = distance_y / frames
 
-        # Calculate the increment for each frame
-        step_x = distance_x / frames
-        step_y = distance_y / frames
+            vessel = None
+            for v in vessels:
+                coords = canvas.coords(v)
+                if (coords[0] == x and coords[1] == y) or coords[0] == target_x and coords[1] == target_y:
+                    vessel = v
+                    canvas.itemconfig(v, state='normal')
+                    gui.update()
 
-        vessel = None
-        for v in vessels:
-            coords = canvas.coords(v)
-            if (coords[0] == x and coords[1] == y) or coords[0] == target_x and coords[1] == target_y:
-                vessel = v
-                canvas.itemconfig(v, state='normal')
+            while abs(x - target_x) >= abs(step_x) and abs(y - target_y) >= abs(step_y):
+                # Update the rectangle's position
+                x += step_x
+                y += step_y
+
+                canvas.coords(container, x, y, x + 10, y + 10)
                 gui.update()
+            canvas.delete(container)
 
-        while abs(x - target_x) >= abs(step_x) and abs(y - target_y) >= abs(step_y):
-            # Update the rectangle's position
-            x += step_x
-            y += step_y
-
-            canvas.coords(container, x, y, x + 10, y + 10)
-            gui.update()
-        canvas.delete(container)
-
-        if vessel is not None:
-            canvas.itemconfig(vessel, state='hidden')
-            gui.update()
+            if vessel is not None:
+                canvas.itemconfig(vessel, state='hidden')
+                gui.update()
 
     timer_text.set("Time: " + str(sim.time))
     containers_rejected_text.set("Rejected containers: " + str(sim.rejected_containers))
@@ -250,6 +256,9 @@ def init_gui():
 
     return gui
 
+def toggle_animation():
+    global animation_switch
+    animation_switch = not animation_switch
 
 def run_simulation(sim, gui, canvas):
     # sets day_clock, day_counter and time to 0
