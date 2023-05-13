@@ -153,6 +153,16 @@ class Simulation:
         for x in yard_block_list:
             self.yard_blocks.append(YardBlock(x[0], x[1], x[2], x[3], Position(x[4], x[5])))
 
+        berthing_position_list = data['BerthingPositions'].values.tolist()
+        self.berthing_positions = []
+        for x in berthing_position_list:
+            self.berthing_positions.append(Position(x[1], x[2]))
+
+        truck_parking_locations_list = data['TruckParkingLocations'].values.tolist()
+        self.truck_parking_locations = []
+        for x in truck_parking_locations_list:
+            self.truck_parking_locations.append(Position(x[1], x[2]))
+
     def run(self):
         # Variables to get daily statistics
         self.setup_timers()

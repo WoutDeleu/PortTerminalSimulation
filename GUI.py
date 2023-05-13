@@ -6,17 +6,10 @@ from Data.DataParser import load_data
 from Parameters import SIMULATION_HOURS
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
 
-ROWS = 10
-COLS = 16
-
 YB_WIDTH = 40
 YB_HEIGHT = 15
 
-TOLERANCE = 10
-# width = COLS * (YB_WIDTH + TOLERANCE)
-# height = ROWS * (YB_HEIGHT + TOLERANCE)
-width = 1000
-height = 500
+
 refresh_sec = 0.01
 
 
@@ -26,24 +19,27 @@ def init_simulation():
     return sim
 
 
-def draw_yb(sim, canvas):
+def draw(sim, canvas):
     blocks = []
     # [(min_x, min_y), (max_x, max_y)]
-    normalisation = normalise_positions(sim.yard_blocks)
+    normalisation = normalise_positions(sim.yard_blocks, sim.berthing_positions, sim.truck_parking_locations)
     min_x = normalisation[0][0]
     max_x = normalisation[1][0]
+    min_y = normalisation[0][1]
+    max_y = normalisation[1][1]
 
-    for i in range(len(sim.yard_blocks)):
-        block = sim.yard_blocks[i]
-        row = math.floor(i / COLS)
-        col = i - row * 16
+    canvas_width = canvas.winfo_width()
+    canvas_height = canvas.winfo_height()
+    border_space = 10
 
-        start_pos_x = (block.position.x_cord - min_x) / (max_x / width) + TOLERANCE
-        start_pos_y = (block.position.y_cord - normalisation[0][1]) / (normalisation[1][1] / height) + TOLERANCE
+    for block in sim.yard_blocks:
+        start_pos_x = (block.position.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
+        # Not fully stretch to leave some room for parameters
+        start_pos_y = block.position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space
 
-        yb_ocupancy = sim.yard_blocks[i].getOccupancy()
+        yb_ocupancy = block.getOccupancy()
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
-        border = 'orange' if sim.yard_blocks[i].container_type == "REEFER" else 'blue'
+        border = 'orange' if block.container_type == "REEFER" else 'blue'
         rectangle = canvas.create_rectangle(start_pos_x,
                                             start_pos_y,
                                             start_pos_x + YB_WIDTH,
@@ -57,7 +53,7 @@ def draw_yb(sim, canvas):
     return blocks
 
 
-def normalise_positions(yard_blocks):
+def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations):
     smallest_x = float('inf')
     smallest_y = float('inf')
     largest_x = 0
@@ -68,6 +64,18 @@ def normalise_positions(yard_blocks):
         smallest_y = min(smallest_y, block.position.y_cord)
         largest_x = max(largest_x, block.position.x_cord)
         largest_y = max(largest_y, block.position.y_cord)
+
+    for berthing_location in berthing_locations:
+        smallest_x = min(smallest_x, berthing_location.x_cord)
+        smallest_y = min(smallest_y, berthing_location.y_cord)
+        largest_x = max(largest_x, berthing_location.x_cord)
+        largest_y = max(largest_y, berthing_location.y_cord)
+
+    for truck_parking_location in truck_parking_locations:
+        smallest_x = min(smallest_x, truck_parking_location.x_cord)
+        smallest_y = min(smallest_y, truck_parking_location.y_cord)
+        largest_x = max(largest_x, truck_parking_location.x_cord)
+        largest_y = max(largest_y, truck_parking_location.y_cord)
 
     return [(smallest_x, smallest_y), (largest_x, largest_y)]
 
@@ -82,6 +90,7 @@ def update_ybs(gui, canvas, gui_blocks, yard_blocks):
 
 def init_gui():
     gui = tk.Tk()
+    gui.attributes('-fullscreen', True) # make main window full-screen
     # gui.geometry(f"{width + 400}x{height + 500}")
 
     return gui
@@ -94,7 +103,7 @@ def run_simulation(sim, gui, canvas):
     departure_list = []
     arrival_list = [0]
 
-    blocks = draw_yb(sim, canvas)
+    blocks = draw(sim, canvas)
     container_groups = []
     while sim.time < SIMULATION_HOURS:
         has_generated = sim.generate_new_time(departure_list, arrival_list)
@@ -115,8 +124,11 @@ def run_simulation(sim, gui, canvas):
 
 def startGUI():
     gui = init_gui()
+    canvas = tk.Canvas(gui, bg='white', highlightthickness=0)
+    canvas.pack(fill=tk.BOTH, expand=True) # configure canvas to occupy the whole main window
+    canvas.update()
     # canvas = tk.Canvas(gui, width=width + 400, height=height)
-    canvas = tk.Canvas(gui, width=width, height=height)
+
     sim = init_simulation()
     run_simulation(sim, gui, canvas)
     gui.mainloop()  # Update tinker
