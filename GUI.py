@@ -13,8 +13,10 @@ YB_WIDTH = 40
 YB_HEIGHT = 15
 
 TOLERANCE = 10
-width = COLS * (YB_WIDTH + TOLERANCE)
-height = ROWS * (YB_HEIGHT + TOLERANCE)
+# width = COLS * (YB_WIDTH + TOLERANCE)
+# height = ROWS * (YB_HEIGHT + TOLERANCE)
+width = 1000
+height = 500
 refresh_sec = 0.01
 
 
@@ -37,7 +39,7 @@ def draw_yb(sim, canvas):
         col = i - row * 16
 
         start_pos_x = (block.position.x_cord - min_x) / (max_x / width) + TOLERANCE
-        start_pos_y = (block.position.y_cord - normalisation[0][1]) / (normalisation[1][1]/ height) + TOLERANCE
+        start_pos_y = (block.position.y_cord - normalisation[0][1]) / (normalisation[1][1] / height) + TOLERANCE
 
         yb_ocupancy = sim.yard_blocks[i].getOccupancy()
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
@@ -56,22 +58,16 @@ def draw_yb(sim, canvas):
 
 
 def normalise_positions(yard_blocks):
-    smallest_x = 2147483647
-    smallest_y = 2147483647
-
+    smallest_x = float('inf')
+    smallest_y = float('inf')
     largest_x = 0
     largest_y = 0
 
     for block in yard_blocks:
-        if block.position.x_cord < smallest_x:
-            smallest_x = block.position.x_cord
-        elif block.position.x_cord > largest_x:
-            largest_x = block.position.x_cord
-
-        if block.position.y_cord < smallest_y:
-            smallest_y = block.position.y_cord
-        elif block.position.y_cord > largest_y:
-            largest_y = block.position.y_cord
+        smallest_x = min(smallest_x, block.position.x_cord)
+        smallest_y = min(smallest_y, block.position.y_cord)
+        largest_x = max(largest_x, block.position.x_cord)
+        largest_y = max(largest_y, block.position.y_cord)
 
     return [(smallest_x, smallest_y), (largest_x, largest_y)]
 
@@ -86,13 +82,15 @@ def update_ybs(gui, canvas, gui_blocks, yard_blocks):
 
 def init_gui():
     gui = tk.Tk()
-    gui.geometry(f"{width + 400}x{height + 500}")
+    # gui.geometry(f"{width + 400}x{height + 500}")
 
     return gui
 
 
 def run_simulation(sim, gui, canvas):
+    # sets day_clock, day_counter and time to 0
     sim.setup_timers()
+
     departure_list = []
     arrival_list = [0]
 
@@ -117,10 +115,11 @@ def run_simulation(sim, gui, canvas):
 
 def startGUI():
     gui = init_gui()
-    canvas = tk.Canvas(gui, width=width + 400, height=height)
+    # canvas = tk.Canvas(gui, width=width + 400, height=height)
+    canvas = tk.Canvas(gui, width=width, height=height)
     sim = init_simulation()
     run_simulation(sim, gui, canvas)
-    gui.mainloop()
+    gui.mainloop()  # Update tinker
 
 
 startGUI()
