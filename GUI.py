@@ -14,6 +14,12 @@ reefer_containers_rejected_text = None
 total_travel_distance_text = None
 average_travel_distance_text = None
 
+min_x = None
+max_x = None
+min_y = None
+max_y = None
+border_space = None
+
 
 def init_simulation():
     data = load_data('./Data/')
@@ -26,13 +32,18 @@ def draw(sim, canvas):
     vessels = []
 
     normalisation = normalise_positions(sim.yard_blocks, sim.berthing_positions, sim.truck_parking_locations)
+    global min_x
     min_x = normalisation[0][0]
+    global max_x
     max_x = normalisation[1][0]
+    global min_y
     min_y = normalisation[0][1]
+    global max_y
     max_y = normalisation[1][1]
 
     canvas_width = canvas.winfo_width()
     canvas_height = canvas.winfo_height()
+    global border_space
     border_space = 10
 
     # Figures
@@ -76,7 +87,7 @@ def draw(sim, canvas):
                                             start_pos_y + 10,
                                             fill="#808080",
                                             outline='black',
-                                            state='hidden')
+                                            state='normal')
         vessels.append(rectangle)
 
     for truck_location in sim.truck_parking_locations:
@@ -176,8 +187,36 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, paths):
         canvas.itemconfig(gui_blocks[i], fill=fill)
 
     # Animation doesn't affect time
-    #for p in paths:
+    frames = 10000
+    canvas_width = canvas.winfo_width()
+    canvas_height = canvas.winfo_height()
 
+    for p in paths:
+        begin_position, end_position = p
+
+        x = (begin_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
+        y = begin_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+        target_x = (end_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
+        target_y =  end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+        # Create the rectangle on the canvas
+        container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
+
+        # Calculate the distance between the current position and the target position
+        distance_x = target_x - x
+        distance_y = target_y - y
+
+        # Calculate the increment for each frame
+        step_x = distance_x / frames
+        step_y = distance_y / frames
+
+        while abs(x - target_x) >= abs(step_x) and abs(y - target_y) >= abs(step_y):
+            # Update the rectangle's position
+            x += step_x
+            y += step_y
+
+            canvas.coords(container, x, y, x + 10, y + 10)
+            gui.update()
+        canvas.delete(container)
 
     timer_text.set("Time: " + str(sim.time))
     containers_rejected_text.set("Rejected containers: " + str(sim.rejected_containers))
