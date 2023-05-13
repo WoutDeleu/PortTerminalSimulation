@@ -307,7 +307,7 @@ def startGUI():
 
     sim = init_simulation()
     run_simulation(sim, gui, canvas)
-    gui.mainloop()  # Let's the window open after the simulation ends
+    gui.mainloop()  # Lets the window open after the simulation ends
 
 
 startGUI()
