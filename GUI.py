@@ -6,8 +6,6 @@ from Data.DataParser import load_data
 from Parameters import SIMULATION_HOURS
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
 
-refresh_sec = 0.01
-
 timer_text = None
 containers_rejected_text = None
 cg_rejected_text = None
@@ -15,6 +13,7 @@ normal_containers_rejected_text = None
 reefer_containers_rejected_text = None
 total_travel_distance_text = None
 average_travel_distance_text = None
+
 
 def init_simulation():
     data = load_data('./Data/')
@@ -25,8 +24,7 @@ def init_simulation():
 def draw(sim, canvas):
     blocks = []
     vessels = []
-    parameters = []
-    # [(min_x, min_y), (max_x, max_y)]
+
     normalisation = normalise_positions(sim.yard_blocks, sim.berthing_positions, sim.truck_parking_locations)
     min_x = normalisation[0][0]
     max_x = normalisation[1][0]
@@ -36,6 +34,8 @@ def draw(sim, canvas):
     canvas_width = canvas.winfo_width()
     canvas_height = canvas.winfo_height()
     border_space = 10
+
+    # Figures
 
     for block in sim.yard_blocks:
         start_pos_x = (block.position.x_cord - min_x) / (max_x - min_x) * (
@@ -92,7 +92,7 @@ def draw(sim, canvas):
                                 fill="#CD853F",
                                 outline='black')
 
-    # Parameters
+    # Parameter labels
     font = 30
 
     global timer_text
@@ -129,17 +129,17 @@ def draw(sim, canvas):
     total_travel_distance_text = tk.StringVar()
     total_travel_distance_text.set("Total travel distance of container groups: 0")
     total_travel_distance_label = tk.Label(canvas, textvariable=total_travel_distance_text, font=font)
-    canvas.create_window(400, canvas_height - 60, anchor=tk.SW, window=total_travel_distance_label)
+    canvas.create_window(canvas_width/2 -200, canvas_height - 60, anchor=tk.SW, window=total_travel_distance_label)
 
     global average_travel_distance_text
     average_travel_distance_text = tk.StringVar()
     average_travel_distance_text.set("Average travel distance of container groups: 0")
     average_travel_distance_label = tk.Label(canvas, textvariable=average_travel_distance_text, font=font)
-    canvas.create_window(400, canvas_height - border_space, anchor=tk.SW, window=average_travel_distance_label)
+    canvas.create_window(canvas_width/2 -200, canvas_height - border_space, anchor=tk.SW, window=average_travel_distance_label)
 
     canvas.pack()
 
-    return blocks, vessels, parameters
+    return blocks, vessels
 
 
 def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations):
@@ -169,11 +169,15 @@ def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations
     return [(smallest_x, smallest_y), (largest_x, largest_y)]
 
 
-def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, parameters):
+def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, paths):
     for i in range(len(yard_blocks)):
         yb_ocupancy = yard_blocks[i].getOccupancy()
         fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
         canvas.itemconfig(gui_blocks[i], fill=fill)
+
+    # Animation doesn't affect time
+    #for p in paths:
+
 
     timer_text.set("Time: " + str(sim.time))
     containers_rejected_text.set("Rejected containers: " + str(sim.rejected_containers))
@@ -202,24 +206,36 @@ def run_simulation(sim, gui, canvas):
     departure_list = []
     arrival_list = [0]
 
-    blocks, vessels, parameters = draw(sim, canvas)
+    blocks, vessels = draw(sim, canvas)
     container_groups = []
     while sim.time < SIMULATION_HOURS:
+        paths = []
+        # Departure paths for animation
+        for container_group in container_groups:
+            if sim.time >= container_group.getFinishTime():
+                block_dictionary = container_group.yard_blocks.copy()
+                for block in block_dictionary:
+                    paths.append([block.position, container_group.departure_point])
+
         has_generated = sim.generate_new_time(departure_list, arrival_list)
 
-        # check what containergroups get removed to show
+        # check what container_groups get removed to show
         sim.remove_expired_container_groups(container_groups)
 
         if has_generated:
-            # show the new cg ariving
+            # show the new cg arriving
             new_cg = sim.generate_new_containergroup()
 
             # show yb added
             sim.add_cg_to_closest_yb(new_cg, container_groups, departure_list)
             add_to_Q(arrival_list, sim.time + get_inter_arrival_time_sample())
 
+            # Arrival path for animation
+            for key in new_cg.yard_blocks.keys():
+                paths.append([new_cg.arrival_point, key.position])
+
         # update yb visualisation
-        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, parameters)
+        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, paths)
 
 
 def startGUI():
@@ -227,7 +243,6 @@ def startGUI():
     canvas = tk.Canvas(gui, bg='white', highlightthickness=0)
     canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
     canvas.update()
-    # canvas = tk.Canvas(gui, width=width + 400, height=height)
 
     sim = init_simulation()
     run_simulation(sim, gui, canvas)
