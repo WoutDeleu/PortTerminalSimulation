@@ -73,7 +73,7 @@ def draw(sim, canvas):
     canvas.create_rectangle(0,
                             20,
                             canvas_width,
-                            60,
+                            100,
                             fill="#0000FF",
                             outline='black')
 
@@ -202,9 +202,9 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
         for p in paths:
             begin_position, end_position = p
 
-            x = (begin_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
+            x = (begin_position.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
             y = begin_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
-            target_x = (end_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
+            target_x = (end_position.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
             target_y = end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
             # Create the rectangle on the canvas
             container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
@@ -303,7 +303,7 @@ def run_simulation(sim, gui, canvas):
 
 def startGUI():
     gui = init_gui()
-    canvas = tk.Canvas(gui, bg='white', highlightthickness=0)
+    canvas = tk.Canvas(gui, bg='darkgray', highlightthickness=0)
     canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
     canvas.update()
 

@@ -7,6 +7,7 @@ from Data.DataParser import parse_data, load_data
 from Parameters import AMOUNT_SIMULATIONS, check_parameters
 from Result_Parser import show_result
 from Simulation import simulate
+from Visualisation import visualise_data
 
 simulation_data = ['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected', 'Total_Travel_Distance',
                    'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
@@ -16,6 +17,7 @@ simulation_data = ['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Ree
 def main():
     check_parameters()
     data = load_data('./Data/')
+    visualise_data(data)
     stats = pd.DataFrame(
         columns=simulation_data)
 
