@@ -1,4 +1,3 @@
-import math
 import tkinter as tk
 
 from Data.DataParser import load_data
@@ -122,19 +121,19 @@ def draw(sim, canvas):
         fill = '#00FF00' if block.flow_type == 'EXPORT' else '#FFFF00' if block.flow_type == 'IMPORT' else '#ADD8E6'
         border = 'orange' if block.container_type == "REEFER" else 'blue'
         block_rectangle = canvas.create_rectangle(start_pos_x,
-                                start_pos_y,
-                                start_pos_x + yb_width,
-                                start_pos_y + yb_height,
-                                fill=fill,
-                                outline=border)
+                                                  start_pos_y,
+                                                  start_pos_x + yb_width,
+                                                  start_pos_y + yb_height,
+                                                  fill=fill,
+                                                  outline=border)
         blocks.append(block_rectangle)
 
         fill_rectangle = canvas.create_rectangle(start_pos_x,
-                                start_pos_y,
-                                start_pos_x + yb_width,
-                                start_pos_y,
-                                fill='#FF0000',
-                                outline=border)
+                                                 start_pos_y,
+                                                 start_pos_x + yb_width,
+                                                 start_pos_y,
+                                                 fill='#FF0000',
+                                                 outline=border)
         fillers.append(fill_rectangle)
 
     # Water
@@ -256,7 +255,7 @@ def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations
 
 def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fillers):
     # Animation doesn't affect time
-    frames = 10000
+    frames = 1000
 
     # put in commentary for no animation
     # Todo: let paths go simultaneously (when multiple things happen at the same time)
@@ -387,9 +386,8 @@ def startGUI():
     canvas = tk.Canvas(gui, bg='darkgray', highlightthickness=0)
     canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
     canvas.update()
-
     sim = init_simulation()
-    run_simulation(sim, gui, canvas)
+    startup_screen(sim, gui, canvas)
     gui.mainloop()  # Lets the window open after the simulation ends
 
 
