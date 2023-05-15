@@ -33,6 +33,7 @@ def init_simulation():
 
 def draw(sim, canvas):
     blocks = []
+    fillers = []
     vessels = []
 
     normalisation = normalise_positions(sim.yard_blocks, sim.berthing_positions, sim.truck_parking_locations)
@@ -64,13 +65,21 @@ def draw(sim, canvas):
 
         fill = '#00FF00' if block.flow_type == 'EXPORT' else '#FFFF00' if block.flow_type == 'IMPORT' else '#ADD8E6'
         border = 'orange' if block.container_type == "REEFER" else 'blue'
-        rectangle = canvas.create_rectangle(start_pos_x,
-                                            start_pos_y,
-                                            start_pos_x + yb_width,
-                                            start_pos_y + yb_height,
-                                            fill=fill,
-                                            outline=border)
-        blocks.append(rectangle)
+        block_rectangle = canvas.create_rectangle(start_pos_x,
+                                start_pos_y,
+                                start_pos_x + yb_width,
+                                start_pos_y + yb_height,
+                                fill=fill,
+                                outline=border)
+        blocks.append(block_rectangle)
+
+        fill_rectangle = canvas.create_rectangle(start_pos_x,
+                                start_pos_y,
+                                start_pos_x + yb_width,
+                                start_pos_y,
+                                fill='#FF0000',
+                                outline=border)
+        fillers.append(fill_rectangle)
 
     # Water
     canvas.create_rectangle(0,
@@ -157,7 +166,7 @@ def draw(sim, canvas):
 
     canvas.pack()
 
-    return blocks, vessels
+    return blocks, vessels, fillers
 
 
 def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations):
@@ -187,17 +196,14 @@ def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations
     return [(smallest_x, smallest_y), (largest_x, largest_y)]
 
 
-def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
-    #for i in range(len(yard_blocks)):
-    #    yb_ocupancy = yard_blocks[i].getOccupancy()
-    #    fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
-    #    canvas.itemconfig(gui_blocks[i], fill=fill)
-
+def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fillers):
     # Animation doesn't affect time
     frames = 10000
 
     # put in commentary for no animation
     # Todo: let paths go simultaneously (when multiple things happen at the same time)
+
+    # Container animation
     if animation_switch:
         for p in paths:
             begin_position, end_position = p
@@ -239,6 +245,18 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
 
             canvas.delete(container)
 
+    # Yard blocks animation
+    for i in range(len(gui_blocks)):
+        block = gui_blocks[i]
+        x1, y1, x2, y2 = canvas.coords(block)
+        yb_occupancy = yard_blocks[i].getOccupancy()
+        canvas.coords(gui_fillers[i],
+                      x1,
+                      y1,
+                      x2,
+                      y1 + (yb_occupancy * (y2 - y1)))
+
+    # Parameter animation
     timer_text.set("Time: " + str(sim.time))
     containers_rejected_text.set("Rejected containers: " + str(sim.rejected_containers))
     cg_rejected_text.set("Rejected container groups: " + str(sim.rejected_groups))
@@ -268,7 +286,7 @@ def run_simulation(sim, gui, canvas):
     departure_list = []
     arrival_list = [0]
 
-    blocks, vessels = draw(sim, canvas)
+    blocks, vessels, fillers = draw(sim, canvas)
     container_groups = []
     while sim.time <= SIMULATION_HOURS:
         paths = []
@@ -298,7 +316,7 @@ def run_simulation(sim, gui, canvas):
                 paths.append([new_cg.arrival_point, key.position])
 
         # update yb visualisation
-        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, paths)
+        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, paths, fillers)
 
 
 def startGUI():
