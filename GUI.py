@@ -195,8 +195,7 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
 
     # Animation doesn't affect time
     frames = 10000
-    canvas_width = canvas.winfo_width()
-    canvas_height = canvas.winfo_height()
+
     # put in commentary for no animation
     # Todo: let paths go simultaneously (when multiple things happen at the same time)
     if animation_switch:
