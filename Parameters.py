@@ -16,13 +16,25 @@ SPLIT_UP = False
 MIXED_RULE = False
 
 # Distance calculation reference
-ARRIVAL_BASED = False
-DEPARTURE_BASED = True
+ARRIVAL_BASED = True
+DEPARTURE_BASED = False
+
+
+def only_one_true():
+    counter = 0
+    if CLOSEST:
+        counter += 1
+    if LOWEST_OCCUPANCY:
+        counter += 1
+    if SPLIT_UP:
+        counter += 1
+    if MIXED_RULE:
+        counter += 1
+    return counter == 1
 
 
 def check_parameters():
-    if not ((CLOSEST ^ LOWEST_OCCUPANCY ^ SPLIT_UP ^ MIXED_RULE) and (
-            CLOSEST or LOWEST_OCCUPANCY or SPLIT_UP or MIXED_RULE)):
+    if not only_one_true():
         raise Exception("Only one simulation scenario can be true")
 
     if not (ARRIVAL_BASED or DEPARTURE_BASED):

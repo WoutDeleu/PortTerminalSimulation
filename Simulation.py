@@ -14,14 +14,16 @@ def simulate(stats, data):
     sim.run()
     stats_fifo = pd.concat(
         [stats, pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
-                        'Normal_Rejected': sim.rejected_per_type["normal"],
-                        'Reefer_Rejected': sim.rejected_per_type["reefer"],
-                        'Total_Travel_Distance': sim.total_travel_distance_containers,
-                        'AVG_Travel_Distance_Containers': sim.getAvgTravel_Containers(),
-                        'Max_Occupancy': sim.getMaxOccupancy(),
-                        'AVG_Daily_Individual_Occupancy': sim.getAvgOccupancy_individual(),
-                        'AVG_daily_total_Occupancy': sim.getDailyTotalOccupancy()}])
-         ])
+                               'Normal_Rejected': sim.rejected_per_type["normal"],
+                               'Reefer_Rejected': sim.rejected_per_type["reefer"],
+                               'Total_Travel_Distance': sim.total_travel_distance_containers,
+                               'AVG_Travel_Distance_Containers': sim.getAvgTravel_Containers(),
+                               'Max_Occupancy': sim.getMaxOccupancy(),
+                               'AVG_Daily_Individual_Occupancy': sim.getAvgOccupancy_individual(),
+                               'AVG_daily_total_Occupancy': sim.getDailyTotalOccupancy()}])
+
+         ]
+    )
     return stats_fifo
 
 

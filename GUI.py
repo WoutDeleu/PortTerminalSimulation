@@ -1,9 +1,8 @@
 import math
-import tkinter
 import tkinter as tk
 
 from Data.DataParser import load_data
-from Parameters import SIMULATION_HOURS
+from Parameters import SIMULATION_HOURS, check_parameters
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
 
 timer_text = None
@@ -52,7 +51,7 @@ def draw(sim, canvas):
 
     for block in sim.yard_blocks:
         start_pos_x = (block.position.x_cord - min_x) / (max_x - min_x) * (
-                    canvas_width - 2 * border_space) + border_space
+                canvas_width - 2 * border_space) + border_space
         # Not fully stretch to leave some room for parameters
         start_pos_y = block.position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
 
@@ -79,7 +78,7 @@ def draw(sim, canvas):
 
     for berth_location in sim.berthing_positions:
         start_pos_x = (berth_location.x_cord - min_x) / (max_x - min_x) * (
-                    canvas_width - 2 * border_space) + border_space
+                canvas_width - 2 * border_space) + border_space
         # Not fully stretch to leave some room for parameters
         start_pos_y = berth_location.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
 
@@ -94,7 +93,7 @@ def draw(sim, canvas):
 
     for truck_location in sim.truck_parking_locations:
         start_pos_x = (truck_location.x_cord - min_x) / (max_x - min_x) * (
-                    canvas_width - 2 * border_space) + border_space
+                canvas_width - 2 * border_space) + border_space
         # Not fully stretch to leave some room for parameters
         start_pos_y = truck_location.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
 
@@ -140,19 +139,21 @@ def draw(sim, canvas):
     reefer_containers_rejected_text = tk.StringVar()
     reefer_containers_rejected_text.set("Rejected reefer containers: 0")
     reefer_containers_rejected_label = tk.Label(canvas, textvariable=reefer_containers_rejected_text, font=font)
-    canvas.create_window(border_space, canvas_height - border_space, anchor=tk.SW, window=reefer_containers_rejected_label)
+    canvas.create_window(border_space, canvas_height - border_space, anchor=tk.SW,
+                         window=reefer_containers_rejected_label)
 
     global total_travel_distance_text
     total_travel_distance_text = tk.StringVar()
     total_travel_distance_text.set("Total travel distance of container groups: 0")
     total_travel_distance_label = tk.Label(canvas, textvariable=total_travel_distance_text, font=font)
-    canvas.create_window(canvas_width/2 -200, canvas_height - 60, anchor=tk.SW, window=total_travel_distance_label)
+    canvas.create_window(canvas_width / 2 - 200, canvas_height - 60, anchor=tk.SW, window=total_travel_distance_label)
 
     global average_travel_distance_text
     average_travel_distance_text = tk.StringVar()
     average_travel_distance_text.set("Average travel distance of container groups: 0")
     average_travel_distance_label = tk.Label(canvas, textvariable=average_travel_distance_text, font=font)
-    canvas.create_window(canvas_width/2 -200, canvas_height - border_space, anchor=tk.SW, window=average_travel_distance_label)
+    canvas.create_window(canvas_width / 2 - 200, canvas_height - border_space, anchor=tk.SW,
+                         window=average_travel_distance_label)
 
     canvas.pack()
 
@@ -202,9 +203,10 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
         for p in paths:
             begin_position, end_position = p
 
-            x = (begin_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
+            x = (begin_position.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
             y = begin_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
-            target_x = (end_position.x_cord - min_x) / (max_x - min_x) * ( canvas_width - 2 * border_space) + border_space
+            target_x = (end_position.x_cord - min_x) / (max_x - min_x) * (
+                        canvas_width - 2 * border_space) + border_space
             target_y = end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
             # Create the rectangle on the canvas
             container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
@@ -243,12 +245,16 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
     cg_rejected_text.set("Rejected container groups: " + str(sim.rejected_groups))
     normal_containers_rejected_text.set("Rejected normal containers: " + str(sim.rejected_per_type['normal']))
     reefer_containers_rejected_text.set("Rejected reefer containers: " + str(sim.rejected_per_type['reefer']))
-    total_travel_distance_text.set("Total travel distance of container groups: " + str(round(sim.total_travel_distance_containers)))
-    average_travel_distance_text.set("Average travel distance of container groups: " + str(round(sim.total_travel_distance_containers/sim.total_containers)))
+    total_travel_distance_text.set(
+        "Total travel distance of container groups: " + str(round(sim.total_travel_distance_containers)))
+    average_travel_distance_text.set("Average travel distance of container groups: " + str(
+        round(sim.total_travel_distance_containers / sim.total_containers)))
 
     gui.update()
 
+
 def init_gui():
+    check_parameters()
     gui = tk.Tk()
     gui.attributes('-fullscreen', True)  # make main window full-screen
     gui.title("Container yard simulation")
@@ -256,9 +262,11 @@ def init_gui():
 
     return gui
 
+
 def toggle_animation():
     global animation_switch
     animation_switch = not animation_switch
+
 
 def run_simulation(sim, gui, canvas):
     # sets day_clock, day_counter and time to 0
