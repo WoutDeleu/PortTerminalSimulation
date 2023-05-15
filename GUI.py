@@ -17,6 +17,8 @@ max_x = None
 min_y = None
 max_y = None
 border_space = None
+canvas_width = None
+canvas_height = None
 
 animation_switch = True
 lay = []
@@ -70,18 +72,6 @@ def startup_screen(sim, gui, canvas):
     btn_run.pack(side=tk.BOTTOM)
 
 
-def startGUI():
-    gui = init_gui()
-    canvas = tk.Canvas(gui, bg='white', highlightthickness=0)
-    canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
-    canvas.update()
-
-    sim = init_simulation()
-
-    startup_screen(sim, gui, canvas)
-    gui.mainloop()  # Lets the window open after the simulation ends
-
-
 def init_simulation():
     data = load_data('./Data/')
     sim = Simulation(data, 10, False, False, False, False, False, False)
@@ -99,6 +89,7 @@ def init_gui():
 
 def draw(sim, canvas):
     blocks = []
+    fillers = []
     vessels = []
 
     normalisation = normalise_positions(sim.yard_blocks, sim.berthing_positions, sim.truck_parking_locations)
@@ -111,7 +102,9 @@ def draw(sim, canvas):
     global max_y
     max_y = normalisation[1][1]
 
+    global canvas_width
     canvas_width = canvas.winfo_width()
+    global canvas_height
     canvas_height = canvas.winfo_height()
     global border_space
     border_space = 10
@@ -119,23 +112,30 @@ def draw(sim, canvas):
     # Figures
 
     for block in sim.yard_blocks:
-        start_pos_x = (block.position.x_cord - min_x) / (max_x - min_x) * (
-                canvas_width - 2 * border_space) + border_space
+        start_pos_x = transpose_x(block.position.x_cord)
         # Not fully stretch to leave some room for parameters
-        start_pos_y = block.position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+        start_pos_y = transpose_y(block.position.y_cord)
 
         yb_width = block.capacity / 1000 * 30
         yb_height = block.capacity / 1000 * 110
-        yb_ocupancy = block.getOccupancy()
-        fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
+
+        fill = '#00FF00' if block.flow_type == 'EXPORT' else '#FFFF00' if block.flow_type == 'IMPORT' else '#ADD8E6'
         border = 'orange' if block.container_type == "REEFER" else 'blue'
-        rectangle = canvas.create_rectangle(start_pos_x,
-                                            start_pos_y,
-                                            start_pos_x + yb_width,
-                                            start_pos_y + yb_height,
-                                            fill=fill,
-                                            outline=border)
-        blocks.append(rectangle)
+        block_rectangle = canvas.create_rectangle(start_pos_x,
+                                start_pos_y,
+                                start_pos_x + yb_width,
+                                start_pos_y + yb_height,
+                                fill=fill,
+                                outline=border)
+        blocks.append(block_rectangle)
+
+        fill_rectangle = canvas.create_rectangle(start_pos_x,
+                                start_pos_y,
+                                start_pos_x + yb_width,
+                                start_pos_y,
+                                fill='#FF0000',
+                                outline=border)
+        fillers.append(fill_rectangle)
 
     # Water
     canvas.create_rectangle(0,
@@ -146,10 +146,9 @@ def draw(sim, canvas):
                             outline='black')
 
     for berth_location in sim.berthing_positions:
-        start_pos_x = (berth_location.x_cord - min_x) / (max_x - min_x) * (
-                canvas_width - 2 * border_space) + border_space
+        start_pos_x = transpose_x(berth_location.x_cord)
         # Not fully stretch to leave some room for parameters
-        start_pos_y = berth_location.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+        start_pos_y = transpose_y(berth_location.y_cord)
 
         rectangle = canvas.create_rectangle(start_pos_x,
                                             start_pos_y,
@@ -161,10 +160,9 @@ def draw(sim, canvas):
         vessels.append(rectangle)
 
     for truck_location in sim.truck_parking_locations:
-        start_pos_x = (truck_location.x_cord - min_x) / (max_x - min_x) * (
-                canvas_width - 2 * border_space) + border_space
+        start_pos_x = transpose_x(truck_location.x_cord)
         # Not fully stretch to leave some room for parameters
-        start_pos_y = truck_location.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+        start_pos_y = transpose_y(truck_location.y_cord)
 
         canvas.create_rectangle(start_pos_x,
                                 start_pos_y,
@@ -226,7 +224,7 @@ def draw(sim, canvas):
 
     canvas.pack()
 
-    return blocks, vessels
+    return blocks, vessels, fillers
 
 
 def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations):
@@ -256,27 +254,22 @@ def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations
     return [(smallest_x, smallest_y), (largest_x, largest_y)]
 
 
-def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
-    for i in range(len(yard_blocks)):
-        yb_ocupancy = yard_blocks[i].getOccupancy()
-        fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
-        canvas.itemconfig(gui_blocks[i], fill=fill)
-
+def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fillers):
     # Animation doesn't affect time
     frames = 10000
-    canvas_width = canvas.winfo_width()
-    canvas_height = canvas.winfo_height()
+
     # put in commentary for no animation
     # Todo: let paths go simultaneously (when multiple things happen at the same time)
+
+    # Container animation
     if animation_switch:
         for p in paths:
             begin_position, end_position = p
 
-            x = (begin_position.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
-            y = begin_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
-            target_x = (end_position.x_cord - min_x) / (max_x - min_x) * (
-                    canvas_width - 2 * border_space) + border_space
-            target_y = end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
+            x = transpose_x(begin_position.x_cord)
+            y = transpose_y(begin_position.y_cord)
+            target_x = transpose_x(end_position.x_cord)
+            target_y = transpose_y(end_position.y_cord)
             # Create the rectangle on the canvas
             container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
 
@@ -303,12 +296,25 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
 
                 canvas.coords(container, x, y, x + 10, y + 10)
                 gui.update()
-            canvas.delete(container)
 
             if vessel is not None:
                 canvas.itemconfig(vessel, state='hidden')
                 gui.update()
 
+            canvas.delete(container)
+
+    # Yard blocks animation
+    for i in range(len(gui_blocks)):
+        block = gui_blocks[i]
+        x1, y1, x2, y2 = canvas.coords(block)
+        yb_occupancy = yard_blocks[i].getOccupancy()
+        canvas.coords(gui_fillers[i],
+                      x1,
+                      y1,
+                      x2,
+                      y1 + (yb_occupancy * (y2 - y1)))
+
+    # Parameter animation
     timer_text.set("Time: " + str(sim.time))
     containers_rejected_text.set("Rejected containers: " + str(sim.rejected_containers))
     cg_rejected_text.set("Rejected container groups: " + str(sim.rejected_groups))
@@ -343,18 +349,19 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference):
     departure_list = []
     arrival_list = [0]
 
-    blocks, vessels = draw(sim, canvas)
+    blocks, vessels, fillers = draw(sim, canvas)
     container_groups = []
     while sim.time <= sim.SIMULATION_HOURS:
         paths = []
+
+        has_generated = sim.generate_new_time(departure_list, arrival_list)
+
         # Departure paths for animation
         for container_group in container_groups:
             if sim.time >= container_group.getFinishTime():
                 block_dictionary = container_group.yard_blocks.copy()
                 for block in block_dictionary:
                     paths.append([block.position, container_group.departure_point])
-
-        has_generated = sim.generate_new_time(departure_list, arrival_list)
 
         # check what container_groups get removed to show
         sim.remove_expired_container_groups(container_groups)
@@ -372,7 +379,26 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference):
                 paths.append([new_cg.arrival_point, key.position])
 
         # update yb visualisation
-        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, paths)
+        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, paths, fillers)
+
+
+def startGUI():
+    gui = init_gui()
+    canvas = tk.Canvas(gui, bg='darkgray', highlightthickness=0)
+    canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
+    canvas.update()
+
+    sim = init_simulation()
+    run_simulation(sim, gui, canvas)
+    gui.mainloop()  # Lets the window open after the simulation ends
+
+
+def transpose_x(x):
+    return (x - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
+
+
+def transpose_y(y):
+    return y / max_y * (canvas_height - 2 * border_space) + border_space - min_y
 
 
 if __name__ == '__main__':

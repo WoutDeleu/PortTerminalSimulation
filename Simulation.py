@@ -39,7 +39,7 @@ def get_number_of_containers_sample():
     sample = scipyst.weibull_min.rvs(0.6, loc=0.5 / scale) * scale
     while sample > max:
         sample = scipyst.weibull_min.rvs(0.6, loc=0.5 / scale) * scale
-    return round(sample)
+    return round(sample)*10
 
 
 def get_service_time_sample():

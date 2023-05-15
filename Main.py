@@ -4,6 +4,7 @@ from progress.bar import Bar
 from Data.DataParser import load_data
 from Result_Parser import show_result
 from Simulation import simulate
+from Visualisation import visualise_data
 
 simulation_data = ['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected', 'Total_Travel_Distance',
                    'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
@@ -33,6 +34,7 @@ SIMULATION_HOURS = SIMULATION_DAYS * 24
 
 def main():
     data = load_data('./Data/')
+    visualise_data(data)
     stats = pd.DataFrame(
         columns=simulation_data)
 
