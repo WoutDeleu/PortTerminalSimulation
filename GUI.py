@@ -203,7 +203,7 @@ def draw(sim, canvas):
     timer_text = tk.StringVar()
     timer_text.set("Time: 0")
     timer_label = tk.Label(canvas, textvariable=timer_text, font=font)
-    canvas.create_window(canvas_width - border_space, canvas_height - border_space, anchor=tk.SE, window=timer_label)
+    canvas.create_window(canvas_width - border_space - 100, canvas_height - border_space, anchor=tk.SE, window=timer_label)
 
     global containers_rejected_text
     containers_rejected_text = tk.StringVar()
@@ -242,6 +242,41 @@ def draw(sim, canvas):
     average_travel_distance_label = tk.Label(canvas, textvariable=average_travel_distance_text, font=font)
     canvas.create_window(canvas_width / 2 - 200, canvas_height - border_space, anchor=tk.SW,
                          window=average_travel_distance_label)
+
+    # Legend
+    # Legend items
+    legend_items = [
+        {"color": "#00FF00", "label": "EXPORT"},
+        {"color": "#ADD8E6", "label": "MIX"},
+        {"color": "#FFFF00", "label": "IMPORT"},
+        {"color": 'orange', "label": "REEFER"},
+        {"color": 'blue', "label": "NORMAL"}
+    ]
+
+    # coordinates
+    legend_x = canvas_width - 100
+    legend_y = canvas_height - 150
+    legend_item_height = 20
+    legend_spacing = 10
+
+    for item in legend_items:
+        color = item["color"]
+        label = item["label"]
+
+        # Draw colored rectangle
+        if color == 'orange' or color == 'blue':
+            canvas.create_rectangle(legend_x, legend_y, legend_x + legend_item_height, legend_y + legend_item_height,
+                                    fill = "#A9A9A9", outline=color)
+        else :
+            canvas.create_rectangle(legend_x, legend_y, legend_x + legend_item_height, legend_y + legend_item_height,
+                                fill=color)
+
+        # Draw label text
+        canvas.create_text(legend_x + legend_item_height + legend_spacing, legend_y + legend_item_height // 2,
+                           text=label, anchor=tk.W)
+
+        # Adjust the y-coordinate for the next item
+        legend_y += legend_item_height + legend_spacing
 
     canvas.pack()
 
