@@ -73,15 +73,14 @@ def startup_screen(sim, gui, canvas):
 
 def init_simulation():
     data = load_data('./Data/')
-    sim = Simulation(data, 10, False, False, False, False, False, False)
+    sim = Simulation(data, 168, False, False, False, False, False, False)
     return sim
 
 
 def init_gui():
     gui = tk.Tk()
-    gui.attributes('-fullscreen', False)  # make main window full-screen
+    gui.attributes('-fullscreen', True)  # make main window full-screen
     gui.title("Container yard simulation")
-    # gui.geometry(f"{width + 400}x{height + 500}")
 
     return gui
 
@@ -140,7 +139,7 @@ def draw(sim, canvas):
     canvas.create_rectangle(0,
                             20,
                             canvas_width,
-                            60,
+                            transpose_y(222),
                             fill="#0000FF",
                             outline='black')
 
