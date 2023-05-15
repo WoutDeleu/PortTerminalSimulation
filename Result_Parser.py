@@ -3,7 +3,6 @@
 import pandas as pd
 
 from Data.DataParser import array_to_string
-from Parameters import LATEX, OVERVIEW, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY
 
 
 def format_yb_tables(data):
@@ -124,7 +123,7 @@ def format_stats(stats):
     return names, avg
 
 
-def show_result(stats):
+def show_result(stats, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, LATEX, OVERVIEW):
     print()
     if ARRIVAL_BASED:
         title = 'ARRIVAL-BASED'

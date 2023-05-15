@@ -2,7 +2,6 @@ import math
 import tkinter as tk
 
 from Data.DataParser import load_data
-from Parameters import SIMULATION_HOURS, check_parameters
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
 
 timer_text = None
@@ -20,12 +19,82 @@ max_y = None
 border_space = None
 
 animation_switch = True
+lay = []
+
+
+def startup_screen(sim, gui, canvas):
+    popup = tk.Toplevel()
+    lay.append(popup)
+    popup.grab_set()
+    popup.title("Simulation Parameters")
+    popup.geometry("300x300")
+    popup.resizable(False, False)
+
+    # Scenarios
+    scenarios = {
+        "Closest (Base Scenario)",
+        "Lowest Occupancy",
+        "Possible Split Up",
+        "Mixed Rule - Block can only contain 1 type"
+    }
+    # datatype of menu text
+    scenario = tk.StringVar()
+    # initial menu text
+    scenario.set("Closest (Base Scenario)")
+    lbl_scenarios = tk.Label(popup, text="Scenarios: ")
+    drop = tk.OptionMenu(popup, scenario, *scenarios)
+    lbl_scenarios.pack()
+    drop.pack()
+
+    # Distance calculation reference
+    bases = {
+        "Arrival Based",
+        "Departure Based",
+        "Arrival and Departure Based"
+    }
+    # datatype of menu text
+    dist_reference = tk.StringVar()
+    # initial menu text
+    dist_reference.set("Arrival Based")
+    lbl_dist_reference = tk.Label(popup, text="Distance Calculation Reference: ")
+    drop = tk.OptionMenu(popup, dist_reference, *bases)
+    lbl_dist_reference.pack()
+    drop.pack()
+
+    # Simulation duration
+    lbl_duration = tk.Label(popup, text="Simulation duration (hours): ")
+    lbl_duration.pack()
+
+    btn_run = tk.Button(popup, text="Run Simulation",
+                        command=lambda: run_simulation(sim, gui, canvas, scenario.get(), dist_reference.get()))
+    btn_run.pack(side=tk.BOTTOM)
+
+
+def startGUI():
+    gui = init_gui()
+    canvas = tk.Canvas(gui, bg='white', highlightthickness=0)
+    canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
+    canvas.update()
+
+    sim = init_simulation()
+
+    startup_screen(sim, gui, canvas)
+    gui.mainloop()  # Lets the window open after the simulation ends
 
 
 def init_simulation():
     data = load_data('./Data/')
-    sim = Simulation(data)
+    sim = Simulation(data, 10, False, False, False, False, False, False)
     return sim
+
+
+def init_gui():
+    gui = tk.Tk()
+    gui.attributes('-fullscreen', False)  # make main window full-screen
+    gui.title("Container yard simulation")
+    # gui.geometry(f"{width + 400}x{height + 500}")
+
+    return gui
 
 
 def draw(sim, canvas):
@@ -206,7 +275,7 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
             x = (begin_position.x_cord - min_x) / (max_x - min_x) * (canvas_width - 2 * border_space) + border_space
             y = begin_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
             target_x = (end_position.x_cord - min_x) / (max_x - min_x) * (
-                        canvas_width - 2 * border_space) + border_space
+                    canvas_width - 2 * border_space) + border_space
             target_y = end_position.y_cord / max_y * (canvas_height - 2 * border_space) + border_space - min_y
             # Create the rectangle on the canvas
             container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
@@ -253,22 +322,21 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
     gui.update()
 
 
-def init_gui():
-    check_parameters()
-    gui = tk.Tk()
-    gui.attributes('-fullscreen', True)  # make main window full-screen
-    gui.title("Container yard simulation")
-    # gui.geometry(f"{width + 400}x{height + 500}")
-
-    return gui
-
-
 def toggle_animation():
     global animation_switch
     animation_switch = not animation_switch
 
 
-def run_simulation(sim, gui, canvas):
+def run_simulation(sim, gui, canvas, scenario, distance_reference):
+    sim.setScenario(scenario)
+    sim.setDistanceCalculationReference(distance_reference)
+    sim.print_status()
+
+    # Close popup window
+    top = lay[0]
+    top.destroy()
+    top.update()
+
     # sets day_clock, day_counter and time to 0
     sim.setup_timers()
 
@@ -277,7 +345,7 @@ def run_simulation(sim, gui, canvas):
 
     blocks, vessels = draw(sim, canvas)
     container_groups = []
-    while sim.time <= SIMULATION_HOURS:
+    while sim.time <= sim.SIMULATION_HOURS:
         paths = []
         # Departure paths for animation
         for container_group in container_groups:
@@ -307,15 +375,5 @@ def run_simulation(sim, gui, canvas):
         update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, paths)
 
 
-def startGUI():
-    gui = init_gui()
-    canvas = tk.Canvas(gui, bg='white', highlightthickness=0)
-    canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
-    canvas.update()
-
-    sim = init_simulation()
-    run_simulation(sim, gui, canvas)
-    gui.mainloop()  # Lets the window open after the simulation ends
-
-
-startGUI()
+if __name__ == '__main__':
+    startGUI()

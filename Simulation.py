@@ -4,13 +4,15 @@ import pandas as pd
 import scipy.stats as scipyst
 
 from ContainerGroup import ContainerGroup
-from Parameters import SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, SPLIT_UP, MIXED_RULE
 from Position import Position
 from YardBlock import YardBlock
 
 
-def simulate(stats, data):
-    sim = Simulation(data)
+def simulate(stats, data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST, LOWEST_OCCUPANCY,
+             SPLIT_UP):
+    sim = Simulation(data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST, LOWEST_OCCUPANCY,
+                     SPLIT_UP)
+    sim.check_parameters()
     sim.run()
     stats_fifo = pd.concat(
         [stats, pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
@@ -58,12 +60,6 @@ def get_container_flow_type():
     # Transshipment's fall under export (say 50% of cargo groups are transshipment's)
 
 
-def check_type(group, block):
-    container_type_check = check_container_type(group.container_type, block.container_type)
-    container_flow_check = check_flow_type(group, block)
-    return container_type_check and container_flow_check
-
-
 def check_container_type(group_type, block_type):
     if group_type.lower() == block_type.lower():
         return True
@@ -80,56 +76,10 @@ def add_to_Q(event_list, time):
     return event_list
 
 
-def get_closest_yb(container_group: ContainerGroup, feasible_yardblocks):
-    closest_block = feasible_yardblocks[0]
-    for block in feasible_yardblocks:
-        if ARRIVAL_BASED and DEPARTURE_BASED:
-            distance = block.position.calculate_distance(
-                container_group.arrival_point) + block.position.calculate_distance(container_group.departure_point)
-        elif ARRIVAL_BASED:
-            distance = block.position.calculate_distance(container_group.arrival_point)
-
-        elif DEPARTURE_BASED:
-            distance = block.position.calculate_distance(container_group.departure_point)
-
-        if distance < closest_block.position.calculate_distance(container_group.arrival_point):
-            closest_block = block
-
-    return [closest_block]
-
-
-def get_lowest_occupancy_yb(container_group, feasible_yardblocks):
-    possible_blocks = []
-    smallest_yb = feasible_yardblocks[0]
-    for block in feasible_yardblocks:
-        if block.getRemainingCapacity() < smallest_yb.getRemainingCapacity():
-            smallest_yb = block
-
-    for block in feasible_yardblocks:
-        if block.getRemainingCapacity() == smallest_yb.getRemainingCapacity():
-            possible_blocks.append(block)
-
-    return get_closest_yb(container_group, possible_blocks)
-
-
-def check_flow_type(container, block):
-    if block.flow_type.lower() == "mix" and MIXED_RULE:
-        if block.current_flow_type.lower() == "mix":
-            return True
-        elif container.container_flow_type.lower() == block.current_flow_type.lower():
-            return True
-        else:
-            return False
-    if block.flow_type.lower() == "mix":
-        return True
-    if container.container_flow_type.lower() == block.flow_type.lower():
-        return True
-    else:
-        return False
-
-
 class Simulation:
-    def __init__(self, data):
+
+    def __init__(self, data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST, LOWEST_OCCUPANCY,
+                 SPLIT_UP):
         # Simulation variables - time
         self.time = 0
         self.day_counter = 0
@@ -165,6 +115,16 @@ class Simulation:
         for x in truck_parking_locations_list:
             self.truck_parking_locations.append(Position(x[1], x[2]))
 
+        self.SIMULATION_HOURS = SIMULATION_HOURS
+
+        self.ARRIVAL_BASED = ARRIVAL_BASED
+        self.DEPARTURE_BASED = DEPARTURE_BASED
+
+        self.MIXED_RULE = MIXED_RULE
+        self.CLOSEST = CLOSEST
+        self.LOWEST_OCCUPANCY = LOWEST_OCCUPANCY
+        self.SPLIT_UP = SPLIT_UP
+
     def run(self):
         # Variables to get daily statistics
         self.setup_timers()
@@ -174,7 +134,7 @@ class Simulation:
         arrival_list = [0]
         # List of all container groups in the yard blocks
         container_groups = []
-        while self.time < SIMULATION_HOURS:  # Stop the simulation after the given period
+        while self.time < self.SIMULATION_HOURS:  # Stop the simulation after the given period
             # Update the time based on the next event
             generated_container = self.generate_new_time(departure_list, arrival_list)
 
@@ -243,35 +203,85 @@ class Simulation:
         if len(feasible_yardblocks) == 0:
             return None
 
-        if SPLIT_UP:
+        if self.SPLIT_UP:
             containers_to_store = container_group.number_of_containers
             ybs_to_store = []
             while containers_to_store > 0:
-                yb = get_closest_yb(container_group, feasible_yardblocks)[0]
+                yb = self.get_closest_yb(container_group, feasible_yardblocks)[0]
                 containers_to_store -= yb.getRemainingCapacity()
                 feasible_yardblocks.remove(yb)
                 ybs_to_store.append(yb)
             return ybs_to_store
 
-        if CLOSEST or MIXED_RULE:
-            return get_closest_yb(container_group, feasible_yardblocks)
+        if self.CLOSEST or self.MIXED_RULE:
+            return self.get_closest_yb(container_group, feasible_yardblocks)
 
-        if LOWEST_OCCUPANCY:
-            return get_lowest_occupancy_yb(container_group, feasible_yardblocks)
+        if self.LOWEST_OCCUPANCY:
+            return self.get_lowest_occupancy_yb(container_group, feasible_yardblocks)
+
+    def get_closest_yb(self, container_group: ContainerGroup, feasible_yardblocks):
+        closest_block = feasible_yardblocks[0]
+        for block in feasible_yardblocks:
+            if self.ARRIVAL_BASED and self.DEPARTURE_BASED:
+                distance = block.position.calculate_distance(
+                    container_group.arrival_point) + block.position.calculate_distance(container_group.departure_point)
+            elif self.ARRIVAL_BASED:
+                distance = block.position.calculate_distance(container_group.arrival_point)
+
+            elif self.DEPARTURE_BASED:
+                distance = block.position.calculate_distance(container_group.departure_point)
+
+            if distance < closest_block.position.calculate_distance(container_group.arrival_point):
+                closest_block = block
+
+        return [closest_block]
+
+    def get_lowest_occupancy_yb(self, container_group, feasible_yardblocks):
+        possible_blocks = []
+        smallest_yb = feasible_yardblocks[0]
+        for block in feasible_yardblocks:
+            if block.getRemainingCapacity() < smallest_yb.getRemainingCapacity():
+                smallest_yb = block
+
+        for block in feasible_yardblocks:
+            if block.getRemainingCapacity() == smallest_yb.getRemainingCapacity():
+                possible_blocks.append(block)
+
+        return self.get_closest_yb(container_group, possible_blocks)
+
+    def check_flow_type(self, container, block):
+        if block.flow_type.lower() == "mix" and self.MIXED_RULE:
+            if block.current_flow_type.lower() == "mix":
+                return True
+            elif container.container_flow_type.lower() == block.current_flow_type.lower():
+                return True
+            else:
+                return False
+        if block.flow_type.lower() == "mix":
+            return True
+        if container.container_flow_type.lower() == block.flow_type.lower():
+            return True
+        else:
+            return False
 
     def find_feasible_ybs(self, container_group: ContainerGroup):
         possible_blocks = []
 
         for block in self.yard_blocks:
-            if SPLIT_UP:
-                if check_type(container_group, block) and block.hasSpace(1):
+            if self.SPLIT_UP:
+                if self.check_type(container_group, block) and block.hasSpace(1):
                     possible_blocks.append(block)
             else:
-                if check_type(container_group, block) and block.hasSpace(
+                if self.check_type(container_group, block) and block.hasSpace(
                         container_group.number_of_containers):
                     possible_blocks.append(block)
 
         return possible_blocks
+
+    def check_type(self, group, block):
+        container_type_check = check_container_type(group.container_type, block.container_type)
+        container_flow_check = self.check_flow_type(group, block)
+        return container_type_check and container_flow_check
 
     def add_container_to_block(self, container_group: ContainerGroup, block: YardBlock):
         self.total_travel_distance_containers += block.position.calculate_distance(container_group.arrival_point)
@@ -288,7 +298,7 @@ class Simulation:
         block.addContainers(nr_containers_to_store)
 
         # Update the flow type of the block with an empty block
-        if MIXED_RULE and block.current_flow_type.lower() == "mix":
+        if self.MIXED_RULE and block.current_flow_type.lower() == "mix":
             block.current_flow_type = container_group.container_flow_type
 
         container_group.setYardBlock(block, nr_containers_to_store)
@@ -301,7 +311,7 @@ class Simulation:
         container_group.removeYardBlock(block)
 
         # Reset to mix if no containers are left in the block
-        if MIXED_RULE:
+        if self.MIXED_RULE:
             if block.flow_type.lower() == "mix" and block.amount_containers == 0:
                 block.current_flow_type = "mix"
 
@@ -356,3 +366,79 @@ class Simulation:
         self.day_counter = 0
         # Simulation clock
         self.time = 0
+
+    def setScenario(self, choice_str):
+        if choice_str == "Closest (Base Scenario)":
+            self.CLOSEST = True
+            self.LOWEST_OCCUPANCY = False
+            self.SPLIT_UP = False
+            self.MIXED_RULE = False
+        if choice_str == "Lowest Occupancy":
+            self.CLOSEST = False
+            self.LOWEST_OCCUPANCY = True
+            self.SPLIT_UP = False
+            self.MIXED_RULE = False
+        if choice_str == "Possible Split Up":
+            self.CLOSEST = False
+            self.LOWEST_OCCUPANCY = False
+            self.SPLIT_UP = True
+            self.MIXED_RULE = False
+        if choice_str == "Mixed Rule - Block can only contain 1 type":
+            self.CLOSEST = False
+            self.LOWEST_OCCUPANCY = False
+            self.SPLIT_UP = False
+            self.MIXED_RULE = True
+
+    def setDistanceCalculationReference(self, choice_str):
+        if choice_str == "Arrival Based":
+            self.ARRIVAL_BASED = True
+            self.DEPARTURE_BASED = False
+        if choice_str == "Departure Based":
+            self.ARRIVAL_BASED = False
+            self.DEPARTURE_BASED = True
+        if choice_str == "Arrival and Departure Based":
+            self.ARRIVAL_BASED = True
+            self.DEPARTURE_BASED = True
+
+    def only_one_scenario_true(self):
+        counter = 0
+        if self.CLOSEST:
+            counter += 1
+        if self.LOWEST_OCCUPANCY:
+            counter += 1
+        if self.SPLIT_UP:
+            counter += 1
+        if self.MIXED_RULE:
+            counter += 1
+        if counter == 0:
+            raise Exception("No simulation scenario is true \n One simulation scenario must be true")
+        if counter > 1:
+            raise Exception("More than one simulation scenario is true \n Only one simulation scenario can be true")
+
+    def print_status(self):
+        self.check_parameters()
+        print("Parameters: ")
+        if self.CLOSEST:
+            print("\tCLOSEST")
+        if self.LOWEST_OCCUPANCY:
+            print("\tLOWEST_OCCUPANCY")
+        if self.SPLIT_UP:
+            print("\tSPLIT_UP")
+        if self.MIXED_RULE:
+            print("\tMIXED_RULE")
+        if self.ARRIVAL_BASED and self.DEPARTURE_BASED:
+            print("\tARRIVAL_BASED and DEPARTURE_BASED combined")
+        elif self.ARRIVAL_BASED:
+            print("\tARRIVAL_BASED")
+        elif self.DEPARTURE_BASED:
+            print("\tDEPARTURE_BASED")
+
+        print("Duration: " + str(self.SIMULATION_HOURS / (30 * 24)) + " months = " + str(
+            self.SIMULATION_HOURS / 24) + " days = " + str(
+            self.SIMULATION_HOURS) + " hours")
+        print()
+
+    def check_parameters(self):
+        self.only_one_scenario_true()
+        if not (self.ARRIVAL_BASED or self.DEPARTURE_BASED):
+            raise Exception("At least one distance calculation reference can be true (arrival or departure based)")
