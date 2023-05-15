@@ -377,6 +377,8 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
         paths = []
 
         has_generated = sim.generate_new_time(departure_list, arrival_list)
+        if sim.time == sim.SIMULATION_HOURS:
+            break
 
         # Departure paths for animation
         for container_group in container_groups:

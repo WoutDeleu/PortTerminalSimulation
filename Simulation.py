@@ -139,6 +139,8 @@ class Simulation:
             # Update the time based on the next event
             generated_container = self.generate_new_time(departure_list, arrival_list)
 
+            if self.time == self.SIMULATION_HOURS:
+                break
             # check if the current container groups need to leave (fifo)
             self.remove_expired_container_groups(container_groups)
 
@@ -338,6 +340,8 @@ class Simulation:
         return sum(avg_occupancy_individual) / len(avg_occupancy_individual)
 
     def update_time(self, new_time):
+        if new_time >= self.SIMULATION_HOURS:
+            new_time = self.SIMULATION_HOURS
         self.time = new_time
         old_time = self.time
         self.day_clock += self.time - old_time
