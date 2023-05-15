@@ -28,7 +28,7 @@ def startup_screen(sim, gui, canvas):
     lay.append(popup)
     popup.grab_set()
     popup.title("Simulation Parameters")
-    popup.geometry("300x300")
+    popup.geometry("300x250")
     popup.resizable(False, False)
 
     # Scenarios
@@ -62,18 +62,40 @@ def startup_screen(sim, gui, canvas):
     lbl_dist_reference.pack()
     drop.pack()
 
-    # Simulation duration
-    lbl_duration = tk.Label(popup, text="Simulation duration (hours): ")
-    lbl_duration.pack()
+    # Input fields for months, days, and hours
+    frame = tk.Frame(popup)
+    frame.pack()
+
+    lbl_months = tk.Label(frame, text="Months:")
+    lbl_months.pack(side=tk.LEFT)
+
+    months = tk.Entry(frame, width=5)
+    months.insert(tk.END, "12")  # Default value is 12
+    months.pack(side=tk.LEFT)
+
+    lbl_days = tk.Label(frame, text="Days:")
+    lbl_days.pack(side=tk.LEFT)
+
+    days = tk.Entry(frame, width=5)
+    days.insert(tk.END, "0")  # Default value is 0
+    days.pack(side=tk.LEFT)
+
+    lbl_hours = tk.Label(frame, text="Hours:")
+    lbl_hours.pack(side=tk.LEFT)
+
+    hours = tk.Entry(frame, width=5)
+    hours.insert(tk.END, "0")  # Default value is 0
+    hours.pack(side=tk.LEFT)
 
     btn_run = tk.Button(popup, text="Run Simulation",
-                        command=lambda: run_simulation(sim, gui, canvas, scenario.get(), dist_reference.get()))
+                        command=lambda: run_simulation(sim, gui, canvas, scenario.get(), dist_reference.get(),
+                                                       months.get(), days.get(), hours.get()))
     btn_run.pack(side=tk.BOTTOM)
 
 
 def init_simulation():
     data = load_data('./Data/')
-    sim = Simulation(data, 10, False, False, False, False, False, False)
+    sim = Simulation(data, False, False, False, False, False, False)
     return sim
 
 
@@ -332,9 +354,10 @@ def toggle_animation():
     animation_switch = not animation_switch
 
 
-def run_simulation(sim, gui, canvas, scenario, distance_reference):
+def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, hours):
     sim.setScenario(scenario)
     sim.setDistanceCalculationReference(distance_reference)
+    sim.setSimulationHours(months, day, hours)
     sim.print_status()
 
     # Close popup window

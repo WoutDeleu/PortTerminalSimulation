@@ -10,8 +10,9 @@ from YardBlock import YardBlock
 
 def simulate(stats, data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST, LOWEST_OCCUPANCY,
              SPLIT_UP):
-    sim = Simulation(data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST, LOWEST_OCCUPANCY,
+    sim = Simulation(data, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST, LOWEST_OCCUPANCY,
                      SPLIT_UP)
+    sim.setSimulationHours(0, 0, SIMULATION_HOURS)
     sim.check_parameters()
     sim.run()
     stats_fifo = pd.concat(
@@ -39,7 +40,7 @@ def get_number_of_containers_sample():
     sample = scipyst.weibull_min.rvs(0.6, loc=0.5 / scale) * scale
     while sample > max:
         sample = scipyst.weibull_min.rvs(0.6, loc=0.5 / scale) * scale
-    return round(sample)*10
+    return round(sample) * 10
 
 
 def get_service_time_sample():
@@ -78,7 +79,7 @@ def add_to_Q(event_list, time):
 
 class Simulation:
 
-    def __init__(self, data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST, LOWEST_OCCUPANCY,
+    def __init__(self, data, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST, LOWEST_OCCUPANCY,
                  SPLIT_UP):
         # Simulation variables - time
         self.time = 0
@@ -115,7 +116,7 @@ class Simulation:
         for x in truck_parking_locations_list:
             self.truck_parking_locations.append(Position(x[1], x[2]))
 
-        self.SIMULATION_HOURS = SIMULATION_HOURS
+        self.SIMULATION_HOURS = 0
 
         self.ARRIVAL_BASED = ARRIVAL_BASED
         self.DEPARTURE_BASED = DEPARTURE_BASED
@@ -399,6 +400,10 @@ class Simulation:
         if choice_str == "Arrival and Departure Based":
             self.ARRIVAL_BASED = True
             self.DEPARTURE_BASED = True
+
+    def setSimulationHours(self, months, day, hours):
+        self.SIMULATION_HOURS = int(months) * 30 * 24 + int(day) * 24 + int(hours)
+        print("Simulation hours: ", self.SIMULATION_HOURS)
 
     def only_one_scenario_true(self):
         counter = 0
