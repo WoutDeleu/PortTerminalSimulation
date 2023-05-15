@@ -212,6 +212,8 @@ class Simulation:
                 containers_to_store -= yb.getRemainingCapacity()
                 feasible_yardblocks.remove(yb)
                 ybs_to_store.append(yb)
+                if len(feasible_yardblocks) == 0 and containers_to_store > 0:
+                    return None
             return ybs_to_store
 
         if self.CLOSEST or self.MIXED_RULE:

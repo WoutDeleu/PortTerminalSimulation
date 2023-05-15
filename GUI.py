@@ -25,6 +25,7 @@ lay = []
 
 def startup_screen(sim, gui, canvas):
     popup = tk.Toplevel()
+    popup.attributes('-topmost', 'true')
     lay.append(popup)
     popup.grab_set()
     popup.title("Simulation Parameters")
