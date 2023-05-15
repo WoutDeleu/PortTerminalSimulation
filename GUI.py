@@ -61,8 +61,8 @@ def draw(sim, canvas):
 
         yb_width = block.capacity / 1000 * 30
         yb_height = block.capacity / 1000 * 110
-        yb_ocupancy = block.getOccupancy()
-        fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
+
+        fill = '#00FF00' if block.flow_type == 'EXPORT' else '#FFFF00' if block.flow_type == 'IMPORT' else '#ADD8E6'
         border = 'orange' if block.container_type == "REEFER" else 'blue'
         rectangle = canvas.create_rectangle(start_pos_x,
                                             start_pos_y,
@@ -188,10 +188,10 @@ def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations
 
 
 def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths):
-    for i in range(len(yard_blocks)):
-        yb_ocupancy = yard_blocks[i].getOccupancy()
-        fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
-        canvas.itemconfig(gui_blocks[i], fill=fill)
+    #for i in range(len(yard_blocks)):
+    #    yb_ocupancy = yard_blocks[i].getOccupancy()
+    #    fill = "#%02x%02x%02x" % (math.floor(255 * yb_ocupancy), math.floor(255 - 255 * yb_ocupancy), 0)
+    #    canvas.itemconfig(gui_blocks[i], fill=fill)
 
     # Animation doesn't affect time
     frames = 10000
