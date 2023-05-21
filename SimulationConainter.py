@@ -17,7 +17,7 @@ class SimulationContainer:
         self.min_y = min_y
         self.max_y = max_y
 
-        self.container_size = 15 * (container_group.number_of_containers/2500) + 10
+        self.container_size = 10 * (container_group.number_of_containers/2500) + 10
         self.frame = 0
         self.canvas = canvas
         self.gui = gui
