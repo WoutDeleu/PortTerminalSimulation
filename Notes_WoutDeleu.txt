@@ -2,4 +2,4 @@ te doen in de les
 - Fixen: Meerdere malen kan gerund worden
 - Fixen: Statistieken weergegeven op het einde
 - Fixen: Fixen Latex Stats in het juiste format - gwn copy
-- werken verslag
+- werken verslag => Vragen: wat moet in het verslag?
