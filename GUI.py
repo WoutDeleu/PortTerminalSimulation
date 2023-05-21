@@ -389,7 +389,6 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
         gui.update()
         if (time.time() - last_update) < (0.5 * (speed_controller.get()/100)):
             continue
-        print(speed_controller.get())
         last_update = time.time()
         container_group_sim = []
         has_generated = sim.generate_new_time(departure_list, arrival_list)

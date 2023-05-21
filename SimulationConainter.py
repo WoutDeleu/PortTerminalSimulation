@@ -1,3 +1,4 @@
+import math
 import time
 from realtime import time as rtime
 
@@ -41,33 +42,36 @@ class SimulationContainer:
         distance_x = target_x - x
         distance_y = target_y - y
 
+        max_distance = max(abs(distance_y), abs(distance_x))
+        step = 6
+        frames = math.ceil(max_distance / step)
 
-        step_x = distance_x / self.total_frames
-        step_y = distance_y / self.total_frames
+        step_x = distance_x / frames
+        step_y = distance_y / frames
         #print(f"x={step_x}, y={step_y}")
 
-        return step_x, step_y
+        return step_x, step_y, frames
 
     def move(self, vessel):
         self.component = self.create_component()
-        self.step_x, self.step_y = self.calculate_step()
+        step_x, step_y, total_frames = self.calculate_step()
         move = True
         self.canvas.itemconfig(vessel, state='normal')
         while move:
-            move = self.move_container()
+            move = self.move_container(step_x, step_y, total_frames)
             time.sleep(0.005)
         self.canvas.itemconfig(vessel, state='hidden')
         self.gui.update()
 
-    def move_container(self):
-        if self.frame == self.total_frames:
+    def move_container(self, step_x, step_y, total_frames):
+        if self.frame >= total_frames:
             self.canvas.delete(self.component)
             return False
 
         self.frame += 1
 
-        x = self.current_position.x_cord + self.step_x
-        y = self.current_position.y_cord + self.step_y
+        x = self.current_position.x_cord + step_x
+        y = self.current_position.y_cord + step_y
         self.current_position = Position(x, y)
 
         self.canvas.coords(self.component, x, y, x + 10, y + 10)
