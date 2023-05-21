@@ -1,5 +1,7 @@
+import time
 import tkinter as tk
 from threading import Thread
+from tkinter import VERTICAL, HORIZONTAL
 
 from Data.DataParser import load_data
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
@@ -248,6 +250,10 @@ def draw(sim, canvas):
     animation_button = tk.Button(canvas, text="Toggle animation", command=toggle_animation)
     canvas.create_window(canvas_width - border_space, 70, anchor=tk.NE, window=animation_button)
 
+    global speed_controller
+    speed_controller = tk.Scale(canvas, label="Animation speed", from_=100, to=0, orient=HORIZONTAL)
+    canvas.create_window(canvas_width - 400, canvas_height - 70 , anchor=tk.NW, window=speed_controller)
+
     # Parameter labels
     draw_labels(canvas)
 
@@ -338,35 +344,6 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fi
 
             thread = Thread(target=p.move, args=(vessel,))
             thread.start()
-            # begin_position, end_position = p.begin_point, p.end_point
-            #
-            # x = transpose_x(begin_position.x_cord)
-            # y = transpose_y(begin_position.y_cord)
-            # target_x = transpose_x(end_position.x_cord)
-            # target_y = transpose_y(end_position.y_cord)
-            #
-            #
-            # vessel = None
-            # for v in vessels:
-            #     coords = canvas.coords(v)
-            #     if (coords[0] == x and coords[1] == y) or coords[0] == target_x and coords[1] == target_y:
-            #         vessel = v
-            #         canvas.itemconfig(v, state='normal')
-            #         gui.update()
-            #
-            # while abs(x - target_x) >= abs(step_x) and abs(y - target_y) >= abs(step_y):
-            #     # Update the rectangle's position
-            #     x += step_x
-            #     y += step_y
-            #
-            #     canvas.coords(container, x, y, x + 10, y + 10)
-            #     gui.update()
-            #
-            # if vessel is not None:
-            #     canvas.itemconfig(vessel, state='hidden')
-            #     gui.update()
-            #
-            # canvas.delete(container)
 
     # Yard blocks animation
     for i in range(len(gui_blocks)):
@@ -407,8 +384,13 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
 
     blocks, vessels, fillers = draw(sim, canvas)
     container_groups = []
+    last_update = time.time()
     while sim.time <= sim.SIMULATION_HOURS:
         gui.update()
+        if (time.time() - last_update) < (0.5 * (speed_controller.get()/100)):
+            continue
+        print(speed_controller.get())
+        last_update = time.time()
         container_group_sim = []
         has_generated = sim.generate_new_time(departure_list, arrival_list)
         if sim.time == sim.SIMULATION_HOURS:

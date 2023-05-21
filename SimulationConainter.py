@@ -15,7 +15,7 @@ class SimulationContainer:
         self.max_x = max_x
         self.min_y = min_y
         self.max_y = max_y
-        self.total_frames = 60  # change to distance based
+        self.total_frames = 100  # change to distance based
         self.frame = 0
         self.canvas = canvas
         self.gui = gui
@@ -24,15 +24,13 @@ class SimulationContainer:
         y = self.transpose_y(self.begin_point.y_cord)
         self.current_position = Position(x, y)
 
-        self.component = self.create_component()
-        self.step_x, self.step_y = self.calculate_step()
-
 
     def create_component(self):
         x = self.transpose_x(self.begin_point.x_cord)
         y = self.transpose_y(self.begin_point.y_cord)
-
-        return self.canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
+        fill = '#00FF00' if self.container_group.container_flow_type == 'export' else '#FFFF00' if self.container_group.container_flow_type == 'import' else '#ADD8E6'
+        border = 'orange' if self.container_group.container_type == "reefer" else 'blue'
+        return self.canvas.create_rectangle(x, y, x + 10, y + 10, fill=fill, outline=border)
 
     def calculate_step(self):
         target_x = self.transpose_x(self.end_point.x_cord)
@@ -51,11 +49,13 @@ class SimulationContainer:
         return step_x, step_y
 
     def move(self, vessel):
+        self.component = self.create_component()
+        self.step_x, self.step_y = self.calculate_step()
         move = True
         self.canvas.itemconfig(vessel, state='normal')
         while move:
             move = self.move_container()
-            time.sleep(0.0005)
+            time.sleep(0.005)
         self.canvas.itemconfig(vessel, state='hidden')
         self.gui.update()
 
