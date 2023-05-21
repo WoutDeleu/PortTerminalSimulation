@@ -2,6 +2,7 @@ import tkinter as tk
 
 from Data.DataParser import load_data
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
+from SimulationConainter import SimulationContainer
 
 timer_text = None
 containers_rejected_text = None
@@ -23,7 +24,7 @@ animation_switch = True
 lay = []
 
 
-def startup_screen(sim, gui, canvas):
+def startup_screen(gui):
     popup = tk.Toplevel()
     popup.attributes('-topmost', 'true')
     lay.append(popup)
@@ -89,17 +90,32 @@ def startup_screen(sim, gui, canvas):
     hours.pack(side=tk.LEFT)
 
     btn_run = tk.Button(popup, text="Run Simulation",
-                        command=lambda: run_simulation(sim, gui, canvas, scenario.get(), dist_reference.get(),
-                                                       months.get(), days.get(), hours.get()))
+                        command=lambda: init_simulation(gui, scenario.get(), dist_reference.get(), months.get(), days.get(), hours.get()))
     btn_run.pack(side=tk.BOTTOM)
 
-
-def init_simulation():
+def init_simulation(gui, scenario, distance_reference, months, day, hours):
     data = load_data('./Data/')
     sim = Simulation(data, False, False, False, False, False, False)
+    sim.setScenario(scenario)
+    sim.setDistanceCalculationReference(distance_reference)
+    sim.setSimulationHours(months, day, hours)
+    sim.print_status()
+
+    # Close popup window
+    top = lay[0]
+    top.destroy()
+    top.update()
+
+    canvas = init_canvas(gui)
+    run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, hours)
     return sim
 
 
+def init_canvas(gui):
+    canvas = tk.Canvas(gui, bg='darkgray', highlightthickness=0)
+    canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
+    canvas.update()
+    return  canvas
 def init_gui():
     gui = tk.Tk()
     gui.attributes('-fullscreen', True)  # make main window full-screen
@@ -107,30 +123,9 @@ def init_gui():
 
     return gui
 
-
-def draw(sim, canvas):
+def draw_yarblocks(sim, canvas):
     blocks = []
     fillers = []
-    vessels = []
-
-    normalisation = normalise_positions(sim.yard_blocks, sim.berthing_positions, sim.truck_parking_locations)
-    global min_x
-    min_x = normalisation[0][0]
-    global max_x
-    max_x = normalisation[1][0]
-    global min_y
-    min_y = normalisation[0][1]
-    global max_y
-    max_y = normalisation[1][1]
-
-    global canvas_width
-    canvas_width = canvas.winfo_width()
-    global canvas_height
-    canvas_height = canvas.winfo_height()
-    global border_space
-    border_space = 10
-
-    # Figures
 
     for block in sim.yard_blocks:
         start_pos_x = transpose_x(block.position.x_cord)
@@ -158,14 +153,10 @@ def draw(sim, canvas):
                                                  outline=border)
         fillers.append(fill_rectangle)
 
-    # Water
-    canvas.create_rectangle(0,
-                            20,
-                            canvas_width,
-                            transpose_y(222),
-                            fill="#0000FF",
-                            outline='black')
+    return blocks, fillers
 
+def draw_berthlocations(sim, canvas):
+    vessels = []
     for berth_location in sim.berthing_positions:
         start_pos_x = transpose_x(berth_location.x_cord)
         # Not fully stretch to leave some room for parameters
@@ -179,7 +170,9 @@ def draw(sim, canvas):
                                             outline='black',
                                             state='hidden')
         vessels.append(rectangle)
+    return vessels
 
+def draw_truck_locations(sim, canvas):
     for truck_location in sim.truck_parking_locations:
         start_pos_x = transpose_x(truck_location.x_cord)
         # Not fully stretch to leave some room for parameters
@@ -191,57 +184,72 @@ def draw(sim, canvas):
                                 start_pos_y + 10,
                                 fill="#CD853F",
                                 outline='black')
+
+def draw_text(canvas, label, pos_x, pos_y):
+    var = tk.StringVar()
+    var.set(label)
+    window = tk.Label(canvas, textvariable=var, font=30)
+    canvas.create_window(pos_x,pos_y, anchor=tk.SW, window=window)
+    return var
+
+def draw_labels(canvas):
+    global timer_text
+    timer_text = draw_text(canvas, "Time: 0", canvas_width - border_space - 100, canvas_height - border_space)
+    global containers_rejected_text
+    containers_rejected_text = draw_text(canvas, "Rejected containers: 0", border_space, canvas_height - 160)
+    global cg_rejected_text
+    cg_rejected_text = draw_text(canvas, "Rejected container groups: 0", border_space, canvas_height - 110)
+    global normal_containers_rejected_text
+    normal_containers_rejected_text = draw_text(canvas, "Rejected normal containers: 0", border_space,
+                                                canvas_height - 60)
+    global reefer_containers_rejected_text
+    reefer_containers_rejected_text = draw_text(canvas, "Rejected reefer containers: 0", border_space,
+                                                canvas_height - border_space)
+    global total_travel_distance_text
+    total_travel_distance_text = draw_text(canvas, "Total travel distance of container groups: 0",
+                                           canvas_width / 2 - 200, canvas_height - 60)
+    global average_travel_distance_text
+    average_travel_distance_text = draw_text(canvas, "Average travel distance of container groups: 0", canvas_width / 2 - 200, canvas_height - border_space)
+
+def draw(sim, canvas):
+    vessels = []
+
+    normalisation = normalise_positions(sim.yard_blocks, sim.berthing_positions, sim.truck_parking_locations)
+    global min_x
+    min_x = normalisation[0][0]
+    global max_x
+    max_x = normalisation[1][0]
+    global min_y
+    min_y = normalisation[0][1]
+    global max_y
+    max_y = normalisation[1][1]
+
+    global canvas_width
+    canvas_width = canvas.winfo_width()
+    global canvas_height
+    canvas_height = canvas.winfo_height()
+    global border_space
+    border_space = 10
+
+    # Figures
+    blocks, fillers = draw_yarblocks(sim, canvas)
+
+
+    # Water
+    canvas.create_rectangle(0, 20, canvas_width, transpose_y(222), fill="#0000FF", outline='black')
+
+    # draw birth locations
+    vessels = draw_berthlocations(sim, canvas)
+    draw_truck_locations(sim, canvas)
+
     # Animation button
     global animation_switch
     animation_button = tk.Button(canvas, text="Toggle animation", command=toggle_animation)
     canvas.create_window(canvas_width - border_space, 70, anchor=tk.NE, window=animation_button)
 
     # Parameter labels
-    font = 30
+    draw_labels(canvas)
 
-    global timer_text
-    timer_text = tk.StringVar()
-    timer_text.set("Time: 0")
-    timer_label = tk.Label(canvas, textvariable=timer_text, font=font)
-    canvas.create_window(canvas_width - border_space - 100, canvas_height - border_space, anchor=tk.SE, window=timer_label)
-
-    global containers_rejected_text
-    containers_rejected_text = tk.StringVar()
-    containers_rejected_text.set("Rejected containers: 0")
-    containers_rejected_label = tk.Label(canvas, textvariable=containers_rejected_text, font=font)
-    canvas.create_window(border_space, canvas_height - 160, anchor=tk.SW, window=containers_rejected_label)
-
-    global cg_rejected_text
-    cg_rejected_text = tk.StringVar()
-    cg_rejected_text.set("Rejected container groups: 0")
-    cg_rejected_label = tk.Label(canvas, textvariable=cg_rejected_text, font=font)
-    canvas.create_window(border_space, canvas_height - 110, anchor=tk.SW, window=cg_rejected_label)
-
-    global normal_containers_rejected_text
-    normal_containers_rejected_text = tk.StringVar()
-    normal_containers_rejected_text.set("Rejected normal containers: 0")
-    normal_containers_rejected_label = tk.Label(canvas, textvariable=normal_containers_rejected_text, font=font)
-    canvas.create_window(border_space, canvas_height - 60, anchor=tk.SW, window=normal_containers_rejected_label)
-
-    global reefer_containers_rejected_text
-    reefer_containers_rejected_text = tk.StringVar()
-    reefer_containers_rejected_text.set("Rejected reefer containers: 0")
-    reefer_containers_rejected_label = tk.Label(canvas, textvariable=reefer_containers_rejected_text, font=font)
-    canvas.create_window(border_space, canvas_height - border_space, anchor=tk.SW,
-                         window=reefer_containers_rejected_label)
-
-    global total_travel_distance_text
-    total_travel_distance_text = tk.StringVar()
-    total_travel_distance_text.set("Total travel distance of container groups: 0")
-    total_travel_distance_label = tk.Label(canvas, textvariable=total_travel_distance_text, font=font)
-    canvas.create_window(canvas_width / 2 - 200, canvas_height - 60, anchor=tk.SW, window=total_travel_distance_label)
-
-    global average_travel_distance_text
-    average_travel_distance_text = tk.StringVar()
-    average_travel_distance_text.set("Average travel distance of container groups: 0")
-    average_travel_distance_label = tk.Label(canvas, textvariable=average_travel_distance_text, font=font)
-    canvas.create_window(canvas_width / 2 - 200, canvas_height - border_space, anchor=tk.SW,
-                         window=average_travel_distance_label)
 
     # Legend
     # Legend items
@@ -320,7 +328,7 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fi
     # Container animation
     if animation_switch:
         for p in paths:
-            begin_position, end_position = p
+            begin_position, end_position = p.begin_point, p.end_point
 
             x = transpose_x(begin_position.x_cord)
             y = transpose_y(begin_position.y_cord)
@@ -390,16 +398,6 @@ def toggle_animation():
 
 
 def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, hours):
-    sim.setScenario(scenario)
-    sim.setDistanceCalculationReference(distance_reference)
-    sim.setSimulationHours(months, day, hours)
-    sim.print_status()
-
-    # Close popup window
-    top = lay[0]
-    top.destroy()
-    top.update()
-
     # sets day_clock, day_counter and time to 0
     sim.setup_timers()
 
@@ -409,8 +407,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
     blocks, vessels, fillers = draw(sim, canvas)
     container_groups = []
     while sim.time <= sim.SIMULATION_HOURS:
-        paths = []
-
+        container_group_sim = []
         has_generated = sim.generate_new_time(departure_list, arrival_list)
         if sim.time == sim.SIMULATION_HOURS:
             break
@@ -420,7 +417,8 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
             if sim.time >= container_group.getFinishTime():
                 block_dictionary = container_group.yard_blocks.copy()
                 for block in block_dictionary:
-                    paths.append([block.position, container_group.departure_point])
+
+                    container_group_sim.append(SimulationContainer(block.position, container_group.departure_point, container_group))
 
         # check what container_groups get removed to show
         sim.remove_expired_container_groups(container_groups)
@@ -435,19 +433,15 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
 
             # Arrival path for animation
             for key in new_cg.yard_blocks.keys():
-                paths.append([new_cg.arrival_point, key.position])
+                container_group_sim.append(SimulationContainer(new_cg.arrival_point, key.position, new_cg))
 
         # update yb visualisation
-        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, paths, fillers)
+        update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, container_group_sim, fillers)
 
 
 def startGUI():
     gui = init_gui()
-    canvas = tk.Canvas(gui, bg='darkgray', highlightthickness=0)
-    canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
-    canvas.update()
-    sim = init_simulation()
-    startup_screen(sim, gui, canvas)
+    startup_screen(gui)
     gui.mainloop()  # Lets the window open after the simulation ends
 
 
