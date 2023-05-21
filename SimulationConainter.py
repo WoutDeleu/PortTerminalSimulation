@@ -16,7 +16,8 @@ class SimulationContainer:
         self.max_x = max_x
         self.min_y = min_y
         self.max_y = max_y
-        self.total_frames = 100  # change to distance based
+
+        self.container_size = 15 * (container_group.number_of_containers/2500) + 10
         self.frame = 0
         self.canvas = canvas
         self.gui = gui
@@ -31,7 +32,7 @@ class SimulationContainer:
         y = self.transpose_y(self.begin_point.y_cord)
         fill = '#00FF00' if self.container_group.container_flow_type == 'export' else '#FFFF00' if self.container_group.container_flow_type == 'import' else '#ADD8E6'
         border = 'orange' if self.container_group.container_type == "reefer" else 'blue'
-        return self.canvas.create_rectangle(x, y, x + 10, y + 10, fill=fill, outline=border)
+        return self.canvas.create_rectangle(x, y, x + self.container_size, y + self.container_size, fill=fill, outline=border)
 
     def calculate_step(self):
         target_x = self.transpose_x(self.end_point.x_cord)
@@ -74,7 +75,7 @@ class SimulationContainer:
         y = self.current_position.y_cord + step_y
         self.current_position = Position(x, y)
 
-        self.canvas.coords(self.component, x, y, x + 10, y + 10)
+        self.canvas.coords(self.component, x, y, x + self.container_size, y + self.container_size)
         return True
 
 
