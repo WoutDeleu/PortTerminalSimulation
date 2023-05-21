@@ -1,4 +1,5 @@
 import tkinter as tk
+from threading import Thread
 
 from Data.DataParser import load_data
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
@@ -115,7 +116,7 @@ def init_canvas(gui):
     canvas = tk.Canvas(gui, bg='darkgray', highlightthickness=0)
     canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
     canvas.update()
-    return  canvas
+    return canvas
 def init_gui():
     gui = tk.Tk()
     gui.attributes('-fullscreen', True)  # make main window full-screen
@@ -319,12 +320,6 @@ def normalise_positions(yard_blocks, berthing_locations, truck_parking_locations
 
 
 def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fillers):
-    # Animation doesn't affect time
-    frames = 1000
-
-    # put in commentary for no animation
-    # Todo: let paths go simultaneously (when multiple things happen at the same time)
-
     # Container animation
     if animation_switch:
         for p in paths:
@@ -334,38 +329,44 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fi
             y = transpose_y(begin_position.y_cord)
             target_x = transpose_x(end_position.x_cord)
             target_y = transpose_y(end_position.y_cord)
-            # Create the rectangle on the canvas
-            container = canvas.create_rectangle(x, y, x + 10, y + 10, fill='blue')
-
-            # Calculate the distance between the current position and the target position
-            distance_x = target_x - x
-            distance_y = target_y - y
-
-            # Calculate the increment for each frame
-            step_x = distance_x / frames
-            step_y = distance_y / frames
 
             vessel = None
             for v in vessels:
                 coords = canvas.coords(v)
                 if (coords[0] == x and coords[1] == y) or coords[0] == target_x and coords[1] == target_y:
                     vessel = v
-                    canvas.itemconfig(v, state='normal')
-                    gui.update()
 
-            while abs(x - target_x) >= abs(step_x) and abs(y - target_y) >= abs(step_y):
-                # Update the rectangle's position
-                x += step_x
-                y += step_y
-
-                canvas.coords(container, x, y, x + 10, y + 10)
-                gui.update()
-
-            if vessel is not None:
-                canvas.itemconfig(vessel, state='hidden')
-                gui.update()
-
-            canvas.delete(container)
+            thread = Thread(target=p.move, args=(vessel,))
+            thread.start()
+            # begin_position, end_position = p.begin_point, p.end_point
+            #
+            # x = transpose_x(begin_position.x_cord)
+            # y = transpose_y(begin_position.y_cord)
+            # target_x = transpose_x(end_position.x_cord)
+            # target_y = transpose_y(end_position.y_cord)
+            #
+            #
+            # vessel = None
+            # for v in vessels:
+            #     coords = canvas.coords(v)
+            #     if (coords[0] == x and coords[1] == y) or coords[0] == target_x and coords[1] == target_y:
+            #         vessel = v
+            #         canvas.itemconfig(v, state='normal')
+            #         gui.update()
+            #
+            # while abs(x - target_x) >= abs(step_x) and abs(y - target_y) >= abs(step_y):
+            #     # Update the rectangle's position
+            #     x += step_x
+            #     y += step_y
+            #
+            #     canvas.coords(container, x, y, x + 10, y + 10)
+            #     gui.update()
+            #
+            # if vessel is not None:
+            #     canvas.itemconfig(vessel, state='hidden')
+            #     gui.update()
+            #
+            # canvas.delete(container)
 
     # Yard blocks animation
     for i in range(len(gui_blocks)):
@@ -407,6 +408,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
     blocks, vessels, fillers = draw(sim, canvas)
     container_groups = []
     while sim.time <= sim.SIMULATION_HOURS:
+        gui.update()
         container_group_sim = []
         has_generated = sim.generate_new_time(departure_list, arrival_list)
         if sim.time == sim.SIMULATION_HOURS:
@@ -417,12 +419,10 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
             if sim.time >= container_group.getFinishTime():
                 block_dictionary = container_group.yard_blocks.copy()
                 for block in block_dictionary:
-
-                    container_group_sim.append(SimulationContainer(block.position, container_group.departure_point, container_group))
+                    container_group_sim.append(SimulationContainer(canvas, gui, block.position, container_group.departure_point, container_group, min_x, max_x, min_y, max_y, border_space))
 
         # check what container_groups get removed to show
         sim.remove_expired_container_groups(container_groups)
-
         if has_generated:
             # show the new cg arriving
             new_cg = sim.generate_new_containergroup()
@@ -433,7 +433,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
 
             # Arrival path for animation
             for key in new_cg.yard_blocks.keys():
-                container_group_sim.append(SimulationContainer(new_cg.arrival_point, key.position, new_cg))
+                container_group_sim.append(SimulationContainer(canvas, gui, new_cg.arrival_point, key.position, new_cg, min_x, max_x, min_y, max_y, border_space))
 
         # update yb visualisation
         update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, container_group_sim, fillers)
