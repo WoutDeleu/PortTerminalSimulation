@@ -15,7 +15,7 @@ class SimulationContainer:
         self.max_x = max_x
         self.min_y = min_y
         self.max_y = max_y
-        self.total_frames = 100  # change to distance based
+        self.total_frames = 60  # change to distance based
         self.frame = 0
         self.canvas = canvas
         self.gui = gui
@@ -46,6 +46,7 @@ class SimulationContainer:
 
         step_x = distance_x / self.total_frames
         step_y = distance_y / self.total_frames
+        #print(f"x={step_x}, y={step_y}")
 
         return step_x, step_y
 
@@ -57,11 +58,6 @@ class SimulationContainer:
             time.sleep(0.0005)
         self.canvas.itemconfig(vessel, state='hidden')
         self.gui.update()
-
-    def bussy_sleep(self):
-        time_ms = round(time.time() * 1000)
-        while time_ms + 100 > round(time.time() * 1000):
-            pass
 
     def move_container(self):
         if self.frame == self.total_frames:
