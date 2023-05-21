@@ -1,4 +1,7 @@
 te doen in de les
+- DIRECT PLANNING MAKEN EN HATIJ DERBIJ ROEPEN
+- Planning: 2 man verslag - 1 man simulatie afwerken?
+
 - Fixen: Meerdere malen kan gerund worden
 - Fixen: Statistieken weergegeven op het einde
 - Fixen: Fixen Latex Stats in het juiste format - gwn copy
