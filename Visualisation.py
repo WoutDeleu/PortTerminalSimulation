@@ -245,8 +245,6 @@ def visualise_innerInterval(total_Flow, type):
 
 
     for index, value in total_Flow.items():
-        for x in range(1,int(value)):
-            resulting = pd.concat([resulting, pd.Series(index-index)])
         if previous_index != 0:
             if math.isnan(value) != True:
                 value = index - previous_index
@@ -259,7 +257,7 @@ def visualise_innerInterval(total_Flow, type):
 
     # Sorteer de waarden
     timedelta_hours_sorted = pd.Series(np.sort(timedelta))
-    mean = statistics.mean(timedelta_hours_sorted.values.hours)
+
     # Bereken de cumulatieve frequenties en normeer ze tot een CDF
     cdf = pd.Series(np.cumsum(np.ones_like(timedelta_hours_sorted)))
     df = pd.concat({'Time': timedelta_hours_sorted, 'CDF': cdf}, axis=1)
@@ -330,8 +328,10 @@ def visualise_cg_size(localExport, localExportReefer, localImport, localImportRe
     # plt.bar(res_normal.keys(), res_normal.values(), label='Normal')
     # plt.show()
 
+    sum_of_numbers = sum(number * count for number, count in res.items())
+    count = sum(count for n, count in res.items())
+    mean = sum_of_numbers / count
 
-    #resSum = sum(count * index for index, count in res.items())
     plt.xlim(0, 100)
     plt.xlabel('Amount of containers')
     plt.ylabel('Occurrences')
