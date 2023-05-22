@@ -30,7 +30,7 @@ def format_yb_tables(data):
     return latex_tables
 
 
-def print_stats_latex(colnames, values):
+def print_stats_latex(colnames, values, title):
     mean_series = pd.Series(values)
     # Creëer de Latex-tabel
     latex_table = "\\begin{table}[h]\n\\centering\n\\begin{tabular}{|c|c|}\n\\hline\n"
@@ -42,16 +42,16 @@ def print_stats_latex(colnames, values):
             avg_daily_occ_latex = format_yb_tables(value)
         else:
             name = name.replace("_", " ")
-            latex_table += f"{name} & {value} \\\\ \\hline\n"
-    latex_table += "\\end{tabular}\n\\caption{...}\n\\end{table}"
+            latex_table += f"{name} & {round(float(value),3)} \\\\ \\hline\n"
+    latex_table += "\\end{tabular}\n\\caption{"+title+"}\n\\end{table}"
 
     # Print de Latex-tabel
-    print("*********************** AVG occ ***********************")
-    for s in avg_occ_latex:
-        print(s)
-    print("*********************** AVG daily occ ***********************")
-    for s in avg_daily_occ_latex:
-        print(s)
+    # print("*********************** AVG occ ***********************")
+    # for s in avg_occ_latex:
+    #     print(s)
+    # print("*********************** AVG daily occ ***********************")
+    # for s in avg_daily_occ_latex:
+    #     print(s)
     print(latex_table)
 
 
@@ -123,7 +123,7 @@ def format_stats(stats):
     return names, avg
 
 
-def show_result(stats, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, LATEX, OVERVIEW):
+def show_result(stats, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, MIXED_RULE, SPLIT_UP, LATEX, OVERVIEW):
     print()
     if ARRIVAL_BASED:
         title = 'ARRIVAL-BASED'
@@ -134,9 +134,14 @@ def show_result(stats, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY
         title = 'FIFO ' + title
     if LOWEST_OCCUPANCY:
         title = 'LOWEST OCCUPANCY ' + title
+    if MIXED_RULE:
+        title = 'MIXED RULE ' + title
+    if SPLIT_UP:
+        title = 'SPLIT UP ' + title
+
     names, avg = format_stats(stats)
     if LATEX:
-        print_stats_latex(names, avg)
+        print_stats_latex(names, avg, title)
     if OVERVIEW:
         print_stats_overview(names, avg)
 

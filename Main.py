@@ -21,11 +21,11 @@ MIXED_RULE = False
 SPLIT_UP = False
 
 # LATEX formats table to copy paste in Latex-doc
-LATEX = False
+LATEX = True
 OVERVIEW = True
 
 # 120 results in proper runs
-AMOUNT_SIMULATIONS = 10
+AMOUNT_SIMULATIONS = 1
 
 SIMULATION_MONTHS = 12
 SIMULATION_DAYS = SIMULATION_MONTHS * 30
@@ -34,9 +34,8 @@ SIMULATION_HOURS = SIMULATION_DAYS * 24
 
 def main():
     data = load_data('./Data/')
-    visualise_data(data)
-    stats = pd.DataFrame(
-        columns=simulation_data)
+    #visualise_data(data)
+    stats = pd.DataFrame(columns=simulation_data)
 
     i = 1
     # Progressbar - Only when using emulate in prompt
@@ -48,7 +47,7 @@ def main():
                              SPLIT_UP)
             bar.next()
             i += 1
-    show_result(stats, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, LATEX, OVERVIEW)
+    show_result(stats, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, MIXED_RULE, SPLIT_UP, LATEX, OVERVIEW)
 
 
 if __name__ == '__main__':
