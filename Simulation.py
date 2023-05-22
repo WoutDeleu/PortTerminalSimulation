@@ -31,7 +31,7 @@ def simulate(stats, data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXE
 
 
 def get_inter_arrival_time_sample():
-    return round(scipyst.expon.rvs(scale=0.62, loc=0))
+    return scipyst.expon.rvs(scale=0.62, loc=0)
 
 
 def get_number_of_containers_sample():
@@ -40,7 +40,7 @@ def get_number_of_containers_sample():
     sample = scipyst.weibull_min.rvs(0.75, loc=0.5 / scale) * scale
     while sample > max:
         sample = scipyst.weibull_min.rvs(0.6, loc=0.5 / scale) * scale
-    return round(sample) * 10
+    return round(sample)
 
 
 def get_service_time_sample():
