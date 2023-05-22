@@ -209,27 +209,26 @@ def draw_text(canvas, label, pos_x, pos_y):
 def draw_labels(canvas):
     global timer_text
     timer_text = draw_text(canvas, "Time: 0", canvas_width - border_space - 200, canvas_height - border_space)
+
     global containers_rejected_text
     containers_rejected_text = draw_text(canvas, "Rejected containers: 0", border_space, canvas_height - 160)
+
     global cg_rejected_text
     cg_rejected_text = draw_text(canvas, "Rejected container groups: 0", border_space, canvas_height - 110)
+
     global normal_containers_rejected_text
-    normal_containers_rejected_text = draw_text(canvas, "Rejected normal containers: 0", border_space,
-                                                canvas_height - 60)
+    normal_containers_rejected_text = draw_text(canvas, "Rejected normal containers: 0", border_space, canvas_height - 60)
+
     global reefer_containers_rejected_text
-    reefer_containers_rejected_text = draw_text(canvas, "Rejected reefer containers: 0", border_space,
-                                                canvas_height - border_space)
+    reefer_containers_rejected_text = draw_text(canvas, "Rejected reefer containers: 0", border_space, canvas_height - border_space)
     global total_travel_distance_text
-    total_travel_distance_text = draw_text(canvas, "Total travel distance of container groups: 0",
-                                           canvas_width / 2 - 200, canvas_height - 60)
+    total_travel_distance_text = draw_text(canvas, "Total travel distance of container groups: 0", canvas_width / 2 - 200, canvas_height - 60)
+
     global average_travel_distance_text
-    average_travel_distance_text = draw_text(canvas, "Average travel distance of container groups: 0",
-                                             canvas_width / 2 - 200, canvas_height - border_space)
+    average_travel_distance_text = draw_text(canvas, "Average travel distance of container groups: 0", canvas_width / 2 - 200, canvas_height - border_space)
 
 
 def draw(sim, canvas):
-    vessels = []
-
     normalisation = normalise_positions(sim.yard_blocks, sim.berthing_positions, sim.truck_parking_locations)
     global min_x
     min_x = normalisation[0][0]
@@ -430,7 +429,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
                 block_dictionary = container_group.yard_blocks.copy()
                 for block in block_dictionary:
                     container_group_sim.append(
-                        SimulationContainer(canvas, gui, block.position, container_group.departure_point,
+                        SimulationContainer(canvas, gui, block.position, container_group.departure_point, speed_controller.get(),
                                             container_group, min_x, max_x, min_y, max_y, border_space))
 
         # check what container_groups get removed to show
@@ -446,7 +445,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
             # Arrival path for animation
             for key in new_cg.yard_blocks.keys():
                 container_group_sim.append(
-                    SimulationContainer(canvas, gui, new_cg.arrival_point, key.position, new_cg, min_x, max_x, min_y,
+                    SimulationContainer(canvas, gui, new_cg.arrival_point, key.position, speed_controller.get(), new_cg, min_x, max_x, min_y,
                                         max_y, border_space))
 
         # update yb visualisation
