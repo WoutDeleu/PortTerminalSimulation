@@ -105,6 +105,8 @@ def reorderCols(dataframe):
 
 def shift_time(day_time, offset_hours):
     if not DAY_BASED:
+        if day_time.day < 15:
+            offset_hours = 120
         return day_time + timedelta(hours=offset_hours)
 
     day = day_time
