@@ -1,7 +1,7 @@
 import time
 import tkinter as tk
 from threading import Thread
-from tkinter import VERTICAL, HORIZONTAL
+from tkinter import HORIZONTAL
 
 from Data.DataParser import load_data
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
@@ -93,8 +93,10 @@ def startup_screen(gui):
     hours.pack(side=tk.LEFT)
 
     btn_run = tk.Button(popup, text="Run Simulation",
-                        command=lambda: init_simulation(gui, scenario.get(), dist_reference.get(), months.get(), days.get(), hours.get()))
+                        command=lambda: init_simulation(gui, scenario.get(), dist_reference.get(), months.get(),
+                                                        days.get(), hours.get()))
     btn_run.pack(side=tk.BOTTOM)
+
 
 def init_simulation(gui, scenario, distance_reference, months, day, hours):
     data = load_data('./Data/')
@@ -119,12 +121,15 @@ def init_canvas(gui):
     canvas.pack(fill=tk.BOTH, expand=True)  # configure canvas to occupy the whole main window
     canvas.update()
     return canvas
+
+
 def init_gui():
     gui = tk.Tk()
     gui.attributes('-fullscreen', True)  # make main window full-screen
     gui.title("Container yard simulation")
 
     return gui
+
 
 def draw_yarblocks(sim, canvas):
     blocks = []
@@ -158,6 +163,7 @@ def draw_yarblocks(sim, canvas):
 
     return blocks, fillers
 
+
 def draw_berthlocations(sim, canvas):
     vessels = []
     for berth_location in sim.berthing_positions:
@@ -175,6 +181,7 @@ def draw_berthlocations(sim, canvas):
         vessels.append(rectangle)
     return vessels
 
+
 def draw_truck_locations(sim, canvas):
     for truck_location in sim.truck_parking_locations:
         start_pos_x = transpose_x(truck_location.x_cord)
@@ -188,12 +195,14 @@ def draw_truck_locations(sim, canvas):
                                 fill="#CD853F",
                                 outline='black')
 
+
 def draw_text(canvas, label, pos_x, pos_y):
     var = tk.StringVar()
     var.set(label)
     window = tk.Label(canvas, textvariable=var, font=30)
-    canvas.create_window(pos_x,pos_y, anchor=tk.SW, window=window)
+    canvas.create_window(pos_x, pos_y, anchor=tk.SW, window=window)
     return var
+
 
 def draw_labels(canvas):
     global timer_text
@@ -212,7 +221,9 @@ def draw_labels(canvas):
     total_travel_distance_text = draw_text(canvas, "Total travel distance of container groups: 0",
                                            canvas_width / 2 - 200, canvas_height - 60)
     global average_travel_distance_text
-    average_travel_distance_text = draw_text(canvas, "Average travel distance of container groups: 0", canvas_width / 2 - 200, canvas_height - border_space)
+    average_travel_distance_text = draw_text(canvas, "Average travel distance of container groups: 0",
+                                             canvas_width / 2 - 200, canvas_height - border_space)
+
 
 def draw(sim, canvas):
     vessels = []
@@ -237,7 +248,6 @@ def draw(sim, canvas):
     # Figures
     blocks, fillers = draw_yarblocks(sim, canvas)
 
-
     # Water
     canvas.create_rectangle(0, 20, canvas_width, transpose_y(222), fill="#0000FF", outline='black')
 
@@ -252,11 +262,10 @@ def draw(sim, canvas):
 
     global speed_controller
     speed_controller = tk.Scale(canvas, label="Animation speed", from_=100, to=0, orient=HORIZONTAL)
-    canvas.create_window(canvas_width - 400, canvas_height - 70 , anchor=tk.NW, window=speed_controller)
+    canvas.create_window(canvas_width - 400, canvas_height - 70, anchor=tk.NW, window=speed_controller)
 
     # Parameter labels
     draw_labels(canvas)
-
 
     # Legend
     # Legend items
@@ -281,10 +290,10 @@ def draw(sim, canvas):
         # Draw colored rectangle
         if color == 'orange' or color == 'blue':
             canvas.create_rectangle(legend_x, legend_y, legend_x + legend_item_height, legend_y + legend_item_height,
-                                    fill = "#A9A9A9", outline=color)
-        else :
+                                    fill="#A9A9A9", outline=color)
+        else:
             canvas.create_rectangle(legend_x, legend_y, legend_x + legend_item_height, legend_y + legend_item_height,
-                                fill=color)
+                                    fill=color)
 
         # Draw label text
         canvas.create_text(legend_x + legend_item_height + legend_spacing, legend_y + legend_item_height // 2,
@@ -387,7 +396,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
     last_update = time.time()
     while sim.time <= sim.SIMULATION_HOURS:
         gui.update()
-        if (time.time() - last_update) < (0.5 * (speed_controller.get()/100)):
+        if (time.time() - last_update) < (0.5 * (speed_controller.get() / 100)):
             continue
         last_update = time.time()
         container_group_sim = []
@@ -400,7 +409,9 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
             if sim.time >= container_group.getFinishTime():
                 block_dictionary = container_group.yard_blocks.copy()
                 for block in block_dictionary:
-                    container_group_sim.append(SimulationContainer(canvas, gui, block.position, container_group.departure_point, container_group, min_x, max_x, min_y, max_y, border_space))
+                    container_group_sim.append(
+                        SimulationContainer(canvas, gui, block.position, container_group.departure_point,
+                                            container_group, min_x, max_x, min_y, max_y, border_space))
 
         # check what container_groups get removed to show
         sim.remove_expired_container_groups(container_groups)
@@ -414,7 +425,9 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
 
             # Arrival path for animation
             for key in new_cg.yard_blocks.keys():
-                container_group_sim.append(SimulationContainer(canvas, gui, new_cg.arrival_point, key.position, new_cg, min_x, max_x, min_y, max_y, border_space))
+                container_group_sim.append(
+                    SimulationContainer(canvas, gui, new_cg.arrival_point, key.position, new_cg, min_x, max_x, min_y,
+                                        max_y, border_space))
 
         # update yb visualisation
         update_ybs(sim, gui, canvas, blocks, sim.yard_blocks, vessels, container_group_sim, fillers)
