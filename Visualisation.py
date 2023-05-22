@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from fitter import Fitter
+import statistics
 
 from Data.CONST import SORTED_WEEKDAYS, DAY_BASED, HIST, CG
 from Data.DataParser import cleanData, filterDayOfWeek, reorderCols, format_import_export, shift_time, sort, \
@@ -148,16 +149,16 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
     totalExport_inFlow = shift_time_series(totalExport_outFlow, -48)
     totalImport_outFlow = shift_time_series(totalImport_inFlow, 48)
     # Visualise
-    # visualise_flow('Import', totalImport_inFlow, totalImport_outFlow)
-    # visualise_flow('Export', totalExport_inFlow, totalImport_outFlow)
+    visualise_flow('Import', totalImport_inFlow, totalImport_outFlow)
+    visualise_flow('Export', totalExport_inFlow, totalImport_outFlow)
 
     totalNormal_inFlow = add_series(exportNormals_inFlow, importNormals_inFlow)
     totalReefer_inFlow = add_series(importReefer_inFlow, exportReefer_inFlow)
     totalNormal_outFlow = add_series(exportNormals_outFlow, importNormals_outFlow)
     totalReefer_outFlow = add_series(exportReefer_outFlow, importReefer_outFlow)
     # Visualise
-    # visualise_flow('Normal', totalImport_inFlow, totalImport_outFlow)
-    # visualise_flow('Reefer', totalNormal_outFlow, totalReefer_outFlow)
+    visualise_flow('Normal', totalImport_inFlow, totalImport_outFlow)
+    visualise_flow('Reefer', totalNormal_outFlow, totalReefer_outFlow)
 
     # Transhipments
     transhipments_inFlow = calculate_transshipment_flow('inflow', tranNormal, schedule) + calculate_transshipment_flow(
@@ -168,11 +169,11 @@ def calculate_flow(yardStorageBlocks, importNormals_inFlow, importReefer_inFlow,
 
     total_inFlow = add_series(totalImport_inFlow, totalExport_inFlow)
     total_inFlow = add_series(transhipments_inFlow, total_inFlow)
-    # total_outFlow = add_series(totalImport_outFlow, totalExport_outFlow)
-    # total_outFlow = total_outFlow.add(transhipments_outFlow)
+    total_outFlow = add_series(totalImport_outFlow, totalExport_outFlow)
+    total_outFlow = total_outFlow.add(transhipments_outFlow)
 
-    # calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
-    #                         totalNormal_outFlow, totalReefer_outFlow)
+    calculate_full_occupancy(yardStorageBlocks, total_inFlow, total_outFlow, totalNormal_inFlow, totalReefer_inFlow,
+                             totalNormal_outFlow, totalReefer_outFlow)
 
     visualise_innerInterval(total_inFlow.copy(), type='in_flow')
     visualise_innerInterval(total_outFlow.copy(), type='out_flow')
@@ -244,8 +245,6 @@ def visualise_innerInterval(total_Flow, type):
 
 
     for index, value in total_Flow.items():
-        for x in range(1,int(value)):
-            resulting = pd.concat([resulting, pd.Series(index-index)])
         if previous_index != 0:
             if math.isnan(value) != True:
                 value = index - previous_index
@@ -330,8 +329,8 @@ def visualise_cg_size(localExport, localExportReefer, localImport, localImportRe
     # plt.show()
 
 
-    #resSum = sum(count * index for index, count in res.items())
-    plt.xlim(0, 100)
+    mean = statistics.mean(res.values())
+    plt.xlim(0, 2500)
     plt.xlabel('Amount of containers')
     plt.ylabel('Occurrences')
     plt.title("Container group sizes - Total")
