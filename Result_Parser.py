@@ -105,17 +105,17 @@ def count_never_used(avg_serie):
 def format_stats(stats):
     names = []
     avg = []
-    names.append("Amount of YB's")
-    avg.append(len(stats['Max_Occupancy'].iloc[0]))
+    # names.append("Amount of YB's")
+    # avg.append(len(stats['Max_Occupancy'].iloc[0]))
     for col in stats.columns:
         avg_serie = get_avg_serie(col, stats[col])
         if col == 'Max_Occupancy':
-            names.append("YB Max over 90 % full")
+            names.append("Portion of YB close to full (at some point)")
             avg.append(count_over_90(avg_serie) / len(avg_serie))
-            names.append("YB Max never used")
+            names.append("Portion of YB never used")
             avg.append(count_never_used(avg_serie) / len(avg_serie))
         elif col == 'AVG_Daily_Individual_Occupancy':
-            names.append("YB Average over 90 % full")
+            names.append("Portion of YB close to full (average)")
             avg.append(count_over_90(avg_serie) / len(avg_serie))
         else:
             names.append(col)
