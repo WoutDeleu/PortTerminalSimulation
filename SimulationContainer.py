@@ -43,7 +43,7 @@ class SimulationContainer:
         distance_y = target_y - y
 
         max_distance = max(abs(distance_y), abs(distance_x))
-        step = 6
+        step = 1.5
         frames = math.ceil(max_distance / step)
 
         step_x = distance_x / frames
@@ -59,7 +59,7 @@ class SimulationContainer:
         self.canvas.itemconfig(vessel, state='normal')
         while move:
             move = self.move_container(step_x, step_y, total_frames)
-            time.sleep(0.05)
+            time.sleep(0.005)
         self.canvas.itemconfig(vessel, state='hidden')
         self.gui.update()
 

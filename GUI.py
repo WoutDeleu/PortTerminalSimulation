@@ -24,6 +24,8 @@ canvas_width = None
 canvas_height = None
 
 animation_switch = True
+pause_switch = False
+
 lay = []
 
 
@@ -256,14 +258,21 @@ def draw(sim, canvas):
     draw_truck_locations(sim, canvas)
 
     # Animation button
-    global animation_switch
-    animation_button = tk.Button(canvas, text="Toggle animation", command=toggle_animation)
-    canvas.create_window(canvas_width - border_space, 70, anchor=tk.NE, window=animation_button)
+    global animation_button
+    animation_button = tk.Button(canvas, text="Toggle on", command=toggle_animation)
+    canvas.create_window(canvas_width - border_space, transpose_y(222) + border_space, anchor=tk.NE,
+                         window=animation_button)
+
+    global pause_button
+    pause_button = tk.Button(canvas, text="Pause", command=toggle_pause)
+    canvas.create_window(canvas_width - border_space * 10, transpose_y(222) + border_space, anchor=tk.NE,
+                         window=pause_button)
+
 
     global speed_controller
     speed_controller = tk.Scale(canvas, label="Animation speed", from_=100, to=0, orient=HORIZONTAL)
     canvas.create_window(canvas_width - 400, canvas_height - 70, anchor=tk.NW, window=speed_controller)
-
+    speed_controller.set(50)
     # Parameter labels
     draw_labels(canvas)
 
@@ -382,6 +391,17 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fi
 def toggle_animation():
     global animation_switch
     animation_switch = not animation_switch
+    if animation_switch:
+        animation_button.configure(text="Toggle On")
+    else:
+        animation_button.configure(text="Toggle Off")
+def toggle_pause():
+    global pause_switch
+    pause_switch = not pause_switch
+    if pause_switch:
+        pause_button.configure(text="Play")
+    else:
+        pause_button.configure(text="Pause")
 
 
 def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, hours):
@@ -396,7 +416,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
     last_update = time.time()
     while sim.time <= sim.SIMULATION_HOURS:
         gui.update()
-        if (time.time() - last_update) < (1 * (speed_controller.get() / 100)):
+        if ((time.time() - last_update) < (1 * (speed_controller.get() / 100))) | pause_switch:
             continue
         last_update = time.time()
         container_group_sim = []
