@@ -31,7 +31,7 @@ def simulate(stats, data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXE
 
 
 def get_inter_arrival_time_sample():
-    return scipyst.expon.rvs(scale=0.62, loc=0)
+    return scipyst.expon.rvs(scale=0.09155, loc=0)
 
 
 def get_number_of_containers_sample():
