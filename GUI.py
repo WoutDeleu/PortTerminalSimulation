@@ -366,7 +366,7 @@ def update_ybs(sim, gui, canvas, gui_blocks, yard_blocks, vessels, paths, gui_fi
                       y1 + (yb_occupancy * (y2 - y1)))
 
     # Parameter animation
-    timer_text.set("Time: " + str(sim.time))
+    timer_text.set("Time: " + str(round(sim.time)))
     containers_rejected_text.set("Rejected containers: " + str(sim.rejected_containers))
     cg_rejected_text.set("Rejected container groups: " + str(sim.rejected_groups))
     normal_containers_rejected_text.set("Rejected normal containers: " + str(sim.rejected_per_type['normal']))
@@ -396,7 +396,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
     last_update = time.time()
     while sim.time <= sim.SIMULATION_HOURS:
         gui.update()
-        if (time.time() - last_update) < (0.5 * (speed_controller.get() / 100)):
+        if (time.time() - last_update) < (1 * (speed_controller.get() / 100)):
             continue
         last_update = time.time()
         container_group_sim = []
