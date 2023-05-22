@@ -5,6 +5,11 @@ import pandas as pd
 from Data.DataParser import array_to_string
 
 
+def total_results(data):
+    data = data.strip('[]')
+    values = data.split(';')
+
+
 def format_yb_tables(data):
     data = data.strip('[]')
     values = data.split(';')
@@ -14,7 +19,7 @@ def format_yb_tables(data):
     for i in range(num_tables):
         start_index = i * 9
         end_index = min(start_index + 9, num_columns)
-        latex_table = "\\begin{table}[h]\n\\centering\n\\begin{tabular}{|" + "|".join(
+        latex_table = "\\begin{table}[h!]\n\\centering\n\\begin{tabular}{|" + "|".join(
             ["c"] * (end_index - start_index)) + "|}\n"
         latex_table += "\\hline\n"
         for j in range(start_index + 1, end_index + 1):

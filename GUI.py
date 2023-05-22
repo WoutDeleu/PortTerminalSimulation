@@ -137,15 +137,11 @@ def init_simulation(gui, scenario, distance_reference, months, day, hours):
     top.update()
 
     canvas = init_canvas(gui)
-    stat_process = Process(target=run_simulation_results())
+    thread_results = Thread(target=run_simulation_results)
+    thread_results.start()
 
-    process_visual = Process(target=run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, hours))
-    process_visual.start()
-    process_visual.join()
+    run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, hours)
 
-    # stat_process.start()
-    # stat_process.join()
-    return sim
 
 
 def init_canvas(gui):
