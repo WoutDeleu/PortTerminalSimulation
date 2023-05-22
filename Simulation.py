@@ -409,7 +409,7 @@ class Simulation:
 
     def setSimulationHours(self, months, day, hours):
         self.SIMULATION_HOURS = int(months) * 30 * 24 + int(day) * 24 + int(hours)
-        print("Simulation hours: ", self.SIMULATION_HOURS)
+        # print("Simulation hours: ", self.SIMULATION_HOURS)
 
     def only_one_scenario_true(self):
         counter = 0

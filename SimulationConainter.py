@@ -1,6 +1,5 @@
 import math
 import time
-from realtime import time as rtime
 
 from Position import Position
 
@@ -17,7 +16,7 @@ class SimulationContainer:
         self.min_y = min_y
         self.max_y = max_y
 
-        self.container_size = 10 * (container_group.number_of_containers/2500) + 10
+        self.container_size = 10 * (container_group.number_of_containers / 2500) + 10
         self.frame = 0
         self.canvas = canvas
         self.gui = gui
@@ -26,13 +25,13 @@ class SimulationContainer:
         y = self.transpose_y(self.begin_point.y_cord)
         self.current_position = Position(x, y)
 
-
     def create_component(self):
         x = self.transpose_x(self.begin_point.x_cord)
         y = self.transpose_y(self.begin_point.y_cord)
         fill = '#00FF00' if self.container_group.container_flow_type == 'export' else '#FFFF00' if self.container_group.container_flow_type == 'import' else '#ADD8E6'
         border = 'orange' if self.container_group.container_type == "reefer" else 'blue'
-        return self.canvas.create_rectangle(x, y, x + self.container_size, y + self.container_size, fill=fill, outline=border)
+        return self.canvas.create_rectangle(x, y, x + self.container_size, y + self.container_size, fill=fill,
+                                            outline=border)
 
     def calculate_step(self):
         target_x = self.transpose_x(self.end_point.x_cord)
@@ -44,12 +43,12 @@ class SimulationContainer:
         distance_y = target_y - y
 
         max_distance = max(abs(distance_y), abs(distance_x))
-        step = 6
+        step = 1.5
         frames = math.ceil(max_distance / step)
 
         step_x = distance_x / frames
         step_y = distance_y / frames
-        #print(f"x={step_x}, y={step_y}")
+        # print(f"x={step_x}, y={step_y}")
 
         return step_x, step_y, frames
 
@@ -78,9 +77,27 @@ class SimulationContainer:
         self.canvas.coords(self.component, x, y, x + self.container_size, y + self.container_size)
         return True
 
-
     def transpose_x(self, x):
-        return (x - self.min_x) / (self.max_x - self.min_x) * (self.canvas.winfo_width() - 2 * self.border_space) + self.border_space
+        return (x - self.min_x) / (self.max_x - self.min_x) * (
+                self.canvas.winfo_width() - 2 * self.border_space) + self.border_space
+
     def transpose_y(self, y):
         return y / self.max_y * (self.canvas.winfo_height() - 2 * self.border_space) + self.border_space - self.min_y
 
+    def getReslults():
+        # data = load_data('./Data/')
+        # visualise_data(data)
+        stats = pd.DataFrame(
+            columns=simulation_data)
+
+        i = 1
+        # Progressbar - Only when using emulate in prompt
+        with Bar('Simulating', fill='#', empty_fill='.', bar_prefix=' [',
+                 bar_suffix='] ', max=AMOUNT_SIMULATIONS) as bar:
+            while i <= AMOUNT_SIMULATIONS:
+                stats = simulate(stats, data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXED_RULE, CLOSEST,
+                                 LOWEST_OCCUPANCY,
+                                 SPLIT_UP)
+                bar.next()
+                i += 1
+        show_result(stats, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, LATEX, OVERVIEW)

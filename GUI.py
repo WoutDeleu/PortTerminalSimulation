@@ -1,12 +1,19 @@
 import time
 import tkinter as tk
+from multiprocessing import Process
 from threading import Thread
 from tkinter import HORIZONTAL
 
+import pandas as pd
+from progress.bar import Bar
+
 from Data.DataParser import load_data
+from Main import AMOUNT_SIMULATIONS
+from Result_Parser import show_result
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
 from SimulationConainter import SimulationContainer
 
+scenario_switch = None
 timer_text = None
 containers_rejected_text = None
 cg_rejected_text = None
@@ -14,6 +21,11 @@ normal_containers_rejected_text = None
 reefer_containers_rejected_text = None
 total_travel_distance_text = None
 average_travel_distance_text = None
+
+distance_reference_switch = None
+months_switch = None
+day_switch = None
+hours_switch = None
 
 min_x = None
 max_x = None
@@ -24,6 +36,8 @@ canvas_width = None
 canvas_height = None
 
 animation_switch = True
+is_running = False
+
 lay = []
 
 
@@ -92,6 +106,17 @@ def startup_screen(gui):
     hours.insert(tk.END, "0")  # Default value is 0
     hours.pack(side=tk.LEFT)
 
+    global scenario_switch
+    scenario_switch = scenario.get()
+    global distance_reference_switch
+    distance_reference_switch = dist_reference.get()
+    global months_switch
+    months_switch = months.get()
+    global day_switch
+    day_switch = days.get()
+    global hours_switch
+    hours_switch = hours.get()
+
     btn_run = tk.Button(popup, text="Run Simulation",
                         command=lambda: init_simulation(gui, scenario.get(), dist_reference.get(), months.get(),
                                                         days.get(), hours.get()))
@@ -104,7 +129,7 @@ def init_simulation(gui, scenario, distance_reference, months, day, hours):
     sim.setScenario(scenario)
     sim.setDistanceCalculationReference(distance_reference)
     sim.setSimulationHours(months, day, hours)
-    sim.print_status()
+    # sim.print_status()
 
     # Close popup window
     top = lay[0]
@@ -112,7 +137,14 @@ def init_simulation(gui, scenario, distance_reference, months, day, hours):
     top.update()
 
     canvas = init_canvas(gui)
-    run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, hours)
+    stat_process = Process(target=run_simulation_results())
+
+    process_visual = Process(target=run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, hours))
+    process_visual.start()
+    process_visual.join()
+
+    # stat_process.start()
+    # stat_process.join()
     return sim
 
 
@@ -223,6 +255,46 @@ def draw_labels(canvas):
     global average_travel_distance_text
     average_travel_distance_text = draw_text(canvas, "Average travel distance of container groups: 0",
                                              canvas_width / 2 - 200, canvas_height - border_space)
+
+
+def run_simulation_results():
+    simulation_data = ['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Reefer_Rejected',
+                       'Total_Travel_Distance',
+                       'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
+                       'AVG_daily_total_Occupancy']
+    stats = pd.DataFrame(
+        columns=simulation_data)
+
+    data = load_data('./Data/')
+    i = 1
+    # Progressbar - Only when using emulate in prompt
+    with Bar('Simulating', fill='#', empty_fill='.', bar_prefix=' [',
+             bar_suffix='] ', max=AMOUNT_SIMULATIONS) as bar:
+        while i <= AMOUNT_SIMULATIONS:
+            sim = Simulation(data, False, False, False, False, False, False)
+            sim.setScenario(scenario_switch)
+            sim.setDistanceCalculationReference(distance_reference_switch)
+            sim.setSimulationHours(months_switch, day_switch, hours_switch)
+            sim.check_parameters()
+            stats = sim.run()
+            sim.run()
+            stats_fifo = pd.concat(
+                [stats,
+                 pd.DataFrame([{'Containers_Rejected': sim.rejected_containers, 'CG_Rejected': sim.rejected_groups,
+                                'Normal_Rejected': sim.rejected_per_type["normal"],
+                                'Reefer_Rejected': sim.rejected_per_type["reefer"],
+                                'Total_Travel_Distance': sim.total_travel_distance_containers,
+                                'AVG_Travel_Distance_Containers': sim.getAvgTravel_Containers(),
+                                'Max_Occupancy': sim.getMaxOccupancy(),
+                                'AVG_Daily_Individual_Occupancy': sim.getAvgOccupancy_individual(),
+                                'AVG_daily_total_Occupancy': sim.getDailyTotalOccupancy()}])
+
+                 ]
+            )
+            bar.next()
+            i += 1
+    show_result(stats, sim.ARRIVAL_BASED, sim.DEPARTURE_BASED, sim.CLOSEST, sim.LOWEST_OCCUPANCY, sim.LATEX,
+                sim.OVERVIEW)
 
 
 def draw(sim, canvas):
@@ -396,7 +468,7 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
     last_update = time.time()
     while sim.time <= sim.SIMULATION_HOURS:
         gui.update()
-        if (time.time() - last_update) < (0.5 * (speed_controller.get() / 100)):
+        if (time.time() - last_update) < (5 * (speed_controller.get() / 100)):
             continue
         last_update = time.time()
         container_group_sim = []
@@ -436,7 +508,8 @@ def run_simulation(sim, gui, canvas, scenario, distance_reference, months, day, 
 def startGUI():
     gui = init_gui()
     startup_screen(gui)
-    gui.mainloop()  # Lets the window open after the simulation ends
+    # Setup processes for simulations in the foreground and background
+    gui.mainloop()
 
 
 def transpose_x(x):
