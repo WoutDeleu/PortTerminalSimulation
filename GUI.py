@@ -5,7 +5,7 @@ from tkinter import HORIZONTAL
 
 from Data.DataParser import load_data
 from Simulation import Simulation, add_to_Q, get_inter_arrival_time_sample
-from SimulationConainter import SimulationContainer
+from SimulationContainer import SimulationContainer
 
 timer_text = None
 containers_rejected_text = None
@@ -206,7 +206,7 @@ def draw_text(canvas, label, pos_x, pos_y):
 
 def draw_labels(canvas):
     global timer_text
-    timer_text = draw_text(canvas, "Time: 0", canvas_width - border_space - 100, canvas_height - border_space)
+    timer_text = draw_text(canvas, "Time: 0", canvas_width - border_space - 200, canvas_height - border_space)
     global containers_rejected_text
     containers_rejected_text = draw_text(canvas, "Rejected containers: 0", border_space, canvas_height - 160)
     global cg_rejected_text

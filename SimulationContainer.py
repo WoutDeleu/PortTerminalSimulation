@@ -1,6 +1,5 @@
 import math
 import time
-from realtime import time as rtime
 
 from Position import Position
 
