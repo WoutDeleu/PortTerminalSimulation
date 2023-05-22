@@ -244,7 +244,7 @@ class Simulation:
         possible_blocks = []
         smallest_yb = feasible_yardblocks[0]
         for block in feasible_yardblocks:
-            if block.getRemainingCapacity() < smallest_yb.getRemainingCapacity():
+            if block.getRemainingCapacity() > smallest_yb.getRemainingCapacity():
                 smallest_yb = block
 
         for block in feasible_yardblocks:

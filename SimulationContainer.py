@@ -5,7 +5,7 @@ from Position import Position
 
 
 class SimulationContainer:
-    def __init__(self, canvas, gui, begin, end, container_group, min_x, max_x, min_y, max_y, border_space):
+    def __init__(self, canvas, gui, begin, end, speed_scale, container_group, min_x, max_x, min_y, max_y, border_space):
         self.begin_point = begin
         self.end_point = end
         self.container_group = container_group
@@ -15,6 +15,7 @@ class SimulationContainer:
         self.max_x = max_x
         self.min_y = min_y
         self.max_y = max_y
+        self.speed_scale = speed_scale
 
         self.container_size = 10 * (container_group.number_of_containers/2500) + 10
         self.frame = 0
@@ -43,7 +44,7 @@ class SimulationContainer:
         distance_y = target_y - y
 
         max_distance = max(abs(distance_y), abs(distance_x))
-        step = 1.5
+        step = 1.5 + (1 - self.speed_scale/100) * 6
         frames = math.ceil(max_distance / step)
 
         step_x = distance_x / frames
