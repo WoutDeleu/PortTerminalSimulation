@@ -37,7 +37,7 @@ def get_inter_arrival_time_sample():
 def get_number_of_containers_sample():
     scale = 8
     max = 2500
-    r = scipyst.weibull_min.rvs(0.75, loc=0.5 / scale) * scale
+    sample = scipyst.weibull_min.rvs(0.75, loc=0.5 / scale) * scale
     while sample > max:
         sample = scipyst.weibull_min.rvs(0.6, loc=0.5 / scale) * scale
     return round(sample) * 10
