@@ -57,8 +57,7 @@ def get_arrival_or_departure_point_sample(df):
 
 
 def get_container_flow_type():
-    return random.choices(["import", "export"], weights=[25, 75], k=1)[0]
-    # Transshipment's fall under export (say 50% of cargo groups are transshipment's)
+    return random.choices(["import", "export"], weights=[19, 81], k=1)[0]
 
 
 def check_container_type(group_type, block_type):
@@ -162,7 +161,7 @@ class Simulation:
             departure_point = get_arrival_or_departure_point_sample(self.data['TruckParkingLocations'])
             service_time = 48
         else:
-            export_type = random.choices(["export", "transshipment"], weights=[25, 50], k=1)[0]
+            export_type = random.choices(["export", "transshipment"], weights=[31, 69], k=1)[0]
             if export_type == "export":
                 arrival_point = get_arrival_or_departure_point_sample(self.data['TruckParkingLocations'])
                 departure_point = get_arrival_or_departure_point_sample(self.data['BerthingPositions'])
