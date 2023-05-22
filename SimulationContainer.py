@@ -59,7 +59,7 @@ class SimulationContainer:
         self.canvas.itemconfig(vessel, state='normal')
         while move:
             move = self.move_container(step_x, step_y, total_frames)
-            time.sleep(0.005)
+            time.sleep(0.01)
         self.canvas.itemconfig(vessel, state='hidden')
         self.gui.update()
 
