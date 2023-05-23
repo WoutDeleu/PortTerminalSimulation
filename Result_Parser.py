@@ -125,10 +125,11 @@ def format_stats(stats):
 
 def show_result(stats, ARRIVAL_BASED, DEPARTURE_BASED, CLOSEST, LOWEST_OCCUPANCY, MIXED_RULE, SPLIT_UP, LATEX, OVERVIEW):
     print()
+    title = ''
     if ARRIVAL_BASED:
-        title = 'ARRIVAL-BASED'
-    elif DEPARTURE_BASED:
-        title = 'DEPARTURE-BASED'
+        title =  title + 'ARRIVAL-BASED'
+    if DEPARTURE_BASED:
+        title = title + 'DEPARTURE-BASED'
 
     if CLOSEST:
         title = 'FIFO ' + title
