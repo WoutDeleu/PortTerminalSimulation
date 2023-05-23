@@ -27,6 +27,8 @@ def simulate(stats, data, SIMULATION_HOURS, ARRIVAL_BASED, DEPARTURE_BASED, MIXE
 
          ]
     )
+    if SPLIT_UP:
+        return stats_fifo, sim.total_split_ups
     return stats_fifo
 
 
@@ -124,6 +126,8 @@ class Simulation:
         self.CLOSEST = CLOSEST
         self.LOWEST_OCCUPANCY = LOWEST_OCCUPANCY
         self.SPLIT_UP = SPLIT_UP
+        if SPLIT_UP:
+            self.total_split_ups = 0
 
     def run(self):
         # Variables to get daily statistics
@@ -193,6 +197,8 @@ class Simulation:
             self.rejected_containers += new_containergroup.number_of_containers
             self.rejected_per_type[new_containergroup.container_type] += new_containergroup.number_of_containers
         else:
+            if len(closest_blocks) > 1:
+                self.total_split_ups += len(closest_blocks) - 1
             new_containergroup.temp_nr_of_containers_remaining = new_containergroup.number_of_containers
             for closest_block in closest_blocks:
                 # Add the container group to the closest block
@@ -408,7 +414,7 @@ class Simulation:
 
     def setSimulationHours(self, months, day, hours):
         self.SIMULATION_HOURS = int(months) * 30 * 24 + int(day) * 24 + int(hours)
-        print("Simulation hours: ", self.SIMULATION_HOURS)
+        # print("Simulation hours: ", self.SIMULATION_HOURS)
 
     def only_one_scenario_true(self):
         counter = 0

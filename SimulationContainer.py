@@ -83,4 +83,3 @@ class SimulationContainer:
         return (x - self.min_x) / (self.max_x - self.min_x) * (self.canvas.winfo_width() - 2 * self.border_space) + self.border_space
     def transpose_y(self, y):
         return y / self.max_y * (self.canvas.winfo_height() - 2 * self.border_space) + self.border_space - self.min_y
-
