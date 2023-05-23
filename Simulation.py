@@ -294,7 +294,6 @@ class Simulation:
         return container_type_check and container_flow_check
 
     def add_container_to_block(self, container_group: ContainerGroup, block: YardBlock):
-        self.total_travel_distance_containers += block.position.calculate_distance(container_group.arrival_point)
         # Store as many containers as possible in block
         if block.getRemainingCapacity() < container_group.temp_nr_of_containers_remaining:
             nr_containers_to_store = block.getRemainingCapacity()
@@ -305,6 +304,8 @@ class Simulation:
             nr_containers_to_store = container_group.temp_nr_of_containers_remaining
             container_group.temp_nr_of_containers_remaining = 0
 
+        self.total_travel_distance_containers += block.position.calculate_distance(
+            container_group.arrival_point) * nr_containers_to_store
         block.addContainers(nr_containers_to_store)
 
         # Update the flow type of the block with an empty block
@@ -315,7 +316,8 @@ class Simulation:
         block.update_daily_occupancy(self.day_counter)
 
     def remove_container_from_block(self, container_group: ContainerGroup, block: YardBlock):
-        self.total_travel_distance_containers += block.position.calculate_distance(container_group.departure_point)
+        self.total_travel_distance_containers += block.position.calculate_distance(
+            container_group.departure_point) * container_group.getYardBlockContainers(block)
         block.removeContainers(container_group.getYardBlockContainers(block))
         block.update_daily_occupancy(self.day_counter)
         container_group.removeYardBlock(block)
