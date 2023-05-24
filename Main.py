@@ -11,19 +11,19 @@ simulation_data = ['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Ree
                    'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
                    'AVG_daily_total_Occupancy']
 
-# Distance base scenarios
-ARRIVAL_BASED = False
+# Distance base fscenarios
+ARRIVAL_BASED = True 
 DEPARTURE_BASED = True
 
 # Scenarios
-CLOSEST = True
-LOWEST_OCCUPANCY = False
+CLOSEST = False
+LOWEST_OCCUPANCY = True
 MIXED_RULE = False
 SPLIT_UP = False
 
 # LATEX formats table to copy paste in Latex-doc
 LATEX = True
-OVERVIEW = True
+OVERVIEW = False
 
 # 120 results in proper runs
 AMOUNT_SIMULATIONS = 120
