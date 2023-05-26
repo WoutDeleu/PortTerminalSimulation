@@ -1,7 +1,9 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting fig
+
 \usepackage{subfig}
 \usepackage{hyperref}
+\usepackage{rotating}
 
 \setlength{\parskip}{16pt}
 
@@ -17,55 +19,52 @@
 \newpage
 
 \section{Introduction}
-During this report, the final assignment of the `Yard storage assignment
-problem' will be discussed. Over the course of past labs, a serious amount of
-work and effort went in to designing a simulation which could visualise a given
-port complex. The simulation is focused on the storage situation of this yard.
-During this report, the basics design choices will be discussed, as well as the
-results of the simulation. The basic technology used is Python. The code is
-written as dynamic as possible, using global variables and booleans to variate
-parameters and the overall flow of the simulation. It is based on a discrete
-event simulation, with the possibility of online simulation. To refresh the
-situation in brief, the goal is to simulate a yard, in which
-containergroups\footnote{Containers arrive only in group. Containers are
-    usually not looked at individually. This means they can’t be split up most of
-    the time, they are stored in the same place, they enter and leave the yard at
-    the same time.} come and go. They can arrive from vessels or from trucks and
-trains. Each container needs to be stored on the yard for a specific duration.
-The goal is to simulate the storage in the yard, as a result of the in and out
-flow.
+During this report, we will discuss the final assignment of the `Yard Storage
+Assignment Problem'. Over the past labs, a significant amount of work and
+effort has gone into designing a simulation that can visualize a given port
+complex. The simulation focuses on the storage situation in the yard. In this
+report, we will discuss the basic design choices and the results of the
+simulation. Python is the primary technology used for the simulation. The code
+is written to be as dynamic as possible, utilizing global variables and
+booleans to vary parameters and control the overall flow of the simulation. It
+is based on a discrete event simulation, with the option for online simulation.
+To provide a brief recap, the goal is to simulate a yard where container groups
+arrive and depart. Containers arrive and leave in groups, and they are
+typically not considered individually. This means that they cannot be split up
+most of the time and are stored together in the same location. In the report,
+we aim to simulate the storage in the yard as a result of the inflow and
+outflow of containers.
 
-To recap, during the first lab, the main focus was on the samples that the
-existing data brought along. The intention was to be able to sample them in the
-further course of the project, in order to approximate reality. During the
-second assignment was the objective to setup a base scenario to simulate, and
-get first results. The samples determined in previous sessions were converted
-to usable distributions, and where used to generate the parameters that come
-with the container arrival and departure schedule. With a basic simulation
-scenario, the first results could be examined. Important to note however is
-that during the development and design of the sample functions, some minor
-errors occurred. The problem originated from a misinterpretation of the graphs
-out of the first reports, which led to a big underestimation of the amount of
-containers that were generated. This was also insinuated while writing the
-second report. However, when designing the final simulation, the mistake came
-up again, and normally it was fixed, and it should no longer pose a problem.
+To summarize, the focus of the first lab was on analyzing the existing data
+samples. The intention was to be able to sample them throughout the project to
+approximate reality. The objective of the second assignment was to set up a
+base scenario for simulation and obtain initial results. The samples obtained
+from previous sessions were converted into usable distributions and used to
+generate parameters for the container arrival and departure schedule. With a
+basic simulation scenario in place, the initial results could be examined. It
+is important to note that some minor errors occurred during the development and
+design of the sample functions. These errors stemmed from a misinterpretation
+of the graphs from the initial reports, resulting in a significant
+underestimation of the number of generated containers. This issue was also
+mentioned in the second report. However, while designing the final simulation,
+the mistake resurfaced but was promptly identified and resolved, no longer
+posing a problem.
 
-The goal of this last assignment is to put all the pieces together, and make
-the simulation fully functional and usable. Three extra scenarios are
-implemented, which could give some new insights in the way the yard works. And
-alongside these extra scenarios and the the solution of the previously made
-mistake, a visualisation was implemented. This was one of the core goals of
-this last semester and really the cherry on top for this course. It brought the
-whole project together, and made all the realisations visible, as well as give
-a real insight into the mechanisms of the movements of all the different
-elements in this yard.
+The objective of this final assignment is to integrate all the components and
+make the simulation fully functional and usable. Three additional scenarios
+have been implemented to provide new insights into how the yard operates.
+Additionally, along with addressing the previous mistake, a visualization
+feature has been implemented. This visualization was one of the primary goals
+for this semester and serves as the finishing touch for this course. It brings
+the entire project together, making all the realizations visible, and provides
+genuine insights into the movements of the various elements within the yard.
 
 \section{Probability distributions}
-The simulation utilizes probability distributions derived from the input data
-provided from a real yard, from Ir. E. Thanos. Each distribution is designed to
-have the same average results as the input data. The simulation consists of
-generating container group samples, each possessing different characteristics
-that are determined by the distributions.
+The simulation makes use of probability distributions derived from real yard
+data provided by Ir. E. Thanos. Each distribution is carefully designed to
+yield the same average results as the input data. The simulation involves
+generating samples of container groups, each having distinct characteristics
+determined by these distributions.
 
 \subsection{Inter arrival time}
 The sampling frequency of container groups is a critical parameter in the
@@ -101,11 +100,11 @@ shown in Figure~\ref{fig:cg_sizes_real}, is 32 containers. The Weibull
 distribution used for this sample generation is shown in
 Figure~\ref{fig:cg_sizes_sample}.
 
-Considering the previous average outcome, we can determine how many containers
-are generated each week. This number corresponds to the amount of containers
-getting transported each week. The result is almost equal to the amount of
+Based on the previous average outcome, we can ascertain the weekly generation
+of containers. This number corresponds to the quantity of containers being
+transported each week. The result is nearly identical to the number of
 containers from the input data, thereby validating the average values of the
-previous distributions.
+preceding distributions.
 
 \begin{equation}
     Generated\_containers = \frac{Total\_time}{inter\_arrival\_time} \cdot Average\_container\_group\_size \end{equation}
@@ -175,25 +174,33 @@ truck to vessel. This distribution resulted in 69\% transshipment's and 31\%
 true export.
 
 \section{Algorithm}
-In this section the flow and the architectural and design will be elaborated
-and discussed. Because this code was designed over different steps, with it's
-own goals, the program tends to be very modular. This is particularly handy for
-possible code reuse for now or in the future.
+In this section, we will elaborate and discuss the flow, architecture, and
+design of the code. Since this code was developed in multiple steps, each with
+its own objectives, the program exhibits a highly modular structure. This
+modularity proves to be particularly advantageous for potential code reuse,
+both presently and in the future.
+
 \subsection{Amount of simulations}
 The first and maybe most primary parameter to know is the amount of simulations
 that needs to be run to get significant results. This can be calculated by the
 following formula: \[S = \sqrt{\frac{\sum_{i = 1}^{n}(X_i-\overline{X})^2}{n
             -1}}\] \[\frac{S}{\sqrt{k}} < d\]
 
-The resulting value of the simulation we wanted to take in account, is the
-travel distance. S the sample variance, the variance of our results. The number
-of simulations, so the value we want to calculate is k. The accepted standard
-deviation is d. This is a threshold we want to achieve, and can be chosen in
-function of the given results. X represents a system result of the simulation.
-In our case is this the average or total travel distance gotten from running
-the simulation. When the sample variance based on the k values is within an
-acceptable range, the calculation is stopped and the value of k is chosen for
-the amount of simulations that needs to be run.
+The key parameter we wanted to consider in the simulation is the travel
+distance, denoted as X. To assess the reliability of our results, we use the
+sample variance, denoted as S. The number of simulations performed is
+represented by k. Additionally, we define an accepted standard deviation,
+denoted as d. This threshold can be chosen based on the desired level of
+accuracy or confidence in the results.
+
+In our case, X represents either the average or total travel distance obtained
+from running the simulation. The calculation process involves repeatedly
+running the simulation and collecting X values. As the number of simulations
+increases, the sample variance based on these k values is continuously
+evaluated. Once the sample variance falls within an acceptable range determined
+by the chosen standard deviation d, the calculation process is stopped, and the
+value of k is selected as the number of simulations required to achieve the
+desired level of accuracy.
 
 For the total distance the accepted deviation is 1000. If we look at the
 magnitude of the total travel distance, we see it surpasses a million. A
@@ -209,14 +216,15 @@ simulations must be done to get consistent results.
 \end{figure}
 
 \subsection{Flow}
-Because of the nature of a simulation, where multiple scenarios need to be
-tested, it was a challenge to design and structure the program in such a way
-that the flow could be manipulated without making drastic internal changes. The
-flow can be manipulated by the use of booleans which map out the path. Checks
-are present to throw Exceptions, so that the booleans (which are some sort of
-input parameters, and are in the GUI implemented in this way, but more on that
-later) can only be configured in such a way that they map out a predefined
-scenario. Here 4 booleans where used:
+Due to the requirement of testing multiple scenarios in the simulation,
+designing and structuring the program to allow for flexible flow manipulation
+without significant internal changes posed a challenge. To address this, the
+program utilizes booleans to map out different paths within the simulation.
+These booleans serve as input parameters and can be configured to define
+predefined scenarios. To ensure consistency and prevent unintended
+configurations, checks are implemented to throw exceptions if the booleans are
+set in an invalid combination. In the current implementation, four booleans
+were utilized:
 \begin{enumerate}
     \item ARRIVAL BASED
     \item DEPARTURE BASED
@@ -227,83 +235,115 @@ scenario. Here 4 booleans where used:
 \end{enumerate}
 
 \subsection{Core}
-The program is event based, which means the simulation timer jumps from event
-to event. It achieves this by keeping two different list which hold events, one
-where containers arrive at the yard, and one where containers depart from the
-yard. Every time a container is generated, a new arrival is being scheduled
-based on the interarrival time sampling function. When it arrives, it is
-checked if it can be placed on a place in the yard. If it can, a yardblock
-where it can be stored is selected based on the scenario. If it can't, it is
-rejected. At an event where a container departs, the container is removed from
-the yard. For every event happening, all the statistics are updated. This
-process repeats itself until the simulation time is reached.
+The program operates on an event-based model, where the simulation timer
+progresses from one event to another. To achieve this, two lists are maintained
+to hold the events: one for container arrivals at the yard and another for
+container departures from the yard. Whenever a container is generated, a new
+arrival event is scheduled based on the interarrival time sampling function.
+Upon arrival, the container is checked to see if there is available space in
+the yard for storage. If there is, a yard block is selected based on the
+defined scenario to store the container. However, if there is no available
+space, the container is rejected.
 
-\subsection{Visualisation}
-The visualisation is done by the use of TKinter. Tkinter is a Python library
-used for creating graphical user interfaces (GUIs). The name`Tkinter' comes
-from `Tk interface', referring to the fact that it is based on the Tk GUI
-toolkit. One of the advantages of Tkinter is that it is included with the
-standard Python distribution, so you don't need to install any additional
-libraries. This makes it easily accessible for beginners and convenient for
-developing cross-platform applications.
+In events where containers depart, the respective container is removed from the
+yard. For each event that occurs, all relevant statistics are updated. This
+process continues until the simulation time is reached, completing the
+simulation.
 
-Overall, Tkinter is a powerful tool for developing graphical applications in
-Python, enabling you to create intuitive and interactive user interfaces for
-your programs.
+\subsection{Visualization}
+The visualization component of the simulation is implemented using Tkinter, a
+Python library widely used for creating graphical user interfaces (GUIs).
+Tkinter is based on the Tk GUI toolkit, hence its name "Tkinter." One of the
+key advantages of Tkinter is its inclusion in the standard Python distribution,
+eliminating the need for additional library installations. This accessibility
+makes it beginner-friendly and convenient for developing cross-platform
+applications.
 
-Some keyfeatures of the simulation is that the possibility to setup a flow
+In summary, Tkinter provides a robust framework for developing graphical
+applications in Python, allowing users to create intuitive and interactive user
+interfaces for their programs.
+
+Some key features of the simulation is that the possibility to setup a flow
 using the intro screen, seen in Figure~\ref{fig:intro}. Here you can setup all
-the necessary parameters to run a simulation, as well as the duration.
+the necessary parameters to run a simulation, as well as the duration. All the
+possible scenarios can be chosen in this place, prior to start.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\textwidth]{fig/intro_screen.png}
     \caption{Intro screen}\label{fig:intro}
 \end{figure}
 
-The visualisation is multithreaded, which allows it to run smooth. It is
-possible to run both the visualisation and gatter results formatted in a LaTex
+The visualization is multithreaded, which allows it to run smooth. It is
+possible to run both the visualization and gatter results formatted in a LaTex
 table (which has to be run multiple times to get correct results). But a strong
-computer is needed to pull this off. Because of the multithreaded visualisation
+computer is needed to pull this off. Because of the multithreaded visualization
 was it not usable, but in case of stronger pc's, it should work fluently. More
 on performance later in Section~\ref{sec:performance}.
 \begin{figure}
     \centering
     \includegraphics[width=0.7\textwidth]{fig/progressbar.png}
-    \caption{Progress bar of the simulations being run in order to get results}\label{fig:visualisation}
+    \caption{Progress bar of the simulations being run in order to get results}\label{fig:progress bar}
 \end{figure}
 
-When the graphical representation is running, the boats are represented on the
-water on top. They appear and disapear if they are needed. The yard is
-represented by the blocks of different size based on their respective capacity,
-mostly in flashy green. It is noticable that the reefer blocks are very small.
+During the execution of the graphical representation, the boats are depicted on
+the water at the top of the screen. They appear and disappear as required by
+the simulation. The yard is represented by blocks of varying sizes, each
+indicating its respective capacity. These blocks are predominantly displayed in
+a vibrant green color. It is worth noting that the reefer blocks, which are
+used for refrigerated containers, are comparatively smaller in size. The degree
+to which a block is filled is represented by the color red. The more red there
+is in a block, the more it is filled in terms of percentage.
+\begin{figure}
+    \centering
+    \rotatebox{270}{
+        \includegraphics[width=1.4\linewidth]{fig/full GUI.png}
+    }
+    \caption{Visualization full layout}\label{fig:visualization}
+\end{figure}
+
+At the bottom of the screen, various statistics related to the simulation are
+displayed, such as the number of rejected containers and the total travel
+distance. The legend, indicating the meaning of different colors used in the
+visualization, is also located at the bottom for reference.
+
+An interesting feature of the interface is the ability to modify the
+simulation's running state on the fly. This means that the simulation can be
+paused, allowing for temporary suspension of its progress. Additionally, the
+speed of the simulation can be adjusted, allowing users to control the pace of
+the simulation. Another option is to toggle the animations on or off. When
+animations are turned off, the simulation runs significantly faster, which can
+be useful when running the simulation for an extended duration.
 
 \section{What-if scenarios}
-A significant part of the assignment was to implement some scenarios in order
-to look for the most `efficient' scenarios, or more generally speaking, see the
-impact of these scenarios. This is also an opportunity to test out the
-visualisation, and see in what manner the yard works.
+A significant aspect of the assignment involved implementing various scenarios
+to explore the most "efficient" scenarios or to examine the impact of different
+scenarios. This provided an opportunity to test the visualization and gain
+insights into the workings of the yard.
 
-As stated in the previous reports, two different approaches to block
-assignments are implemented. This still applies to all the scenarios described
-in this section, and so for most scenarios the two different approaches of
-block assignment are possible. The block assignment rule has affect on which
-block is chosen to store a containergroup. The two different situations studied
-here are arrival based and departure based. Arrival based and departure based
-are both based on the minimal distance between 2 points. The yard block chosen
-is the closest block to the arrival point, in case of arrival based, or closest
-to the departure point, in case of departure based.
+As mentioned in previous reports, two different approaches to block assignments
+were implemented. These approaches remain applicable to all the scenarios
+described in this section. Therefore, for most scenarios, both approaches to
+block assignment are possible. The block assignment rule influences the
+selection of a yard block to store a container group. The two situations
+studied here are arrival-based and departure-based assignments.
+
+In the case of arrival-based assignment, the yard block chosen is the one
+closest to the arrival point. Conversely, in departure-based assignment, the
+yard block selected is the one closest to the departure point. In both cases,
+the selection is based on minimizing the distance between two points.
 
 \subsection{Base Scenario}
-The base scenario stays the same as discussed in the previous report, where the
-decision rule is that containergroup that arrives, if there is space in the
-yard. This will be referred to as FIFO (First In First Out). This apply’s to
-arrival of containers, and wether or not they are stored in the yard. FIFO says
-that the first container that arrives, has a priority over the ones which
-arrive after the first one. If there is no space for an arriving
-containergroup, it will be rejected. The block assignment determines which
-yardblock the respective containers .
+The base scenario remains unchanged from the previous report, where the
+decision rule is that a container group is accepted if there is available space
+in the yard. This scenario is referred to as FIFO (First In First Out). The
+FIFO rule applies to the arrival of containers and determines whether they are
+stored in the yard. According to FIFO, the first container group that arrives
+is given priority over subsequent arrivals. If there is no space available for
+an arriving container group, it will be rejected. The block assignment rule
+determines which yard block is assigned to store the respective containers.
 
-BESCHRIJVEN RESULTATEN...
+We see the base scenario as a reference point for the other scenarios. It is a
+scenario where most statistics point to a solid model. AANVULLEN
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|}
@@ -319,7 +359,7 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.698          \\ \hline
         AVG daily total Occupancy                   & 0.745          \\ \hline
     \end{tabular}
-    \caption{FIFO ARRIVAL-BASED}
+    \caption{Base scenario, distance reference: arrival based}
 \end{table}
 \begin{table}[h]
     \centering
@@ -336,7 +376,7 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.591         \\ \hline
         AVG daily total Occupancy                   & 0.673         \\ \hline
     \end{tabular}
-    \caption{FIFO ARRIVAL-BASEDDEPARTURE-BASED}
+    \caption{Base scenario, distance: arrival \& departure based}
 \end{table}
 \begin{table}[h]
     \centering
@@ -353,21 +393,21 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.648          \\ \hline
         AVG daily total Occupancy                   & 0.842          \\ \hline
     \end{tabular}
-    \caption{FIFO DEPARTURE-BASED}
+    \caption{Base scenario, distance reference: departure based}
 \end{table}
 
 \subsection{Smallest Remaining capacity}
-The first new scenario is one where all containers of the same containergroup
-must be stored in the same yardblock. The containers are stored in the
-yardblock with the largest remaining capacity, which means the yard should fill
-up gradually and balanced over all the possible storage blocks. Due to the lack
-of explicit emphasis, two possible interpretations were available for the
-"remaining capacity" concept. In this implementation, the choice was made to
-work with the absolute number of available container slots. An alternative
-interpretation could have been to consider normalized remaining capacity, in
-other words, the percentage of capacity that is still available. In case there
-are two yardblocks with the exact same capacity left, the closest one is taken
-(based on the block assignment rule).
+The first new scenario involves storing all containers of the same container
+group in the same yard block. The containers are placed in the yard block with
+the largest remaining capacity. This approach ensures that the yard gradually
+fills up in a balanced manner across all available storage blocks. However,
+there were two possible interpretations for the concept of "remaining capacity"
+without explicit emphasis. In this implementation, the choice was made to
+consider the absolute number of available container slots in each yard block.
+An alternative interpretation could have been to use normalized remaining
+capacity, which represents the percentage of capacity that is still available
+in each block. In cases where two yard blocks have exactly the same remaining
+capacity, the closest one is chosen based on the block assignment rule.
 
 BESCHRIJVEN RESULTATEN...
 \begin{table}[h]
@@ -385,7 +425,7 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.453          \\ \hline
         AVG daily total Occupancy                   & 0.645          \\ \hline
     \end{tabular}
-    \caption{LOWEST OCCUPANCY ARRIVAL \& DEPARTURE-BASED}
+    \caption{Lowest remaining capacity,  distance reference: arrival \& departure based}
 \end{table}
 
 \begin{table}[h]
@@ -403,7 +443,7 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.447          \\ \hline
         AVG daily total Occupancy                   & 0.646          \\ \hline
     \end{tabular}
-    \caption{LOWEST OCCUPANCY DEPARTURE-BASED}
+    \caption{Lowest remaining capacity, distance reference: departure based}
 \end{table}
 
 \begin{table}[h]
@@ -421,27 +461,90 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.465          \\ \hline
         AVG daily total Occupancy                   & 0.647          \\ \hline
     \end{tabular}
-    \caption{LOWEST OCCUPANCY ARRIVAL-BASED}
+    \caption{Lowest remaining capacity, distance reference: arrival-based}
 \end{table}
 
 \subsection{Possible split ups}
-This scenario states that containergroups could possibly be split up into
-individual containers, which each of which can be considered separately. This
-means that a yardblock does not has to hold a full group, so this means larger
-containergroups should be handled far more easy. Also the smaller yardblock
-should be able to have more use in the grand scheme of things. The yardblocks
-chosen to store containers, are the blocks closest to the arrival or departure
-point (based on the decision rule), and which have space left to store one or
-more containers. So the focus is really on which block is the closest, and can
-hold one or more containers.
+
+In this scenario, container groups have the possibility of being split up into
+individual containers, which can be treated separately. This means that a yard
+block does not necessarily have to accommodate a full container group.
+Consequently, larger container groups should be handled more easily, and
+smaller yard blocks can be utilized more effectively within the overall system.
+
+The yard blocks selected to store containers are determined based on their
+proximity to the arrival or departure point (depending on the decision rule)
+and their available space to accommodate one or more containers. The primary
+focus is on identifying the closest block that can hold one or more containers.
 
 BESCHRIJVEN RESULTATEN...
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Containers Rejected                         & 472353.375     \\ \hline
+        CG Rejected                                 & 5127.158       \\ \hline
+        Normal Rejected                             & 0.0            \\ \hline
+        Reefer Rejected                             & 472353.375     \\ \hline
+        Total Travel Distance                       & 5611085409.514 \\ \hline
+        AVG Travel Distance Containers              & 1851.933       \\ \hline
+        Portion of YB close to full (at some point) & 0.623          \\
+        \hline
+        Portion of YB never used                    & 0.22           \\ \hline
+        Portion of YB close to full (average)       & 0.623          \\ \hline
+
+        AVG daily total Occupancy                   & 0.699          \\ \hline Average amount of split ups &
+        53848.1                                                      \\ \hline
+    \end{tabular}
+    \caption{Possible split up, distance: arrival-based}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Containers Rejected                         & 473158.492     \\ \hline
+        CG Rejected                                 & 5131.692       \\ \hline
+        Normal Rejected                             & 0.0            \\ \hline
+        Reefer Rejected                             & 473158.492     \\ \hline
+        Total Travel Distance                       & 6959654819.095 \\ \hline
+        AVG Travel Distance Containers              & 2297.05        \\ \hline
+        Portion of YB close to full (at some point) & 0.629          \\ \hline
+        Portion of YB never used                    & 0.101          \\ \hline
+        Portion of YB close to full (average)       & 0.629          \\ \hline
+        AVG daily total Occupancy                   & 0.788          \\ \hline
+        Average amount of split ups                 & 65446.74       \\ \hline
+    \end{tabular}
+    \caption{Possible split up, distance reference: departure based}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Containers Rejected                         & 472326.425     \\ \hline
+        CG Rejected                                 & 5144.042       \\ \hline
+        Normal Rejected                             & 0.0            \\ \hline
+        Reefer Rejected                             & 472326.425     \\ \hline
+        Total Travel Distance                       & 6077806085.211 \\ \hline
+        AVG Travel Distance Containers              & 2006.154       \\ \hline
+        Portion of YB close to full (at some point) & 0.547          \\ \hline
+        Portion of YB never used                    & 0.321          \\ \hline
+        Portion of YB close to full (average)       & 0.547          \\ \hline
+        AVG daily total Occupancy                   & 0.613          \\ \hline
+        Average amount of split ups                 & 74397.59       \\ \hline
+    \end{tabular}
+    \caption{Possible split up, distance reference: arrival \& departure based}
+\end{table}
+
 \subsection{Not allowing mixing container types in a single yardblock}
-The last discussed scenario involves a rule where MIX yardblocks can only serve
-containers of a single flow type. This means that ones a container arrives and
-takes place in a mix type yardblock, only containers with the same type can be
-added to this yardblock.
+The final scenario introduces a rule where MIX yard blocks can only accommodate
+containers of a single flow type. This means that once a container arrives and
+occupies a MIX yard block, only containers of the same flow type can be added
+to that particular yard block. In other words, containers with different flow
+types cannot be mixed within the same yard block. This rule ensures segregation
+and grouping of containers based on their flow type in the yard.
 
 BESCHRIJVEN RESULTATEN...
 
@@ -460,7 +563,7 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.679          \\ \hline
         AVG daily total Occupancy                   & 0.748          \\ \hline
     \end{tabular}
-    \caption{MIXED RULE ARRIVAL-BASED}
+    \caption{Mixed rule, distance reference: arrival-based}
 \end{table}
 
 \begin{table}[h]
@@ -478,7 +581,7 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.648          \\ \hline
         AVG daily total Occupancy                   & 0.842          \\ \hline
     \end{tabular}
-    \caption{MIXED RULE DEPARTURE-BASED}
+    \caption{Mixed rule, distance reference: departure based}
 \end{table}
 
 \begin{table}[h]
@@ -496,11 +599,31 @@ BESCHRIJVEN RESULTATEN...
         Portion of YB close to full (average)       & 0.61          \\ \hline
         AVG daily total Occupancy                   & 0.678         \\ \hline
     \end{tabular}
-    \caption{MIXED RULE ARRIVAL-BASED DEPARTURE-BASED}
+    \caption{Mixed rule, distance reference: arrival \& departure based}
 \end{table}
 
 \section{Performance}\label{sec:performance}
 
-zeggen python suckt Average time per simulation: 127.2401417116324 seconds
+The entire simulation was implemented in Python, which is an interpreted
+programming language. Unlike compiled languages like C or C++, Python is
+executed by an interpreter rather than being compiled into machine code. As a
+result, Python can be perceived as slower in terms of performance compared to
+compiled languages.
 
+The simulations were conducted over a period of one year, which involved
+extensive computations. When running the simulations without animations, the
+average time per simulation was 127.24 seconds. While this may not seem
+excessively high, considering the number of simulations required to obtain
+meaningful results, it becomes a significant factor. For instance, running 100
+simulations would take approximately 3 hours and 32 minutes.
+
+The graphical aspect of the simulation is fully multithreaded, with each moving
+container assigned its own thread. This enables smooth animations and enhances
+the visual experience. However, this also poses challenges when attempting to
+run the simulation multiple times while simultaneously displaying the
+visualization, particularly on less powerful computers. Performing such tasks
+on separate threads becomes complex due to the already resource-intensive
+nature of the visualization process.
+
+\section{Conclusion}
 \end{document}
