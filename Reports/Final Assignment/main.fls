@@ -438,6 +438,17 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -501,7 +512,7 @@ INPUT ./main.toc
 INPUT main.toc
 INPUT main.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
-INPUT /usr/share/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 OUTPUT main.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./fig/input data - inter-arrival times.png

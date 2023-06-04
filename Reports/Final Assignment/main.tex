@@ -2,8 +2,9 @@
 \usepackage{graphicx} % Required for inserting fig
 
 \usepackage{subfig}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{rotating}
+\usepackage{comment}
 
 \setlength{\parskip}{16pt}
 
@@ -19,23 +20,25 @@
 \newpage
 
 \section{Introduction}
-During this report, we will discuss the final assignment of the `Yard Storage
-Assignment Problem'. Over the past labs, a significant amount of work and
-effort has gone into designing a simulation that can visualize a given port
-complex. The simulation focuses on the storage situation in the yard. In this
-report, we will discuss the basic design choices and the results of the
-simulation. Python is the primary technology used for the simulation. The code
-is written to be as dynamic as possible, utilizing global variables and
-booleans to vary parameters and control the overall flow of the simulation. It
-is based on a discrete event simulation, with the option for online simulation.
-To provide a brief recap, the goal is to simulate a yard where container groups
-arrive and depart. Containers arrive and leave in groups, and they are
-typically not considered individually. This means that they cannot be split up
-most of the time and are stored together in the same location. In the report,
-we aim to simulate the storage in the yard as a result of the inflow and
-outflow of containers.
+In this report, the final assignment of the 'Yard Storage Assignment Problem'
+is discussed. The focus of this assignment consisted of designing a simulation
+to visualize a port complex and analyse the storage occupancy in the yard.
+Python is the primary technology used for this dynamic simulation, with global
+variables and booleans controlling its flow. The simulation is based on
+discrete data but is in itself an online simulation, using a stream of newly
+generated data, based on the discrete data, as input.
 
-To summarize, the focus of the first lab was on analyzing the existing data
+The goal is to simulate container groups arriving and departing from the yard,
+where they are typically stored together without being split up. This
+simulation aims to simulate the storage in the yard resulting from the inflow
+and outflow of containers. Three additional scenarios have been implemented to
+provide new insights into how the yard operates. Additionally, a visualization
+feature has been implemented. This visualization was one of the primary goals
+for this semester and serves as the finishing touch for this course. It brings
+the entire project together, making all the realizations visible, and provides
+genuine insights into the movements of the various elements within the yard.
+
+\begin{comment} To summarize, the focus of the first lab was on analyzing the existing data
 samples. The intention was to be able to sample them throughout the project to
 approximate reality. The objective of the second assignment was to set up a
 base scenario for simulation and obtain initial results. The samples obtained
@@ -49,22 +52,14 @@ underestimation of the number of generated containers. This issue was also
 mentioned in the second report. However, while designing the final simulation,
 the mistake resurfaced but was promptly identified and resolved, no longer
 posing a problem.
-
-The objective of this final assignment is to integrate all the components and
-make the simulation fully functional and usable. Three additional scenarios
-have been implemented to provide new insights into how the yard operates.
-Additionally, along with addressing the previous mistake, a visualization
-feature has been implemented. This visualization was one of the primary goals
-for this semester and serves as the finishing touch for this course. It brings
-the entire project together, making all the realizations visible, and provides
-genuine insights into the movements of the various elements within the yard.
+\end{comment}
 
 \section{Probability distributions}
 The simulation makes use of probability distributions derived from real yard
-data provided by Ir. E. Thanos. Each distribution is carefully designed to
-yield the same average results as the input data. The simulation involves
-generating samples of container groups, each having distinct characteristics
-determined by these distributions.
+data provided by Ir. E. Thanos. Each distribution is carefully designed to have
+the same average results as the input data. The simulation involves generating
+samples of container groups, each having distinct characteristics determined by
+these distributions.
 
 \subsection{Inter arrival time}
 The sampling frequency of container groups is a critical parameter in the
@@ -100,7 +95,7 @@ shown in Figure~\ref{fig:cg_sizes_real}, is 32 containers. The Weibull
 distribution used for this sample generation is shown in
 Figure~\ref{fig:cg_sizes_sample}.
 
-Based on the previous average outcome, we can ascertain the weekly generation
+Based on the previous average outcome, we can calculate the weekly generation
 of containers. This number corresponds to the quantity of containers being
 transported each week. The result is nearly identical to the number of
 containers from the input data, thereby validating the average values of the
@@ -127,15 +122,14 @@ preceding distributions.
 The service time of each container group represents how long they stay in the
 yard before departing. The input data revealed a uniform distribution ranging
 from zero to 166 hours, shown in Figure~\ref{fig: service sample distribution}.
-However, it is important to note that this distribution solely represents the
+However, it is important to note that this distribution only represents the
 container groups falling under transshipment. The other kind of container
 groups (export and import) always have a service time of 48 hours.
 
-While it would be interesting to consider generating consistent container
-groups with a service time of 48 hours, we chose to simplify the distribution
-due to the larger number of transshipment container groups compared to the
-other types. The resulting distribution is a unfiorm distribution between zero
-and 166 hours.
+Although generating consistent container groups with a 48-hour service time
+would be interesting, the distribution was simplified due to the larger number
+of transshipment container groups compared to the other types. The resulting
+distribution is a unfiorm distribution between zero and 166 hours.
 
 \begin{figure}
     \centering
@@ -158,7 +152,8 @@ containers and reefer container occur respectively 69\% and 31\% of the times.
 \subsection{Arrival and departure points}
 The arrival and departure positions of vessels and trucks are chosen randomly
 from the available locations. The selection of either a vessel location or a
-truck location depends on the flow type, which will be discussed later.
+truck location depends on the flow type, which is disccused in the next
+chapter.
 
 \subsection{Flow type}
 Each container group can be categorized as either export or import. In the
@@ -174,24 +169,21 @@ truck to vessel. This distribution resulted in 69\% transshipment's and 31\%
 true export.
 
 \section{Algorithm}
-In this section, we will elaborate and discuss the flow, architecture, and
-design of the code. Since this code was developed in multiple steps, each with
-its own objectives, the program exhibits a highly modular structure. This
-modularity proves to be particularly advantageous for potential code reuse,
-both presently and in the future.
+In this section, the flow, architecture and the design of the code are
+discussed. Since this code was developed in multiple steps, each with its own
+objectives, the program exhibits a highly modular structure. This modularity
+proved to be particularly advantageous for potential code reuse.
 
 \subsection{Amount of simulations}
-The first and maybe most primary parameter to know is the amount of simulations
-that needs to be run to get significant results. This can be calculated by the
-following formula: \[S = \sqrt{\frac{\sum_{i = 1}^{n}(X_i-\overline{X})^2}{n
+One crucial parameter to determine is the number of simulations required to
+obtain significant results. This can be calculated using the following formula: \[S = \sqrt{\frac{\sum_{i = 1}^{n}(X_i-\overline{X})^2}{n
             -1}}\] \[\frac{S}{\sqrt{k}} < d\]
 
-The key parameter we wanted to consider in the simulation is the travel
-distance, denoted as X. To assess the reliability of our results, we use the
-sample variance, denoted as S. The number of simulations performed is
-represented by k. Additionally, we define an accepted standard deviation,
-denoted as d. This threshold can be chosen based on the desired level of
-accuracy or confidence in the results.
+The most important parameter is the travel distance, denoted as X. To ensure
+the reliability of the outcomes, we use the sample variance, denoted as S. The
+number of simulations performed is represented by k. Additionally, we define an
+accepted standard deviation, denoted as d. This threshold can be chosen based
+on the desired level of accuracy or confidence in the results.
 
 In our case, X represents either the average or total travel distance obtained
 from running the simulation. The calculation process involves repeatedly
@@ -322,14 +314,14 @@ insights into the workings of the yard.
 
 As mentioned in previous reports, two different approaches to block assignments
 were implemented. These approaches remain applicable to all the scenarios
-described in this section. Therefore, for most scenarios, both approaches to
-block assignment are possible. The block assignment rule influences the
-selection of a yard block to store a container group. The two situations
-studied here are arrival-based and departure-based assignments.
+described in this section. For most scenarios, both approaches to block
+assignment are possible. The block assignment rule influences the selection of
+a yard block to store a container group. The two situations studied here are
+arrival-based and departure-based assignments.
 
-In the case of arrival-based assignment, the yard block chosen is the one
+In the case of arrival-based assignment, the chosen yard block is the one
 closest to the arrival point. Conversely, in departure-based assignment, the
-yard block selected is the one closest to the departure point. In both cases,
+selected yard block is the one closest to the departure point. In both cases,
 the selection is based on minimizing the distance between two points.
 
 \subsection{Base Scenario}
@@ -342,8 +334,28 @@ is given priority over subsequent arrivals. If there is no space available for
 an arriving container group, it will be rejected. The block assignment rule
 determines which yard block is assigned to store the respective containers.
 
-We see the base scenario as a reference point for the other scenarios. It is a
-scenario where most statistics point to a solid model. AANVULLEN
+We use the base scenario as a reference point for the other scenarios. It is a
+scenario where most statistics point to a solid model. Table
+\ref{tab:Base_arival} shows the arrival based results. Table
+\ref{tab:Base_departure_arrival} shows the arrival and departure based results.
+There is a very slight difference in rejected containers between the two
+approaches, arrival based has 954 fewer rejected containers. This is a very
+small number compared to the total containers rejected. The arrival based
+approach has more containergroups rejected compared to arrival and departure
+based. The difference in distance travelled between the two approaches is more
+significant. The total distance travelled from arrival based is far less than
+departure based. The average difference is 168.2 this is a bit less than a 10\%
+difference. It is also noticeable that in this scenario that the yard gets
+fuller when arrival based is used.
+
+Table \ref{tab:Base_departure} show the departure based results. This approach
+has more rejected container groups than the other two approaches. The
+difference is still quite slight and probably due to the randomness of the
+simulation. However, the difference in travelled distance is more noticeable.
+With an increase of 24.5\% compared to arrival based and 13.7\% compared to
+arrival and departure based, this could be due to the yard being fuller than
+the other two approaches.
+
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|}
@@ -360,6 +372,7 @@ scenario where most statistics point to a solid model. AANVULLEN
         AVG daily total Occupancy                   & 0.745          \\ \hline
     \end{tabular}
     \caption{Base scenario, distance reference: arrival based}
+    \label{tab:Base_arival}
 \end{table}
 \begin{table}[h]
     \centering
@@ -377,6 +390,7 @@ scenario where most statistics point to a solid model. AANVULLEN
         AVG daily total Occupancy                   & 0.673         \\ \hline
     \end{tabular}
     \caption{Base scenario, distance: arrival \& departure based}
+    \label{tab:Base_departure_arrival}
 \end{table}
 \begin{table}[h]
     \centering
@@ -394,6 +408,7 @@ scenario where most statistics point to a solid model. AANVULLEN
         AVG daily total Occupancy                   & 0.842          \\ \hline
     \end{tabular}
     \caption{Base scenario, distance reference: departure based}
+    \label{tab:Base_departure}
 \end{table}
 
 \subsection{Smallest Remaining capacity}
@@ -409,7 +424,19 @@ capacity, which represents the percentage of capacity that is still available
 in each block. In cases where two yard blocks have exactly the same remaining
 capacity, the closest one is chosen based on the block assignment rule.
 
-BESCHRIJVEN RESULTATEN...
+We will compare the results of this scenario to the FIFO scenario. Here we see
+that the rejected containergroups is far more than the previous scenario. In
+this scenario, the large yard blocks fill up first. This means that the larger
+containergroups have no free spot in the yard, which results into rejection.
+The distance travelled is also higher than the base scenario. In this scenario,
+the distance isn't used in the discussion process to determine where to store
+the container group. It is also noticeable that the yard is less full compared
+to the previous scenario.
+
+The difference between arrival, departure and arrival \& departure is small.
+This is because the scenario decides the location based on size and not on the
+distance. The approaches only make a difference when two yard blocks have the
+remaining capacity.
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|}
@@ -489,13 +516,11 @@ BESCHRIJVEN RESULTATEN...
         Reefer Rejected                             & 472353.375     \\ \hline
         Total Travel Distance                       & 5611085409.514 \\ \hline
         AVG Travel Distance Containers              & 1851.933       \\ \hline
-        Portion of YB close to full (at some point) & 0.623          \\
-        \hline
+        Portion of YB close to full (at some point) & 0.623          \\ \hline
         Portion of YB never used                    & 0.22           \\ \hline
         Portion of YB close to full (average)       & 0.623          \\ \hline
-
-        AVG daily total Occupancy                   & 0.699          \\ \hline Average amount of split ups &
-        53848.1                                                      \\ \hline
+        AVG daily total Occupancy                   & 0.699          \\ \hline
+        Average amount of split ups                 & 53848.1        \\ \hline
     \end{tabular}
     \caption{Possible split up, distance: arrival-based}
 \end{table}

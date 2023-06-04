@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.5.26)  26 MAY 2023 17:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.5.26)  4 JUN 2023 10:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -191,31 +191,33 @@ Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 \rotFPbot=\skip56
 \rot@float@box=\box51
 \rot@mess@toks=\toks17
-) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+) (/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write3
+ Excluding comment 'comment') (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count280
 \l__pdf_internal_box=\box52
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count281
@@ -240,17 +242,17 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 15.
+Package hyperref Info: Link coloring OFF on input line 16.
  (./main.out) (./main.out)
-\@outlinefile=\write3
-\openout3 = `main.out'.
+\@outlinefile=\write4
+\openout4 = `main.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 16.
+(Font)              <12> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 16.
+(Font)              <8> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 16.
+(Font)              <6> on input line 17.
  (./main.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 3.
@@ -258,84 +260,78 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 3.
  [1
 
-{/usr/share/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
-\tf@toc=\write4
-\openout4 = `main.toc'.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+\tf@toc=\write5
+\openout5 = `main.toc'.
 
- [2] [3]
-<fig/input data - inter-arrival times.png, id=125, 437.83575pt x 335.45325pt>
+ [2] Excluding 'comment' comment.
+<fig/input data - inter-arrival times.png, id=121, 437.83575pt x 335.45325pt>
 File: fig/input data - inter-arrival times.png Graphic file (type png)
 <use fig/input data - inter-arrival times.png>
-Package pdftex.def Info: fig/input data - inter-arrival times.png  used on input line 85.
+Package pdftex.def Info: fig/input data - inter-arrival times.png  used on input line 80.
 (pdftex.def)             Requested size: 165.59853pt x 126.87466pt.
-<fig/sample inter-arrival times.png, id=127, 389.65575pt x 302.3295pt>
+<fig/sample inter-arrival times.png, id=123, 389.65575pt x 302.3295pt>
 File: fig/sample inter-arrival times.png Graphic file (type png)
 <use fig/sample inter-arrival times.png>
-Package pdftex.def Info: fig/sample inter-arrival times.png  used on input line 88.
+Package pdftex.def Info: fig/sample inter-arrival times.png  used on input line 83.
 (pdftex.def)             Requested size: 165.59853pt x 128.49063pt.
- [4 <./fig/input data - inter-arrival times.png> <./fig/sample inter-arrival times.png>]
-<fig/input data - cg sizes.png, id=140, 594.42075pt x 452.28975pt>
+ [3]
+<fig/input data - cg sizes.png, id=131, 594.42075pt x 452.28975pt>
 File: fig/input data - cg sizes.png Graphic file (type png)
 <use fig/input data - cg sizes.png>
-Package pdftex.def Info: fig/input data - cg sizes.png  used on input line 118.
+Package pdftex.def Info: fig/input data - cg sizes.png  used on input line 113.
 (pdftex.def)             Requested size: 165.59853pt x 125.99843pt.
-<fig/sample cg sizes.png, id=141, 434.22224pt x 341.47575pt>
+<fig/sample cg sizes.png, id=132, 434.22224pt x 341.47575pt>
 File: fig/sample cg sizes.png Graphic file (type png)
 <use fig/sample cg sizes.png>
-Package pdftex.def Info: fig/sample cg sizes.png  used on input line 122.
+Package pdftex.def Info: fig/sample cg sizes.png  used on input line 117.
 (pdftex.def)             Requested size: 165.59853pt x 130.22586pt.
- [5 <./fig/input data - cg sizes.png> <./fig/sample cg sizes.png>]
-<fig/service time analysis.png, id=157, 364.9635pt x 277.63725pt>
+ [4 <./fig/input data - inter-arrival times.png> <./fig/sample inter-arrival times.png>]
+<fig/service time analysis.png, id=150, 364.9635pt x 277.63725pt>
 File: fig/service time analysis.png Graphic file (type png)
 <use fig/service time analysis.png>
-Package pdftex.def Info: fig/service time analysis.png  used on input line 142.
+Package pdftex.def Info: fig/service time analysis.png  used on input line 136.
 (pdftex.def)             Requested size: 172.5pt x 131.22665pt.
-<fig/container_type.png, id=159, 363.15675pt x 339.06676pt>
+ [5 <./fig/input data - cg sizes.png> <./fig/sample cg sizes.png> <./fig/service time analysis.png>]
+<fig/container_type.png, id=161, 363.15675pt x 339.06676pt>
 File: fig/container_type.png Graphic file (type png)
 <use fig/container_type.png>
-Package pdftex.def Info: fig/container_type.png  used on input line 154.
+Package pdftex.def Info: fig/container_type.png  used on input line 148.
 (pdftex.def)             Requested size: 172.5pt x 161.06355pt.
- [6 <./fig/service time analysis.png>] [7 <./fig/container_type.png>]
-<fig/calcruns.png, id=174, 642.4pt x 481.8pt>
+ [6 <./fig/container_type.png>] [7]
+<fig/calcruns.png, id=177, 642.4pt x 481.8pt>
 File: fig/calcruns.png Graphic file (type png)
 <use fig/calcruns.png>
-Package pdftex.def Info: fig/calcruns.png  used on input line 214.
+Package pdftex.def Info: fig/calcruns.png  used on input line 206.
 (pdftex.def)             Requested size: 241.49895pt x 181.123pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8] [9 <./fig/calcruns.png (PNG copy)>]
-<fig/intro_screen.png, id=194, 222.07968pt x 188.20313pt>
+ [8 <./fig/calcruns.png (PNG copy)>]
+<fig/intro_screen.png, id=190, 222.07968pt x 188.20313pt>
 File: fig/intro_screen.png Graphic file (type png)
 <use fig/intro_screen.png>
-Package pdftex.def Info: fig/intro_screen.png  used on input line 272.
+Package pdftex.def Info: fig/intro_screen.png  used on input line 264.
 (pdftex.def)             Requested size: 241.49895pt x 204.66061pt.
-<fig/progressbar.png, id=196, 386.19281pt x 38.39343pt>
+<fig/progressbar.png, id=192, 386.19281pt x 38.39343pt>
 File: fig/progressbar.png Graphic file (type png)
 <use fig/progressbar.png>
-Package pdftex.def Info: fig/progressbar.png  used on input line 284.
+Package pdftex.def Info: fig/progressbar.png  used on input line 276.
 (pdftex.def)             Requested size: 241.49895pt x 24.00871pt.
-<fig/full GUI.png, id=197, 2568.59625pt x 1026.08344pt>
+<fig/full GUI.png, id=193, 2568.59625pt x 1026.08344pt>
 File: fig/full GUI.png Graphic file (type png)
 <use fig/full GUI.png>
-Package pdftex.def Info: fig/full GUI.png  used on input line 300.
+Package pdftex.def Info: fig/full GUI.png  used on input line 292.
 (pdftex.def)             Requested size: 482.9979pt x 192.93816pt.
- [10] [11 <./fig/Intro_screen.png (PNG copy)> <./fig/progressbar.png (PNG copy)>] [12 <./fig/full GUI.png (PNG copy)>] [13]
+ [9] [10 <./fig/Intro_screen.png (PNG copy)> <./fig/progressbar.png (PNG copy)>] [11] [12 <./fig/full GUI.png (PNG copy)>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[13] [14]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [15]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -357,18 +353,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 4BCDC1184B92EC8D3BEB664F51966C07;2858.
  ) 
 Here is how much of TeX's memory you used:
- 9885 strings out of 476175
- 162982 string characters out of 5796294
- 1871793 words of memory out of 6000000
- 30019 multiletter control sequences out of 15000+600000
+ 9942 strings out of 476175
+ 164169 string characters out of 5796294
+ 1868793 words of memory out of 6000000
+ 30072 multiletter control sequences out of 15000+600000
  516542 words of font info for 46 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  72i,10n,79p,539b,460s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (19 pages, 464554 bytes).
+Output written on main.pdf (19 pages, 465034 bytes).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
+ 325 PDF objects out of 1000 (max. 8388607)
+ 263 compressed objects within 3 object streams
  74 named destinations out of 1000 (max. 500000)
  211 words of extra memory for PDF output out of 10000 (max. 10000000)
 
