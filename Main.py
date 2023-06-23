@@ -11,8 +11,8 @@ simulation_data = ['Containers_Rejected', 'CG_Rejected', 'Normal_Rejected', 'Ree
                    'AVG_Travel_Distance_Containers', 'Max_Occupancy', 'AVG_Daily_Individual_Occupancy',
                    'AVG_daily_total_Occupancy']
 
-# Distance base fscenarios
-ARRIVAL_BASED = True 
+# Distance base scenarios
+ARRIVAL_BASED = True
 DEPARTURE_BASED = True
 
 # Scenarios
@@ -25,7 +25,6 @@ SPLIT_UP = False
 LATEX = True
 OVERVIEW = False
 
-# 120 results in proper runs
 AMOUNT_SIMULATIONS = 120
 
 SIMULATION_MONTHS = 12
